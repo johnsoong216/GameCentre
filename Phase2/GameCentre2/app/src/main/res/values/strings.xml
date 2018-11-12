@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">SlidingTiles</string>
+    <string name="title_activity_score_board">ScoreBoardActivity</string>
+    <string name="title_activity_global_score_board">GlobalScoreBoardActivity</string>
+    <string name="title_activity_complexity">ComplexityActivity</string>
+</resources>
