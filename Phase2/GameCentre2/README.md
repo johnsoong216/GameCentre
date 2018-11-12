@@ -1,0 +1,91 @@
+# GameCentre
+A sliding tiles puzzle game using numbers and images. It features a basic login application where new 
+users are required to register before playing. The puzzle game comes with 3x3, 4x4, 5x5 game modes that 
+users can choose to play!
+
+----
+## Installation and Setup
+1. Install Android Studio
+2. Get the Phase 1 URL for our group project from MarkUs. 
+3. Create an Android Virtual Device within Android Studio. Select a Pixel2 smartphone as the device to 
+emulate, specifiying the device OS as Android 8.1 API 27. Create and launch the virtual device and ensure 
+it loads correctly.
+
+----
+## A tour of the code
+* **Class Board:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
+ and these are used to populate the 2D array. This class is also Observable, which means that other classes 
+ can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called. 
+ The call to notifyAll ends up letting the GameActivity know that the user interface needs to be updated.
+ 
+* **Class BoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking 
+whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and 
+calculating the user's score using the number of moves and time taken.
+
+* **Class ComplexityActivity:** This screen allows a user to choose between the provided 3x3, 4x4, 5x5 game 
+modes for the number tiles puzzle game as well as allowing the user to change the number of steps they wish 
+to undo when they are playing the game(Bonus). A user may also choose to play sliding image tiles instead of sliding 
+number tiles.
+
+* **Class GameActivity:** This is the main sliding tile puzzle. It uses a BoardManager to keep track of the 
+board, and also manages all the user interface components. A timer and number of steps will be shown when a 
+user is playing the game so that they will be able to see how much time/steps they are taking.
+
+* **Class Loadsave:** Loadsave keeps a record of all users' game states by saving to a file should a user 
+decide to save their game. A user may choose to load a previous saved game at a later time.
+
+* **Class SignUpActivity:** New users are required to make an account before playing. It uses 
+SharedPreferences to store the user's username and password.
+
+* **Class SignUpSignInActivity** This is the interface where users have to sign in into their accounts before 
+getting access to the sliding tiles puzzle game. New users can click on register to create an account. Account
+holders may choose to change their password as well.
+
+* **Class PasswordChangeActivity:** A user may choose to change their password at any given time. It uses 
+SharedPreferences delete the old password and store the new password.(Bonus)
+
+* **Class Session:** A singleton model that stores a specific user's information such as their username, 
+password and game scores. There can only be one user logged in at a time. A session ends when a user sign out.
+
+* **Class UserManager:** A class that uses SharedPreferences to store users' usernames and passwords. It
+can then use this information to check whether a user has provided the correct information when signing in,
+whether a username has already been taken when a new user creates an account and if a user is eligible to 
+change their password.
+
+* **Class ScoreActivity:** This screen shows a user's game score after completing a game of sliding tiles. 
+It also shows their best score as well as a ranking board that lists the top three people with the highest 
+scores in the game.
+
+* **Class ScoreBoardActivity:** This screen shows the ranking of the top 10 players of the game at all time with their
+username, top score and ranking. Note that if two players have the same scores, the player who achieved that score
+earlier is ranked higher.
+
+* **Class ScoreBoardManager:** Extends the BoardManager class and uses HashMaps to keep record of users' 
+best scores. Additional features include getting a list of high scores paired with the respective users who 
+obtained the scores. 
+
+* **Class ImageTilesActivity:** This screen allows the user to select one of the two images as the tiles 
+background when playing the sliding tiles game.(Bonus)  
+
+* **Class StartingActivity:** This screen is where users can start a new game, load a previously saved game, 
+save a current game state, resume a game, as well as signing out. The game state is automatically saved each 
+time a user makes five steps. Clicking on "load saved game" will load the game state right after a user has
+completed five steps but just before their next five. Resuming a game however, will bring user right back to
+where they left off.
+
+----
+## Running the code
+1. Run -> run app
+2. Select Pixel 2 API 27 as your virtual device.
+3. Click Run and Follow the Instructions
+
+----
+## Built With Android Studio
+## Versioning
+We use Git for versioning. For the versions available, see the repository history
+
+----
+## Acknowledgements
+Great Appreciation to the Princeton University and Onur Kagan
+https://introcs.cs.princeton.edu/java/43stack/Stack.java.html
+https://github.com/onurkagan/Singleton-Design-Pattern-Example/blob/master/app/src/main/java/com/onurkagan/singleton_design_pattern_example/UserSingletonModel.java
