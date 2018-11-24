@@ -16,9 +16,9 @@ public class Card {
     }
 
     /*
-    Actual Value: from A to K used for Background Images
+    Actual Id: from A to K used for Background Images
      */
-    public int getValue(){
+    public int getId(){
         return suit * 13 + value;
     }
     /*

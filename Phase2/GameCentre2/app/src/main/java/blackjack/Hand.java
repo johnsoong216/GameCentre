@@ -19,7 +19,7 @@ public class Hand {
             /*
             Check for Aces
              */
-            if (c.getValue() == 1){
+            if (c.getId() == 1){
                 hasAces = true;
             }}
         if (hasAces){
@@ -28,6 +28,12 @@ public class Hand {
         return points;
     }
 
+    public boolean checkBlackJack(){
+        if (getPoints() == 21 && getHandSize() == 2){
+            return true;
+        }
+        return false;
+    }
     /*
     Exceeds 21
      */

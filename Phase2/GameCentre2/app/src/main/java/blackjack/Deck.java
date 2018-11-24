@@ -22,13 +22,14 @@ public class Deck {
     private Stack<Card> newDeck(){
         List<Card> cards = new ArrayList<>();
         Stack<Card> allCards = new Stack<>();
-        for (int value = 0; value != 14; value++) {
+        for (int value = 0; value != 13; value++) {
             for (int suit = 0; suit != 4; suit++){
             Card card = new Card(suit, value);
             cards.add(card);}
         }
+
     Collections.shuffle(cards);
-    for (int i = 0; i != 53; i++){
+    for (int i = 0; i != 52; i++){
         allCards.push(cards.get(i)); }
     return allCards;
     }
@@ -36,9 +37,10 @@ public class Deck {
     public Card popCard(){
         return cardStack.pop();
     }
-/*
-shuffle when there are 26 cards left
- */
+    /*
+    shuffle when there are 26 cards left
+    */
+
     public void shuffle(){
         if (size <= 26){
             cardStack = newDeck();
