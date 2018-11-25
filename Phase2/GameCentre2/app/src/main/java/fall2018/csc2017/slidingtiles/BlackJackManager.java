@@ -7,6 +7,7 @@ public class BlackJackManager implements Serializable {
 
     private BlackJackGame blackJackGame;
     private int chips;
+    private boolean insurance;
 
 
     public BlackJackManager(BlackJackGame blackJackGame, int chips) {
