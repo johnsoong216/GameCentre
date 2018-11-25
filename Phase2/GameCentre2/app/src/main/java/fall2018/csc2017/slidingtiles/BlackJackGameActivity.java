@@ -25,6 +25,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView dealerCard3;
     private ImageView dealerCard4;
     private ImageView dealerCard5;
+    private Button startButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,13 @@ public class BlackJackGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 blackJackManager.hit();
+            }
+        });
+    }
+    private void addStartButtonListener(){
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
     }
