@@ -1,8 +1,13 @@
 package fall2018.csc2017.slidingtiles;
 
-public class BlackJackManager {
+import java.io.Serializable;
+
+public class BlackJackManager implements Serializable {
+
+
     private BlackJackGame blackJackGame;
     private int chips;
+    private boolean insurance;
 
 
     public BlackJackManager(BlackJackGame blackJackGame, int chips) {
@@ -41,7 +46,6 @@ public class BlackJackManager {
     Add a button listener in the Activity Page
      */
     public void stand() {
-        blackJackGame.flip(true, 1);
         while (blackJackGame.getDealerHand().getPoints() < 17 && blackJackGame.getDealerHand().getHandSize() < 5) {
             blackJackGame.dealerDrawCard();
 //            blackJackGame.flip(true, -1);
@@ -49,14 +53,22 @@ public class BlackJackManager {
         blackJackGame.endGame();
     }
     /*
-    Settle the Amount of Chips
+    Settle the Amount of Chips if the player buys the insurance the player will reduce its bet on
+    the game by one half
     */
     private void settleChips() {
+        if (insurance){
+            blackJackGame.setBet(blackJackGame.getBet()/2);
+        }
          if (blackJackGame.getPlayerPoint() < blackJackGame.getDealerPoint()) {
             chips -= blackJackGame.getBet();
         } else if (blackJackGame.getPlayerPoint() > blackJackGame.getDealerPoint()){
             chips += blackJackGame.getBet();
         }
+    }
+
+    public BlackJackGame getBlackJackGame() {
+        return blackJackGame;
     }
 }
 

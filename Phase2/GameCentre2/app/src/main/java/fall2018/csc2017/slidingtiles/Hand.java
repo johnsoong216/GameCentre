@@ -42,8 +42,8 @@ public class Hand {
         return cards.size();
     }
 
-    public void flip(int position){
-        cards.get(position).flipCard();
-    }
 
+    public int getCardBackGround(int position) {
+        return cards.get(position).getBackground();
+    }
 }
