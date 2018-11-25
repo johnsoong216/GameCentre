@@ -25,10 +25,27 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView dealerCard3;
     private ImageView dealerCard4;
     private ImageView dealerCard5;
+    private ImageView deckImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_black_jack_game);
+        playerCard1 = findViewById(R.id.playerCard1);
+        playerCard2 = findViewById(R.id.playerCard2);
+        playerCard3 = findViewById(R.id.playerCard3);
+        playerCard4 = findViewById(R.id.playerCard4);
+        playerCard5 = findViewById(R.id.playerCard5);
+        dealerCard1 = findViewById(R.id.dealerCard1);
+        dealerCard2 = findViewById(R.id.dealerCard2);
+        dealerCard3 = findViewById(R.id.dealerCard3);
+        dealerCard4 = findViewById(R.id.dealerCard4);
+        dealerCard5 = findViewById(R.id.dealerCard5);
+        deckImage = findViewById(R.id.deck);
+        Card Alphabet = new Card(3,3,true);
+        playerCard1.setImageResource(Alphabet.background);
+
+
+
 
     }
     private void addHitButtonListener() {

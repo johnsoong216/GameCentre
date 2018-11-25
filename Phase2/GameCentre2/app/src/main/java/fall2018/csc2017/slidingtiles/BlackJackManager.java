@@ -1,6 +1,8 @@
 package fall2018.csc2017.slidingtiles;
 
-public class BlackJackManager {
+import java.io.Serializable;
+
+public class BlackJackManager implements Serializable {
     private BlackJackGame blackJackGame;
     private int chips;
 

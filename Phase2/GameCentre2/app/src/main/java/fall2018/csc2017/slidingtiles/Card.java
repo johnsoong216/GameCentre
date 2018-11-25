@@ -1,6 +1,8 @@
 package fall2018.csc2017.slidingtiles;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     private int value;
     private int suit;
     private boolean up;

@@ -1,10 +1,11 @@
 package fall2018.csc2017.slidingtiles;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hand {
+public class Hand implements Serializable {
     private List<Card> cards = new ArrayList<>();
 
     public void drawcard(Deck deck){

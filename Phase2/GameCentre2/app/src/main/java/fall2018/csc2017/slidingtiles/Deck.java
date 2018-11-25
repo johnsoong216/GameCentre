@@ -1,12 +1,13 @@
 package fall2018.csc2017.slidingtiles;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import fall2018.csc2017.slidingtiles.Stack;
 
-public class Deck {
+public class Deck implements Serializable {
 
     private int size;
     private Stack<Card> cardStack;
