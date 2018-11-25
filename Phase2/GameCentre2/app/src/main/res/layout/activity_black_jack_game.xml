@@ -89,7 +89,7 @@
 
     <ImageView
         android:id="@+id/deck"
-        android:layout_width="60"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="41dp"
         app:layout_constraintBottom_toTopOf="@+id/playerCard3"
@@ -185,5 +185,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dealerCard1"
         app:srcCompat="@drawable/back" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="502dp" />
 
 </android.support.constraint.ConstraintLayout>
