@@ -1,9 +1,16 @@
 package fall2018.csc2017.slidingtiles;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     private int value;
     private int suit;
-//    private boolean up;
+
+    public int getBackground() {
+        return background;
+    }
+
+    private int background;
 
     /*
     0 spades
@@ -17,7 +24,7 @@ public class Card {
 //        this.up = up;
         switch(getId()){
             case 1:
-                int background = R.drawable.bj1;
+                background = R.drawable.bj1;
                 break;
             case 2:
                 background = R.drawable.bj2;

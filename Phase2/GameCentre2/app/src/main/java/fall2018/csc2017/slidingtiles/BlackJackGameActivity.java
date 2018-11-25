@@ -11,8 +11,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private Hand dealerHand;
     private BlackJackManager blackJackManager;
     private Session user;
-    Deck deck = new Deck();
     private Button hitButton;
+    private int hitcounter = 0;
     private Button doubleButton;
     private Button standButton;
     private ImageView playerCard1;
@@ -25,11 +25,23 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView dealerCard3;
     private ImageView dealerCard4;
     private ImageView dealerCard5;
-    private Button startButton;
+    private ImageView deckImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_black_jack_game);
+        playerCard1 = findViewById(R.id.playerCard1);
+        playerCard2 = findViewById(R.id.playerCard2);
+        playerCard3 = findViewById(R.id.playerCard3);
+        playerCard4 = findViewById(R.id.playerCard4);
+        playerCard5 = findViewById(R.id.playerCard5);
+        dealerCard1 = findViewById(R.id.dealerCard1);
+        dealerCard2 = findViewById(R.id.dealerCard2);
+        dealerCard3 = findViewById(R.id.dealerCard3);
+        dealerCard4 = findViewById(R.id.dealerCard4);
+        dealerCard5 = findViewById(R.id.dealerCard5);
+        deckImage = findViewById(R.id.deck);
 
     }
     private void addHitButtonListener() {
@@ -37,13 +49,28 @@ public class BlackJackGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 blackJackManager.hit();
+                hitcounter++;
+                playerCard3.setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(2));
             }
         });
     }
-    private void addStartButtonListener(){
-        startButton.setOnClickListener(new View.OnClickListener() {
+
+
+    private void addStandButtonListener(){
+        standButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                blackJackManager.stand();
+            }
+        });
+    }
+
+
+    private void addDoubleButtonListener(){
+        doubleButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                blackJackManager.douBle();
             }
         });
     }
