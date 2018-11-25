@@ -2,26 +2,23 @@ package fall2018.csc2017.slidingtiles;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-/**
- * The initial activity for the sliding puzzle tile game.
- */
-public class StartingActivity extends AppCompatActivity {
+public class FlipStartingActivity extends AppCompatActivity {
 
     /**
      * The main save file.
      */
-    public static final String TEMP_SAVE_FILE = "save_sliding.ser";
-
+    public static final String SAVE_FLIP = "save_flip.ser";
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+
+    private FlipManager flipManager;
 
     /**
      * The user's username.
@@ -51,7 +48,7 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_starting_);
+        setContentView(R.layout.activity_flip_starting);
         context = this;
         loadsaveManager = new Loadsave(context);
         loadButton = findViewById(R.id.LoadButton);
@@ -80,8 +77,8 @@ public class StartingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.logout();
-                Intent logout = new Intent(StartingActivity.this, SignUpSignInActivity.class);
-                StartingActivity.this.startActivity(logout);
+                Intent logout = new Intent(FlipStartingActivity.this, SignUpSignInActivity.class);
+                FlipStartingActivity.this.startActivity(logout);
             }
         });
     }
@@ -106,8 +103,8 @@ public class StartingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username);
-                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, boardManager);
+                flipManager = (FlipManager) loadsaveManager.loadFromFile(SAVE_FLIP, username);
+                loadsaveManager.saveToFile(SAVE_FLIP, username, flipManager);
 
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
@@ -133,7 +130,7 @@ public class StartingActivity extends AppCompatActivity {
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username);
+                loadsaveManager.loadFromFile(SAVE_FLIP, username);
 
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
@@ -149,7 +146,7 @@ public class StartingActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, boardManager);
+                loadsaveManager.saveToFile(SAVE_FLIP, username, flipManager);
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
             }
         });
@@ -168,8 +165,8 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username);
-        if (boardManager == null) {
+        flipManager = (FlipManager) loadsaveManager.loadFromFile(SAVE_FLIP, username);
+        if (flipManager == null) {
             loadButton.setEnabled(false);
             saveButton.setEnabled(false);
             resumeButton.setEnabled(false);
@@ -185,8 +182,8 @@ public class StartingActivity extends AppCompatActivity {
      * Switch to the GameActivity view to play the game.
      */
     private void switchToGame() {
-        Intent tmp = new Intent(this, GameActivity.class);
-        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, boardManager);
+        Intent tmp = new Intent(this, FlipGameActivity.class);
+        loadsaveManager.saveToFile(SAVE_FLIP, username, flipManager);
         startActivity(tmp);
     }
 
@@ -194,11 +191,9 @@ public class StartingActivity extends AppCompatActivity {
      * Switch to the Complexity view to choose game complexity.
      */
     private void switchToComplexity() {
-        Intent complexity = new Intent(this, ComplexityActivity.class);
-        complexity.putExtra("game", "sliding");
+        Intent complexity = new Intent(this, FlipComplexity.class);
+        complexity.putExtra("game", "flip");
         startActivity(complexity);
-
-
     }
 
 

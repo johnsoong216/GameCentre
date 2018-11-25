@@ -1,75 +1,216 @@
 package fall2018.csc2017.slidingtiles;
 
-public class FlipManager extends BoardManager {
-    FlipManager(Board board) {
-        super(board);
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class FlipManager extends GameManager{
+
+    /**
+     * The board being managed.
+     */
+    private FlipIt flip;
+
+
+    FlipManager(FlipIt flip) {
+        this.flip = flip;
     }
+
+    /**
+     * Stack that holds previous user moves.
+     */
+    private Stack<Integer> movements = new Stack<>();
+
+    /**
+     * The game level.
+     */
+    private int complexity;
 
     FlipManager() {
-        super();
     }
 
-    @Override
+
+    /**
+     * A step counter for the number of steps a user made.
+     */
+    private int stepcounter = 0;
+
+    /**
+     * Return the number of steps the user has made.
+     *
+     * @return the number of steps the user has made.
+     */
     int getStepcounter() {
-        return super.getStepcounter();
+        return stepcounter;
     }
 
-    @Override
+    /**
+     * Set the number of steps the user has made.
+     *
+     * @param stepcounter number of steps taken.
+     */
     void setStepcounter(int stepcounter) {
-        super.setStepcounter(stepcounter);
+        this.stepcounter = stepcounter;
     }
 
-    @Override
+    /**
+     * Timer of the game.
+     */
+    private int timer = 0;
+
+    /**
+     * Set the timer of the game.
+     *
+     * @param timer timer of the game.
+     */
     void setTimer(int timer) {
-        super.setTimer(timer);
+        this.timer = timer;
     }
 
-    @Override
+    /**
+     * Get the timer of the game.
+     *
+     * @return the timer of the game.
+     */
     int getTimer() {
-        return super.getTimer();
+        return timer;
     }
 
-    @Override
-    Board getBoard() {
-        return super.getBoard();
+    /**
+     * Default undo allows the user to undo 3 steps.
+     */
+    private int default_undo;
+
+    /**
+     * Return the current board.
+     */
+    FlipIt getFlip() {
+        return flip;
     }
 
-    @Override
-    Stack getMovements() {
-        return super.getMovements();
-    }
-
-    FlipManager(int complexity) {
-        super(complexity);
-    }
-
-    @Override
-    boolean puzzleSolved() {
-        return super.puzzleSolved();
-    }
-
-    @Override
-    void undo() {
-        super.undo();
-    }
-
-    @Override
-    boolean isValidTap(int position) {
-        return super.isValidTap(position);
-    }
-
-    @Override
-    void touchMove(int position) {
-        super.touchMove(position);
-    }
-
-    @Override
+    /**
+     * Get the score of the game.
+     *
+     * @return the score of the game.
+     */
     int getScore() {
-        return super.getScore();
+        int result = (int) Math.round(500 + 7.5 * Math.pow(stepcounter, 1 / complexity) -
+                150 * Math.log(timer + 1) * Math.pow(complexity, -2) * Math.pow(default_undo + 1, 0.5)
+                        * Math.pow(stepcounter + 1, 1 / complexity));
+        if (result < 0) {
+            result = 0;
+        }
+        return puzzleSolved() ? (int) (result + Math.pow(complexity, 2) * 20) : result;
     }
 
-    @Override
-    void setUndo(int moves) {
-        super.setUndo(moves);
+    /**
+     * Return a stack containing the moves a user has made.
+     *
+     * @return a stack containing the moves a user has made.
+     */
+    Stack getMovements() {
+        return movements;
     }
+
+    /**
+     * Made a new shuffled board
+     *
+     * @param complexity the complexity of the game.
+     */
+    FlipManager(int complexity) {
+
+        List<Tile> tiles = new ArrayList<>();
+        if (complexity == 3) {
+            for (int tileNum = 0; tileNum != 9; tileNum++) {
+                Tile newtile = new Tile(1);
+                if (tileNum == 2 || tileNum == 4 || tileNum == 6) {
+                    newtile.setBackground(R.drawable.tile_25);
+                }
+                tiles.add(newtile);
+            }
+            this.complexity = complexity;
+            this.flip = new FlipIt(tiles, complexity);
+        } else if (complexity == 4) {
+            for (int tileNum = 0; tileNum != 16; tileNum++) {
+                Tile newtile = new Tile(1);
+                if (tileNum == 0 || tileNum == 2 || tileNum == 9 || tileNum == 14) {
+                    newtile.setBackground(R.drawable.tile_25);
+                }
+                tiles.add(newtile);
+            }
+            this.complexity = complexity;
+            this.flip = new FlipIt(tiles, complexity);
+        } else if (complexity == 5) {
+            for (int tileNum = 0; tileNum != 25; tileNum++) {
+                Tile newtile = new Tile(1);
+                if (tileNum == 0 || tileNum == 2 || tileNum == 4 || tileNum == 12 || tileNum == 15 || tileNum == 18 || tileNum == 19) {
+                    newtile.setBackground(R.drawable.tile_25);
+                }
+                tiles.add(newtile);
+            }
+            this.complexity = complexity;
+            this.flip = new FlipIt(tiles, complexity);
+        }
+
+    }
+
+
+    boolean puzzleSolved() {
+        boolean solved = true;
+        for (Tile tile : flip) {
+            if (tile.getBackground() != R.drawable.tile_25) {
+                solved = false;
+            }
+        }
+        return solved;
+    }
+
+    void touchColor(int position) {
+
+        int upId = position - this.complexity;
+        int downId = position + this.complexity;
+        int leftId = position - 1;
+        int rightId = position + 1;
+
+
+        flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
+
+        if (upId >= 0) {
+            flip.changeColor(upId / flip.getNUM_ROWS(), upId % flip.getNUM_COLS());
+        }
+        if (leftId / this.complexity == position / this.complexity && leftId >= 0) {
+            flip.changeColor(leftId / flip.getNUM_ROWS(), leftId % flip.getNUM_COLS());
+        }
+        if (rightId / this.complexity == position / this.complexity && rightId <= flip.numTiles() - 1) {
+            flip.changeColor(rightId / flip.getNUM_ROWS(), rightId % flip.getNUM_COLS());
+        }
+        if (downId <= flip.numTiles() - 1) {
+            flip.changeColor(downId / flip.getNUM_ROWS(), downId % flip.getNUM_COLS());
+        }
+
+    }
+
+    /**
+     * Undo one step the user has made.
+     */
+    void undo() {
+        if (!movements.isEmpty()) {
+            stepcounter--;
+            int blank = movements.pop();
+            int position = movements.pop();
+            //board.swapTiles(position / board.getNUM_ROWS(), position % board.getNUM_COLS(), blank / board.getNUM_ROWS(), blank % board.getNUM_COLS());
+        }
+    }
+
+    /**
+     * Setting the number of undo times a user can make.
+     *
+     * @param moves the move taken.
+     */
+    void setUndo(int moves) {
+        default_undo = moves * 2;
+    }
+
+
 }

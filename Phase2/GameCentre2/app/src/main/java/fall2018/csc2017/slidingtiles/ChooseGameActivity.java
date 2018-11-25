@@ -12,8 +12,8 @@ public class ChooseGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_game);
-        st = findViewById(R.id.bt_slidingtiles);
+        setContentView(R.layout.activity_choose_games_activiy);
+        st = findViewById(R.id.bt_slidingTiles);
         fi = findViewById(R.id.bt_flipit);
         addSlidingListener();
         addFlipListener();
@@ -23,6 +23,7 @@ public class ChooseGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent toStarting = new Intent(ChooseGameActivity.this, StartingActivity.class);
+                toStarting.putExtra("game", "sliding");
                 startActivity(toStarting);
             }
         });
@@ -31,7 +32,8 @@ public class ChooseGameActivity extends AppCompatActivity {
         fi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toStarting = new Intent(ChooseGameActivity.this, StartingActivity.class);
+                Intent toStarting = new Intent(ChooseGameActivity.this, FlipStartingActivity.class);
+                toStarting.putExtra("game", "flip");
                 startActivity(toStarting);
             }
         });

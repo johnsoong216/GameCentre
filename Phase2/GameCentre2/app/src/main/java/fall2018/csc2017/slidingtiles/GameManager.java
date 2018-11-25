@@ -4,20 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
-class GameManager implements Serializable {
-
-    private Game game;
-
-
-    GameManager(Board game) {
-        this.game = game;
-    }
-
-    GameManager() {}
+class GameManager extends Observable implements Serializable {
 
     Stack<Integer> movements = new Stack<>();
 
@@ -44,10 +36,6 @@ class GameManager implements Serializable {
     }
 
     int default_undo;
-
-    Game getGame() {
-        return game;
-    }
 
     Stack getMovements() {
         return movements;

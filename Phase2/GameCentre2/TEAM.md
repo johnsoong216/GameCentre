@@ -9,11 +9,12 @@
 
 ----
 ## 1.
-* Name: Stephen Joshua Utama
-* Email: stephen.utama@mail.utoronto.ca
-* Phone: 647-823-4607
-* Communication Tool: WeChat Messenger
-* Team Contract: I will get my allotted work done on time and proactively communicate with the team.
+* Name: Jeffrey Chen(Zi Yu Chen)
+* Email: ziyu.chen@mail.utoronto.ca
+* Phone: 647-928-7938
+* Communication Tool: WeChat, Messenger
+* Team Contract: I will get my allotted work done on time and help my team as soon as I'm done my
+part
 * Discussion: Mixed
 
 ----
