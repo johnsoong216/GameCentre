@@ -31,6 +31,7 @@ public class BlackJackGame implements Serializable {
         this.deck = new Deck();
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
+        this.bet = 100;
         startingHand();
     }
 
@@ -39,9 +40,9 @@ public class BlackJackGame implements Serializable {
         dealerHand.drawcard(deck);
         playerHand.drawcard(deck);
         playerHand.drawcard(deck);
-        flip(true, 0);
-        flip(false, 0);
-        flip(false, 1);
+//        flip(true, 0);
+//        flip(false, 0);
+//        flip(false, 1);
         if (playerHand.checkBlackJack() &&
                 !dealerHand.checkBlackJack()) {
             inGameBet(1.5);
@@ -133,12 +134,12 @@ public class BlackJackGame implements Serializable {
     /*
     Flip Card
      */
-    public void flip(boolean house, int position){
-        if (house){
-            dealerHand.flip(position);
-        }
-        else {
-            playerHand.flip(position);
-        }
-    }
+//    public void flip(boolean house, int position){
+//        if (house){
+//            dealerHand.flip(position);
+//        }
+//        else {
+//            playerHand.flip(position);
+//        }
+//    }
 }
