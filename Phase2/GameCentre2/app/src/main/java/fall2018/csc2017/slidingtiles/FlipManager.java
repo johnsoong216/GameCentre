@@ -124,8 +124,9 @@ public class FlipManager extends GameManager{
         if (complexity == 3) {
             for (int tileNum = 0; tileNum != 9; tileNum++) {
                 Tile newtile = new Tile(1);
+                newtile.setBackground(R.drawable.login_background);
                 if (tileNum == 2 || tileNum == 4 || tileNum == 6) {
-                    newtile.setBackground(R.drawable.tile_25);
+                    newtile.setBackground(R.drawable.back);
                 }
                 tiles.add(newtile);
             }
@@ -134,8 +135,9 @@ public class FlipManager extends GameManager{
         } else if (complexity == 4) {
             for (int tileNum = 0; tileNum != 16; tileNum++) {
                 Tile newtile = new Tile(1);
+                newtile.setBackground(R.drawable.login_background);
                 if (tileNum == 0 || tileNum == 2 || tileNum == 9 || tileNum == 14) {
-                    newtile.setBackground(R.drawable.tile_25);
+                    newtile.setBackground(R.drawable.back);
                 }
                 tiles.add(newtile);
             }
@@ -144,8 +146,9 @@ public class FlipManager extends GameManager{
         } else if (complexity == 5) {
             for (int tileNum = 0; tileNum != 25; tileNum++) {
                 Tile newtile = new Tile(1);
+                newtile.setBackground(R.drawable.login_background);
                 if (tileNum == 0 || tileNum == 2 || tileNum == 4 || tileNum == 12 || tileNum == 15 || tileNum == 18 || tileNum == 19) {
-                    newtile.setBackground(R.drawable.tile_25);
+                    newtile.setBackground(R.drawable.back);
                 }
                 tiles.add(newtile);
             }
@@ -159,7 +162,7 @@ public class FlipManager extends GameManager{
     boolean puzzleSolved() {
         boolean solved = true;
         for (Tile tile : flip) {
-            if (tile.getBackground() != R.drawable.tile_25) {
+            if (tile.getBackground() != R.drawable.back) {
                 solved = false;
             }
         }
