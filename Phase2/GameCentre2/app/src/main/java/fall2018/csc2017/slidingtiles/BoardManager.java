@@ -281,7 +281,7 @@ public class BoardManager extends GameManager{
      */
     void undo() {
         if (!movements.isEmpty()) {
-            stepcounter--;
+            stepcounter++;
             int blank = movements.pop();
             int position = movements.pop();
             board.swapTiles(position / board.getNUM_ROWS(), position % board.getNUM_COLS(), blank / board.getNUM_ROWS(), blank % board.getNUM_COLS());

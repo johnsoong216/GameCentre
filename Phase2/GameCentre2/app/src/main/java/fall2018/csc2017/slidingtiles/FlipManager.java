@@ -206,7 +206,7 @@ public class FlipManager extends GameManager{
     void undo() {
 
         if (!movements.isEmpty()) {
-            stepcounter--;
+            stepcounter++;
 
             int rightId = movements.pop();
             int leftId = movements.pop();
