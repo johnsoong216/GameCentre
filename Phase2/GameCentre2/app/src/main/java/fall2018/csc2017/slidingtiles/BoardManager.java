@@ -137,7 +137,36 @@ class BoardManager implements Serializable {
         }
         this.complexity = complexity;
         Collections.shuffle(tiles);
+        int inv = get_inv(tiles);
+        int index = tiles.size() - get_blank(tiles) - 1;
+        if(complexity % 2 == 1) {
+            if(inv % 2 != 0) {
+                swap_15_14(tiles);
+            }
+        } else {
+            if((index / complexity) % 2 == 1 && inv % 2 != 1) {
+                swap_15_14(tiles);
+            }
+
+            while((index / complexity) % 2 == 0 && inv % 2 != 0){
+                swap_15_14(tiles);
+            }
+        }
         this.board = new Board(tiles, complexity);
+    }
+
+    private void swap_15_14(List<Tile> tiles) {
+        int index1 = 0;
+        int index2 = 0;
+        for(int i = 0; i < tiles.size(); i ++) {
+            if(tiles.get(i).getId() == 15) {
+                index1 = i;
+            }
+            else if(tiles.get(i).getId() == 14) {
+                index2 = i;
+            }
+        }
+        Collections.swap(tiles, index1, index2);
     }
 
     /**
@@ -155,6 +184,30 @@ class BoardManager implements Serializable {
         this.complexity = complexity;
         Collections.shuffle(tiles);
         this.board = new Board(tiles, complexity);
+    }
+
+    int get_inv(List<Tile> tiles) {
+        int inv = 0;
+        for(int i = 0; i < tiles.size()-1; i ++) {
+            for(int j = i+1; j < tiles.size(); j ++) {
+                if(tiles.get(j).getId() < tiles.get(i).getId()) {
+                    inv += 1;
+                }
+            }
+        }
+        int index = get_blank(tiles);
+        inv -= (tiles.size()-index-1);
+        return inv;
+    }
+
+    int get_blank(List<Tile> tiles) {
+        int index = 0;
+        for(int i = 0; i < tiles.size(); i ++) {
+            if(tiles.get(i).getId() == tiles.size()) {
+                index = i;
+            }
+        }
+        return index;
     }
 
     /**
