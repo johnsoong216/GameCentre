@@ -42,6 +42,12 @@ public class BlackJackGame implements Serializable {
         flip(true, 0);
         flip(false, 0);
         flip(false, 1);
+        if (playerHand.checkBlackJack() &&
+                !dealerHand.checkBlackJack()) {
+            inGameBet(1.5);
+        } else if (!playerHand.checkBlackJack() &&
+                dealerHand.checkBlackJack()) {
+            inGameBet(1.5);}
     }
 
     /*
@@ -76,7 +82,8 @@ public class BlackJackGame implements Serializable {
     Return whether the game is over
      */
     public boolean isOver() {
-        return (dealerHand.goBusted() || playerHand.goBusted()||playerHand.checkBlackJack()|| dealerHand.checkBlackJack() || userEndGame);
+        return (dealerHand.goBusted() || playerHand.goBusted()||playerHand.checkBlackJack()||
+                dealerHand.checkBlackJack() || userEndGame);
     }
 
     /*

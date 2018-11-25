@@ -21,7 +21,7 @@ public class Deck {
         Stack<Card> allCards = new Stack<>();
         for (int value = 1; value != 14; value++) {
             for (int suit = 0; suit != 4; suit++){
-            Card card = new Card(suit, value, false);
+            Card card = new Card(suit, value);
             cards.add(card);}
         }
 
