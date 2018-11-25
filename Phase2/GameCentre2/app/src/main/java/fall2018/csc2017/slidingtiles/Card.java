@@ -3,19 +3,21 @@ package fall2018.csc2017.slidingtiles;
 public class Card {
     private int value;
     private int suit;
-    private int background;
+    private boolean up;
+
     /*
     0 spades
     1 hearts
     2 clubs
     3 diamonds
      */
-    public Card(int suit, int value){
+    public Card(int suit, int value, boolean up){
         this.suit = suit;
         this.value = value;
+        this.up = up;
         switch(getId()){
             case 1:
-                background = R.drawable.bj1;
+                int background = R.drawable.bj1;
                 break;
             case 2:
                 background = R.drawable.bj2;
@@ -170,6 +172,8 @@ public class Card {
             case 52:
                 background = R.drawable.bj52;
                 break;
+            case 53:
+                background = R.drawable.back;
         }
     }
 
@@ -177,7 +181,12 @@ public class Card {
     Actual Id: from A to K used for Background Images
      */
     public int getId(){
-        return suit * 13 + value;
+        return up ? suit * 13 + value: 53;
+    }
+
+
+    public void flipCard(){
+        up = true;
     }
     /*
     In Game Value: A = 1/11, JQK = 10
@@ -186,6 +195,7 @@ public class Card {
     public int getInGameValue(){
         return value > 10 ? 10: value;
     }
+
     @Override
     public String toString(){
         return "This is Card" + suit + " " + value;

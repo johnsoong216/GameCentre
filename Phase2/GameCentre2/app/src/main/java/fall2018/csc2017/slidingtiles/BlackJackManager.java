@@ -2,43 +2,33 @@ package fall2018.csc2017.slidingtiles;
 
 public class BlackJackManager {
     private BlackJackGame blackJackGame;
-    private boolean endGame;
-    private int gameResult;
+    private int chips;
 
 
-    public BlackJackManager(BlackJackGame blackJackGame) {
+    public BlackJackManager(BlackJackGame blackJackGame, int chips) {
         this.blackJackGame = blackJackGame;
+        this.chips = chips;
     }
 
     public void blackjack() {
         if (blackJackGame.getPlayerHand().checkBlackJack() &&
                 !blackJackGame.getDealerHand().checkBlackJack()) {
-            gameResult = 2;
-            endGame = true;
+            blackJackGame.inGameBet(1.5);
         } else if (!blackJackGame.getPlayerHand().checkBlackJack() &&
                 blackJackGame.getDealerHand().checkBlackJack()) {
-            gameResult = -2;
-            endGame = true;
-        } else if (blackJackGame.getPlayerHand().checkBlackJack() &&
-                blackJackGame.getDealerHand().checkBlackJack()) {
-            gameResult = 0;
-            endGame = true;
-        }
-
+            blackJackGame.inGameBet(1.5);}
     }
 
     public void hit() {
         blackJackGame.playerDrawCard();
-        if (blackJackGame.isOver()) {
-            endGame = true;
-            gameResult = -1;
-        }
+        blackJackGame.flip(false, -1);
     }
 
     public void douBle() {
         blackJackGame.playerDrawCard();
-        gameResult = 3;
-        endGame = true;
+        blackJackGame.inGameBet(2);
+        blackJackGame.flip(false, -1);
+        blackJackGame.endGame();
     }
 
 
@@ -47,34 +37,23 @@ public class BlackJackManager {
     Add a button listener in the Activity Page
      */
     public void stand() {
+        blackJackGame.flip(true, 1);
         while (blackJackGame.getDealerHand().getPoints() < 17 && blackJackGame.getDealerHand().getHandSize() < 5) {
             blackJackGame.dealerDrawCard();
+            blackJackGame.flip(true, -1);
         }
-        normalGameCheck();
+        blackJackGame.endGame();
     }
-
-    private void normalGameCheck() {
-        if (blackJackGame.getDealerHand().goBusted()) {
-            gameResult = 1;
-        } else if (blackJackGame.getPlayerHand().getPoints() > blackJackGame.getDealerHand().getPoints()) {
-            gameResult = 1;
-        } else if (blackJackGame.getPlayerHand().getPoints() < blackJackGame.getDealerHand().getPoints()) {
-            gameResult = -1;
-        } else {
-            gameResult = 0;
+    /*
+    Settle the Amount of Chips
+    */
+    private void settleChips() {
+         if (blackJackGame.getPlayerPoint() < blackJackGame.getDealerPoint()) {
+            chips -= blackJackGame.getBet();
+        } else if (blackJackGame.getPlayerPoint() > blackJackGame.getDealerPoint()){
+            chips += blackJackGame.getBet();
         }
-        endGame = true;
     }
-
-    public int getGameResult() {
-        return gameResult;
-    }
-
-    public boolean getEndGame() {
-        return endGame;
-    }
-
-
 }
 
 

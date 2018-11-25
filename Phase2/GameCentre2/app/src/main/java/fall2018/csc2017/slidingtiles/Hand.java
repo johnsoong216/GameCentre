@@ -42,4 +42,8 @@ public class Hand {
         return cards.size();
     }
 
+    public void flip(int position){
+        cards.get(position).flipCard();
+    }
+
 }
