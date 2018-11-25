@@ -93,7 +93,7 @@ public class SignUpSignInActivity extends AppCompatActivity {
                 user.setPassword(mPassword);
                 if (isSuccess && !mUser.equals("admin")) {
                     Toast.makeText(SignUpSignInActivity.this, "Successfully Logged In!", Toast.LENGTH_SHORT).show();
-                    Intent success = new Intent(SignUpSignInActivity.this, StartingActivity.class);
+                    Intent success = new Intent(SignUpSignInActivity.this, ChooseGameActivity.class);
                     SignUpSignInActivity.this.startActivity(success);
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpSignInActivity.this);
