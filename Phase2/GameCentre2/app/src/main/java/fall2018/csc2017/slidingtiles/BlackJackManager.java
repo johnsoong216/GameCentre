@@ -1,9 +1,18 @@
 package fall2018.csc2017.slidingtiles;
 
 public class BlackJackManager {
+    /*
+    The blackjack game being managed
+     */
     private BlackJackGame blackJackGame;
+    /*
+    the number of chips on the player's account
+     */
     private int chips;
-
+    /*
+    whether or not the player buys insurance for this game
+     */
+    private boolean insurance = false;
 
     public BlackJackManager(BlackJackGame blackJackGame, int chips) {
         this.blackJackGame = blackJackGame;
@@ -41,7 +50,7 @@ public class BlackJackManager {
     Add a button listener in the Activity Page
      */
     public void stand() {
-        blackJackGame.flip(true, 1);
+//        blackJackGame.flip(true, 1);
         while (blackJackGame.getDealerHand().getPoints() < 17 && blackJackGame.getDealerHand().getHandSize() < 5) {
             blackJackGame.dealerDrawCard();
 //            blackJackGame.flip(true, -1);
