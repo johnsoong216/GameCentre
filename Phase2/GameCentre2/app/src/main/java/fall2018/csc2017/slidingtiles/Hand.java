@@ -6,10 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand implements Serializable {
+
     private List<Card> cards = new ArrayList<>();
 
     public void drawcard(Deck deck){
         cards.add(deck.popCard());
+    }
+
+    public int getCardBackGround(int position) {
+        return cards.get(position).getBackground();
     }
 
     public int getPoints(){
@@ -43,8 +48,5 @@ public class Hand implements Serializable {
         return cards.size();
     }
 
-    public void flip(int position){
-        cards.get(position).flipCard();
-    }
 
 }

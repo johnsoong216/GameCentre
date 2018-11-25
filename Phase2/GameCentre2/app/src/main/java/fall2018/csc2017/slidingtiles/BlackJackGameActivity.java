@@ -11,8 +11,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private Hand dealerHand;
     private BlackJackManager blackJackManager;
     private Session user;
-    Deck deck = new Deck();
     private Button hitButton;
+    private int hitcounter = 0;
     private Button doubleButton;
     private Button standButton;
     private ImageView playerCard1;
@@ -26,6 +26,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView dealerCard4;
     private ImageView dealerCard5;
     private ImageView deckImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +42,6 @@ public class BlackJackGameActivity extends AppCompatActivity {
         dealerCard4 = findViewById(R.id.dealerCard4);
         dealerCard5 = findViewById(R.id.dealerCard5);
         deckImage = findViewById(R.id.deck);
-        Card Alphabet = new Card(3,3,true);
-        playerCard1.setImageResource(Alphabet.background);
-
-
-
 
     }
     private void addHitButtonListener() {
@@ -53,6 +49,28 @@ public class BlackJackGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 blackJackManager.hit();
+                hitcounter++;
+                playerCard3.setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(2));
+            }
+        });
+    }
+
+
+    private void addStandButtonListener(){
+        standButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                blackJackManager.stand();
+            }
+        });
+    }
+
+
+    private void addDoubleButtonListener(){
+        doubleButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                blackJackManager.douBle();
             }
         });
     }

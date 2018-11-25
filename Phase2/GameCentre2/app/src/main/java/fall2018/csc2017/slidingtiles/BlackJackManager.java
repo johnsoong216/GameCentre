@@ -3,6 +3,8 @@ package fall2018.csc2017.slidingtiles;
 import java.io.Serializable;
 
 public class BlackJackManager implements Serializable {
+
+
     private BlackJackGame blackJackGame;
     private int chips;
 
@@ -59,6 +61,10 @@ public class BlackJackManager implements Serializable {
         } else if (blackJackGame.getPlayerPoint() > blackJackGame.getDealerPoint()){
             chips += blackJackGame.getBet();
         }
+    }
+
+    public BlackJackGame getBlackJackGame() {
+        return blackJackGame;
     }
 }
 
