@@ -29,15 +29,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
         playerCards = new ImageView[]{findViewById(R.id.playerCard1), findViewById(R.id.playerCard2)
                 ,findViewById(R.id.playerCard3),findViewById(R.id.playerCard4),findViewById(R.id.playerCard5)};
         dealerCards = new ImageView[]{findViewById(R.id.dealerCard1), findViewById(R.id.dealerCard2)
-                ,findViewById(R.id.dealerCard3),findViewById(R.id.dealerCard4),findViewById(R.id.playerCard5)};        playerCard2 = findViewById(R.id.playerCard2);
-        playerCard3 = findViewById(R.id.playerCard3);
-        playerCard4 = findViewById(R.id.playerCard4);
-        playerCard5 = findViewById(R.id.playerCard5);
-        dealerCard1 = findViewById(R.id.dealerCard1);
-        dealerCard2 = findViewById(R.id.dealerCard2);
-        dealerCard3 = findViewById(R.id.dealerCard3);
-        dealerCard4 = findViewById(R.id.dealerCard4);
-        dealerCard5 = findViewById(R.id.dealerCard5);
+                ,findViewById(R.id.dealerCard3),findViewById(R.id.dealerCard4),findViewById(R.id.dealerCard5)};
         deckImage = findViewById(R.id.deck);
 
     }
@@ -46,7 +38,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 blackJackManager.hit();
-                playerCard3.setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(hitcounter++));
+                playerCards[hitcounter].setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(hitcounter++));
                 if (hitcounter == 4 | blackJackManager.getBlackJackGame().getPlayerHand().goBusted()){
                     hitButton.setEnabled(false);
                 }
