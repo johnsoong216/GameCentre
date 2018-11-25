@@ -1,9 +1,11 @@
 package fall2018.csc2017.slidingtiles;
 
+import java.io.Serializable;
+
 /*
 The game board for BlackJack game, storing and managing information related to BlackJackc game
  */
-public class BlackJackGame {
+public class BlackJackGame implements Serializable {
     /*
     The current shuffled deck
      */

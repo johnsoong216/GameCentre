@@ -1,6 +1,8 @@
 package fall2018.csc2017.slidingtiles;
 
-public class BlackJackManager {
+import java.io.Serializable;
+
+public class BlackJackManager implements Serializable {
     private BlackJackGame blackJackGame;
     private boolean endGame;
     private int gameResult;
@@ -37,6 +39,7 @@ public class BlackJackManager {
 
     public void douBle() {
         blackJackGame.playerDrawCard();
+        blackJackGame.setBet(2*blackJackGame.getBet());
         gameResult = 3;
         endGame = true;
     }
