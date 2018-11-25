@@ -3,8 +3,8 @@ package fall2018.csc2017.slidingtiles;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
@@ -14,15 +14,12 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-/**
- * The game activity.
- */
-public class GameActivity extends AppCompatActivity implements Observer {
+public class FlipGameActivity extends AppCompatActivity implements Observer {
 
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+    private FlipManager flipManager;
 
     /**
      * The buttons to display.
@@ -89,16 +86,16 @@ public class GameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadsaveManager = new Loadsave(context);
-        boardManager = (BoardManager) loadsaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username);
+        flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.SAVE_FLIP, username);
         createTileButtons(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_flip_game);
 
 
         // Add View to activity
-        gridView = findViewById(R.id.grid);
-        gridView.setNumColumns(boardManager.getBoard().getNUM_COLS());
-        gridView.setBoardManager(boardManager);
-        boardManager.getBoard().addObserver(this);
+        gridView = findViewById(R.id.flipGrid);
+        gridView.setNumColumns(flipManager.getFlip().getNUM_COLS());
+        gridView.setFlipManager(flipManager);
+        flipManager.getFlip().addObserver(this);
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -109,8 +106,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
                         int displayWidth = gridView.getMeasuredWidth();
                         int displayHeight = gridView.getMeasuredHeight();
 
-                        columnWidth = displayWidth / boardManager.getBoard().getNUM_COLS();
-                        columnHeight = displayHeight / boardManager.getBoard().getNUM_ROWS();
+                        columnWidth = displayWidth / flipManager.getFlip().getNUM_COLS();
+                        columnHeight = displayHeight / flipManager.getFlip().getNUM_ROWS();
 
                         display();
 
@@ -122,7 +119,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         addUndoButtonListener();
         scoreStepTimer = findViewById(R.id.ScoreBoard);
         currentScore = findViewById(R.id.currentScore);
-        runTimer();
+        //runTimer();
     }
 
     /**
@@ -132,7 +129,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         Thread t = new Thread() {
             @Override
             public void run() {
-                while (!boardManager.puzzleSolved()) {
+                while (!flipManager.puzzleSolved()) {
                     try {
                         Thread.sleep(1000);
 
@@ -140,13 +137,13 @@ public class GameActivity extends AppCompatActivity implements Observer {
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void run() {
-                                timer = boardManager.getTimer();
+                                timer = flipManager.getTimer();
                                 timer++;
-                                boardManager.setTimer(timer);
-                                stepcounter = boardManager.getStepcounter();
-                                boardManager.setStepcounter(stepcounter);
+                                flipManager.setTimer(timer);
+                                stepcounter = flipManager.getStepcounter();
+                                flipManager.setStepcounter(stepcounter);
                                 scoreStepTimer.setText("Timer: " + String.valueOf(timer) + "s" + "  " + "Steps: " + stepcounter);
-                                currentScore.setText("Current Score: " + String.valueOf(boardManager.getScore()));
+                                currentScore.setText("Current Score: " + String.valueOf(flipManager.getScore()));
                             }
                         });
                     } catch (InterruptedException e) {
@@ -164,12 +161,12 @@ public class GameActivity extends AppCompatActivity implements Observer {
      * @param context the context
      */
     private void createTileButtons(Context context) {
-        Board board = boardManager.getBoard();
+        FlipIt flip = flipManager.getFlip();
         tileButtons = new ArrayList<>();
-        for (int row = 0; row != boardManager.getBoard().getNUM_ROWS(); row++) {
-            for (int col = 0; col != boardManager.getBoard().getNUM_COLS(); col++) {
+        for (int row = 0; row != flipManager.getFlip().getNUM_ROWS(); row++) {
+            for (int col = 0; col != flipManager.getFlip().getNUM_COLS(); col++) {
                 Button tmp = new Button(context);
-                tmp.setBackgroundResource(board.getTile(row, col).getBackground());
+                tmp.setBackgroundResource(flip.getTile(row, col).getBackground());
                 this.tileButtons.add(tmp);
             }
         }
@@ -179,21 +176,21 @@ public class GameActivity extends AppCompatActivity implements Observer {
      * Update the backgrounds on the buttons to match the tiles.
      */
     private void updateTileButtons() {
-        Board board = boardManager.getBoard();
+        FlipIt flip = flipManager.getFlip();
         int nextPos = 0;
 
         for (Button b : tileButtons) {
-            int row = nextPos / boardManager.getBoard().getNUM_ROWS();
-            int col = nextPos % boardManager.getBoard().getNUM_COLS();
-            b.setBackgroundResource(board.getTile(row, col).getBackground());
+            int row = nextPos / flipManager.getFlip().getNUM_ROWS();
+            int col = nextPos % flipManager.getFlip().getNUM_COLS();
+            b.setBackgroundResource(flip.getTile(row, col).getBackground());
             nextPos++;
         }
-        if (boardManager.puzzleSolved()) {
-            user.setScore(boardManager.getScore());
-            Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);
-            GameActivity.this.startActivity(scoreboard);
+        if (flipManager.puzzleSolved()) {
+            user.setScore(flipManager.getScore());
+            Intent scoreboard = new Intent(FlipGameActivity.this, ScoreActivity.class);
+            FlipGameActivity.this.startActivity(scoreboard);
         } else if (autosave()) {
-            loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
+            loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
         }
     }
 
@@ -215,8 +212,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!boardManager.getMovements().isEmpty()) {
-                    boardManager.undo();
+                if (!flipManager.getMovements().isEmpty()) {
+                    flipManager.undo();
                 }
             }
         });
@@ -228,12 +225,12 @@ public class GameActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
+        loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        if (!boardManager.getMovements().isEmpty()) {
+        if (!flipManager.getMovements().isEmpty()) {
             undoButton.setEnabled(true);
         } else undoButton.setEnabled(false);
         display();
@@ -241,7 +238,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
-        Intent backtomain = new Intent(GameActivity.this, StartingActivity.class);
-        GameActivity.this.startActivity(backtomain);
+        Intent backtomain = new Intent(FlipGameActivity.this, StartingActivity.class);
+        FlipGameActivity.this.startActivity(backtomain);
     }
 }

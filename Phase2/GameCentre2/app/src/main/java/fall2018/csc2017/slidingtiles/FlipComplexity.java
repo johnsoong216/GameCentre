@@ -2,8 +2,8 @@ package fall2018.csc2017.slidingtiles;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -11,10 +11,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * The complexity activity.
- */
-public class ComplexityActivity extends AppCompatActivity {
+public class FlipComplexity extends AppCompatActivity {
 
     /**
      * The complexity level of the game.
@@ -30,7 +27,6 @@ public class ComplexityActivity extends AppCompatActivity {
     /**
      * A BoardManager object.
      */
-    private BoardManager boardManager = new BoardManager(4);
     private FlipManager flipManager = new FlipManager(4);
 
     /**
@@ -47,7 +43,7 @@ public class ComplexityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_complexity);
+        setContentView(R.layout.activity_flip_complexity);
         context = this;
         loadsaveManager = new Loadsave(context);
         username = Session.getCurrentUser().getUsername();
@@ -56,15 +52,6 @@ public class ComplexityActivity extends AppCompatActivity {
         numUndo.setTransformationMethod(null);
         chooseGameLevel();
         addStartNumberTiles();
-        final TextView imageLink = findViewById(R.id.tvSlideImage);
-        imageLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent imageIntent = new Intent(ComplexityActivity.this, ImageTilesActivity.class);
-                imageIntent.putExtra("numUndo", chooseUndo());
-                ComplexityActivity.this.startActivity(imageIntent);
-            }
-        });
     }
 
     /**
@@ -88,10 +75,10 @@ public class ComplexityActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 difficulty = progress + 3;
-                boardManager = new BoardManager(difficulty);
-                boardManager.getBoard().setNUM_ROWS(difficulty);
-                boardManager.getBoard().setNUM_COLS(difficulty);
-                }
+                flipManager = new FlipManager(difficulty);
+                flipManager.getFlip().setNUM_ROWS(difficulty);
+                flipManager.getFlip().setNUM_COLS(difficulty);
+            }
 
 
             @Override
@@ -100,7 +87,7 @@ public class ComplexityActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(ComplexityActivity.this, difficulty + " X " +
+                Toast.makeText(FlipComplexity.this, difficulty + " X " +
                         difficulty + " Selected", Toast.LENGTH_SHORT).show();
             }
         });
@@ -114,11 +101,11 @@ public class ComplexityActivity extends AppCompatActivity {
         numbersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager.setUndo(chooseUndo());
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
-                Intent startGame = new Intent(ComplexityActivity.this, GameActivity.class);
+                flipManager.setUndo(chooseUndo());
+                loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
+                Intent startGame = new Intent(FlipComplexity.this, FlipGameActivity.class);
                 startActivity(startGame);
-                }
+            }
 
         });
 

@@ -15,16 +15,12 @@ import java.util.List;
  * The sliding tiles board.
  */
 public class Board extends Observable implements Serializable, Iterable<Tile> {
-
-    /**
-     * The number of rows of the board.
-     */
-    private int NUM_ROWS;
+    static int NUM_ROWS;
 
     /**
      * The number of columns of the board
      */
-    private int NUM_COLS;
+    static int NUM_COLS;
 
     /**
      * Get the number of rows of the board.
@@ -52,7 +48,13 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
     int getNUM_COLS() {
         return NUM_COLS;
     }
+    int numTiles() {
+        return getNUM_COLS() * getNUM_ROWS();
+    }
 
+    Tile getTile(int row, int col) {
+        return tiles[row][col];
+    }
     /**
      * Set the number of columns of the board.
      *
@@ -67,6 +69,7 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
      */
     private Tile[][] tiles;
 
+
     /**
      * Initialize a board of 2d array tiles.
      *
@@ -74,6 +77,7 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
      * @param complexity the complexity level of a game.
      */
     Board(List<Tile> tile, int complexity) {
+
         Iterator<Tile> iter = tile.iterator();
 
         setNUM_COLS(complexity);
@@ -84,26 +88,6 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
                 this.tiles[row][col] = iter.next();
             }
         }
-    }
-
-    /**
-     * Return the number of tiles on the board.
-     *
-     * @return the number of tiles on the board
-     */
-    int numTiles() {
-        return getNUM_COLS() * getNUM_ROWS();
-    }
-
-    /**
-     * Return the tile at (row, col)
-     *
-     * @param row the tile row
-     * @param col the tile column
-     * @return the tile at (row, col)
-     */
-    Tile getTile(int row, int col) {
-        return tiles[row][col];
     }
 
     /**

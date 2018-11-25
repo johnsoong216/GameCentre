@@ -7,6 +7,7 @@ https://github.com/DaveNOTDavid/sample-puzzle/blob/master/app/src/main/java/com/
 This extension of GridView contains built in logic for handling swipes between buttons
  */
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -95,6 +96,7 @@ public class GestureDetectGridView extends GridView {
         return super.onInterceptTouchEvent(ev);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         return gDetector.onTouchEvent(ev);
@@ -103,4 +105,10 @@ public class GestureDetectGridView extends GridView {
     public void setBoardManager(BoardManager boardManager) {
         mController.setBoardManager(boardManager);
     }
+    public void setFlipManager(FlipManager flipManager) {
+        mController.setFlipManager(flipManager);
+    }
+
+
+
 }

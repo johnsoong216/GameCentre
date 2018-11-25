@@ -12,25 +12,29 @@ public class BlackJackManager implements Serializable {
         this.chips = chips;
     }
 
-    public void blackjack() {
-        if (blackJackGame.getPlayerHand().checkBlackJack() &&
-                !blackJackGame.getDealerHand().checkBlackJack()) {
-            blackJackGame.inGameBet(1.5);
-        } else if (!blackJackGame.getPlayerHand().checkBlackJack() &&
-                blackJackGame.getDealerHand().checkBlackJack()) {
-            blackJackGame.inGameBet(1.5);}
-    }
+//    public void blackjack() {
+//        if (blackJackGame.getPlayerHand().checkBlackJack() &&
+//                !blackJackGame.getDealerHand().checkBlackJack()) {
+//            blackJackGame.inGameBet(1.5);
+//        } else if (!blackJackGame.getPlayerHand().checkBlackJack() &&
+//                blackJackGame.getDealerHand().checkBlackJack()) {
+//            blackJackGame.inGameBet(1.5);}
+//    }
 
     public void hit() {
-        blackJackGame.playerDrawCard();
-        blackJackGame.flip(false, -1);
+        if (!blackJackGame.isOver()&& blackJackGame.getPlayerHand().getHandSize() < 5){
+            blackJackGame.playerDrawCard();
+//            blackJackGame.flip(false, -1);
+        }
     }
 
     public void douBle() {
+        if (!blackJackGame.isOver()){
         blackJackGame.playerDrawCard();
         blackJackGame.inGameBet(2);
-        blackJackGame.flip(false, -1);
+//        blackJackGame.flip(false, -1);
         blackJackGame.endGame();
+        }
     }
 
 
@@ -42,7 +46,7 @@ public class BlackJackManager implements Serializable {
         blackJackGame.flip(true, 1);
         while (blackJackGame.getDealerHand().getPoints() < 17 && blackJackGame.getDealerHand().getHandSize() < 5) {
             blackJackGame.dealerDrawCard();
-            blackJackGame.flip(true, -1);
+//            blackJackGame.flip(true, -1);
         }
         blackJackGame.endGame();
     }

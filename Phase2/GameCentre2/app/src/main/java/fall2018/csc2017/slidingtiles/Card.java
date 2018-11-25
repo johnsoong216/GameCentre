@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Card implements Serializable {
     private int value;
     private int suit;
-    private boolean up;
+//    private boolean up;
 
     /*
     0 spades
@@ -13,10 +13,10 @@ public class Card implements Serializable {
     2 clubs
     3 diamonds
      */
-    public Card(int suit, int value, boolean up){
+    public Card(int suit, int value){
         this.suit = suit;
         this.value = value;
-        this.up = up;
+//        this.up = up;
         switch(getId()){
             case 1:
                 int background = R.drawable.bj1;
@@ -183,16 +183,16 @@ public class Card implements Serializable {
     Actual Id: from A to K used for Background Images
      */
     public int getId(){
-        return up ? suit * 13 + value: 53;
+        return suit * 13 + value;
     }
 
 
-    public void flipCard(){
-        up = true;
-    }
-    /*
-    In Game Value: A = 1/11, JQK = 10
-     */
+//    public void flipCard(){
+//        up = true;
+//    }
+//    /*
+//    In Game Value: A = 1/11, JQK = 10
+//     */
 
     public int getInGameValue(){
         return value > 10 ? 10: value;
