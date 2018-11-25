@@ -173,6 +173,13 @@ public class FlipManager extends GameManager{
         int leftId = position - 1;
         int rightId = position + 1;
 
+        stepcounter++;
+        movements.push(position);
+        movements.push(upId);
+        movements.push(downId);
+        movements.push(leftId);
+        movements.push(rightId);
+        movements.poplasttwo(default_undo);
 
         flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
 
@@ -188,18 +195,27 @@ public class FlipManager extends GameManager{
         if (downId <= flip.numTiles() - 1) {
             flip.changeColor(downId / flip.getNUM_ROWS(), downId % flip.getNUM_COLS());
         }
-
     }
 
     /**
      * Undo one step the user has made.
      */
     void undo() {
+
         if (!movements.isEmpty()) {
             stepcounter--;
-            int blank = movements.pop();
+
+            int rightId = movements.pop();
+            int leftId = movements.pop();
+            int downId = movements.pop();
+            int upId = movements.pop();
             int position = movements.pop();
-            //board.swapTiles(position / board.getNUM_ROWS(), position % board.getNUM_COLS(), blank / board.getNUM_ROWS(), blank % board.getNUM_COLS());
+
+            flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
+            flip.changeColor(upId / flip.getNUM_ROWS(), upId % flip.getNUM_COLS());
+            flip.changeColor(leftId / flip.getNUM_ROWS(), leftId % flip.getNUM_COLS());
+            flip.changeColor(rightId / flip.getNUM_ROWS(), rightId % flip.getNUM_COLS());
+            flip.changeColor(downId / flip.getNUM_ROWS(), downId % flip.getNUM_COLS());
         }
     }
 
