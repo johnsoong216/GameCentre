@@ -1,6 +1,10 @@
 package fall2018.csc2017.slidingtiles;
 
-public class BlackJackManager {
+import java.io.Serializable;
+
+public class BlackJackManager implements Serializable {
+
+
     private BlackJackGame blackJackGame;
     private int chips;
 
@@ -41,7 +45,6 @@ public class BlackJackManager {
     Add a button listener in the Activity Page
      */
     public void stand() {
-        blackJackGame.flip(true, 1);
         while (blackJackGame.getDealerHand().getPoints() < 17 && blackJackGame.getDealerHand().getHandSize() < 5) {
             blackJackGame.dealerDrawCard();
 //            blackJackGame.flip(true, -1);
@@ -57,6 +60,10 @@ public class BlackJackManager {
         } else if (blackJackGame.getPlayerPoint() > blackJackGame.getDealerPoint()){
             chips += blackJackGame.getBet();
         }
+    }
+
+    public BlackJackGame getBlackJackGame() {
+        return blackJackGame;
     }
 }
 
