@@ -19,9 +19,10 @@
         <activity android:name=".GameActivity" />
         <activity android:name=".StartingActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".ScoreActivity" />
-        android:label="@string/title_activity_global_score_board"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ScoreActivity"
+            android:label="@string/title_activity_global_score_board"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ComplexityActivity"
             android:label="@string/title_activity_complexity"

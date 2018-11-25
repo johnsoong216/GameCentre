@@ -13,8 +13,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/ScoreBoard"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/ScoreBoard"
@@ -42,14 +44,9 @@
         android:id="@+id/btUndo"
         android:layout_width="165dp"
         android:layout_height="40dp"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="517dp"
+        android:layout_marginBottom="24dp"
         android:text="Undo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ScoreBoard"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentScore"
-        app:layout_constraintVertical_bias="0.868" />
+        tools:layout_editor_absoluteX="219dp" />
 
 </android.support.constraint.ConstraintLayout>
