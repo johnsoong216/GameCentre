@@ -19,9 +19,9 @@ public class Deck {
     private Stack<Card> newDeck(){
         List<Card> cards = new ArrayList<>();
         Stack<Card> allCards = new Stack<>();
-        for (int value = 0; value != 13; value++) {
+        for (int value = 1; value != 14; value++) {
             for (int suit = 0; suit != 4; suit++){
-            Card card = new Card(suit, value);
+            Card card = new Card(suit, value, false);
             cards.add(card);}
         }
 

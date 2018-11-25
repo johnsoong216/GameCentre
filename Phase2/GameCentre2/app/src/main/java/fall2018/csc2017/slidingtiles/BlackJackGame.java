@@ -22,15 +22,26 @@ public class BlackJackGame implements Serializable {
     Current bet for the game
      */
     private int bet;
+    /*
+    Check for User Action
+     */
+    private boolean userEndGame = false;
 
     public BlackJackGame() {
         this.deck = new Deck();
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
+        startingHand();
+    }
+
+    private void startingHand() {
         dealerHand.drawcard(deck);
         dealerHand.drawcard(deck);
         playerHand.drawcard(deck);
         playerHand.drawcard(deck);
+        flip(true, 0);
+        flip(false, 0);
+        flip(false, 1);
     }
 
     /*
@@ -51,23 +62,29 @@ public class BlackJackGame implements Serializable {
     return the dealer's hand's total point
      */
     public int getDealerPoint() {
-        return dealerHand.getPoints();
+        return dealerHand.goBusted()? 0: dealerHand.getPoints();
     }
 
     /*
     return the player's hand's total point
      */
     public int getPlayerPoint() {
-        return playerHand.getPoints();
+        return playerHand.goBusted()? 0: playerHand.getPoints();
     }
 
     /*
     Return whether the game is over
      */
     public boolean isOver() {
-        return dealerHand.goBusted() || playerHand.goBusted();
+        return (dealerHand.goBusted() || playerHand.goBusted()||playerHand.checkBlackJack()|| dealerHand.checkBlackJack() || userEndGame);
     }
 
+    /*
+    User chooses to end Game
+     */
+    public void endGame(){
+        userEndGame = true;
+    }
     /*
     Draw a card for dealer
      */
@@ -95,11 +112,26 @@ public class BlackJackGame implements Serializable {
         this.bet = bet;
     }
 
+
     /*
-    Return the currrent deck for the game
+    Flip the Card of Hand
      */
-    public Deck getDeck() {
-        return this.deck;
+
+
+    public void inGameBet(double betMultiplier){
+        this.bet = (int) Math.round (bet * betMultiplier);
     }
 
+
+    /*
+    Flip Card
+     */
+    public void flip(boolean house, int position){
+        if (house){
+            dealerHand.flip(position);
+        }
+        else {
+            playerHand.flip(position);
+        }
+    }
 }
