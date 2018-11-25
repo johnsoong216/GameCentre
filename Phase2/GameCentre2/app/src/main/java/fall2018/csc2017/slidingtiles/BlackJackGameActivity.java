@@ -51,8 +51,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
         standButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                dealerCards[2].setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(2));
                 blackJackManager.stand();
-
             }
         });
     }

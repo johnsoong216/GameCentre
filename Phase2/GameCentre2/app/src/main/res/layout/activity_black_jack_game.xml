@@ -50,98 +50,140 @@
 
     <ImageView
         android:id="@+id/dealerCard4"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="233dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="179dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerCard4"
+        app:layout_constraintEnd_toStartOf="@+id/dealerCard5"
+        app:layout_constraintStart_toEndOf="@+id/dealerCard3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/dealerCard5"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="304dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="179dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerCard5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dealerCard4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/dealerCard3"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="58dp"
+        app:layout_constraintBottom_toTopOf="@+id/deck"
+        app:layout_constraintEnd_toStartOf="@+id/dealerCard4"
+        app:layout_constraintStart_toEndOf="@+id/dealerCard2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/deck"
         android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="154dp" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerCard3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dealerCard3"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/dealerCard2"
-        android:layout_width="59dp"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="179dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerCard2"
+        app:layout_constraintEnd_toStartOf="@+id/dealerCard3"
+        app:layout_constraintStart_toEndOf="@+id/dealerCard1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/dealerCard1"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="179dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerCard1"
+        app:layout_constraintEnd_toStartOf="@+id/dealerCard2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/playerCard5"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="304dp"
-        tools:layout_editor_absoluteY="275dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/playerCard4"
+        app:layout_constraintTop_toBottomOf="@+id/dealerCard5"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/playerCard4"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="233dp"
-        tools:layout_editor_absoluteY="275dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/playerCard5"
+        app:layout_constraintStart_toEndOf="@+id/playerCard3"
+        app:layout_constraintTop_toBottomOf="@+id/dealerCard4"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/playerCard3"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="275dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/playerCard4"
+        app:layout_constraintStart_toEndOf="@+id/playerCard2"
+        app:layout_constraintTop_toBottomOf="@+id/deck"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/playerCard2"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="275dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/playerCard3"
+        app:layout_constraintStart_toEndOf="@+id/playerCard1"
+        app:layout_constraintTop_toBottomOf="@+id/dealerCard2"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/playerCard1"
-        android:layout_width="60"
-        android:layout_height="80"
-        app:srcCompat="@drawable/back"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="275dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/playerCard2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dealerCard1"
+        app:srcCompat="@drawable/back" />
 
 </android.support.constraint.ConstraintLayout>
