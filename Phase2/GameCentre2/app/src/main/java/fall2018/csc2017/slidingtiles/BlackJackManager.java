@@ -52,9 +52,13 @@ public class BlackJackManager implements Serializable {
         blackJackGame.endGame();
     }
     /*
-    Settle the Amount of Chips
+    Settle the Amount of Chips if the player buys the insurance the player will reduce its bet on
+    the game by one half
     */
     private void settleChips() {
+        if (insurance){
+            blackJackGame.setBet(blackJackGame.getBet()/2);
+        }
          if (blackJackGame.getPlayerPoint() < blackJackGame.getDealerPoint()) {
             chips -= blackJackGame.getBet();
         } else if (blackJackGame.getPlayerPoint() > blackJackGame.getDealerPoint()){
