@@ -1,7 +1,8 @@
 package fall2018.csc2017.slidingtiles;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +13,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
-import static fall2018.csc2017.slidingtiles.BlackJackStartingActivity.TEMP_SAVE_FILENAME_BLACK_JACK;
 
 public class BlackJackGameActivity extends AppCompatActivity {
-    private Hand playerHand;
-    private Hand dealerHand;
     private BlackJackManager blackJackManager;
     private Session user;
     private Button hitButton;
@@ -30,11 +26,13 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView[] dealerCards;
     private ImageView deckImage;
     private String username;
-    private Button insuranceButton;
+    private Loadsave loadsaveManager;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadsaveManager = new Loadsave(context);
         setContentView(R.layout.activity_black_jack_game);
         playerCards = new ImageView[]{findViewById(R.id.playerCard1), findViewById(R.id.playerCard2)
                 ,findViewById(R.id.playerCard3),findViewById(R.id.playerCard4),findViewById(R.id.playerCard5)};
@@ -45,38 +43,50 @@ public class BlackJackGameActivity extends AppCompatActivity {
         newRoundButton = findViewById(R.id.btNewRound);
         user = Session.getCurrentUser();
         username = user.getUsername();
-        this.blackJackManager = loadFromFile(TEMP_SAVE_FILENAME_BLACK_JACK, username);
+        context = this;
+        loadsaveManager = new Loadsave(context);
+        blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILENAME_BLACK_JACK, username);
         hitButton = findViewById(R.id.btHit);
         standButton = findViewById(R.id.btStand);
-        setHandImage(blackJackManager.getBlackJackGame().getPlayerHand(),
-                blackJackManager.getBlackJackGame().getDealerHand());
         addHitButtonListener();
         addNewRoundButtonListener();
-        newRoundButton.setEnabled(false);
         addStandButtonListener();
+        addDoubleButtonListener();
     }
 
-    private void addInsuranceButtonListener() {
-        insuranceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                blackJackManager.insurance();
-                insuranceButton.setEnabled(false);
-            }
-        });
+    protected void onResume(){
+        super.onResume();
+        setHandImage(blackJackManager.getBlackJackGame().getPlayerHand(),
+                blackJackManager.getBlackJackGame().getDealerHand());
+
     }
+
+    protected void onPause(){
+        super.onPause();
+        loadsaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
+        loadsaveManager.saveToFile(BlackJackStartingActivity.SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
+    }
+
 
     private void addNewRoundButtonListener() {
         newRoundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startNewRound(blackJackManager.getBlackJackGame().getDeck());
                 setHandImage(blackJackManager.getBlackJackGame().getPlayerHand(),
                         blackJackManager.getBlackJackGame().getDealerHand());
+                Log.d("TAG", "doubledouble" + blackJackManager.getBlackJackGame().getPlayerHand().isAllowDouble() +
+                        blackJackManager.getBlackJackGame().getPlayerHand().getPoints());
+                if (blackJackManager.getBlackJackGame().getPlayerHand().checkBlackJack()) {
+                    newRoundButton.setEnabled(true);
+                    hitButton.setEnabled(true);
+                    standButton.setEnabled(false);
+                }
+                else {
                 newRoundButton.setEnabled(false);
                 hitButton.setEnabled(true);
-                doubleButton.setEnabled(true);
-                standButton.setEnabled(true);
+                standButton.setEnabled(true);}
             }
         });
     }
@@ -89,6 +99,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 playerCards[index].setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(index));
                 if(blackJackManager.getBlackJackGame().isOver()) {
                     blackJackManager.settleChips();
+                    dealerCards[1].setImageResource(blackJackManager.getBlackJackGame().getDealerHand().getCardBackGround(1));
                     hitButton.setEnabled(false);
                     doubleButton.setEnabled(false);
                     standButton.setEnabled(false);
@@ -107,6 +118,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 blackJackManager.stand();
                 int index = 0;
+                Log.d("TAG", "DealerHandSizeStand" + blackJackManager.getBlackJackGame().getDealerHand().getHandSize());
                 for(Card card :blackJackManager.getBlackJackGame().getDealerHand()){
                     dealerCards[index].setImageResource(card.getBackground());
                     index ++;
@@ -115,7 +127,6 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 doubleButton.setEnabled(false);
                 standButton.setEnabled(false);
                 newRoundButton.setEnabled(true);
-
             }
         });
     }
@@ -128,11 +139,22 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 blackJackManager.douBle();
                 playerCards[2].setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(2));
                 blackJackManager.stand();
+                Log.d("TAG", "DealerHandSizeDouble" + blackJackManager.getBlackJackGame().getDealerHand().getHandSize());
+                int index = 0;
+                for(Card card :blackJackManager.getBlackJackGame().getDealerHand()){
+                    dealerCards[index].setImageResource(card.getBackground());
+                    index ++;
+                }
+                hitButton.setEnabled(false);
+                doubleButton.setEnabled(false);
+                standButton.setEnabled(false);
+                newRoundButton.setEnabled(true);
             }
         });
     }
     private void startNewRound(Deck deck){
         int chips = blackJackManager.getChips();
+        deck.shuffle();
         blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips);
         hitButton.setEnabled(false);
         doubleButton.setEnabled(false);
@@ -140,40 +162,6 @@ public class BlackJackGameActivity extends AppCompatActivity {
         newRoundButton.setEnabled(true);
     }
 
-    public BlackJackManager loadFromFile(String fileName, String username) {
-
-        try {
-            InputStream inputStream = this.openFileInput(username + fileName);
-            if (inputStream != null) {
-                ObjectInputStream input = new ObjectInputStream(inputStream);
-                BlackJackManager manager = (BlackJackManager) input.readObject();
-                inputStream.close();
-                return manager;
-            }
-        } catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-        } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
-        } catch (ClassNotFoundException e) {
-            Log.e("login activity", "File contained unexpected data type: " + e.toString());
-        }
-        return null;
-    }
-
-    /**
-     * Save the blackjack manager to fileName.
-     *
-     * @param fileName the name of the file
-     */
-    public void saveToFile(String fileName, String username, BlackJackManager manager) {
-        try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(this.openFileOutput(username + fileName, MODE_PRIVATE));
-            outputStream.writeObject(manager);
-            outputStream.close();
-        } catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
     private void setHandImage(Hand playerHand, Hand dealerHand){
         int playerViewIndex = 0;
         for(Card playerCard : playerHand){
@@ -183,9 +171,34 @@ public class BlackJackGameActivity extends AppCompatActivity {
         for(int i = playerViewIndex; i < 5; i++){
             playerCards[i].setImageResource(R.drawable.back);
         }
-        dealerCards[0].setImageResource(dealerHand.getCardBackGround(0));
-        for(int i = 1; i < 5; i++){
+        int dealerViewIndex = 0;
+        Log.d("TAG", "DealerHandSize" + dealerHand.getHandSize());
+        if (dealerHand.getHandSize() > 2){
+            for (Card dealerCard: dealerHand){
+                dealerCards[dealerViewIndex].setImageResource(dealerCard.getBackground());
+                dealerViewIndex++;
+            }
+            for (int i = dealerHand.getHandSize(); i < 5; i++){
+                dealerCards[i].setImageResource(R.drawable.back);
+            }
+        }
+        else {
+            dealerCards[0].setImageResource(dealerHand.getCardBackGround(0));
+            for(int i = 1; i < 5; i++){
             dealerCards[i].setImageResource(R.drawable.back);
+        }}
+        Log.d("TAG", "doubledouble" + blackJackManager.getBlackJackGame().getPlayerHand().isAllowDouble() +
+        blackJackManager.getBlackJackGame().getPlayerHand().getPoints());
+        if (!blackJackManager.getBlackJackGame().getPlayerHand().isAllowDouble()){
+            doubleButton.setEnabled(false);
+        }
+        else {doubleButton.setEnabled(true);}
+
+        if  (blackJackManager.getBlackJackGame().isOver()){
+            newRoundButton.setEnabled(true);
+            hitButton.setEnabled(false);
+            doubleButton.setEnabled(false);
+            standButton.setEnabled(false);
         }
     }
 }
