@@ -121,7 +121,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFromFile(TEMP_SAVE_FILENAME_BLACK_JACK, username);
+                blackJackManager = loadFromFile(TEMP_SAVE_FILENAME_BLACK_JACK, username);
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
             }
