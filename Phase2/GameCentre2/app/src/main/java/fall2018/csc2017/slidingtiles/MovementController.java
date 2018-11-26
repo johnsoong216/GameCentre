@@ -7,31 +7,36 @@ import android.widget.Toast;
 public class MovementController {
 
     private BoardManager boardManager = null;
-    private FlipManager flipManager = null;
+    private FlipManager flipManager;
+    private GameManager gameManager;
 
-/*
-    private ArrayList<Board> boards = new ArrayList<>(10);
-*/
+    public MovementController() {}
 
-    public MovementController() {
-    }
-
-    public void setBoardManager(BoardManager boardManager) {
-        this.boardManager = boardManager;
+    public void setGameManager(GameManager gameManager) {
+        if (gameManager instanceof BoardManager){
+            this.flipManager = null;
+        }
+        else if (gameManager instanceof BoardManager){
+            this.boardManager = null;
+        }
     }
     public void setFlipManager(FlipManager flipManager) {
         this.flipManager = flipManager;
     }
 
     public void processTapMovement(Context context, int position) {
-//        if (boardManager.isValidTap(position)) {
-            flipManager.touchColor(position);
-            if (flipManager.puzzleSolved()) {
+        if (boardManager.isValidTap(position)) {
+            boardManager.touchMove(position);
+            if (boardManager.puzzleSolved()) {
                 Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }
-//        } else {
-//            Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
-//        }
+        } else {
+            Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
+        }
+        flipManager.touchColor(position);
+        if (flipManager.puzzleSolved()) {
+            Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

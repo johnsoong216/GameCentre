@@ -45,7 +45,7 @@ public class ScoreActivity extends AppCompatActivity {
         Context context = this;
         Loadsave loadsaveManager = new Loadsave(context);
         scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin");
-        loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILENAME, user.getUsername(), null);
+        loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, user.getUsername(), null);
 
         if (scoreBoardManager == null) {
             scoreBoardManager = new ScoreBoardManager();

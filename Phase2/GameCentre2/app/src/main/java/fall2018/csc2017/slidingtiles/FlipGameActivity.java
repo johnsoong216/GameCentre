@@ -34,6 +34,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
 
     // Grid View and calculated column height and width based on device size
     private GestureDetectGridView gridView;
+
     private static int columnWidth, columnHeight;
 
     /**
@@ -94,7 +95,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         // Add View to activity
         gridView = findViewById(R.id.flipGrid);
         gridView.setNumColumns(flipManager.getFlip().getNUM_COLS());
-        gridView.setFlipManager(flipManager);
+        gridView.setGameManager(flipManager);
         flipManager.getFlip().addObserver(this);
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -119,7 +120,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         addUndoButtonListener();
         scoreStepTimer = findViewById(R.id.ScoreBoard);
         currentScore = findViewById(R.id.currentScore);
-        //runTimer();
+        runTimer();
     }
 
     /**
@@ -187,7 +188,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         }
         if (flipManager.puzzleSolved()) {
             user.setScore(flipManager.getScore());
-            Intent scoreboard = new Intent(FlipGameActivity.this, ScoreActivity.class);
+            Intent scoreboard = new Intent(FlipGameActivity.this, FlipScoreActivity.class);
             FlipGameActivity.this.startActivity(scoreboard);
         } else if (autosave()) {
             loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
@@ -238,7 +239,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
-        Intent backtomain = new Intent(FlipGameActivity.this, StartingActivity.class);
+        Intent backtomain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
         FlipGameActivity.this.startActivity(backtomain);
     }
 }

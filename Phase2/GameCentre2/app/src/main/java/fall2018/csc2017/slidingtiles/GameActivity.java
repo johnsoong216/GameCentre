@@ -97,7 +97,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         // Add View to activity
         gridView = findViewById(R.id.grid);
         gridView.setNumColumns(boardManager.getBoard().getNUM_COLS());
-        gridView.setBoardManager(boardManager);
+        gridView.setGameManager(boardManager);
         boardManager.getBoard().addObserver(this);
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -206,7 +206,6 @@ public class GameActivity extends AppCompatActivity implements Observer {
         counter++;
         return (counter % 5 == 0);
     }
-
 
     /**
      * Activate the undo button
