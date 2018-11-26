@@ -27,6 +27,14 @@ public class BlackJackGame implements Serializable {
      */
     private boolean userEndGame = false;
 
+    public BlackJackGame(Deck deck) {
+        this.deck = deck;
+        this.playerHand = new Hand();
+        this.dealerHand = new Hand();
+        this.bet = 100;
+        startingHand();
+    }
+
     public BlackJackGame() {
         this.deck = new Deck();
         this.playerHand = new Hand();
@@ -130,7 +138,10 @@ public class BlackJackGame implements Serializable {
         this.bet = (int) Math.round (bet * betMultiplier);
     }
 
-
+    /*
+    return the deck being used
+     */
+    public Deck getDeck(){return deck;}
     /*
     Flip Card
      */

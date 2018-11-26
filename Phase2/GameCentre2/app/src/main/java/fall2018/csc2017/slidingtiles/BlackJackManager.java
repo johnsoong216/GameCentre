@@ -40,7 +40,7 @@ public class BlackJackManager implements Serializable {
         }
     }
 
-
+    public int getChips() {return chips;}
     /*
     Player chooses not to draw any more cards
     Add a button listener in the Activity Page
@@ -56,7 +56,7 @@ public class BlackJackManager implements Serializable {
     Settle the Amount of Chips if the player buys the insurance the player will reduce its bet on
     the game by one half
     */
-    private void settleChips() {
+    protected void settleChips() {
         if (insurance){
             blackJackGame.setBet(blackJackGame.getBet()/2);
         }
