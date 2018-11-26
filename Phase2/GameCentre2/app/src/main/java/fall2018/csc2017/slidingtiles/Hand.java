@@ -1,10 +1,15 @@
 package fall2018.csc2017.slidingtiles;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
 
-public class Hand {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class Hand implements Serializable, Iterable<Card>{
     private List<Card> cards = new ArrayList<>();
 
     public void drawcard(Deck deck){
@@ -45,5 +50,39 @@ public class Hand {
 
     public int getCardBackGround(int position) {
         return cards.get(position).getBackground();
+    }
+
+    @NonNull
+    @Override
+    public Iterator iterator() {
+        return new HandIterator();
+    }
+    private class HandIterator implements Iterator<Card> {
+        /**
+         * The index of card in hand
+         */
+        int i = 0;
+
+
+        @Override
+        public boolean hasNext() {
+
+            return i < getHandSize();
+        }
+
+        @Override
+        public Card next() {
+
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            } else {
+                Card result = cards.get(i);
+                i++;
+
+                return result;
+            }
+
+
+        }
     }
 }
