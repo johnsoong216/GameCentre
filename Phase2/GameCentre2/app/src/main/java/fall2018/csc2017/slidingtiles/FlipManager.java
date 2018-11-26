@@ -215,10 +215,18 @@ public class FlipManager extends GameManager{
             int position = movements.pop();
 
             flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
-            flip.changeColor(upId / flip.getNUM_ROWS(), upId % flip.getNUM_COLS());
-            flip.changeColor(leftId / flip.getNUM_ROWS(), leftId % flip.getNUM_COLS());
-            flip.changeColor(rightId / flip.getNUM_ROWS(), rightId % flip.getNUM_COLS());
-            flip.changeColor(downId / flip.getNUM_ROWS(), downId % flip.getNUM_COLS());
+            if (upId >= 0) {
+                flip.changeColor(upId / flip.getNUM_ROWS(), upId % flip.getNUM_COLS());
+            }
+            if (leftId / this.complexity == position / this.complexity && leftId >= 0) {
+                flip.changeColor(leftId / flip.getNUM_ROWS(), leftId % flip.getNUM_COLS());
+            }
+            if (rightId / this.complexity == position / this.complexity && rightId <= flip.numTiles() - 1) {
+                flip.changeColor(rightId / flip.getNUM_ROWS(), rightId % flip.getNUM_COLS());
+            }
+            if (downId <= flip.numTiles() - 1) {
+                flip.changeColor(downId / flip.getNUM_ROWS(), downId % flip.getNUM_COLS());
+            }
         }
     }
 
@@ -228,7 +236,7 @@ public class FlipManager extends GameManager{
      * @param moves the move taken.
      */
     void setUndo(int moves) {
-        default_undo = moves * 2;
+        default_undo = moves * 5;
     }
 
 
