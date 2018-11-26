@@ -88,12 +88,12 @@ public class FlipIt extends Observable implements Serializable, Iterable<Tile> {
     void changeColor(int row, int col) {
         Tile item1 = tiles[row][col];
 
-        if (item1.getBackground() == R.drawable.tile_25) {
+        if (item1.getBackground() == R.drawable.back) {
 
-            item1.setBackground(R.drawable.tile_2);
-        } else if (item1.getBackground() == R.drawable.tile_2) {
+            item1.setBackground(R.drawable.login_background);
+        } else if (item1.getBackground() == R.drawable.login_background) {
 
-            item1.setBackground(R.drawable.tile_25);
+            item1.setBackground(R.drawable.back);
         }
         setChanged();
         notifyObservers();

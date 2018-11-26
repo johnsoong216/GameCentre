@@ -191,7 +191,7 @@ public class FlipStartingActivity extends AppCompatActivity {
      * Switch to the Complexity view to choose game complexity.
      */
     private void switchToComplexity() {
-        Intent complexity = new Intent(this, FlipComplexity.class);
+        Intent complexity = new Intent(this, FlipComplexityActivity.class);
         complexity.putExtra("game", "flip");
         startActivity(complexity);
     }
@@ -202,4 +202,3 @@ public class FlipStartingActivity extends AppCompatActivity {
         startActivity(complexity);
     }
 }
-

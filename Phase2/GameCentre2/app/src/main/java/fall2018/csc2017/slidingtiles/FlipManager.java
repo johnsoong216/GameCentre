@@ -124,8 +124,9 @@ public class FlipManager extends GameManager{
         if (complexity == 3) {
             for (int tileNum = 0; tileNum != 9; tileNum++) {
                 Tile newtile = new Tile(1);
+                newtile.setBackground(R.drawable.login_background);
                 if (tileNum == 2 || tileNum == 4 || tileNum == 6) {
-                    newtile.setBackground(R.drawable.tile_25);
+                    newtile.setBackground(R.drawable.back);
                 }
                 tiles.add(newtile);
             }
@@ -134,8 +135,9 @@ public class FlipManager extends GameManager{
         } else if (complexity == 4) {
             for (int tileNum = 0; tileNum != 16; tileNum++) {
                 Tile newtile = new Tile(1);
+                newtile.setBackground(R.drawable.login_background);
                 if (tileNum == 0 || tileNum == 2 || tileNum == 9 || tileNum == 14) {
-                    newtile.setBackground(R.drawable.tile_25);
+                    newtile.setBackground(R.drawable.back);
                 }
                 tiles.add(newtile);
             }
@@ -144,8 +146,9 @@ public class FlipManager extends GameManager{
         } else if (complexity == 5) {
             for (int tileNum = 0; tileNum != 25; tileNum++) {
                 Tile newtile = new Tile(1);
+                newtile.setBackground(R.drawable.login_background);
                 if (tileNum == 0 || tileNum == 2 || tileNum == 4 || tileNum == 12 || tileNum == 15 || tileNum == 18 || tileNum == 19) {
-                    newtile.setBackground(R.drawable.tile_25);
+                    newtile.setBackground(R.drawable.back);
                 }
                 tiles.add(newtile);
             }
@@ -159,7 +162,7 @@ public class FlipManager extends GameManager{
     boolean puzzleSolved() {
         boolean solved = true;
         for (Tile tile : flip) {
-            if (tile.getBackground() != R.drawable.tile_25) {
+            if (tile.getBackground() != R.drawable.back) {
                 solved = false;
             }
         }
@@ -173,6 +176,13 @@ public class FlipManager extends GameManager{
         int leftId = position - 1;
         int rightId = position + 1;
 
+        stepcounter++;
+        movements.push(position);
+        movements.push(upId);
+        movements.push(downId);
+        movements.push(leftId);
+        movements.push(rightId);
+        movements.poplastfive(default_undo);
 
         flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
 
@@ -188,18 +198,35 @@ public class FlipManager extends GameManager{
         if (downId <= flip.numTiles() - 1) {
             flip.changeColor(downId / flip.getNUM_ROWS(), downId % flip.getNUM_COLS());
         }
-
     }
 
     /**
      * Undo one step the user has made.
      */
     void undo() {
+
         if (!movements.isEmpty()) {
-            stepcounter--;
-            int blank = movements.pop();
+            stepcounter++;
+
+            int rightId = movements.pop();
+            int leftId = movements.pop();
+            int downId = movements.pop();
+            int upId = movements.pop();
             int position = movements.pop();
-            //board.swapTiles(position / board.getNUM_ROWS(), position % board.getNUM_COLS(), blank / board.getNUM_ROWS(), blank % board.getNUM_COLS());
+
+            flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
+            if (upId >= 0) {
+                flip.changeColor(upId / flip.getNUM_ROWS(), upId % flip.getNUM_COLS());
+            }
+            if (leftId / this.complexity == position / this.complexity && leftId >= 0) {
+                flip.changeColor(leftId / flip.getNUM_ROWS(), leftId % flip.getNUM_COLS());
+            }
+            if (rightId / this.complexity == position / this.complexity && rightId <= flip.numTiles() - 1) {
+                flip.changeColor(rightId / flip.getNUM_ROWS(), rightId % flip.getNUM_COLS());
+            }
+            if (downId <= flip.numTiles() - 1) {
+                flip.changeColor(downId / flip.getNUM_ROWS(), downId % flip.getNUM_COLS());
+            }
         }
     }
 
@@ -209,7 +236,7 @@ public class FlipManager extends GameManager{
      * @param moves the move taken.
      */
     void setUndo(int moves) {
-        default_undo = moves * 2;
+        default_undo = moves * 5;
     }
 
 

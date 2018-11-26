@@ -8,10 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class FlipComplexity extends AppCompatActivity {
+public class FlipComplexityActivity extends AppCompatActivity {
 
     /**
      * The complexity level of the game.
@@ -59,7 +58,7 @@ public class FlipComplexity extends AppCompatActivity {
      * @return number of undo steps.
      */
     private int chooseUndo() {
-        return numUndo.getText().toString().equals("") ? 3 : Integer.parseInt(numUndo.getText().toString());
+        return numUndo.getText().toString().equals("") ? 2 : Integer.parseInt(numUndo.getText().toString());
     }
 
     /**
@@ -87,7 +86,7 @@ public class FlipComplexity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(FlipComplexity.this, difficulty + " X " +
+                Toast.makeText(FlipComplexityActivity.this, difficulty + " X " +
                         difficulty + " Selected", Toast.LENGTH_SHORT).show();
             }
         });
@@ -103,7 +102,7 @@ public class FlipComplexity extends AppCompatActivity {
             public void onClick(View v) {
                 flipManager.setUndo(chooseUndo());
                 loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
-                Intent startGame = new Intent(FlipComplexity.this, FlipGameActivity.class);
+                Intent startGame = new Intent(FlipComplexityActivity.this, FlipGameActivity.class);
                 startActivity(startGame);
             }
 
