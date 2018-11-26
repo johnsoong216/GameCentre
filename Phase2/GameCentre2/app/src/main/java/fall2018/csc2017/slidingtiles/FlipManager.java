@@ -182,7 +182,7 @@ public class FlipManager extends GameManager{
         movements.push(downId);
         movements.push(leftId);
         movements.push(rightId);
-        movements.poplasttwo(default_undo);
+        movements.poplastfive(default_undo);
 
         flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
 
