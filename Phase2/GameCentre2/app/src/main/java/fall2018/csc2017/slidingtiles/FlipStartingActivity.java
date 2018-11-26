@@ -202,4 +202,3 @@ public class FlipStartingActivity extends AppCompatActivity {
         startActivity(complexity);
     }
 }
-
