@@ -33,7 +33,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     private int counter;
 
     // Grid View and calculated column height and width based on device size
-    private FlipGestureDetectGridView gridView;
+    private GestureDetectGridView gridView;
 
     private static int columnWidth, columnHeight;
 
@@ -95,7 +95,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         // Add View to activity
         gridView = findViewById(R.id.flipGrid);
         gridView.setNumColumns(flipManager.getFlip().getNUM_COLS());
-        gridView.setFlipManager(flipManager);
+        gridView.setGameManager(flipManager);
         flipManager.getFlip().addObserver(this);
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(

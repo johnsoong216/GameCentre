@@ -4,19 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blackjack"
     tools:context=".BlackJackStartingActivity">
 
     <Button
         android:id="@+id/btBJLoad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="373dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="324dp"
         android:text="Load"
-        app:layout_constraintBottom_toTopOf="@+id/btBJNewGame"
-        app:layout_constraintEnd_toStartOf="@+id/btBJSave"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,24 +21,19 @@
         android:id="@+id/btBJSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginTop="324dp"
+        android:layout_marginEnd="24dp"
         android:text="save"
-        app:layout_constraintBottom_toTopOf="@+id/btBJResume"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btBJLoad"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btBJNewGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="90dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="84dp"
         android:text="new game"
-        app:layout_constraintEnd_toStartOf="@+id/btBJResume"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btBJLoad" />
 
@@ -49,8 +41,8 @@
         android:id="@+id/btBJResume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="84dp"
         android:text="resume"
         app:layout_constraintStart_toEndOf="@+id/btBJNewGame"
         app:layout_constraintTop_toBottomOf="@+id/btBJSave" />

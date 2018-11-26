@@ -18,8 +18,8 @@ import android.widget.GridView;
 
 public class GestureDetectGridView extends GridView {
     public static final int SWIPE_MIN_DISTANCE = 100;
-    public static final int SWIPE_MAX_OFF_PATH = 100;
-    public static final int SWIPE_THRESHOLD_VELOCITY = 100;
+    //public static final int SWIPE_MAX_OFF_PATH = 100;
+    //public static final int SWIPE_THRESHOLD_VELOCITY = 100;
     private GestureDetector gDetector;
     private MovementController mController;
     private boolean mFlingConfirmed = false;
@@ -92,7 +92,6 @@ public class GestureDetectGridView extends GridView {
                 return true;
             }
         }
-
         return super.onInterceptTouchEvent(ev);
     }
 
@@ -102,11 +101,8 @@ public class GestureDetectGridView extends GridView {
         return gDetector.onTouchEvent(ev);
     }
 
-    public void setBoardManager(BoardManager boardManager) {
-        mController.setBoardManager(boardManager);
-    }
-    public void setFlipManager(FlipManager flipManager) {
-        mController.setFlipManager(flipManager);
+    public void setGameManager(GameManager gameManager) {
+        mController.setGameManager(gameManager);
     }
 
 

@@ -12,6 +12,12 @@ import java.util.NoSuchElementException;
 public class Hand implements Serializable, Iterable<Card>{
     private List<Card> cards = new ArrayList<>();
 
+    public boolean isAllowDouble() {
+        return allowDouble;
+    }
+
+    private boolean allowDouble = false;
+
     public void drawcard(Deck deck){
         cards.add(deck.popCard());
     }
@@ -19,15 +25,26 @@ public class Hand implements Serializable, Iterable<Card>{
     public int getPoints(){
         int points = 0;
         boolean hasAces = false;
+        boolean hasDouble = false;
         for (Card c: cards){
             points += c.getInGameValue();
             /*
             Check for Aces
              */
-            if (c.getId() == 1){
+            if (c.getInGameValue() == 1){
                 hasAces = true;
+            }
+
+            if (c.getInGameValue() == 10 || c.getInGameValue() == 9 || c.getInGameValue() == 8){
+                hasDouble = true;
             }}
+        if (points >= 9 && points <= 11){
+            allowDouble = true;
+        }
         if (hasAces){
+            if (hasDouble){
+                allowDouble = true;
+            }
             return points > 11 ? points: points + 10;
         }
         return points;
