@@ -2,7 +2,7 @@ package fall2018.csc2017.slidingtiles;
 
 import java.io.Serializable;
 
-public class BlackJackManager implements Serializable {
+public class BlackJackManager extends GameManager implements Serializable {
 
 
     private BlackJackGame blackJackGame;
@@ -32,7 +32,7 @@ public class BlackJackManager implements Serializable {
     }
 
     public void douBle() {
-        if (!blackJackGame.isOver()){
+        if (!blackJackGame.isOver() && blackJackGame.getPlayerHand().isAllowDouble()){
         blackJackGame.playerDrawCard();
         blackJackGame.inGameBet(2);
 //        blackJackGame.flip(false, -1);
