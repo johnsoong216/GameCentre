@@ -30,6 +30,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView[] dealerCards;
     private ImageView deckImage;
     private String username;
+    private Button insuranceButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,15 @@ public class BlackJackGameActivity extends AppCompatActivity {
         addStandButtonListener();
     }
 
+    private void addInsuranceButtonListener() {
+        insuranceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                blackJackManager.insurance();
+                insuranceButton.setEnabled(false);
+            }
+        });
+    }
 
     private void addNewRoundButtonListener() {
         newRoundButton.setOnClickListener(new View.OnClickListener() {

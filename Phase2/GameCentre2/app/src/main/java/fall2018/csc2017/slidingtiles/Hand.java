@@ -64,6 +64,10 @@ public class Hand implements Serializable, Iterable<Card>{
         return cards.size();
     }
 
+    /*
+    Return if the first card is an ace
+     */
+    public boolean checkFirstAce(){return cards.get(0).getInGameValue() == 1;}
 
     public int getCardBackGround(int position) {
         return cards.get(position).getBackground();
