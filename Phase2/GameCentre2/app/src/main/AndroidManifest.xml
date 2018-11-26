@@ -33,7 +33,7 @@
         <activity android:name=".ChooseGameActivity" />
         <activity android:name=".FlipGameActivity" />
         <activity android:name=".FlipStartingActivity" />
-        <activity android:name=".FlipComplexity" />
+        <activity android:name=".FlipComplexityActivity" />
         <activity android:name=".FlipScoreBoardActivity" />
         <activity android:name=".FlipScoreActivity"></activity>
     </application>
