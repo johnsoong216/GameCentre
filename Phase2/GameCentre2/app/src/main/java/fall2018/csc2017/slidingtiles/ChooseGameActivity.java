@@ -32,7 +32,7 @@ public class ChooseGameActivity extends AppCompatActivity {
         });
     }
     private void addBlackJackListener() {
-        st.setOnClickListener(new View.OnClickListener() {
+        blackJackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent toStarting = new Intent(ChooseGameActivity.this, BlackJackStartingActivity.class);
