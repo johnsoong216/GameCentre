@@ -16,7 +16,7 @@ public class StartingActivity extends AppCompatActivity {
     /**
      * The main save file.
      */
-    public static final String TEMP_SAVE_FILE = "save_sliding.ser";
+    public static final String TEMP_SAVE_FILE = "save_game.ser";
 
     /**
      * The board manager.
@@ -45,7 +45,6 @@ public class StartingActivity extends AppCompatActivity {
     private Button saveButton;
     private Button startButton;
     private Button signOutButton;
-    private Button scoreBoardButton;
     private Loadsave loadsaveManager;
 
     @Override
@@ -59,7 +58,6 @@ public class StartingActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.SaveButton);
         startButton = findViewById(R.id.StartButton);
         signOutButton = findViewById(R.id.SignOutButton);
-        scoreBoardButton = findViewById(R.id.scoreBoardButton);
 
         user = Session.getCurrentUser();
         username = user.getUsername();
@@ -69,7 +67,6 @@ public class StartingActivity extends AppCompatActivity {
         addResumeButtonListener();
         addSaveButtonListener();
         addSignOutButtonListener();
-        addScoreBoardListener();
     }
 
     /**
@@ -106,8 +103,8 @@ public class StartingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username);
-                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, boardManager);
+                boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
+                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
 
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
@@ -117,14 +114,6 @@ public class StartingActivity extends AppCompatActivity {
     }
 
 
-    private void addScoreBoardListener() {
-        scoreBoardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToScoreBoard();
-            }
-        });
-    }
 
     /**
      * Activate the resume button
@@ -133,7 +122,7 @@ public class StartingActivity extends AppCompatActivity {
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username);
+                loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
 
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
@@ -149,7 +138,7 @@ public class StartingActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, boardManager);
+                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
             }
         });
@@ -168,7 +157,7 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username);
+        boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
         if (boardManager == null) {
             loadButton.setEnabled(false);
             saveButton.setEnabled(false);
@@ -186,7 +175,7 @@ public class StartingActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, GameActivity.class);
-        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, boardManager);
+        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
         startActivity(tmp);
     }
 
@@ -201,10 +190,5 @@ public class StartingActivity extends AppCompatActivity {
 
     }
 
-
-    private void switchToScoreBoard() {
-        Intent complexity = new Intent(this, ScoreBoardActivity.class);
-        startActivity(complexity);
-    }
 }
 

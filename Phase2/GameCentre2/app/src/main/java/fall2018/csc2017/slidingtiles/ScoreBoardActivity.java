@@ -25,9 +25,14 @@ public class ScoreBoardActivity extends AppCompatActivity {
     /**
      * the file to store scoreboard
      */
-    public static final String SCORE_SAVE_FILENAME = "score_save_file.ser";
+    public static final String SCORE_SAVE_FILENAME = "save_score.ser";
+
 
     public Loadsave loadsaveManager;
+    public String gameType;
+    public String gameName;
+    public TextView gameNameDisplay;
+
 
     /*
      * Display the Top Players
@@ -41,12 +46,20 @@ public class ScoreBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score_board);
         Context context = this;
         loadsaveManager = new Loadsave(context);
-        scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin");
+        score_board = findViewById(R.id.score_board);
+        gameNameDisplay= findViewById(R.id.gameType);
+        addReturnButtonListener();
+    }
+
+    protected void onResume(){
+        super.onResume();
+        gameType = getIntent().getStringExtra("game");
+        gameName = getIntent().getStringExtra("gameName");
+        gameNameDisplay.setText(gameName);
+        scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
         if (scoreBoardManager == null) {
             scoreBoardManager = new ScoreBoardManager();
         }
-        score_board = findViewById(R.id.score_board);
-        addReturnButtonListener();
         score_board.setText(displayScore(10));
     }
 
@@ -54,7 +67,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
     /**
      * Display the Score of Top Players
      */
-    private StringBuilder displayScore(int num) {
+    public StringBuilder displayScore(int num) {
         List<Pair<String, Integer>> listOfScore = scoreBoardManager.maxGameScores(num);
         StringBuilder result = new StringBuilder("         " + "Username" + "            " + "Score" + "             " + "Rank" + '\n');
         if (listOfScore.size() != 0) {
@@ -77,8 +90,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent start = new Intent(ScoreBoardActivity.this, StartingActivity.class);
-                ScoreBoardActivity.this.startActivity(start);
+                Intent start = new Intent(ScoreBoardActivity.this, ChooseGameActivity.class);
+                startActivity(start);
             }
         });
     }

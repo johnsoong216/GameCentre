@@ -13,7 +13,7 @@ public class FlipStartingActivity extends AppCompatActivity {
     /**
      * The main save file.
      */
-    public static final String SAVE_FLIP = "save_flip.ser";
+    public static final String TEMP_SAVE_FILE = "save_game.ser";
     /**
      * The board manager.
      */
@@ -103,8 +103,8 @@ public class FlipStartingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                flipManager = (FlipManager) loadsaveManager.loadFromFile(SAVE_FLIP, username);
-                loadsaveManager.saveToFile(SAVE_FLIP, username, flipManager);
+                flipManager = (FlipManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
+                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
 
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
@@ -130,7 +130,7 @@ public class FlipStartingActivity extends AppCompatActivity {
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.loadFromFile(SAVE_FLIP, username);
+                loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
 
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
@@ -146,7 +146,7 @@ public class FlipStartingActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.saveToFile(SAVE_FLIP, username, flipManager);
+                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
             }
         });
@@ -165,7 +165,7 @@ public class FlipStartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        flipManager = (FlipManager) loadsaveManager.loadFromFile(SAVE_FLIP, username);
+        flipManager = (FlipManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
         if (flipManager == null) {
             loadButton.setEnabled(false);
             saveButton.setEnabled(false);
@@ -183,7 +183,7 @@ public class FlipStartingActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, FlipGameActivity.class);
-        loadsaveManager.saveToFile(SAVE_FLIP, username, flipManager);
+        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
         startActivity(tmp);
     }
 

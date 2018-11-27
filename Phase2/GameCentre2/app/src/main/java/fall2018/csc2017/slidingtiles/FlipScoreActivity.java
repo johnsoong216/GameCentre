@@ -20,7 +20,7 @@ public class FlipScoreActivity extends AppCompatActivity {
     /**
      * the file to store scoreboard
      */
-    public static final String SCORE_SAVE_FLIP_FILENAME = "score_save_flip_file.ser";
+    public static final String SCORE_SAVE_FILENAME = "save_score.ser";
     /**
      * the current scoreboard manager
      */
@@ -44,8 +44,8 @@ public class FlipScoreActivity extends AppCompatActivity {
         Session user = Session.getCurrentUser();
         Context context = this;
         Loadsave loadsaveManager = new Loadsave(context);
-        flipScoreBoardManager = (FlipScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FLIP_FILENAME, "admin");
-        loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, user.getUsername(), null);
+        flipScoreBoardManager = (FlipScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", "flip_it");
+        loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "flip_it", null);
 
         if (flipScoreBoardManager == null) {
             flipScoreBoardManager = new FlipScoreBoardManager();
@@ -65,7 +65,7 @@ public class FlipScoreActivity extends AppCompatActivity {
         setdisplay(user);
         addReturnButtonListener();
 
-        loadsaveManager.saveToFile(SCORE_SAVE_FLIP_FILENAME, "admin", flipScoreBoardManager);
+        loadsaveManager.saveToFile(SCORE_SAVE_FILENAME, "admin",  "flip_it", flipScoreBoardManager);
     }
 
     /**
