@@ -95,9 +95,10 @@ public class FlipManager extends GameManager{
      * @return the score of the game.
      */
     int getScore() {
-        int result = (int) Math.round(500 + 7.5 * Math.pow(stepcounter, 1 / complexity) -
+        int result = (int) Math.round(1000 + 7.5 * Math.pow(stepcounter, 1 / complexity) -
                 150 * Math.log(timer + 1) * Math.pow(complexity, -2) * Math.pow(default_undo + 1, 0.5)
                         * Math.pow(stepcounter + 1, 1 / complexity));
+
         if (result < 0) {
             result = 0;
         }
