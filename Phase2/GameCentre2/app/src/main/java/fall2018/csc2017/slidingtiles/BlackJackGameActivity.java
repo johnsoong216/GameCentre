@@ -168,10 +168,11 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private void startNewRound(Deck deck) {
         blackJackManager.settleChips();
         int chips = blackJackManager.getChips();
+        int[] winDrawLoss = blackJackManager.getWinDrawLoss();
         if (deck.remainingCard() < 26) {
             deck = new Deck();
         }
-        blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips);
+        blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips, winDrawLoss);
         chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
         setButtonOnOff(true);
     }
@@ -204,12 +205,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 dealerCards[i].setImageResource(R.drawable.back);
             }
         }
-        blackJackManager.getBlackJackGame().getPlayerHand().getPoints();
-        if (!blackJackManager.getBlackJackGame().getPlayerHand().isAllowDouble()) {
-            doubleButton.setEnabled(false);
-        } else {
-            doubleButton.setEnabled(true);
-        }
+
 
         if (blackJackManager.isOver()) {
             setButtonOnOff(true);

@@ -82,7 +82,8 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blackJackManager = new BlackJackManager(new BlackJackGame(), 1000);
+                int[] winDrawLoss = {0,0,0};
+                blackJackManager = new BlackJackManager(new BlackJackGame(), 1000, winDrawLoss);
                 loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
                 switchToGame();
             }

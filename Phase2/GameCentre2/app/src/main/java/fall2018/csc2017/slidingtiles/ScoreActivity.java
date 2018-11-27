@@ -37,8 +37,6 @@ public class ScoreActivity extends AppCompatActivity {
     TextView userSecondHighest;
     TextView userThirdHighest;
 
-    private String gameType;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +45,7 @@ public class ScoreActivity extends AppCompatActivity {
         Session user = Session.getCurrentUser();
         Context context = this;
         Loadsave loadsaveManager = new Loadsave(context);
-        gameType = getIntent().getStringExtra("game");
+        String gameType = getIntent().getStringExtra("game");
         scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
 
         if (scoreBoardManager == null) {

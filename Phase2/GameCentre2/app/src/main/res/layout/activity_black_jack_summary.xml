@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/gameSummary"
+        android:layout_width="217dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginBottom="15dp"
+        android:text="GAME SUMMARY"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/gameOutcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gameOutcome"
+        android:layout_width="107dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        android:text="TextView"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/earnings"
+        app:layout_constraintEnd_toEndOf="@+id/gameSummary"
+        app:layout_constraintStart_toStartOf="@+id/gameSummary"
+        app:layout_constraintTop_toBottomOf="@+id/gameSummary" />
+
+
+    <TextView
+        android:id="@+id/earnings"
+        android:layout_width="115dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="110dp"
+        android:text="TextView"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/checkScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameOutcome" />
+
+    <Button
+        android:id="@+id/checkScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="161dp"
+        android:text="Check Score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/earnings" />
+</android.support.constraint.ConstraintLayout>

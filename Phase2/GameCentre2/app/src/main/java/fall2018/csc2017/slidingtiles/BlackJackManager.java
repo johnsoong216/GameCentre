@@ -3,6 +3,8 @@ package fall2018.csc2017.slidingtiles;
 import android.util.Log;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Manage a BlackJack game, including
@@ -30,11 +32,27 @@ public class BlackJackManager extends GameManager implements Serializable {
     private boolean userEndGame = false;
 
     /*
+    Number of wins, draws, losses
+     */
+    private int[] winDrawLoss;
+
+    /*
+    Complexity
+     */
+
+    private int complexity;
+
+    public int getComplexity() {
+        return complexity;
+    }
+
+    /*
     Create a new blackjack game manager with chips the player currently has
      */
-    BlackJackManager(BlackJackGame blackJackGame, int chips) {
+    BlackJackManager(BlackJackGame blackJackGame, int chips, int[] winDrawLoss) {
         this.blackJackGame = blackJackGame;
         this.chips = chips;
+        this.winDrawLoss = winDrawLoss;
 //        blackJackGame.setBet(100);
     }
 
@@ -108,8 +126,13 @@ User chooses to end Game
         }
         if (blackJackGame.getPlayerPoint() < blackJackGame.getDealerPoint()) {
             chips -= blackJackGame.getBet();
+            winDrawLoss[2]++;
         } else if (blackJackGame.getPlayerPoint() > blackJackGame.getDealerPoint()) {
             chips += blackJackGame.getBet();
+            winDrawLoss[0]++;
+        }
+        else {
+            winDrawLoss[1]++;
         }
     }
 
@@ -153,6 +176,14 @@ User chooses to end Game
         }
         return ((double) numCardBusted / (double) remainingCard) * 100.0;
     }
+
+        /*
+        Getter for Win Draw Loss
+         */
+    public int[] getWinDrawLoss() {
+        return winDrawLoss;
+    }
+
 }
 
 
