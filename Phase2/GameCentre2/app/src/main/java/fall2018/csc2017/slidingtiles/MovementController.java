@@ -7,21 +7,24 @@ import android.widget.Toast;
 public class MovementController {
 
     private BoardManager boardManager = null;
-    private FlipManager flipManager;
+    private FlipManager flipManager = null;
     private GameManager gameManager;
 
     public MovementController() {}
 
     public void setGameManager(GameManager gameManager) {
         if (gameManager instanceof BoardManager){
-            this.flipManager = null;
+            setBoardManager((BoardManager)gameManager);
         }
-        else if (gameManager instanceof BoardManager){
-            this.boardManager = null;
+        else if (gameManager instanceof FlipManager){
+            setFlipManager((FlipManager)gameManager);
         }
     }
     public void setFlipManager(FlipManager flipManager) {
         this.flipManager = flipManager;
+    }
+    public void setBoardManager(BoardManager boardManager) {
+        this.boardManager = boardManager;
     }
 
     public void processTapMovement(Context context, int position) {
