@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private Button doubleButton;
     private Button standButton;
     private Button newRoundButton;
+    private Button hintButton;
     private ImageView[] playerCards;
     private ImageView[] dealerCards;
     private String username;
@@ -54,10 +56,16 @@ public class BlackJackGameActivity extends AppCompatActivity {
         blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack");
         hitButton = findViewById(R.id.btHit);
         standButton = findViewById(R.id.btStand);
+        hintButton = findViewById(R.id.btHint);
+        if(blackJackManager.getBlackJackGame().isOver()){
+            hitButton.setEnabled(false);
+            standButton.setEnabled(true);
+        }
         addHitButtonListener();
         addNewRoundButtonListener();
         addStandButtonListener();
         addDoubleButtonListener();
+        addHintButtonListener();
     }
 
     protected void onResume(){
@@ -72,7 +80,9 @@ public class BlackJackGameActivity extends AppCompatActivity {
         loadsaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
     }
 
-
+    /*
+    Create a new round button for black jack game that start a new round after clicking
+     */
     private void addNewRoundButtonListener() {
         newRoundButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,21 +104,26 @@ public class BlackJackGameActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+    Create a hit button for blackjack game
+     */
     private void addHitButtonListener() {
         hitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 blackJackManager.hit();
-                int index = blackJackManager.getBlackJackGame().getPlayerHand().getHandSize() - 1;
-                playerCards[index].setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(index));
+                Hand playerHand = blackJackManager.getBlackJackGame().getPlayerHand();
+                Hand dealerHand = blackJackManager.getBlackJackGame().getDealerHand();
+                int index = playerHand.getHandSize() - 1;
+                playerCards[index].setImageResource(playerHand.getCardBackGround(index));
                 if(blackJackManager.getBlackJackGame().isOver()) {
                     blackJackManager.settleChips();
-                    dealerCards[1].setImageResource(blackJackManager.getBlackJackGame().getDealerHand().getCardBackGround(1));
+                    dealerCards[1].setImageResource(dealerHand.getCardBackGround(1));
                     hitButton.setEnabled(false);
-                    doubleButton.setEnabled(false);
                     standButton.setEnabled(false);
                     newRoundButton.setEnabled(true);
                 }
+                doubleButton.setEnabled(false);
                 }
 
             }
@@ -156,15 +171,22 @@ public class BlackJackGameActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void addHintButtonListener(){
+        hintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int probability =(int) blackJackManager.getProbability();
+                Toast.makeText(context, "Probability of getting busted is " + String.valueOf(probability) + "%", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void startNewRound(Deck deck){
         blackJackManager.settleChips();
         int chips = blackJackManager.getChips();
-//        user.setScore(chips);
-//        Intent toScore = new Intent(BlackJackGameActivity.this, ScoreActivity.class);
-//        toScore.putExtra("game", "black_jack");
-//        startActivity(toScore);
-//        updateChips();
-        deck.shuffle();
+        if (deck.remainingCard() < 26){
+            deck = new Deck();
+        }
         blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips);
         chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
         hitButton.setEnabled(false);

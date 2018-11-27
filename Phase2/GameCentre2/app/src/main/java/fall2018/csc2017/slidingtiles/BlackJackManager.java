@@ -1,5 +1,7 @@
 package fall2018.csc2017.slidingtiles;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 public class BlackJackManager extends GameManager implements Serializable {
@@ -16,14 +18,6 @@ public class BlackJackManager extends GameManager implements Serializable {
 //        blackJackGame.setBet(100);
     }
 
-//    public void blackjack() {
-//        if (blackJackGame.getPlayerHand().checkBlackJack() &&
-//                !blackJackGame.getDealerHand().checkBlackJack()) {
-//            blackJackGame.inGameBet(1.5);
-//        } else if (!blackJackGame.getPlayerHand().checkBlackJack() &&
-//                blackJackGame.getDealerHand().checkBlackJack()) {
-//            blackJackGame.inGameBet(1.5);}
-//    }
 
     public void hit() {
         if (!blackJackGame.isOver()&& blackJackGame.getPlayerHand().getHandSize() < 5){
@@ -83,13 +77,27 @@ public class BlackJackManager extends GameManager implements Serializable {
     /*
     return information about the game
      */
-    public String getInfo(){return null;}
+    public String getInfo(){return null;
+    }
 
     /*
-    return hint for the player including probability to draw different cards
+    return probability for player to not being busted after the new hit
      */
 
-    public String getHint(){return null;}
+    public double getProbability(){
+        Deck deck = blackJackGame.getDeck();
+        int remainingCard = deck.remainingCard();
+        int pointBeforeBusted = 21 - blackJackGame.getPlayerHand().getPoints();
+        int numCardBusted = 0;
+        for (Card card : deck){
+            if(card.getInGameValue() > pointBeforeBusted){
+                numCardBusted++;
+                Log.d("ABC", "ABC" + String.valueOf(card.getInGameValue()));
+                Log.d("ABC", "ABC" + String.valueOf(numCardBusted));
+
+            }
+        }
+        return ((double)numCardBusted / (double)remainingCard) * 100.0;}
 }
 
 

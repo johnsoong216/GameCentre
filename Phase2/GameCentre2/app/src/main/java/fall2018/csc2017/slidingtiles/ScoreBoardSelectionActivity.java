@@ -62,6 +62,6 @@ public class ScoreBoardSelectionActivity extends AppCompatActivity {
             }
         });
 
-    };
+    }
 
 }
