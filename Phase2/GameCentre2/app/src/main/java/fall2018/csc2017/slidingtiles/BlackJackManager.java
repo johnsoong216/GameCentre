@@ -32,6 +32,13 @@ public class BlackJackManager extends GameManager implements Serializable {
         }
     }
 
+    public void insurance(){
+        Hand dealer = blackJackGame.getDealerHand();
+        if (dealer.getHandSize() == 2  && dealer.checkFirstAce()){
+            blackJackGame.inGameBet(0.5);
+        }
+    }
+
     public void douBle() {
         if (!blackJackGame.isOver() && blackJackGame.getPlayerHand().isAllowDouble()){
         blackJackGame.playerDrawCard();
