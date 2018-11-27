@@ -162,6 +162,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
      * @param context the context
      */
     private void createTileButtons(Context context) {
+        String j = getIntent().getStringExtra("game");
         FlipIt flip = flipManager.getFlip();
         tileButtons = new ArrayList<>();
         for (int row = 0; row != flipManager.getFlip().getNUM_ROWS(); row++) {
@@ -187,9 +188,13 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
             nextPos++;
         }
         if (flipManager.puzzleSolved()) {
-            user.setScore(flipManager.getScore());
-            Intent scoreboard = new Intent(FlipGameActivity.this, FlipScoreActivity.class);
+            Intent scoreboard = new Intent(FlipGameActivity.this, ScoreActivity.class);
+            //scoreboard.putExtra("level", 2);
             FlipGameActivity.this.startActivity(scoreboard);
+
+            //user.setScore(flipManager.getScore());
+            //Intent scoreboard = new Intent(FlipGameActivity.this, FlipScoreActivity.class);
+            //FlipGameActivity.this.startActivity(scoreboard);
         } else if (autosave()) {
             loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
         }
