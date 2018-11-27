@@ -1,6 +1,7 @@
 package fall2018.csc2017.slidingtiles;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -167,6 +168,10 @@ public class BlackJackGameActivity extends AppCompatActivity {
      */
     private void startNewRound(Deck deck) {
         blackJackManager.settleChips();
+        if (blackJackManager.isGameOver()){
+            Intent toSummary = new Intent(this,BlackJackSummaryActivity.class);
+            startActivity(toSummary);
+        }
         int chips = blackJackManager.getChips();
         int[] winDrawLoss = blackJackManager.getWinDrawLoss();
         if (deck.remainingCard() < 26) {

@@ -151,13 +151,21 @@ User chooses to end Game
     }
 
     /*
-    Return whether the game is over
+    Return whether the round is over
      */
     boolean isOver() {
         Hand dealerHand = blackJackGame.getDealerHand();
         Hand playerHand = blackJackGame.getPlayerHand();
         return (dealerHand.goBusted() || playerHand.goBusted() || playerHand.checkBlackJack() ||
                 dealerHand.checkBlackJack() || userEndGame);
+    }
+
+    /*
+    Return whether the game is over
+     */
+
+    boolean isGameOver(){
+        return (winDrawLoss[0] + winDrawLoss[1] + winDrawLoss[2] == 10 || chips <= 0);
     }
     /*
     return probability for player to not being busted after the new hit
