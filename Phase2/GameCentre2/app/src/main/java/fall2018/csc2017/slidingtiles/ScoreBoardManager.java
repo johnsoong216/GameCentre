@@ -13,7 +13,7 @@ import java.util.Set;
 /**
  * ScoreBoardManager class.
  */
-class ScoreBoardManager extends BoardManager implements Serializable {
+class ScoreBoardManager extends GameManager implements Serializable {
     /**
      * The hashmap that contains score as keys and users as values
      * Contains all the scores and the corresponding users of the game

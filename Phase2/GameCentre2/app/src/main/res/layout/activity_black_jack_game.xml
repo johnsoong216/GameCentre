@@ -51,11 +51,9 @@
     <ImageView
         android:id="@+id/dealerCard4"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="11dp"
-        android:layout_marginBottom="179dp"
-        app:layout_constraintBottom_toTopOf="@+id/playerCard4"
         app:layout_constraintEnd_toStartOf="@+id/dealerCard5"
         app:layout_constraintStart_toEndOf="@+id/dealerCard3"
         app:layout_constraintTop_toTopOf="parent"
@@ -89,14 +87,14 @@
 
     <ImageView
         android:id="@+id/deck"
-        android:layout_width="0dp"
+        android:layout_width="85dp"
         android:layout_height="0dp"
         android:layout_marginBottom="41dp"
         app:layout_constraintBottom_toTopOf="@+id/playerCard3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dealerCard3"
-        app:srcCompat="@drawable/back" />
+        app:srcCompat="@drawable/deck" />
 
     <ImageView
         android:id="@+id/dealerCard2"
@@ -114,12 +112,12 @@
     <ImageView
         android:id="@+id/dealerCard1"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="79dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="179dp"
-        app:layout_constraintBottom_toTopOf="@+id/playerCard1"
+        android:layout_marginBottom="91dp"
+        app:layout_constraintBottom_toTopOf="@+id/chipsTotal"
         app:layout_constraintEnd_toStartOf="@+id/dealerCard2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -140,13 +138,14 @@
     <ImageView
         android:id="@+id/playerCard4"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="90dp"
         android:layout_marginEnd="11dp"
         android:layout_marginBottom="212dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playerCard5"
         app:layout_constraintStart_toEndOf="@+id/playerCard3"
         app:layout_constraintTop_toBottomOf="@+id/dealerCard4"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/back" />
 
     <ImageView
@@ -176,7 +175,7 @@
     <ImageView
         android:id="@+id/playerCard1"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="94dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="212dp"
@@ -184,6 +183,7 @@
         app:layout_constraintEnd_toStartOf="@+id/playerCard2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dealerCard1"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/back" />
 
     <Button
@@ -199,5 +199,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btDouble" />
+
+    <TextView
+        android:id="@+id/chipsTotal"
+        android:layout_width="81dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginBottom="344dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dealerCard1" />
 
 </android.support.constraint.ConstraintLayout>

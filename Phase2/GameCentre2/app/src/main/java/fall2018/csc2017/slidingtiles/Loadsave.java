@@ -27,9 +27,9 @@ class Loadsave {
      *
      * @param fileName the name of the file
      */
-    public GameManager loadFromFile(String fileName, String username) {
+    public GameManager loadFromFile(String fileName, String username, String gameType) {
         try {
-            InputStream inputStream = context.openFileInput(username + fileName);
+            InputStream inputStream = context.openFileInput(username + gameType + fileName);
             if (inputStream != null) {
                 ObjectInputStream input = new ObjectInputStream(inputStream);
                 GameManager manager = (GameManager) input.readObject();
@@ -51,9 +51,9 @@ class Loadsave {
      *
      * @param fileName the name of the file
      */
-    public void saveToFile(String fileName, String username, GameManager manager) {
+    public void saveToFile(String fileName, String username, String gameType, GameManager manager) {
         try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(context.openFileOutput(username + fileName, MODE_PRIVATE));
+            ObjectOutputStream outputStream = new ObjectOutputStream(context.openFileOutput(username + gameType + fileName, MODE_PRIVATE));
             outputStream.writeObject(manager);
             outputStream.close();
         } catch (IOException e) {

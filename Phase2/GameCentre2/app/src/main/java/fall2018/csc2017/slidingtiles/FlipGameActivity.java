@@ -87,7 +87,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadsaveManager = new Loadsave(context);
-        flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.SAVE_FLIP, username);
+        flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
         createTileButtons(this);
         setContentView(R.layout.activity_flip_game);
 
@@ -162,6 +162,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
      * @param context the context
      */
     private void createTileButtons(Context context) {
+        String j = getIntent().getStringExtra("game");
         FlipIt flip = flipManager.getFlip();
         tileButtons = new ArrayList<>();
         for (int row = 0; row != flipManager.getFlip().getNUM_ROWS(); row++) {
@@ -187,11 +188,15 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
             nextPos++;
         }
         if (flipManager.puzzleSolved()) {
-            user.setScore(flipManager.getScore());
-            Intent scoreboard = new Intent(FlipGameActivity.this, FlipScoreActivity.class);
+            Intent scoreboard = new Intent(FlipGameActivity.this, ScoreActivity.class);
+            scoreboard.putExtra("game", "flip_it");
             FlipGameActivity.this.startActivity(scoreboard);
+
+            //user.setScore(flipManager.getScore());
+            //Intent scoreboard = new Intent(FlipGameActivity.this, FlipScoreActivity.class);
+            //FlipGameActivity.this.startActivity(scoreboard);
         } else if (autosave()) {
-            loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
+            loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
         }
     }
 
@@ -226,7 +231,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
+        loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
     }
 
     @Override
@@ -239,7 +244,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
-        Intent backtomain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
-        FlipGameActivity.this.startActivity(backtomain);
+        Intent backToMain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
+        FlipGameActivity.this.startActivity(backToMain);
     }
 }

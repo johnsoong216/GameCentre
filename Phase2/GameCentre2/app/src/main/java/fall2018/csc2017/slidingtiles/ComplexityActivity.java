@@ -115,7 +115,7 @@ public class ComplexityActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boardManager.setUndo(chooseUndo());
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
+                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Intent startGame = new Intent(ComplexityActivity.this, GameActivity.class);
                 startActivity(startGame);
                 }

@@ -17,14 +17,11 @@ import java.io.ObjectOutputStream;
 
 public class BlackJackStartingActivity extends AppCompatActivity {
 
-    /**
-     * The main save file for blackjack game.
-     */
-    public static final String SAVE_FILENAME_BLACK_JACK = "save_file_black_jack.ser";
+
     /**
      * A temporary save file for blackjack game.
      */
-    public static final String TEMP_SAVE_FILENAME_BLACK_JACK = "save_file_tmp_black_jack.ser";
+    public static final String TEMP_SAVE_FILE = "save_game.ser";
 
     /**
      * The blackjack game manager.
@@ -86,7 +83,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 blackJackManager = new BlackJackManager(new BlackJackGame(), 1000);
-                loadsaveManager.saveToFile(TEMP_SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
+                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
                 switchToGame();
             }
         });
@@ -99,8 +96,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(SAVE_FILENAME_BLACK_JACK, username);
-                loadsaveManager.saveToFile(TEMP_SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
+                blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
                 resumeButton.setEnabled(true);
@@ -125,7 +121,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILENAME_BLACK_JACK, username);
+                blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
             }
@@ -140,8 +136,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.saveToFile(SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
-                loadsaveManager.saveToFile(TEMP_SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
+                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
                 Toast.makeText(context, "Saved Game", Toast.LENGTH_SHORT).show();
             }
         });
@@ -150,7 +145,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         user.logout();
-        Intent backtologin = new Intent(this, SignUpSignInActivity.class);
+        Intent backtologin = new Intent(this, ChooseGameActivity.class);
         startActivity(backtologin);
     }
 
@@ -160,7 +155,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILENAME_BLACK_JACK, username);
+        blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
         if (blackJackManager == null) {
             loadButton.setEnabled(false);
             saveButton.setEnabled(false);
@@ -178,7 +173,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, BlackJackGameActivity.class);
-        loadsaveManager.saveToFile(TEMP_SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
+        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
         startActivity(tmp);
     }
 

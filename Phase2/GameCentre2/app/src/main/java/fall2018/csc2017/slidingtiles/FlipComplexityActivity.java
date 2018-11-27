@@ -101,7 +101,7 @@ public class FlipComplexityActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flipManager.setUndo(chooseUndo());
-                loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
+                loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
                 Intent startGame = new Intent(FlipComplexityActivity.this, FlipGameActivity.class);
                 startActivity(startGame);
             }

@@ -20,7 +20,7 @@ public class ScoreActivity extends AppCompatActivity {
     /**
      * the file to store scoreboard
      */
-    public static final String SCORE_SAVE_FILENAME = "score_save_file.ser";
+    public static final String SCORE_SAVE_FILENAME = "save_score.ser";
     /**
      * the current scoreboard manager
      */
@@ -37,6 +37,9 @@ public class ScoreActivity extends AppCompatActivity {
     TextView userSecondHighest;
     TextView userThirdHighest;
 
+    private String gameType;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +47,8 @@ public class ScoreActivity extends AppCompatActivity {
         Session user = Session.getCurrentUser();
         Context context = this;
         Loadsave loadsaveManager = new Loadsave(context);
-        scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin");
-        loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, user.getUsername(), null);
+        gameType = getIntent().getStringExtra("game");
+        scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
 
         if (scoreBoardManager == null) {
             scoreBoardManager = new ScoreBoardManager();
@@ -65,7 +68,7 @@ public class ScoreActivity extends AppCompatActivity {
         setdisplay(user);
         addReturnButtonListener();
 
-        loadsaveManager.saveToFile(SCORE_SAVE_FILENAME, "admin", scoreBoardManager);
+        loadsaveManager.saveToFile(SCORE_SAVE_FILENAME, "admin", gameType, scoreBoardManager);
     }
 
     /**
@@ -100,7 +103,7 @@ public class ScoreActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent start = new Intent(ScoreActivity.this, StartingActivity.class);
+                Intent start = new Intent(ScoreActivity.this, ChooseGameActivity.class);
                 ScoreActivity.this.startActivity(start);
             }
         });
@@ -123,9 +126,5 @@ public class ScoreActivity extends AppCompatActivity {
     /*
     Go back to Starting Activity Page
      */
-    @Override
-    public void onBackPressed(){
-        Intent start = new Intent(ScoreActivity.this, StartingActivity.class);
-        ScoreActivity.this.startActivity(start);
-    }
+
 }

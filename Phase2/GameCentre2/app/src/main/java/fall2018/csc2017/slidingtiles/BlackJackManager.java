@@ -13,6 +13,7 @@ public class BlackJackManager extends GameManager implements Serializable {
     public BlackJackManager(BlackJackGame blackJackGame, int chips) {
         this.blackJackGame = blackJackGame;
         this.chips = chips;
+//        blackJackGame.setBet(100);
     }
 
 //    public void blackjack() {
@@ -63,7 +64,7 @@ public class BlackJackManager extends GameManager implements Serializable {
     Settle the Amount of Chips if the player buys the insurance the player will reduce its bet on
     the game by one half
     */
-    protected void settleChips() {
+    public void settleChips() {
         if (insurance){
             blackJackGame.setBet(blackJackGame.getBet()/2);
         }
@@ -73,10 +74,22 @@ public class BlackJackManager extends GameManager implements Serializable {
             chips += blackJackGame.getBet();
         }
     }
-
+    /*
+    return the current game being managed
+     */
     public BlackJackGame getBlackJackGame() {
         return blackJackGame;
     }
+    /*
+    return information about the game
+     */
+    public String getInfo(){return null;}
+
+    /*
+    return hint for the player including probability to draw different cards
+     */
+
+    public String getHint(){return null;}
 }
 
 

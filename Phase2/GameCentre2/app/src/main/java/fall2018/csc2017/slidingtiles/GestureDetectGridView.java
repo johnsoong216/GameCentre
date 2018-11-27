@@ -111,5 +111,4 @@ public class GestureDetectGridView extends GridView {
     }
 
 
-
 }

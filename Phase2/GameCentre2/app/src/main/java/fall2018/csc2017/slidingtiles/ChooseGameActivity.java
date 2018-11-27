@@ -10,6 +10,7 @@ public class ChooseGameActivity extends AppCompatActivity {
     private Button st;
     private Button fi;
     private Button blackJackButton;
+    private Button scoreBoardButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,9 +18,11 @@ public class ChooseGameActivity extends AppCompatActivity {
         st = findViewById(R.id.bt_slidingTiles);
         fi = findViewById(R.id.bt_flipit);
         blackJackButton = findViewById(R.id.btBlackJack);
+        scoreBoardButton = findViewById(R.id.scoreBoardButton);
         addSlidingListener();
         addFlipListener();
         addBlackJackListener();
+        addScoreBoardListener();
     }
     private void addSlidingListener() {
         st.setOnClickListener(new View.OnClickListener() {
@@ -51,4 +54,15 @@ public class ChooseGameActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void addScoreBoardListener() {
+        scoreBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent complexity = new Intent(ChooseGameActivity.this, ScoreBoardSelectionActivity.class);
+                startActivity(complexity);
+            }
+        });
+    }
+
 }
