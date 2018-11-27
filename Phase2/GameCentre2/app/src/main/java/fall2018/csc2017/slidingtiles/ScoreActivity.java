@@ -103,7 +103,7 @@ public class ScoreActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent start = new Intent(ScoreActivity.this, BlackJackGameActivity.class);
+                Intent start = new Intent(ScoreActivity.this, ChooseGameActivity.class);
                 ScoreActivity.this.startActivity(start);
             }
         });
@@ -126,9 +126,5 @@ public class ScoreActivity extends AppCompatActivity {
     /*
     Go back to Starting Activity Page
      */
-    @Override
-    public void onBackPressed(){
-        Intent start = new Intent(ScoreActivity.this,BlackJackStartingActivity.class);
-        ScoreActivity.this.startActivity(start);
-    }
+
 }
