@@ -77,6 +77,7 @@ public class FlipComplexityActivity extends AppCompatActivity {
                 flipManager = new FlipManager(difficulty);
                 flipManager.getFlip().setNUM_ROWS(difficulty);
                 flipManager.getFlip().setNUM_COLS(difficulty);
+
             }
 
 
@@ -104,6 +105,8 @@ public class FlipComplexityActivity extends AppCompatActivity {
                 loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
                 Intent startGame = new Intent(FlipComplexityActivity.this, FlipGameActivity.class);
                 startActivity(startGame);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
 
         });

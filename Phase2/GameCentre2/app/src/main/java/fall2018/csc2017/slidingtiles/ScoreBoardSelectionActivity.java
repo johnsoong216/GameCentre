@@ -35,6 +35,8 @@ public class ScoreBoardSelectionActivity extends AppCompatActivity {
                 toScoreBoard.putExtra("game", "flip_it");
                 toScoreBoard.putExtra("gameName", "FLIP IT!");
                 startActivity(toScoreBoard);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
     }
@@ -47,6 +49,8 @@ public class ScoreBoardSelectionActivity extends AppCompatActivity {
                 toScoreBoard.putExtra("game", "black_jack");
                 toScoreBoard.putExtra("gameName", "BLACKJACK");
                 startActivity(toScoreBoard);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
     }
@@ -59,6 +63,8 @@ public class ScoreBoardSelectionActivity extends AppCompatActivity {
                 toScoreBoard.putExtra("game", "sliding_tiles");
                 toScoreBoard.putExtra("gameName", "SLIDING TILES");
                 startActivity(toScoreBoard);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 

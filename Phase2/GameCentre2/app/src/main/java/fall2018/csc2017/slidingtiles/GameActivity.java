@@ -195,6 +195,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
             Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);
             scoreboard.putExtra("game", "sliding_tiles");
             GameActivity.this.startActivity(scoreboard);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
         } else if (autosave()) {
             loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
         }
@@ -245,5 +247,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
     public void onBackPressed() {
         Intent backtomain = new Intent(GameActivity.this, StartingActivity.class);
         GameActivity.this.startActivity(backtomain);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }
