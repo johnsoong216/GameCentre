@@ -89,7 +89,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadsaveManager = new Loadsave(context);
-        boardManager = (BoardManager) loadsaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username);
+        boardManager = (BoardManager) loadsaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
         createTileButtons(this);
         setContentView(R.layout.activity_main);
 
@@ -191,9 +191,10 @@ public class GameActivity extends AppCompatActivity implements Observer {
         if (boardManager.puzzleSolved()) {
             user.setScore(boardManager.getScore());
             Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);
+            scoreboard.putExtra("game", "sliding_tiles");
             GameActivity.this.startActivity(scoreboard);
         } else if (autosave()) {
-            loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
+            loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
         }
     }
 
@@ -227,7 +228,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
+        loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
     }
 
     @Override

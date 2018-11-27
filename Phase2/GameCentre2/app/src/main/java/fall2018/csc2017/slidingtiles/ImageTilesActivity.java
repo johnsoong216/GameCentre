@@ -56,7 +56,7 @@ public class ImageTilesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boardManager = new BoardManager(4, "fw");
                 boardManager.setUndo(numUndo);
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
+                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Intent startgame = new Intent(ImageTilesActivity.this, GameActivity.class);
                 startActivity(startgame);
             }
@@ -73,7 +73,7 @@ public class ImageTilesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boardManager = new BoardManager(3, "dog");
                 boardManager.setUndo(numUndo);
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, boardManager);
+                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Intent startgame = new Intent(ImageTilesActivity.this, GameActivity.class);
                 startActivity(startgame);
             }

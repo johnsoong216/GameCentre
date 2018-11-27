@@ -1,18 +1,22 @@
 package fall2018.csc2017.slidingtiles;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.MessageFormat;
 
 
 public class BlackJackGameActivity extends AppCompatActivity {
@@ -24,10 +28,10 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private Button newRoundButton;
     private ImageView[] playerCards;
     private ImageView[] dealerCards;
-    private ImageView deckImage;
     private String username;
     private Loadsave loadsaveManager;
     private Context context;
+    private TextView chipsTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +42,16 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 ,findViewById(R.id.playerCard3),findViewById(R.id.playerCard4),findViewById(R.id.playerCard5)};
         dealerCards = new ImageView[]{findViewById(R.id.dealerCard1), findViewById(R.id.dealerCard2)
                 ,findViewById(R.id.dealerCard3),findViewById(R.id.dealerCard4),findViewById(R.id.dealerCard5)};
-        deckImage = findViewById(R.id.deck);
         doubleButton = findViewById(R.id.btDouble);
         newRoundButton = findViewById(R.id.btNewRound);
+        chipsTotal = findViewById(R.id.chipsTotal);
+//        betAmount = findViewById(R.id.betAmount);
+//        betAmount.setTransformationMethod(null);
         user = Session.getCurrentUser();
         username = user.getUsername();
         context = this;
         loadsaveManager = new Loadsave(context);
-        blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILENAME_BLACK_JACK, username);
+        blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack");
         hitButton = findViewById(R.id.btHit);
         standButton = findViewById(R.id.btStand);
         addHitButtonListener();
@@ -58,13 +64,12 @@ public class BlackJackGameActivity extends AppCompatActivity {
         super.onResume();
         setHandImage(blackJackManager.getBlackJackGame().getPlayerHand(),
                 blackJackManager.getBlackJackGame().getDealerHand());
-
+        chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
     }
 
     protected void onPause(){
         super.onPause();
-        loadsaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
-        loadsaveManager.saveToFile(BlackJackStartingActivity.SAVE_FILENAME_BLACK_JACK, username, blackJackManager);
+        loadsaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
     }
 
 
@@ -72,7 +77,6 @@ public class BlackJackGameActivity extends AppCompatActivity {
         newRoundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startNewRound(blackJackManager.getBlackJackGame().getDeck());
                 setHandImage(blackJackManager.getBlackJackGame().getPlayerHand(),
                         blackJackManager.getBlackJackGame().getDealerHand());
@@ -153,9 +157,16 @@ public class BlackJackGameActivity extends AppCompatActivity {
         });
     }
     private void startNewRound(Deck deck){
+        blackJackManager.settleChips();
         int chips = blackJackManager.getChips();
+//        user.setScore(chips);
+//        Intent toScore = new Intent(BlackJackGameActivity.this, ScoreActivity.class);
+//        toScore.putExtra("game", "black_jack");
+//        startActivity(toScore);
         deck.shuffle();
+//        updateChips();
         blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips);
+        chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
         hitButton.setEnabled(false);
         doubleButton.setEnabled(false);
         standButton.setEnabled(false);
@@ -201,4 +212,9 @@ public class BlackJackGameActivity extends AppCompatActivity {
             standButton.setEnabled(false);
         }
     }
+
+//    public void updateChips(){
+//        chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
+//        blackJackManager.getBlackJackGame().setBet(Integer.parseInt(betAmount.getText().toString()));
+//    }
 }

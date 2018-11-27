@@ -87,7 +87,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadsaveManager = new Loadsave(context);
-        flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.SAVE_FLIP, username);
+        flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
         createTileButtons(this);
         setContentView(R.layout.activity_flip_game);
 
@@ -191,7 +191,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
             Intent scoreboard = new Intent(FlipGameActivity.this, FlipScoreActivity.class);
             FlipGameActivity.this.startActivity(scoreboard);
         } else if (autosave()) {
-            loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
+            loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
         }
     }
 
@@ -226,7 +226,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        loadsaveManager.saveToFile(FlipStartingActivity.SAVE_FLIP, username, flipManager);
+        loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
     }
 
     @Override
@@ -239,7 +239,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
-        Intent backtomain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
-        FlipGameActivity.this.startActivity(backtomain);
+        Intent backToMain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
+        FlipGameActivity.this.startActivity(backToMain);
     }
 }
