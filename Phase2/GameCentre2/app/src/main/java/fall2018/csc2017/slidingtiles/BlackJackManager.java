@@ -134,7 +134,7 @@ User chooses to end Game
         Hand dealerHand = blackJackGame.getDealerHand();
         Hand playerHand = blackJackGame.getPlayerHand();
         return (dealerHand.goBusted() || playerHand.goBusted() || playerHand.checkBlackJack() ||
-                dealerHand.checkBlackJack());
+                dealerHand.checkBlackJack() || userEndGame);
     }
     /*
     return probability for player to not being busted after the new hit
