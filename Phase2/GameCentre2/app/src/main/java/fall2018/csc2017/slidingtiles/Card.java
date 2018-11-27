@@ -3,26 +3,35 @@ package fall2018.csc2017.slidingtiles;
 import java.io.Serializable;
 
 public class Card implements Serializable {
-    private int value;
-    private int suit;
-
-    public int getBackground() {
-        return background;
-    }
-
-    private int background;
-
     /*
+    the value of the card
+    Ace = 1
+    Jack = 11
+    Queen = 12
+    King = 13
+     */
+    private int value;
+    /*
+    suit of the card
+     */
+    private int suit;
+    /*
+    The background image the card corresponding to
     0 spades
     1 hearts
     2 clubs
     3 diamonds
      */
-    public Card(int suit, int value){
+    private int background;
+
+    /*
+    Creating a new card with background id, suit and value
+     */
+    Card(int suit, int value) {
         this.suit = suit;
         this.value = value;
 //        this.up = up;
-        switch(getId()){
+        switch (getId()) {
             case 1:
                 background = R.drawable.bj1;
                 break;
@@ -187,24 +196,26 @@ public class Card implements Serializable {
     /*
     Actual Id: from A to K used for Background Images
      */
-    public int getId(){
+    int getId() {
         return suit * 13 + value;
     }
 
+    /*
+    Geting the in game value of the card
+     */
+    int getInGameValue() {
+        return value > 10 ? 10 : value;
+    }
 
-//    public void flipCard(){
-//        up = true;
-//    }
-//    /*
-//    In Game Value: A = 1/11, JQK = 10
-//     */
-
-    public int getInGameValue(){
-        return value > 10 ? 10: value;
+    /*
+    Getting the background id of the card
+     */
+    int getBackground() {
+        return background;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "This is Card" + suit + " " + value;
     }
 }

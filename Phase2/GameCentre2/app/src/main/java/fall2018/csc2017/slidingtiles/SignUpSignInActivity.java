@@ -58,6 +58,7 @@ public class SignUpSignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent cpIntent = new Intent(SignUpSignInActivity.this, PasswordChangeActivity.class);
                 SignUpSignInActivity.this.startActivity(cpIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }
@@ -73,6 +74,7 @@ public class SignUpSignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signupIntent = new Intent(SignUpSignInActivity.this, SignUpActivity.class);
                 SignUpSignInActivity.this.startActivity(signupIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -95,6 +97,7 @@ public class SignUpSignInActivity extends AppCompatActivity {
                     Toast.makeText(SignUpSignInActivity.this, "Successfully Logged In!", Toast.LENGTH_SHORT).show();
                     Intent success = new Intent(SignUpSignInActivity.this, ChooseGameActivity.class);
                     SignUpSignInActivity.this.startActivity(success);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpSignInActivity.this);
                     builder.setMessage("Login failed").setNegativeButton("Retry", null)

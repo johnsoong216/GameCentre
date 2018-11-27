@@ -79,6 +79,8 @@ public class StartingActivity extends AppCompatActivity {
                 user.logout();
                 Intent logout = new Intent(StartingActivity.this, SignUpSignInActivity.class);
                 StartingActivity.this.startActivity(logout);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
             }
         });
     }
@@ -176,6 +178,8 @@ public class StartingActivity extends AppCompatActivity {
         Intent tmp = new Intent(this, GameActivity.class);
         loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
         startActivity(tmp);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
     }
 
     /**
@@ -185,6 +189,8 @@ public class StartingActivity extends AppCompatActivity {
         Intent complexity = new Intent(this, ComplexityActivity.class);
         complexity.putExtra("game", "sliding");
         startActivity(complexity);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
 
 
     }

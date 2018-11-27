@@ -63,6 +63,8 @@ public class ComplexityActivity extends AppCompatActivity {
                 Intent imageIntent = new Intent(ComplexityActivity.this, ImageTilesActivity.class);
                 imageIntent.putExtra("numUndo", chooseUndo());
                 ComplexityActivity.this.startActivity(imageIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
     }
@@ -118,7 +120,9 @@ public class ComplexityActivity extends AppCompatActivity {
                 loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Intent startGame = new Intent(ComplexityActivity.this, GameActivity.class);
                 startActivity(startGame);
-                }
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+            }
 
         });
 

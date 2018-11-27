@@ -79,6 +79,8 @@ public class FlipStartingActivity extends AppCompatActivity {
                 user.logout();
                 Intent logout = new Intent(FlipStartingActivity.this, SignUpSignInActivity.class);
                 FlipStartingActivity.this.startActivity(logout);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
             }
         });
     }
@@ -184,6 +186,8 @@ public class FlipStartingActivity extends AppCompatActivity {
         Intent tmp = new Intent(this, FlipGameActivity.class);
         loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
         startActivity(tmp);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
     }
 
     /**
@@ -193,11 +197,15 @@ public class FlipStartingActivity extends AppCompatActivity {
         Intent complexity = new Intent(this, FlipComplexityActivity.class);
         complexity.putExtra("game", "flip");
         startActivity(complexity);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
     }
 
 
     private void switchToScoreBoard() {
         Intent complexity = new Intent(this, ScoreBoardActivity.class);
         startActivity(complexity);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
     }
 }

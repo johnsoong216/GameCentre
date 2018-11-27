@@ -188,13 +188,13 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
             nextPos++;
         }
         if (flipManager.puzzleSolved()) {
+            user.setScore(flipManager.getScore());
             Intent scoreboard = new Intent(FlipGameActivity.this, ScoreActivity.class);
             scoreboard.putExtra("game", "flip_it");
             FlipGameActivity.this.startActivity(scoreboard);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-            //user.setScore(flipManager.getScore());
-            //Intent scoreboard = new Intent(FlipGameActivity.this, FlipScoreActivity.class);
-            //FlipGameActivity.this.startActivity(scoreboard);
+
         } else if (autosave()) {
             loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
         }
@@ -246,5 +246,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     public void onBackPressed() {
         Intent backToMain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
         FlipGameActivity.this.startActivity(backToMain);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }

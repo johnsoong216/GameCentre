@@ -92,6 +92,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent start = new Intent(ScoreBoardActivity.this, ChooseGameActivity.class);
                 startActivity(start);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
             }
         });
     }
