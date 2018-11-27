@@ -63,11 +63,18 @@ User chooses to end Game
     }
 
     /*
+    check the condition for double
+     */
+    boolean checkDouble() {
+        return !isOver() && blackJackGame.getPlayerHand().isAllowDouble();
+    }
+
+    /*
     When the card's value sum up to 9, 10 or 11 The player is allowed to increase the initial
     bet by up to 100% in exchange for committing to stand after receiving exactly one more card.
      */
     void douBle() {
-        if (!isOver() && blackJackGame.getPlayerHand().isAllowDouble()) {
+        if (checkDouble()) {
             blackJackGame.playerDrawCard();
             blackJackGame.inGameBet(2);
 //        blackJackGame.flip(false, -1);

@@ -1,22 +1,15 @@
 package fall2018.csc2017.slidingtiles;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.text.MessageFormat;
 
 
@@ -57,10 +50,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
         hitButton = findViewById(R.id.btHit);
         standButton = findViewById(R.id.btStand);
         hintButton = findViewById(R.id.btHint);
-        if (blackJackManager.isOver()) {
-            hitButton.setEnabled(false);
-            standButton.setEnabled(true);
-        }
+        setButtonOnOff(false);
         addHitButtonListener();
         addNewRoundButtonListener();
         addStandButtonListener();
@@ -90,17 +80,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 startNewRound(blackJackManager.getBlackJackGame().getDeck());
                 setHandImage(blackJackManager.getBlackJackGame().getPlayerHand(),
                         blackJackManager.getBlackJackGame().getDealerHand());
-                Log.d("TAG", "doubledouble" + blackJackManager.getBlackJackGame().getPlayerHand().isAllowDouble() +
-                        blackJackManager.getBlackJackGame().getPlayerHand().getPoints());
-                if (blackJackManager.getBlackJackGame().getPlayerHand().checkBlackJack()) {
-                    newRoundButton.setEnabled(true);
-                    hitButton.setEnabled(true);
-                    standButton.setEnabled(false);
-                } else {
-                    newRoundButton.setEnabled(false);
-                    hitButton.setEnabled(true);
-                    standButton.setEnabled(true);
-                }
+                setButtonOnOff(false);
             }
         });
     }
@@ -120,9 +100,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                                              if (blackJackManager.isOver()) {
                                                  blackJackManager.settleChips();
                                                  dealerCards[1].setImageResource(dealerHand.getCardBackGround(1));
-                                                 hitButton.setEnabled(false);
-                                                 standButton.setEnabled(false);
-                                                 newRoundButton.setEnabled(true);
+                                                 setButtonOnOff(true);
                                              }
                                              doubleButton.setEnabled(false);
                                          }
@@ -145,10 +123,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                     dealerCards[index].setImageResource(card.getBackground());
                     index++;
                 }
-                hitButton.setEnabled(false);
-                doubleButton.setEnabled(false);
-                standButton.setEnabled(false);
-                newRoundButton.setEnabled(true);
+                setButtonOnOff(true);
             }
         });
     }
@@ -169,10 +144,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                     dealerCards[index].setImageResource(card.getBackground());
                     index++;
                 }
-                hitButton.setEnabled(false);
-                doubleButton.setEnabled(false);
-                standButton.setEnabled(false);
-                newRoundButton.setEnabled(true);
+                setButtonOnOff(true);
             }
         });
     }
@@ -201,10 +173,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
         }
         blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips);
         chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
-        hitButton.setEnabled(false);
-        doubleButton.setEnabled(false);
-        standButton.setEnabled(false);
-        newRoundButton.setEnabled(true);
+        setButtonOnOff(true);
     }
 
     /*
@@ -243,14 +212,32 @@ public class BlackJackGameActivity extends AppCompatActivity {
         }
 
         if (blackJackManager.isOver()) {
+            setButtonOnOff(true);
+        }
+    }
+
+    /*
+    enabling or disabling button depend on if the game is over or not
+     */
+    private void setButtonOnOff(boolean over) {
+        if (over) {
             newRoundButton.setEnabled(true);
             hitButton.setEnabled(false);
             doubleButton.setEnabled(false);
             standButton.setEnabled(false);
+        } else {
+            if (blackJackManager.getBlackJackGame().getPlayerHand().checkBlackJack()) {
+                newRoundButton.setEnabled(true);
+                hitButton.setEnabled(false);
+                standButton.setEnabled(false);
+            } else {
+                if (blackJackManager.checkDouble()) {
+                    doubleButton.setEnabled(true);
+                }
+                newRoundButton.setEnabled(false);
+                hitButton.setEnabled(true);
+                standButton.setEnabled(true);
+            }
         }
     }
-//    public void updateChips(){
-//        chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
-//        blackJackManager.getBlackJackGame().setBet(Integer.parseInt(betAmount.getText().toString()));
-//    }
 }

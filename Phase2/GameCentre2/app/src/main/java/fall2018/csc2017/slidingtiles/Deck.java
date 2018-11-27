@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
+/*
+A deck that contains cards and is iterable
+it can pop card from the deck and create a new deck with 52 shuffled card
+ */
 public class Deck implements Serializable, Iterable<Card> {
-    /*
-    the size of the deck or equivalently the number of cards in the deck
-     */
-    private int size;
     /*
     the stack of cards
      */
@@ -24,9 +24,9 @@ public class Deck implements Serializable, Iterable<Card> {
     create a new deck
      */
     private Stack copiedStack;
-    public Deck() {
+
+    Deck() {
         this.cardStack = newDeck();
-        this.size = cardStack.size();
     }
 
     /*
@@ -52,14 +52,14 @@ public class Deck implements Serializable, Iterable<Card> {
     /*
     retrun the first card on the deck
      */
-    public Card popCard() {
+    Card popCard() {
         return cardStack.pop();
     }
 
     /*
     Return the number of cards remaining in the deck
      */
-    public int remainingCard() {
+    int remainingCard() {
         return cardStack.size();
     }
 
@@ -69,6 +69,7 @@ public class Deck implements Serializable, Iterable<Card> {
         copiedStack = (Stack) cardStack.clone();
         return new DeckIterator();
     }
+
     private class DeckIterator implements Iterator<Card> {
         /**
          * The index of card in hand
