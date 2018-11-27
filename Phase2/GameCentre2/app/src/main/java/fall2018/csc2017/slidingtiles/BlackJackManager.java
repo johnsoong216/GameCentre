@@ -73,10 +73,22 @@ public class BlackJackManager extends GameManager implements Serializable {
             chips += blackJackGame.getBet();
         }
     }
-
+    /*
+    return the current game being managed
+     */
     public BlackJackGame getBlackJackGame() {
         return blackJackGame;
     }
+    /*
+    return information about the game
+     */
+    public String getInfo(){return null;}
+
+    /*
+    return hint for the player including probability to draw different cards
+     */
+
+    public String getHint(){return null;}
 }
 
 

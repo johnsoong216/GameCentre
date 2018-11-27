@@ -28,6 +28,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private String username;
     private Loadsave loadsaveManager;
     private Context context;
+    private Button insuranceButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
         deckImage = findViewById(R.id.deck);
         doubleButton = findViewById(R.id.btDouble);
         newRoundButton = findViewById(R.id.btNewRound);
+        insuranceButton = findViewById(R.id.btInsurance);
         user = Session.getCurrentUser();
         username = user.getUsername();
         context = this;
@@ -48,10 +50,15 @@ public class BlackJackGameActivity extends AppCompatActivity {
         blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILENAME_BLACK_JACK, username);
         hitButton = findViewById(R.id.btHit);
         standButton = findViewById(R.id.btStand);
+        insuranceButton.setEnabled(false);
+        addInsuranceButtonListener();
         addHitButtonListener();
         addNewRoundButtonListener();
         addStandButtonListener();
         addDoubleButtonListener();
+        if(blackJackManager.getBlackJackGame().getDealerHand().checkFirstAce()){
+            insuranceButton.setEnabled(true);
+        }
     }
 
     protected void onResume(){
@@ -152,6 +159,17 @@ public class BlackJackGameActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void addInsuranceButtonListener() {
+        insuranceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                blackJackManager.insurance();
+                insuranceButton.setEnabled(false);
+            }
+        });
+    }
+
     private void startNewRound(Deck deck){
         int chips = blackJackManager.getChips();
         deck.shuffle();
