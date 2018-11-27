@@ -189,7 +189,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         }
         if (flipManager.puzzleSolved()) {
             Intent scoreboard = new Intent(FlipGameActivity.this, ScoreActivity.class);
-            //scoreboard.putExtra("level", 2);
+            scoreboard.putExtra("game", "flip_it");
             FlipGameActivity.this.startActivity(scoreboard);
 
             //user.setScore(flipManager.getScore());

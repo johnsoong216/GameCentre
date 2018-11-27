@@ -163,8 +163,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
 //        Intent toScore = new Intent(BlackJackGameActivity.this, ScoreActivity.class);
 //        toScore.putExtra("game", "black_jack");
 //        startActivity(toScore);
-        deck.shuffle();
 //        updateChips();
+        deck.shuffle();
         blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips);
         chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
         hitButton.setEnabled(false);

@@ -191,6 +191,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         }
         if (boardManager.puzzleSolved()) {
             user.setScore(boardManager.getScore());
+            loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
             Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);
             scoreboard.putExtra("game", "sliding_tiles");
             GameActivity.this.startActivity(scoreboard);

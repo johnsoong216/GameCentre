@@ -146,8 +146,7 @@ public class StartingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        user.logout();
-        Intent backtologin = new Intent(this, SignUpSignInActivity.class);
+        Intent backtologin = new Intent(this, ChooseGameActivity.class);
         startActivity(backtologin);
     }
 
