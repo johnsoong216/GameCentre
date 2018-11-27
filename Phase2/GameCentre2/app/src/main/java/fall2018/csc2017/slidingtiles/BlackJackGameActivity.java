@@ -57,7 +57,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
         hitButton = findViewById(R.id.btHit);
         standButton = findViewById(R.id.btStand);
         hintButton = findViewById(R.id.btHint);
-        if (blackJackManager.getBlackJackGame().isOver()) {
+        if (blackJackManager.isOver()) {
             hitButton.setEnabled(false);
             standButton.setEnabled(true);
         }
@@ -117,7 +117,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                                              Hand dealerHand = blackJackManager.getBlackJackGame().getDealerHand();
                                              int index = playerHand.getHandSize() - 1;
                                              playerCards[index].setImageResource(playerHand.getCardBackGround(index));
-                                             if (blackJackManager.getBlackJackGame().isOver()) {
+                                             if (blackJackManager.isOver()) {
                                                  blackJackManager.settleChips();
                                                  dealerCards[1].setImageResource(dealerHand.getCardBackGround(1));
                                                  hitButton.setEnabled(false);
@@ -242,7 +242,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
             doubleButton.setEnabled(true);
         }
 
-        if (blackJackManager.getBlackJackGame().isOver()) {
+        if (blackJackManager.isOver()) {
             newRoundButton.setEnabled(true);
             hitButton.setEnabled(false);
             doubleButton.setEnabled(false);

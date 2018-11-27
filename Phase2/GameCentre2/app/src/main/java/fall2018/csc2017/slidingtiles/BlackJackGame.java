@@ -86,21 +86,6 @@ public class BlackJackGame implements Serializable {
     }
 
     /*
-    Return whether the game is over
-     */
-    public boolean isOver() {
-        return (dealerHand.goBusted() || playerHand.goBusted() || playerHand.checkBlackJack() ||
-                dealerHand.checkBlackJack() || userEndGame);
-    }
-
-    /*
-    User chooses to end Game
-     */
-    public void endGame() {
-        userEndGame = true;
-    }
-
-    /*
     Draw a card for dealer
      */
     public void dealerDrawCard() {
