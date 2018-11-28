@@ -196,7 +196,7 @@ public class BoardAndTileTest {
     public void testGetMovements3(){
         setUpCorrect();
         swapFirstTwoTiles3();
-        assertEquals(2, boardManager3.getMovements().get(0));
+        assertEquals(2, boardManager3.getMovements().pop());
 
 
     }
@@ -204,7 +204,7 @@ public class BoardAndTileTest {
     public void testGetMovements4(){
         setUpCorrect();
         swapFirstTwoTiles5();
-        assertEquals(2, boardManager5.getMovements().get(0));
+        assertEquals(2, boardManager5.getMovements().pop());
 
 
     }
@@ -212,7 +212,7 @@ public class BoardAndTileTest {
     public void testGetMovements5(){
         setUpCorrect();
         swapFirstTwoTiles5();
-        assertEquals(2, boardManager5.getMovements().get(0));
+        assertEquals(2, boardManager5.getMovements().pop());
 
 
     }
