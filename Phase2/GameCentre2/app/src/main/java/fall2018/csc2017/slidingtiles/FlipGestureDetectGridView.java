@@ -1,5 +1,12 @@
 package fall2018.csc2017.slidingtiles;
 
+/*
+Adapted from:
+https://github.com/DaveNOTDavid/sample-puzzle/blob/master/app/src/main/java/com/davenotdavid/samplepuzzle/GestureDetectGridView.java
+
+This extension of GridView contains built in logic for handling swipes between buttons
+ */
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -14,7 +21,7 @@ public class FlipGestureDetectGridView extends GridView {
     //public static final int SWIPE_MAX_OFF_PATH = 100;
     //public static final int SWIPE_THRESHOLD_VELOCITY = 100;
     private GestureDetector gDetector;
-    private FlipMovementController mFlipController;
+    private FlipMovementController mController;
     private boolean mFlingConfirmed = false;
     private float mTouchX;
     private float mTouchY;
@@ -42,7 +49,7 @@ public class FlipGestureDetectGridView extends GridView {
     }
 
     private void init(final Context context) {
-        mFlipController = new FlipMovementController();
+        mController = new FlipMovementController();
         gDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
 
             @Override
@@ -50,7 +57,7 @@ public class FlipGestureDetectGridView extends GridView {
                 int position = FlipGestureDetectGridView.this.pointToPosition
                         (Math.round(event.getX()), Math.round(event.getY()));
 
-                mFlipController.processTapMovement(context, position);
+                mController.processTapMovement(context, position);
                 return true;
             }
 
@@ -61,6 +68,7 @@ public class FlipGestureDetectGridView extends GridView {
 
         });
     }
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         int action = ev.getActionMasked();
@@ -84,7 +92,6 @@ public class FlipGestureDetectGridView extends GridView {
                 return true;
             }
         }
-
         return super.onInterceptTouchEvent(ev);
     }
 
@@ -94,8 +101,9 @@ public class FlipGestureDetectGridView extends GridView {
         return gDetector.onTouchEvent(ev);
     }
 
-    public void setFlipManager(FlipManager flipManager) {
-        mFlipController.setFlipManager(flipManager);
+    public void setGameManager(GameManager gameManager) {
+        mController.setFlipManager((FlipManager)gameManager);
     }
-}
 
+
+}

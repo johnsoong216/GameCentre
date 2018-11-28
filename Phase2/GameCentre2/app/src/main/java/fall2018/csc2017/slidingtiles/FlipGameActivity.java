@@ -33,7 +33,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     private int counter;
 
     // Grid View and calculated column height and width based on device size
-    private GestureDetectGridView gridView;
+    private FlipGestureDetectGridView gridView;
 
     private static int columnWidth, columnHeight;
 

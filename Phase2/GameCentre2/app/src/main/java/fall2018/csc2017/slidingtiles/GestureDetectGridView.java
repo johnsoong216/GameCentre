@@ -102,12 +102,7 @@ public class GestureDetectGridView extends GridView {
     }
 
     public void setGameManager(GameManager gameManager) {
-        if(gameManager instanceof FlipManager){
-            mController.setFlipManager((FlipManager) gameManager);
-        }
-        else if(gameManager instanceof  BoardManager) {
-            mController.setBoardManager((BoardManager)gameManager);
-        }
+        mController.setBoardManager((BoardManager)gameManager);
     }
 
 

@@ -3,13 +3,15 @@ package fall2018.csc2017.slidingtiles;
 import android.content.Context;
 import android.widget.Toast;
 
+
 public class FlipMovementController {
+    private FlipManager flipManager = null;
 
-    private FlipManager flipManager;
+    public FlipMovementController() {}
 
-    public FlipMovementController() { }
-
-    public void setFlipManager(FlipManager flipManager) { this.flipManager = flipManager; }
+    public void setFlipManager(FlipManager flipManager) {
+        this.flipManager = flipManager;
+    }
 
     public void processTapMovement(Context context, int position) {
         flipManager.touchColor(position);
@@ -18,3 +20,4 @@ public class FlipMovementController {
         }
     }
 }
+
