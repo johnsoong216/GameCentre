@@ -186,7 +186,7 @@ public class BoardManager extends GameManager{
         this.board = new Board(tiles, complexity);
     }
 
-    int get_inv(List<Tile> tiles) {
+    int getInv(List<Tile> tiles) {
         int inv = 0;
         for(int i = 0; i < tiles.size()-1; i ++) {
             for(int j = i+1; j < tiles.size(); j ++) {
@@ -195,12 +195,12 @@ public class BoardManager extends GameManager{
                 }
             }
         }
-        int index = get_blank(tiles);
+        int index = getBlank(tiles);
         inv -= (tiles.size()-index-1);
         return inv;
     }
 
-    int get_blank(List<Tile> tiles) {
+    int getBlank(List<Tile> tiles) {
         int index = 0;
         for(int i = 0; i < tiles.size(); i ++) {
             if(tiles.get(i).getId() == tiles.size()) {

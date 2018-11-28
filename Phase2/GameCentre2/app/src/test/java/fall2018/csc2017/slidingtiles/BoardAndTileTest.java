@@ -192,6 +192,53 @@ public class BoardAndTileTest {
         assertEquals(true, boardManager5.isValidTap(19));
         assertEquals(false, boardManager5.isValidTap(18));
     }
+    @Test
+    public void testGetMovements3(){
+        setUpCorrect();
+        swapFirstTwoTiles3();
+        assertEquals(2, boardManager3.getMovements().get(0));
+
+
+    }
+    @Test
+    public void testGetMovements4(){
+        setUpCorrect();
+        swapFirstTwoTiles5();
+        assertEquals(2, boardManager5.getMovements().get(0));
+
+
+    }
+    @Test
+    public void testGetMovements5(){
+        setUpCorrect();
+        swapFirstTwoTiles5();
+        assertEquals(2, boardManager5.getMovements().get(0));
+
+
+    }
+
+    @Test
+    public void testGetBlank3(){
+        setUpCorret();
+        assertEquals(9,boardManager3.getBlank());
+
+
+    }
+    @Test
+    public void testGetBlank4(){
+        setUpCorret();
+        assertEquals(16,boardManager4.getBlank());
+
+
+    }
+    @Test
+    public void testGetBlank5(){
+        setUpCorret();
+        assertEquals(25,boardManager5.getBlank());
+
+
+    }
+
 }
 
 
