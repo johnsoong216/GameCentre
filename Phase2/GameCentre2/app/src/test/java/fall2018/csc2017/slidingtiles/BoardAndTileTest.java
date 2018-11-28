@@ -21,6 +21,10 @@ public class BoardAndTileTest {
     BoardManager boardManager4;
     BoardManager boardManager5;
 
+    List<Tile> tiles3;
+    List<Tile> tiles4;
+    List<Tile> tiles5;
+
     /**
      * Make a set of tiles that are in order.
      *
@@ -54,9 +58,9 @@ public class BoardAndTileTest {
      * Make a solved Board.
      */
     private void setUpCorrect() {
-        List<Tile> tiles3 = makeTiles3();
-        List<Tile> tiles4 = makeTiles4();
-        List<Tile> tiles5 = makeTiles5();
+        tiles3 = makeTiles3();
+        tiles4 = makeTiles4();
+        tiles5 = makeTiles5();
 
         Board board5 = new Board(tiles5, 5);
         Board board4 = new Board(tiles4, 4);
@@ -196,45 +200,57 @@ public class BoardAndTileTest {
     public void testGetMovements3(){
         setUpCorrect();
         swapFirstTwoTiles3();
+        boardManager3.getMovements().push(8);
+        boardManager3.getMovements().push(2);
+
         assertEquals(2, boardManager3.getMovements().pop());
+        assertEquals(8, boardManager3.getMovements().pop());
+
 
 
     }
     @Test
     public void testGetMovements4(){
         setUpCorrect();
-        swapFirstTwoTiles5();
-        assertEquals(2, boardManager5.getMovements().pop());
+        swapFirstTwoTiles3();
+        boardManager4.getMovements().push(8);
+        boardManager4.getMovements().push(2);
 
+        assertEquals(2, boardManager4.getMovements().pop());
+        assertEquals(8, boardManager4.getMovements().pop());
 
     }
     @Test
     public void testGetMovements5(){
         setUpCorrect();
-        swapFirstTwoTiles5();
+        swapFirstTwoTiles3();
+        boardManager5.getMovements().push(8);
+        boardManager5.getMovements().push(2);
+
         assertEquals(2, boardManager5.getMovements().pop());
+        assertEquals(8, boardManager5.getMovements().pop());
 
 
     }
 
     @Test
     public void testGetBlank3(){
-        setUpCorret();
-        assertEquals(9,boardManager3.getBlank());
+        setUpCorrect();
+        assertEquals(8,boardManager3.getBlank(tiles3));
 
 
     }
     @Test
     public void testGetBlank4(){
-        setUpCorret();
-        assertEquals(16,boardManager4.getBlank());
+        setUpCorrect();
+        assertEquals(15,boardManager4.getBlank(tiles4));
 
 
     }
     @Test
     public void testGetBlank5(){
-        setUpCorret();
-        assertEquals(25,boardManager5.getBlank());
+        setUpCorrect();
+        assertEquals(24,boardManager5.getBlank(tiles5));
 
 
     }
