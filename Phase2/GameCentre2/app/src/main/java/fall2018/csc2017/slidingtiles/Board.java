@@ -15,12 +15,12 @@ import java.util.List;
  * The sliding tiles board.
  */
 public class Board extends Observable implements Serializable, Iterable<Tile> {
-    static int NUM_ROWS;
+    private int NUM_ROWS;
 
     /**
      * The number of columns of the board
      */
-    static int NUM_COLS;
+    private int NUM_COLS;
 
     /**
      * Get the number of rows of the board.
