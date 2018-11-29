@@ -126,7 +126,7 @@ public class FlipManager extends GameManager{
             if(level == 1){
                 for (int tileNum = 0; tileNum != 9; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.login_background);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 2 || tileNum == 4 || tileNum == 6) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -138,7 +138,7 @@ public class FlipManager extends GameManager{
             else if (level == 2){
                 for (int tileNum = 0; tileNum != 9; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.login_background);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 1 || tileNum == 2 || tileNum == 6 || tileNum == 8) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -150,7 +150,7 @@ public class FlipManager extends GameManager{
             else if (level == 3){
                 for (int tileNum = 0; tileNum != 9; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.login_background);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 1 || tileNum == 2 || tileNum == 5 || tileNum == 7 || tileNum == 8) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -164,7 +164,7 @@ public class FlipManager extends GameManager{
             if (level == 1){
                 for (int tileNum = 0; tileNum != 16; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.login_background);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 0 || tileNum == 2 || tileNum == 9 || tileNum == 14) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -176,7 +176,7 @@ public class FlipManager extends GameManager{
             else if (level == 2){
                 for (int tileNum = 0; tileNum != 16; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.login_background);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 0 || tileNum == 3 || tileNum == 5 || tileNum == 6 || tileNum == 9|| tileNum == 10 || tileNum == 12 || tileNum == 15) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -188,7 +188,7 @@ public class FlipManager extends GameManager{
             else if (level == 3){
                 for (int tileNum = 0; tileNum != 16; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.login_background);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 0 || tileNum == 5 || tileNum == 10 || tileNum == 15) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -203,7 +203,7 @@ public class FlipManager extends GameManager{
             if (level ==1){
                 for (int tileNum = 0; tileNum != 25; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.login_background);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 0 || tileNum == 2 || tileNum == 4 || tileNum == 12 || tileNum == 15 || tileNum == 18 || tileNum == 19) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -219,7 +219,7 @@ public class FlipManager extends GameManager{
                     if (tileNum == 1 || tileNum == 3 || tileNum == 5 || tileNum == 6 ||
                             tileNum == 9 || tileNum == 12 || tileNum == 15 || tileNum == 16 ||
                             tileNum == 17 || tileNum == 19 || tileNum == 21 || tileNum == 24) {
-                        newtile.setBackground(R.drawable.login_background);
+                        newtile.setBackground(R.drawable.flip_it);
                     }
                     tiles.add(newtile);
                 }
@@ -231,7 +231,7 @@ public class FlipManager extends GameManager{
                     Tile newtile = new Tile(1);
                     newtile.setBackground(R.drawable.back);
                     if (tileNum == 0 || tileNum == 4 || tileNum == 15 || tileNum == 19) {
-                        newtile.setBackground(R.drawable.login_background);
+                        newtile.setBackground(R.drawable.flip_it);
                     }
                     tiles.add(newtile);
                 }
