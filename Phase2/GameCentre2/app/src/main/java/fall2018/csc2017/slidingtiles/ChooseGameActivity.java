@@ -1,13 +1,10 @@
 package fall2018.csc2017.slidingtiles;
 
 import android.content.Intent;
-import android.support.transition.TransitionManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class ChooseGameActivity extends AppCompatActivity {
     private Button st;
@@ -19,7 +16,7 @@ public class ChooseGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_games_activiy);
+        setContentView(R.layout.activity_choose_games);
         st = findViewById(R.id.bt_slidingTiles);
         fi = findViewById(R.id.bt_flipit);
         blackJackButton = findViewById(R.id.btBlackJack);
