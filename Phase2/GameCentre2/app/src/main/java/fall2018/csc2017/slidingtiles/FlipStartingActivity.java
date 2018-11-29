@@ -201,6 +201,9 @@ public class FlipStartingActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Switch the current activity to black jack game activity
+     */
     private void switchToScoreBoard() {
         Intent complexity = new Intent(this, ScoreBoardActivity.class);
         startActivity(complexity);
