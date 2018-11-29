@@ -27,10 +27,16 @@ class ScoreBoardManager extends GameManager implements Serializable {
     private HashMap<String, List<Integer>>
             userToScoreBoard = new HashMap<>(15);
 
+
+    HashMap<Integer, List<String>> getScoreToUserBoard(){
+        return scoreToUserBoard;
+    }
+    HashMap<String, List<Integer>> getUserToScoreBoard(){
+        return userToScoreBoard;
+    }
     /**
      * The scoreboard being managed.
      */
-
     ScoreBoardManager() {
     }
 
@@ -60,7 +66,6 @@ class ScoreBoardManager extends GameManager implements Serializable {
         }
 
     }
-
     /**
      * Return a list of Pairs that contains the top n scores and their users
      *
