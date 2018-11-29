@@ -146,13 +146,13 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-
-    @Override
-    public void onBackPressed() {
-        user.logout();
-        Intent backToLogin = new Intent(this, ChooseGameActivity.class);
-        startActivity(backToLogin);
-    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        user.logout();
+//        Intent backToLogin = new Intent(this, ChooseGameActivity.class);
+//        startActivity(backToLogin);
+//    }
 
     /**
      * Read the temporary board from disk.
@@ -160,16 +160,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
-        if (blackJackManager == null) {
-            loadButton.setEnabled(false);
-            saveButton.setEnabled(false);
-            resumeButton.setEnabled(false);
-        } else {
-            loadButton.setEnabled(true);
-            saveButton.setEnabled(true);
-            resumeButton.setEnabled(true);
-        }
+        controller.resume(saveButton, resumeButton, loadButton);
     }
 
 

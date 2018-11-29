@@ -80,7 +80,7 @@ public class FlipItTest {
     }
 
     /**
-     * Shuffle a few tiles.
+     *  whether clicking the first tile change the correct color.
      */
     private void clickFirstTile3() {
         //flipManager3.touchColor(0);
@@ -88,21 +88,27 @@ public class FlipItTest {
         flipManager3.getFlip().changeColor(1, 0);
         flipManager3.getFlip().changeColor(0, 1);
     }
-
+    /**
+     *  whether clicking the last tile change the correct color.
+     */
     private void clickLastTile3() {
         //flipManager3.touchColor(1);
         flipManager3.getFlip().changeColor(2, 2);
         flipManager3.getFlip().changeColor(2, 1);
         flipManager3.getFlip().changeColor(1, 2);
     }
-
+    /**
+     *  whether clicking the first tile change the correct color.
+     */
     private void clickFirstTile4() {
         //flipManager4.touchColor(1);
         flipManager4.getFlip().changeColor(0, 0);
         flipManager4.getFlip().changeColor(1, 0);
         flipManager4.getFlip().changeColor(0, 1);
     }
-
+    /**
+     *  whether clicking the first tile change the correct color.
+     */
     private void clickFirstTile5() {
         //flipManager5.touchColor(0);
         flipManager5.getFlip().changeColor(0, 0);
@@ -120,7 +126,9 @@ public class FlipItTest {
         clickFirstTile4();
         assertEquals(false, flipManager4.puzzleSolved());
     }
-
+    /**
+     * Test whether swapping two tiles makes a solved board solved.
+     */
     @Test
     public void testIsSolved3() {
         setUpCorrect();
@@ -129,6 +137,9 @@ public class FlipItTest {
         clickLastTile3();
         assertEquals(true, flipManager3.puzzleSolved());
     }
+    /**
+     * Test whether swapping two tiles makes a solved board solved.
+     */
 
     @Test
     public void testIsSolved5() {
@@ -139,7 +150,7 @@ public class FlipItTest {
     }
 
     /**
-     * Test whether swapping the first two tiles works.
+     * Test whether click the first tile works.
      */
 
     @Test
@@ -150,6 +161,9 @@ public class FlipItTest {
         assertEquals(R.drawable.back, flipManager4.getFlip().getTile(0, 1).getBackground());
         assertEquals(R.drawable.back, flipManager4.getFlip().getTile(1, 0).getBackground());
     }
+    /**
+     * Test whether click the first tile works.
+     */
 
     @Test
     public void testClickFirst3() {
@@ -160,6 +174,9 @@ public class FlipItTest {
         assertEquals(R.drawable.back, flipManager3.getFlip().getTile(1, 0).getBackground());
 
     }
+    /**
+     * Test whether click the first tile works.
+     */
 
     @Test
     public void testClickFirst5() {
@@ -170,6 +187,9 @@ public class FlipItTest {
         assertEquals(R.drawable.back, flipManager5.getFlip().getTile(1, 0).getBackground());
     }
 
+    /**
+     * Test whether get movement pops the correct value
+     */
     @Test
     public void testGetMovements3() {
         setUpCorrect();
@@ -181,6 +201,10 @@ public class FlipItTest {
         assertEquals(3, flipManager3.getMovements().pop());
         assertEquals(0, flipManager3.getMovements().pop());
     }
+
+    /**
+     * Test whether get movement pops the correct value
+     */
     @Test
     public void testGetMovements4(){
         setUpCorrect();
@@ -193,6 +217,10 @@ public class FlipItTest {
         assertEquals(0, flipManager4.getMovements().pop());
 
     }
+
+    /**
+     * Test whether get movement pops the correct value
+     */
     @Test
     public void testGetMovements5(){
         setUpCorrect();
