@@ -7,7 +7,7 @@
     tools:context=".LevelComplexityActivity">
 
     <ImageButton
-        android:id="@id/levelNumbersBtn"
+        android:id="@+id/levelNumbersBtn"
         android:layout_width="198dp"
         android:layout_height="198dp"
         android:layout_marginTop="176dp"
@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/flipit" />
 
     <SeekBar
-        android:id="@id/levelSeekBar"
+        android:id="@+id/levelSeekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="267dp"
         android:layout_height="0dp"
