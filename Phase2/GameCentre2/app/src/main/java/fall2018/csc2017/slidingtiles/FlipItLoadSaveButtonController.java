@@ -8,13 +8,13 @@ import android.widget.Button;
 /**
  * Subclass of loadSaveButtonController to setup blackjack game's load save buttons
  */
-class BlackJackLoadSaveButtonController extends LoadSaveButtonController {
+class FlipItLoadSaveButtonController extends LoadSaveButtonController {
     /**
      * create a loadSaveButton controller
      * @param context
      * @param saveFile
      */
-    BlackJackLoadSaveButtonController(Context context, String saveFile){
+    FlipItLoadSaveButtonController(Context context, String saveFile){
         super(context, saveFile);
         this.gameType = "black_jack";
     }
@@ -27,15 +27,6 @@ class BlackJackLoadSaveButtonController extends LoadSaveButtonController {
                 switchToGame();
             }
         });
-    }
-
-    @Override
-    void switchToGame() {
-        {
-            Intent tmp = new Intent(context, BlackJackComplexityActivity.class);
-            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
-            context.startActivity(tmp);
-        }
     }
 
 }

@@ -192,12 +192,9 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
             Intent toScore = new Intent(FlipGameActivity.this, ScoreActivity.class);
             toScore.putExtra("game", "flip_it");
             FlipGameActivity.this.startActivity(toScore);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-
-        } else if (autosave()) {
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
             loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
-        }
+
     }
 
     /**

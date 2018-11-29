@@ -30,10 +30,6 @@ public class GameActivity extends AppCompatActivity implements Observer {
     private ArrayList<Button> tileButtons;
     private Button undoButton;
 
-    /**
-     * Autosaves the game for every five moves taken.
-     */
-    private int counter;
 
     // Grid View and calculated column height and width based on device size
     private BoardGestureDetectGridView gridView;
@@ -195,22 +191,10 @@ public class GameActivity extends AppCompatActivity implements Observer {
             Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);
             scoreboard.putExtra("game", "sliding_tiles");
             GameActivity.this.startActivity(scoreboard);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-        } else if (autosave()) {
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
             loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-        }
     }
 
-    /**
-     * Autosaves the game for every five steps a user makes.
-     *
-     * @return true if the five steps have been taken.
-     */
-    public boolean autosave() {
-        counter++;
-        return (counter % 5 == 0);
-    }
 
     /**
      * Activate the undo button
