@@ -58,7 +58,7 @@ abstract class LoadSaveButtonController {
      * Set up the load button for the starting page
      * @param loadButton the button to be set
      */
-    GameManager addLoadButtonListener(Button loadButton){
+    void addLoadButtonListener(Button loadButton){
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +67,6 @@ abstract class LoadSaveButtonController {
                 switchToGame();
             }
         });
-        return gameManager;
     }
 
     /**
