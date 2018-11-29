@@ -7,8 +7,8 @@ public class ScordBoardManagerTest {
 
 
     ScoreBoardManager scoreBoardManager = new ScoreBoardManager();
-    scoreToUserBoard = scoreBoardManager.scoreToUserBoard;
-    userToScoreBoard = scoreBoardManager.userToScoreBoard;
+    HashMap<String, List<Integer>> scoreToUserBoard = scoreBoardManager.scoreToUserBoard;
+    HashMap<String, List<Integer>> userToScoreBoard = scoreBoardManager.userToScoreBoard;
 
     @test
      public void testAddNewScore(){
