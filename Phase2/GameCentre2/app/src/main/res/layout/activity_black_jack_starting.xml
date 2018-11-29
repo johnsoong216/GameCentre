@@ -9,31 +9,32 @@
 
     <Button
         android:id="@+id/btBJLoad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="68dp"
+        android:layout_height="63dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="324dp"
         android:text="Load"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btBJSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="63dp"
+        android:layout_height="56dp"
         android:layout_marginTop="324dp"
         android:layout_marginEnd="24dp"
-        android:text="save"
+        android:background="@drawable/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btBJNewGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="84dp"
-        android:text="new game"
+        android:layout_width="68dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/newgame"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btBJLoad" />
 
