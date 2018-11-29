@@ -114,7 +114,12 @@ abstract class LoadSaveButtonController {
     abstract void addNewGameButtonListener(Button newGameButton);
 
     /**
-     * Switch to the BlackJackGameActivity view to play the game.
+     * Switch to the GameActivity view to play the game.
      */
     abstract void switchToGame();
+
+    /*
+    * Switch to the ComplexityActivity to select complexity
+     */
+    abstract void switchToComplexity();
 }

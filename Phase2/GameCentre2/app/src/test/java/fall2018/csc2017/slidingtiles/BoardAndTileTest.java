@@ -38,6 +38,11 @@ public class BoardAndTileTest {
         }
         return tiles3;
     }
+    /**
+     * Make a set of tiles that are in order.
+     *
+     * @return a set of tiles that are in order
+     */
     private List<Tile> makeTiles4() {
         List<Tile> tiles4 = new ArrayList<>();
         final int numTiles = 16;
@@ -46,6 +51,11 @@ public class BoardAndTileTest {
         }
         return tiles4;
     }
+    /**
+     * Make a set of tiles that are in order.
+     *
+     * @return a set of tiles that are in order
+     */
     private List<Tile> makeTiles5() {
         List<Tile> tiles5 = new ArrayList<>();
         final int numTiles = 25;
@@ -95,6 +105,9 @@ public class BoardAndTileTest {
         swapFirstTwoTiles4();
         assertEquals(false, boardManager4.puzzleSolved());
     }
+    /**
+     * Test whether swapping two tiles makes a solved board unsolved.
+     */
     @Test
     public void testIsSolved3() {
         setUpCorrect();
@@ -102,6 +115,9 @@ public class BoardAndTileTest {
         swapFirstTwoTiles3();
         assertEquals(false, boardManager3.puzzleSolved());
     }
+    /**
+     * Test whether swapping two tiles makes a solved board unsolved.
+     */
     @Test
     public void testIsSolved5() {
         setUpCorrect();
@@ -122,6 +138,9 @@ public class BoardAndTileTest {
         assertEquals(2, boardManager4.getBoard().getTile(0, 0).getId());
         assertEquals(1, boardManager4.getBoard().getTile(0, 1).getId());
     }
+    /**
+     * Test whether swapping the first two tiles works.
+     */
     @Test
     public void testSwapFirstTwo3() {
         setUpCorrect();
@@ -131,6 +150,9 @@ public class BoardAndTileTest {
         assertEquals(2, boardManager3.getBoard().getTile(0, 0).getId());
         assertEquals(1, boardManager3.getBoard().getTile(0, 1).getId());
     }
+    /**
+     * Test whether swapping the first two tiles works.
+     */
     @Test
     public void testSwapFirstTwo5() {
         setUpCorrect();
@@ -142,7 +164,7 @@ public class BoardAndTileTest {
     }
 
     /**
-     * Test whether swapping the last two tiles works.
+     * Test whether swapping the last two tiles works for complexity 3.
      */
     @Test
     public void testSwapLastTwo3() {
@@ -153,6 +175,10 @@ public class BoardAndTileTest {
         assertEquals(9, boardManager3.getBoard().getTile(2, 1).getId());
         assertEquals(8, boardManager3.getBoard().getTile(2, 2).getId());
     }
+
+    /**
+     * Test whether swapping the last two tiles works for complexity 4.
+     */
     @Test
     public void testSwapLastTwo4() {
         setUpCorrect();
@@ -162,6 +188,9 @@ public class BoardAndTileTest {
         assertEquals(16, boardManager4.getBoard().getTile(3, 2).getId());
         assertEquals(15, boardManager4.getBoard().getTile(3, 3).getId());
     }
+    /**
+     * Test whether swapping the last two tiles works for complexity 5.
+     */
     @Test
     public void testSwapLastTwo5() {
         setUpCorrect();
@@ -182,6 +211,9 @@ public class BoardAndTileTest {
         assertEquals(true, boardManager4.isValidTap(14));
         assertEquals(false, boardManager4.isValidTap(10));
     }
+    /**
+     * Test whether isValidHelp works.
+     */
     @Test
     public void testIsValidTap3() {
         setUpCorrect();
@@ -189,6 +221,9 @@ public class BoardAndTileTest {
         assertEquals(true, boardManager3.isValidTap(5));
         assertEquals(false, boardManager3.isValidTap(4));
     }
+    /**
+     * Test whether isValidHelp works.
+     */
     @Test
     public void testIsValidTap5() {
         setUpCorrect();
@@ -196,6 +231,9 @@ public class BoardAndTileTest {
         assertEquals(true, boardManager5.isValidTap(19));
         assertEquals(false, boardManager5.isValidTap(18));
     }
+    /**
+     * Test whether get movements works.
+     */
     @Test
     public void testGetMovements3(){
         setUpCorrect();
@@ -205,10 +243,10 @@ public class BoardAndTileTest {
 
         assertEquals(2, boardManager3.getMovements().pop());
         assertEquals(8, boardManager3.getMovements().pop());
-
-
-
     }
+    /**
+     * Test whether get movements works.
+     */
     @Test
     public void testGetMovements4(){
         setUpCorrect();
@@ -218,8 +256,10 @@ public class BoardAndTileTest {
 
         assertEquals(2, boardManager4.getMovements().pop());
         assertEquals(8, boardManager4.getMovements().pop());
-
     }
+    /**
+     * Test whether get movements works.
+     */
     @Test
     public void testGetMovements5(){
         setUpCorrect();
@@ -229,30 +269,30 @@ public class BoardAndTileTest {
 
         assertEquals(2, boardManager5.getMovements().pop());
         assertEquals(8, boardManager5.getMovements().pop());
-
-
-    }
-
+        }
+    /**
+     * Test whether get movements works.
+     */
     @Test
     public void testGetBlank3(){
         setUpCorrect();
         assertEquals(8,boardManager3.getBlank(tiles3));
-
-
     }
+    /**
+     * Test whether get movements works.
+     */
     @Test
     public void testGetBlank4(){
         setUpCorrect();
         assertEquals(15,boardManager4.getBlank(tiles4));
-
-
     }
+    /**
+     * Test whether get movements works.
+     */
     @Test
     public void testGetBlank5(){
         setUpCorrect();
         assertEquals(24,boardManager5.getBlank(tiles5));
-
-
     }
 
 }
