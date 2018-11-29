@@ -4,20 +4,25 @@ import android.content.Context;
 import android.widget.Toast;
 
 
-public class FlipMovementController {
+public class FlipMovementController extends MovementController{
     private FlipManager flipManager = null;
 
     public FlipMovementController() {}
 
-    public void setFlipManager(FlipManager flipManager) {
-        this.flipManager = flipManager;
+    @Override
+    public void setManager(GameManager flipManager) {
+        this.flipManager = (FlipManager) flipManager;
     }
 
+    @Override
     public void processTapMovement(Context context, int position) {
         flipManager.touchColor(position);
         if (flipManager.puzzleSolved()) {
             Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    FlipManager getManager() {return flipManager;}
 }
 

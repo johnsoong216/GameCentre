@@ -141,8 +141,8 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
                                 timer = flipManager.getTimer();
                                 timer++;
                                 flipManager.setTimer(timer);
-                                stepcounter = flipManager.getStepcounter();
-                                flipManager.setStepcounter(stepcounter);
+                                stepcounter = flipManager.getStepCounter();
+                                flipManager.setStepCounter(stepcounter);
                                 scoreStepTimer.setText("Timer: " + String.valueOf(timer) + "s" + "  " + "Steps: " + stepcounter);
                                 currentScore.setText("Current Score: " + String.valueOf(flipManager.getScore()));
                             }

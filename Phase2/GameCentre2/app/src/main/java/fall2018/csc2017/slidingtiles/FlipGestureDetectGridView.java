@@ -102,7 +102,7 @@ public class FlipGestureDetectGridView extends GridView {
     }
 
     public void setGameManager(GameManager gameManager) {
-        mController.setFlipManager((FlipManager)gameManager);
+        mController.setManager(gameManager);
     }
 
 

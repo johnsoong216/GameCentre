@@ -8,7 +8,7 @@
     android:background="@drawable/sliding_tile"
     tools:context=".GameActivity">
 
-    <fall2018.csc2017.slidingtiles.GestureDetectGridView
+    <fall2018.csc2017.slidingtiles.BoardGestureDetectGridView
         android:id="@+id/grid"
         android:layout_width="363dp"
         android:layout_height="500dp"
@@ -46,6 +46,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="208dp"
         android:text="Undo"
+        android:background="@drawable/buttonshape3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentScore"

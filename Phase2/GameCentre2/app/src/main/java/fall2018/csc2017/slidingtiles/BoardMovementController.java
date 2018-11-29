@@ -4,16 +4,21 @@ import android.content.Context;
 import android.widget.Toast;
 
 
-public class BoardMovementController {
+public class BoardMovementController extends MovementController {
 
     private BoardManager boardManager = null;
 
     public BoardMovementController() {}
 
-    public void setBoardManager(BoardManager boardManager) {
-        this.boardManager = boardManager;
+    @Override
+    public void setManager(GameManager boardManager) {
+        this.boardManager = (BoardManager) boardManager;
     }
 
+    @Override
+    public BoardManager getManager() {return boardManager;}
+
+    @Override
     public void processTapMovement(Context context, int position) {
         if (boardManager.isValidTap(position)) {
             boardManager.touchMove(position);

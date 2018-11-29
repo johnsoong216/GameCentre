@@ -96,7 +96,7 @@ public class BlackJackGame implements Serializable {
         playerHand.drawCard(this.deck);
     }
 
-    /*
+    /**
     Return the game's current bet
      */
     public int getBet() {

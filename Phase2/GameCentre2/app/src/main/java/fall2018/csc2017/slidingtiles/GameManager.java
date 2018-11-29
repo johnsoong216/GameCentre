@@ -9,20 +9,20 @@ import java.util.Observable;
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
-class GameManager extends Observable implements Serializable {
+abstract class GameManager extends Observable implements Serializable {
 
     Stack<Integer> movements = new Stack<>();
 
     int complexity;
 
-    int stepcounter = 0;
+    int stepCounter = 0;
 
-    int getStepcounter() {
-        return stepcounter;
+    int getStepCounter() {
+        return stepCounter;
     }
 
-    void setStepcounter(int stepcounter) {
-        this.stepcounter = stepcounter;
+    void setStepCounter(int stepCounter) {
+        this.stepCounter = stepCounter;
     }
 
     private int timer = 0;
@@ -35,7 +35,7 @@ class GameManager extends Observable implements Serializable {
         return timer;
     }
 
-    int default_undo;
+    int defaultUndo;
 
     Stack getMovements() {
         return movements;
@@ -55,6 +55,6 @@ class GameManager extends Observable implements Serializable {
     void undo() {}
 
     void setUndo(int moves) {
-        default_undo = moves * 2;
+        defaultUndo = moves * 2;
     }
 }
