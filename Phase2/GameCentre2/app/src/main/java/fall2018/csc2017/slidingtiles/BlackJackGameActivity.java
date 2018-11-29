@@ -28,7 +28,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private Loadsave loadSaveManager;
     private Context context;
     private TextView chipsTotal;
-    private int difficulty;
+    private double difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
         addStandButtonListener();
         addDoubleButtonListener();
         addHintButtonListener();
-        if(difficulty != 1) {
+        if(difficulty != 0.8) {
             hintButton.setEnabled(false);
         }
     }
@@ -176,7 +176,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
         }
         int chips = blackJackManager.getChips();
         int[] winDrawLoss = blackJackManager.getWinDrawLoss();
-        if(difficulty == 3){
+        if(difficulty == 1.2){
             deck = new Deck();
         }
         else if (deck.remainingCard() < 26) {
