@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ public class ScoreBoardSelectionActivity extends AppCompatActivity {
     private ImageButton blackJackScore;
     private ImageButton flipItScore;
     private ImageButton slidingTilesScore;
+    private
 
 
     @Override
@@ -26,6 +28,8 @@ public class ScoreBoardSelectionActivity extends AppCompatActivity {
         addflipItScoreListener();
         addslidingTilesScoreListener();
     }
+
+
 
     private void addflipItScoreListener() {
         flipItScore.setOnClickListener(new View.OnClickListener() {
