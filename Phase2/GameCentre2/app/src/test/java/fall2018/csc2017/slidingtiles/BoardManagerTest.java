@@ -30,6 +30,12 @@ public class BoardManagerTest {
         boardManager = new BoardManager(board);
     }
 
+    private void setUp4() {
+        List<Tile> tiles = makeTiles();
+        Collections.shuffle(tiles);
+        boardManager = new BoardManager(4);
+    }
+
     /**
      * Test whether isValidHelp works.
      */
@@ -109,5 +115,43 @@ public class BoardManagerTest {
         tiles.add(newtile11);
         tiles.add(newtile13);
         assertEquals(11, boardManager.getBlank(tiles));
+    }
+
+    @Test
+    public void testStepCounter() {
+        setUpCorrect();
+        boardManager.setStepcounter(10);
+        assertEquals(10, boardManager.getStepcounter());
+    }
+
+    @Test
+    public void testTimer() {
+        setUpCorrect();
+        boardManager.setTimer(20);
+        assertEquals(20, boardManager.getTimer());
+    }
+
+    @Test
+    public void testScore() {
+        setUp4();
+        boardManager.setTimer(20);
+        boardManager.setStepcounter(10);
+        boardManager.setUndo(3);
+        assertEquals(432, boardManager.getScore());
+    }
+
+    @Test
+    public void testScoreLessThan0() {
+        setUp4();
+        boardManager.setTimer(3000);
+        boardManager.setStepcounter(1000);
+        boardManager.setUndo(30);
+        assertEquals(0, boardManager.getScore());
+    }
+
+    @Test
+    public void testMovement() {
+        setUp4();
+        assertEquals(0, boardManager.getMovements().size());
     }
 }
