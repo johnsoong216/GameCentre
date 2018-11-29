@@ -77,7 +77,9 @@ public class BoardManagerTest {
         tiles.add(newtile13);
         assertEquals(33, boardManager.getInv(tiles));
     }
-
+    /**
+     *  test whether return the blank tile
+     */
     @Test
     public void testBlank() {
         List<Tile> tiles = new ArrayList<>();
@@ -116,21 +118,27 @@ public class BoardManagerTest {
         tiles.add(newtile13);
         assertEquals(11, boardManager.getBlank(tiles));
     }
-
+    /**
+     * test whether return the correct step
+     */
     @Test
     public void testStepCounter() {
         setUpCorrect();
         boardManager.setStepCounter(10);
         assertEquals(10, boardManager.getStepCounter());
     }
-
+    /**
+     * test whether the timer counts correctly
+     */
     @Test
     public void testTimer() {
         setUpCorrect();
         boardManager.setTimer(20);
         assertEquals(20, boardManager.getTimer());
     }
-
+    /**
+     * test whether the score is calculated correctly
+     */
     @Test
     public void testScore() {
         setUp4();
@@ -139,7 +147,9 @@ public class BoardManagerTest {
         boardManager.setUndo(3);
         assertEquals(432, boardManager.getScore());
     }
-
+    /**
+     * test whether the score return 0
+     */
     @Test
     public void testScoreLessThan0() {
         setUp4();
@@ -148,7 +158,9 @@ public class BoardManagerTest {
         boardManager.setUndo(30);
         assertEquals(0, boardManager.getScore());
     }
-
+    /**
+     * test whether the movements return correctly
+     */
     @Test
     public void testMovement() {
         setUp4();

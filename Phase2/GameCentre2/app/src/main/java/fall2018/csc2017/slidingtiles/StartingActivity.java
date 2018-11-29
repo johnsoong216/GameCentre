@@ -44,107 +44,109 @@ public class StartingActivity extends AppCompatActivity {
     private Button resumeButton;
     private Button saveButton;
     private Button startButton;
-    private Button signOutButton;
-    private Loadsave loadsaveManager;
+//    private Button signOutButton;
+//    private Loadsave loadsaveManager;
+    private SlidingTilesLoadSaveButtonController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_);
         context = this;
-        loadsaveManager = new Loadsave(context);
+        controller = new SlidingTilesLoadSaveButtonController(context, TEMP_SAVE_FILE);
+//        loadsaveManager = new Loadsave(context);
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
         startButton = findViewById(R.id.LoginButton);
-        signOutButton = findViewById(R.id.SignOutButton);
+//        signOutButton = findViewById(R.id.SignOutButton);
+//
+//        user = Session.getCurrentUser();
+//        username = user.getUsername();
 
-        user = Session.getCurrentUser();
-        username = user.getUsername();
-
-        addStartButtonListener();
-        addLoadButtonListener();
-        addResumeButtonListener();
-        addSaveButtonListener();
-        addSignOutButtonListener();
+        controller.addNewGameButtonListener(startButton);
+        controller.addLoadButtonListener(loadButton);
+        controller.addResumeButtonListener(resumeButton);
+        controller.addSaveButtonListener(saveButton);
+//        addSignOutButtonListener();
     }
 
-    /**
-     * Performs a signout action.
-     */
-    private void addSignOutButtonListener() {
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                user.logout();
-                Intent logout = new Intent(StartingActivity.this, SignUpSignInActivity.class);
-                StartingActivity.this.startActivity(logout);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//    /**
+//     * Performs a signout action.
+//     */
+//    private void addSignOutButtonListener() {
+//        signOutButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                user.logout();
+//                Intent logout = new Intent(StartingActivity.this, SignUpSignInActivity.class);
+//                StartingActivity.this.startActivity(logout);
+//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//
+//            }
+//        });
+//    }
 
-            }
-        });
-    }
-
-    /**
-     * Activate the start button.
-     */
-    private void addStartButtonListener() {
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToComplexity();
-            }
-        });
-    }
-
-    /**
-     * Activate the load button.
-     */
-    private void addLoadButtonListener() {
-        loadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
-                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-
-                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-                switchToGame();
-                resumeButton.setEnabled(true);
-            }
-        });
-    }
-
-
-
-    /**
-     * Activate the resume button
-     */
-    private void addResumeButtonListener() {
-        resumeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
-
-                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-                switchToGame();
-            }
-        });
-    }
-
-
-    /**
-     * Activate the save button.
-     */
-    private void addSaveButtonListener() {
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    /**
+//     * Activate the start button.
+//     */
+//    private void addStartButtonListener() {
+//        startButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                switchToComplexity();
+//            }
+//        });
+//    }
+//
+//    /**
+//     * Activate the load button.
+//     */
+//    private void addLoadButtonListener() {
+//        loadButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
+//                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+//
+//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
+//                switchToGame();
+//                resumeButton.setEnabled(true);
+//            }
+//        });
+//    }
+//
+//
+//
+//    /**
+//     * Activate the resume button
+//     */
+//    private void addResumeButtonListener() {
+//        resumeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
+//
+//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
+//                switchToGame();
+//            }
+//        });
+//    }
+//
+//
+//    /**
+//     * Activate the save button.
+//     */
+//    private void addSaveButtonListener() {
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     @Override
     public void onBackPressed() {
@@ -158,39 +160,29 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        boardManager = (BoardManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
-        if (boardManager == null) {
-            loadButton.setEnabled(false);
-            saveButton.setEnabled(false);
-            resumeButton.setEnabled(false);
-        } else {
-            loadButton.setEnabled(true);
-            saveButton.setEnabled(true);
-            resumeButton.setEnabled(true);
-        }
+        controller.resume(saveButton, resumeButton, loadButton);
     }
 
 
-    /**
-     * Switch to the GameActivity view to play the game.
-     */
-    private void switchToGame() {
-        Intent tmp = new Intent(this, GameActivity.class);
-        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-        startActivity(tmp);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-    }
-
-    /**
-     * Switch to the Complexity view to choose game complexity.
-     */
-    private void switchToComplexity() {
-        Intent complexity = new Intent(this, ComplexityActivity.class);
-        complexity.putExtra("game", "sliding");
-        startActivity(complexity);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
+//    /**
+//     * Switch to the GameActivity view to play the game.
+//     */
+//    private void switchToGame() {
+//        Intent tmp = new Intent(this, GameActivity.class);
+//        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+//        startActivity(tmp);
+//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//    }
+//
+//    /**
+//     * Switch to the Complexity view to choose game complexity.
+//     */
+//    private void switchToComplexity() {
+//        Intent complexity = new Intent(this, ComplexityActivity.class);
+//        complexity.putExtra("game", "sliding");
+//        startActivity(complexity);
+//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//    }
 
 }
 

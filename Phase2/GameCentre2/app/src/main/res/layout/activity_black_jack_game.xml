@@ -209,7 +209,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="152dp"
         android:layout_marginEnd="17dp"
         android:background="@drawable/buttonshape2"
         android:text="Hint"
@@ -222,10 +222,11 @@
         android:id="@+id/btInsurance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="152dp"
         android:text="Buy Insurance"
-        app:layout_constraintStart_toStartOf="@+id/chipsTotal"
-        app:layout_constraintTop_toTopOf="@+id/deck" />
+        android:background="@drawable/buttonshape2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

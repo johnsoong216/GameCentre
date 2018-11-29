@@ -130,6 +130,6 @@ public class BlackJackGameTest {
     public void inGameBet() {
         setUpBlackJackGame();
         blackJackGame4.inGameBet(1.5);
-        assertEquals(300, blackJackGame4.getBet());
+        assertEquals(150, blackJackGame4.getBet());
     }
 }
