@@ -13,7 +13,7 @@ import java.io.ObjectOutputStream;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Loading/Saving class.
+ * Loading/Saving class. An utility class for serialization
  */
 class Loadsave {
 
