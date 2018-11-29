@@ -2,16 +2,17 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_color_blue"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageButton
         android:id="@+id/flipItScore"
-        android:layout_width="174dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/blackJackScore"
+        android:layout_width="178dp"
+        android:layout_height="178dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slidingTilesScore"
         app:srcCompat="@drawable/flipit_icon" />
@@ -19,10 +20,10 @@
     <ImageButton
         android:id="@+id/blackJackScore"
         android:layout_width="178dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="178dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flipItScore"
         app:srcCompat="@drawable/blackjack_score" />
@@ -30,12 +31,28 @@
     <ImageButton
         android:id="@+id/slidingTilesScore"
         android:layout_width="178dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/flipItScore"
+        android:layout_height="178dp"
+        android:layout_marginTop="84dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/numbertiles2" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Scoreboard"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/slidingTilesScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

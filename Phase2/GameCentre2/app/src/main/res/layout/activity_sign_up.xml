@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color"
+    android:background="@drawable/general_back"
     tools:context=".SignUpActivity">
 
 
@@ -67,6 +67,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Register"
+        android:background="@drawable/buttonshape2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

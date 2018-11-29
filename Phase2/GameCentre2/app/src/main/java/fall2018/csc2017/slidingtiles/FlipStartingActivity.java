@@ -56,7 +56,7 @@ public class FlipStartingActivity extends AppCompatActivity {
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
-        startButton = findViewById(R.id.LoginButton);
+        startButton = findViewById(R.id.StartButton);
         signOutButton = findViewById(R.id.SignOutButton);
         scoreBoardButton = findViewById(R.id.scoreBoardButton);
 

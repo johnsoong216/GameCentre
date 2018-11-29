@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color"
+    android:background="@drawable/general_back"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:text="Return to Main Page"
+        android:background="@drawable/buttonshape2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

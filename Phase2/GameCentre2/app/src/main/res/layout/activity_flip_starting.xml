@@ -30,6 +30,7 @@
         android:layout_below="@+id/GameText"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
+        android:background="@drawable/buttonshape3"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="40dp"
         android:text="New Game"
@@ -45,6 +46,7 @@
         android:layout_below="@+id/GameText"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="212dp"
+        android:background="@drawable/buttonshape3"
         android:layout_toStartOf="@+id/LoginButton"
         android:text="Load Saved Game"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,6 +62,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="164dp"
+        android:background="@drawable/buttonshape3"
         android:layout_toEndOf="@+id/LoginButton"
         android:text="Save Game"
         app:layout_constraintBottom_toTopOf="@+id/scoreBoardButton"
@@ -77,6 +80,7 @@
         android:layout_marginEnd="140dp"
         android:layout_marginBottom="132dp"
         android:text="Resume"
+        android:background="@drawable/buttonshape3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -89,6 +93,7 @@
         android:layout_marginTop="72dp"
         android:layout_marginEnd="8dp"
         android:text="Sign Out"
+        android:background="@drawable/buttonshape3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,6 +106,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Scoreboard"
+        android:background="@drawable/buttonshape3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

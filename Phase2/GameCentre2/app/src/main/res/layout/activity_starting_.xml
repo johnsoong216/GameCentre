@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color"
+    android:background="@drawable/background_color_blue"
     tools:context="fall2018.csc2017.slidingtiles.StartingActivity">
 
     <TextView
@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape3"
         android:text="New Game" />
 
     <Button
@@ -30,7 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="25dp"
         android:layout_toStartOf="@+id/LoginButton"
+        android:background="@drawable/buttonshape3"
         android:text="Load Saved Game" />
 
     <Button
@@ -38,7 +42,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="-2dp"
         android:layout_toEndOf="@+id/LoginButton"
+        android:background="@drawable/buttonshape3"
         android:text="Save Game" />
 
 
@@ -52,6 +59,7 @@
         android:layout_marginStart="140dp"
         android:layout_marginEnd="144dp"
         android:layout_marginBottom="119dp"
+        android:background="@drawable/buttonshape3"
         android:text="Resume" />
 
     <Button
@@ -62,6 +70,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="49dp"
         android:layout_marginEnd="33dp"
+        android:background="@drawable/buttonshape3"
         android:text="Sign Out" />
 
 </RelativeLayout>
