@@ -37,8 +37,8 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
     }
 
     public void calculateScore(){
-        int score = (blackJackManager.getChips() + 50 * blackJackManager.getWinDrawLoss()[0]) * blackJackManager.getComplexity();
-        user.setScore(score);
+        double score = (blackJackManager.getChips() + 50 * blackJackManager.getWinDrawLoss()[0]) * blackJackManager.getComplexity();
+        user.setScore((int) Math.round(score));
 
     }
 
