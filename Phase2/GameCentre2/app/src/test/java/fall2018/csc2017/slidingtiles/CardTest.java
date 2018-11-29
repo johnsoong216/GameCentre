@@ -12,12 +12,16 @@ public class CardTest {
     Card card2;
     Card card3;
     Card card4;
+    Card card5;
+    Card card6;
 
     private void setUpCards(){
         card1 = new Card(0,1);
         card2 = new Card(1,8);
         card3 = new Card(2,13);
         card4 = new Card(2,13);
+        card5 = new Card(3,14);
+        card6 = card3;
     }
     @Test
     public void getInGameValue1() {
@@ -60,5 +64,10 @@ public class CardTest {
         setUpCards();
         assertEquals(false ,card1 == card3);
         assertEquals(false, card2 == card3);
+    }
+    @Test
+    public void equal2() {
+        setUpCards();
+        assertEquals(true ,card6 == card3);
     }
 }

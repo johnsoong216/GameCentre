@@ -216,9 +216,6 @@ public class Card implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
         Card c = (Card) obj;
         return c.getId() == this.getId();
     }

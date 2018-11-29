@@ -1,5 +1,7 @@
 package fall2018.csc2017.slidingtiles;
-
+/*
+An activity that allow user to choose difficulties and bets for the game
+ */
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,9 +26,18 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
     int bet;
     private Context context;
     private Loadsave loadSaveManager;
+    /*
+    current user and his username
+     */
     private Session user;
     private String username;
+    /*
+    current blackjack game manager in use
+     */
     private BlackJackManager blackJackManager;
+    /*
+    Buttons
+     */
     private Button easyButton;
     private Button normalButton;
     private Button hardButton;
