@@ -32,10 +32,21 @@ class BlackJackLoadSaveButtonController extends LoadSaveButtonController {
     @Override
     void switchToGame() {
         {
+            Intent tmp = new Intent(context, BlackJackGameActivity.class);
+            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            context.startActivity(tmp);
+        }
+    }
+
+    @Override
+    void switchToComplexity() {
+        {
             Intent tmp = new Intent(context, BlackJackComplexityActivity.class);
             loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
             context.startActivity(tmp);
         }
     }
+
+
 
 }

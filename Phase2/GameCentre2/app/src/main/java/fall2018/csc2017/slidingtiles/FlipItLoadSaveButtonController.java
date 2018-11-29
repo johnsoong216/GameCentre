@@ -16,17 +16,33 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
      */
     FlipItLoadSaveButtonController(Context context, String saveFile){
         super(context, saveFile);
-        this.gameType = "black_jack";
+        this.gameType = "flip_it";
     }
     @Override
     void addNewGameButtonListener(Button newGameButton) {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameManager = new BlackJackManager(new BlackJackGame());
+                gameManager = new FlipManager();
                 switchToGame();
             }
         });
     }
+    @Override
+    void switchToGame() {
+        {
+            Intent tmp = new Intent(context, FlipGameActivity.class);
+            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            context.startActivity(tmp);
+        }
+    }
 
+    @Override
+    void switchToComplexity() {
+        {
+            Intent tmp = new Intent(context, FlipComplexityActivity.class);
+            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            context.startActivity(tmp);
+        }
+    }
 }
