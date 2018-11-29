@@ -11,29 +11,27 @@
         android:id="@+id/btHit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
         android:layout_marginTop="439dp"
-        android:layout_marginEnd="73dp"
         android:layout_marginBottom="80dp"
-        android:text="HIt"
+        android:background="@drawable/buttonshape2"
+        android:text="Hit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btStand"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.489" />
 
     <Button
         android:id="@+id/btStand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
         android:layout_marginTop="439dp"
-        android:layout_marginEnd="49dp"
         android:layout_marginBottom="80dp"
+        android:background="@drawable/buttonshape2"
         android:text="stand"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btHit"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.489" />
 
     <Button
         android:id="@+id/btDouble"
@@ -44,6 +42,7 @@
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="81dp"
         android:text="double"
+        android:background="@drawable/buttonshape2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btStand"
         app:layout_constraintStart_toEndOf="@+id/btHit"
@@ -185,6 +184,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/buttonshape2"
         android:text="new round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -211,10 +211,10 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="232dp"
         android:layout_marginEnd="17dp"
-        android:background="@color/colorWhite"
+        android:background="@drawable/buttonshape2"
         android:text="Hint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.964"
         app:layout_constraintStart_toEndOf="@+id/deck"
         app:layout_constraintTop_toTopOf="parent" />
 
