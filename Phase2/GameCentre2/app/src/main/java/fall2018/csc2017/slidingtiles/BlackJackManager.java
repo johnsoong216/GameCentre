@@ -42,9 +42,6 @@ public class BlackJackManager extends GameManager implements Serializable {
 
     private int complexity;
 
-    public int getComplexity() {
-        return complexity;
-    }
 
     /*
     Create a new blackjack game manager with chips the player currently has
@@ -103,7 +100,6 @@ User chooses to end Game
     int getChips() {
         return chips;
     }
-
     /*
     Player chooses not to draw any more cards
     Add a button listener in the Activity Page
@@ -122,7 +118,7 @@ User chooses to end Game
     */
     void settleChips() {
         if (insurance) {
-            blackJackGame.setBet(blackJackGame.getBet() / 2);
+            setBet(blackJackGame.getBet() / 2);
         }
         if (blackJackGame.getPlayerPoint() < blackJackGame.getDealerPoint()) {
             chips -= blackJackGame.getBet();
@@ -184,10 +180,28 @@ User chooses to end Game
         }
         return ((double) numCardBusted / (double) remainingCard) * 100.0;
     }
+    /*
+    set the new bet for the game
+     */
+    public void setBet(int bet) {
+        blackJackGame.bet = bet;
+    }
+    /*
+    return the complexity for the game
+     */
+    public int getComplexity() {
+        return complexity;
+    }
 
-        /*
-        Getter for Win Draw Loss
-         */
+    /*
+    set the complexity for the game
+     */
+    public void setComplexity(int complexity) {
+        this.complexity = complexity;
+    }
+    /*
+    Getter for Win Draw Loss
+    */
     public int[] getWinDrawLoss() {
         return winDrawLoss;
     }

@@ -137,8 +137,8 @@ public class BoardManager extends GameManager{
         }
         this.complexity = complexity;
         Collections.shuffle(tiles);
-        int inv = get_inv(tiles);
-        int index = tiles.size() - get_blank(tiles) - 1;
+        int inv = getInv(tiles);
+        int index = tiles.size() - getBlank(tiles) - 1;
         if(complexity % 2 == 1) {
             if(inv % 2 != 0) {
                 swap_15_14(tiles);
