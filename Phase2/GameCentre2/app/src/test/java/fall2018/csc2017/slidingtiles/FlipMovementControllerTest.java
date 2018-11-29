@@ -11,11 +11,16 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class FlipMovementControllerTest {
+    /**
+     * the flip movement controller for testing
+     */
     FlipMovementController mController = new FlipMovementController();
     FlipManager flipManager;
     List<Tile> tiles;
     private Context context;
-
+    /**
+     * creating a list of tiles
+     */
     private List<Tile> makeTiles() {
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = 14;
@@ -26,14 +31,18 @@ public class FlipMovementControllerTest {
         tiles.add(new Tile(14));
         return tiles;
     }
-
+    /**
+     * set up the flip and flip manager
+     */
     private void setUp() {
         tiles = makeTiles();
         FlipIt flip = new FlipIt(tiles, 4);
         flipManager = new FlipManager(flip);
         flipManager.puzzleSolved();
     }
-
+    /**
+     * test whether set the board manager correctly
+     */
     @Test
     public void testSetBoardmanager() {
         setUp();
