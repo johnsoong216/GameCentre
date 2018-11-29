@@ -215,7 +215,11 @@ public class Card implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "This is Card" + suit + " " + value;
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        Card c = (Card) obj;
+        return c.getId() == this.getId();
     }
 }
