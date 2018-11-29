@@ -41,6 +41,7 @@
         <activity android:name=".FlipScoreActivity" />
         <activity android:name=".ScoreBoardSelectionActivity" />
         <activity android:name=".BlackJackSummaryActivity" />
+        <activity android:name=".LevelComplexityActivity" />
         <activity android:name=".BlackJackComplexityActivity"></activity>
     </application>
 

@@ -50,6 +50,8 @@ public class FlipStartingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flip_starting);
         context = this;
+        user = Session.getCurrentUser();
+        username = user.getUsername();
         loadsaveManager = new Loadsave(context);
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
@@ -57,9 +59,6 @@ public class FlipStartingActivity extends AppCompatActivity {
         startButton = findViewById(R.id.StartButton);
         signOutButton = findViewById(R.id.SignOutButton);
         scoreBoardButton = findViewById(R.id.scoreBoardButton);
-
-        user = Session.getCurrentUser();
-        username = user.getUsername();
 
         addStartButtonListener();
         addLoadButtonListener();
