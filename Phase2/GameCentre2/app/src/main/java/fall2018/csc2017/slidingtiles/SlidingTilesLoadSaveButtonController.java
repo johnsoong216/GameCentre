@@ -28,11 +28,11 @@ public class SlidingTilesLoadSaveButtonController extends LoadSaveButtonControll
         loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
         context.startActivity(tmp);
     }
-
+    @Override
     /**
      * Switch to the Complexity view to choose game complexity.
      */
-    private void switchToComplexity() {
+    void switchToComplexity() {
         Intent complexity = new Intent(context, ComplexityActivity.class);
         context.startActivity(complexity);
     }
