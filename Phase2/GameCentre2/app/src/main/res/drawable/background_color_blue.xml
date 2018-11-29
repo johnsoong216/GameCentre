@@ -7,10 +7,10 @@
         angle:0
     -->
     <gradient
-        android:startColor = "#5ef9f9"
+        android:startColor = "#e4fcff"
         android:centerColor="#FFF"
-        android:endColor="#5ef9f9"
-        android:angle="45"
+        android:endColor="#ffffe9"
+        android:angle="135"
         />
 
 </shape>
