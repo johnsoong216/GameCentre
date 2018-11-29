@@ -22,10 +22,7 @@ public class BlackJackGame implements Serializable {
     Current bet for the game
      */
     protected int bet;
-    /*
-    Check for User Action
-     */
-    private boolean userEndGame = false;
+
 
     public BlackJackGame(Deck deck, int bet) {
         this.deck = deck;
@@ -39,7 +36,7 @@ public class BlackJackGame implements Serializable {
         this.deck = new Deck();
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
-        this.bet = 200;
+        this.bet = 100;
         startingHand();
     }
 
@@ -112,6 +109,7 @@ public class BlackJackGame implements Serializable {
     public void inGameBet(double betMultiplier) {
         this.bet = (int) Math.round(bet * betMultiplier);
     }
+
 
     /*
     return the deck being used
