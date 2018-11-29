@@ -81,7 +81,7 @@ public class SignUpSignInActivity extends AppCompatActivity {
     }
 
     /**
-     * A user performing a login action.
+     * A user performing a login1 action.
      */
     private void addSignInButtonListener() {
         SignInButton.setOnClickListener(new View.OnClickListener() {

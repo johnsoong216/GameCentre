@@ -21,17 +21,17 @@ public class BlackJackGame implements Serializable {
     /*
     Current bet for the game
      */
-    private int bet;
+    protected int bet;
     /*
     Check for User Action
      */
     private boolean userEndGame = false;
 
-    public BlackJackGame(Deck deck) {
+    public BlackJackGame(Deck deck, int bet) {
         this.deck = deck;
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
-        this.bet = 100;
+        this.bet = bet;
         startingHand();
     }
 
@@ -39,15 +39,15 @@ public class BlackJackGame implements Serializable {
         this.deck = new Deck();
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
-        this.bet = 100;
+        this.bet = 200;
         startingHand();
     }
 
     private void startingHand() {
-        dealerHand.drawcard(deck);
-        dealerHand.drawcard(deck);
-        playerHand.drawcard(deck);
-        playerHand.drawcard(deck);
+        dealerHand.drawCard(deck);
+        dealerHand.drawCard(deck);
+        playerHand.drawCard(deck);
+        playerHand.drawCard(deck);
         if (playerHand.checkBlackJack() &&
                 !dealerHand.checkBlackJack()) {
             inGameBet(1.5);
@@ -89,14 +89,14 @@ public class BlackJackGame implements Serializable {
     Draw a card for dealer
      */
     public void dealerDrawCard() {
-        dealerHand.drawcard(this.deck);
+        dealerHand.drawCard(this.deck);
     }
 
     /*
     Draw a card for dealer
      */
     public void playerDrawCard() {
-        playerHand.drawcard(this.deck);
+        playerHand.drawCard(this.deck);
     }
 
     /*
@@ -107,18 +107,8 @@ public class BlackJackGame implements Serializable {
     }
 
     /*
-    set the new bet for the game
+    Set the in game bet
      */
-    public void setBet(int bet) {
-        this.bet = bet;
-    }
-
-
-    /*
-    Flip the Card of Hand
-     */
-
-
     public void inGameBet(double betMultiplier) {
         this.bet = (int) Math.round(bet * betMultiplier);
     }

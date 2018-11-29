@@ -22,11 +22,10 @@ public class FlipComplexityActivity extends AppCompatActivity {
      */
     private ImageButton numbersBtn;
     private EditText numUndo;
-
     /**
      * A BoardManager object.
      */
-    private FlipManager flipManager = new FlipManager(4);
+    private FlipManager flipManager = new FlipManager(5, 3);
 
     /**
      * The context of this activity.
@@ -51,6 +50,7 @@ public class FlipComplexityActivity extends AppCompatActivity {
         numUndo.setTransformationMethod(null);
         chooseGameLevel();
         addStartNumberTiles();
+
     }
 
     /**
@@ -74,17 +74,10 @@ public class FlipComplexityActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 difficulty = progress + 3;
-                flipManager = new FlipManager(difficulty);
-                flipManager.getFlip().setNUM_ROWS(difficulty);
-                flipManager.getFlip().setNUM_COLS(difficulty);
-
             }
-
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(FlipComplexityActivity.this, difficulty + " X " +
@@ -103,7 +96,9 @@ public class FlipComplexityActivity extends AppCompatActivity {
             public void onClick(View v) {
                 flipManager.setUndo(chooseUndo());
                 loadsaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
-                Intent startGame = new Intent(FlipComplexityActivity.this, FlipGameActivity.class);
+                Intent startGame = new Intent(FlipComplexityActivity.this, LevelComplexityActivity.class);
+                startGame.putExtra("difficulty", difficulty);
+                startGame.putExtra("undo", chooseUndo());
                 startActivity(startGame);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 

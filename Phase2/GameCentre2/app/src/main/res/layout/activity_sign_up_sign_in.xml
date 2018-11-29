@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_back"
     tools:context=".SignUpSignInActivity"
-    android:background="@drawable/background_color"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/tvSlidingTiles"
         android:layout_width="0dp"
-        android:layout_height="73dp"
+        android:layout_height="77dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="GameCenter"
+        android:textColor="@color/colorWhite"
         android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,31 +27,35 @@
         android:id="@+id/btSignIn"
         android:layout_width="130dp"
         android:layout_height="55dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Sign In"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:background="@drawable/buttonshape"
         app:layout_constraintBottom_toTopOf="@+id/Changepassword"
-        app:layout_constraintEnd_toEndOf="@+id/Changepassword"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/username_password"
         android:ems="10"
         android:hint="Username"
+        android:textColorHint="@color/colorWhite"
         android:inputType="textPersonName"
+
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -66,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsername"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/colorAccent">
+        app:passwordToggleTint="@color/colorWhite">
 
         <EditText
             android:id="@+id/etPassword"
@@ -76,7 +80,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="155dp"
             android:ems="10"
+            android:background="@drawable/username_password"
             android:hint="Password"
+            android:textColorHint="@color/colorWhite"
             android:inputType="textPassword"
             android:selectAllOnFocus="false"
             android:singleLine="false"
@@ -89,41 +95,31 @@
 
     <TextView
         android:id="@+id/tvSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="106dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="28dp"
         android:text="Register now"
-        android:textColor="#0D47A1"
+        android:textColor="@color/colorWhite"
+        android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/btSignIn"
-        app:layout_constraintStart_toStartOf="@+id/btSignIn"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/etUsername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSlidingTiles"
-        app:srcCompat="@drawable/doge" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Changepassword"
         android:layout_width="255dp"
-        android:layout_height="39dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="18dp"
         android:gravity="center"
         android:text="Want to change Password? Click here!"
-        android:textColor="#0D47A1"
+        android:textSize="18dp"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSignIn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

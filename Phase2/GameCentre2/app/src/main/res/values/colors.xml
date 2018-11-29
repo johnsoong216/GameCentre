@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBJBackground">#237216</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorRed">#ca2934</color>
 </resources>

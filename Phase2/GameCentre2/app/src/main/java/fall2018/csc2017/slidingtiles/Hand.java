@@ -1,5 +1,8 @@
 package fall2018.csc2017.slidingtiles;
-
+/*
+A hand of maximum five cards, it can draw card from deck and detect double, Blackjack, or insurance
+condition
+ */
 
 import android.support.annotation.NonNull;
 
@@ -9,66 +12,93 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class Hand implements Serializable, Iterable<Card>{
+public class Hand implements Serializable, Iterable<Card> {
+    /*
+    A list of Cards
+     */
     private List<Card> cards = new ArrayList<>();
+    /*
+    The boolean to detect if the hand allows double action, default in false contdition
+     */
+    private boolean allowDouble = false;
 
-    public boolean isAllowDouble() {
+    /*
+    Return if the hand has 9, 10 or 11 points
+     */
+    boolean isAllowDouble() {
         return allowDouble;
     }
 
-    private boolean allowDouble = false;
-
-    public void drawcard(Deck deck){
+    /*
+    Draw a card from deck
+     */
+    void drawCard(Deck deck) {
         cards.add(deck.popCard());
     }
 
-    public int getPoints(){
+    /*
+    Return the point value of the hand
+     */
+    int getPoints() {
         int points = 0;
         boolean hasAces = false;
         boolean hasDouble = false;
-        for (Card c: cards){
+        for (Card c : cards) {
             points += c.getInGameValue();
             /*
             Check for Aces
              */
-            if (c.getInGameValue() == 1){
+            if (c.getInGameValue() == 1) {
                 hasAces = true;
             }
 
-            if (c.getInGameValue() == 10 || c.getInGameValue() == 9 || c.getInGameValue() == 8){
+            if (c.getInGameValue() == 10 || c.getInGameValue() == 9 || c.getInGameValue() == 8) {
                 hasDouble = true;
-            }}
-        if (points >= 9 && points <= 11){
+            }
+        }
+        if (points >= 9 && points <= 11) {
             allowDouble = true;
         }
-        if (hasAces){
-            if (hasDouble){
+        if (hasAces) {
+            if (hasDouble) {
                 allowDouble = true;
             }
-            return points > 11 ? points: points + 10;
+            return points > 11 ? points : points + 10;
         }
         return points;
     }
 
-    public boolean checkBlackJack(){
+    /*
+    check if the hand contains a blackjack
+     */
+    boolean checkBlackJack() {
         return (getPoints() == 21 && getHandSize() == 2);
     }
+
     /*
     Exceeds 21
      */
-    public boolean goBusted(){
+    boolean goBusted() {
         return getPoints() > 21;
     }
 
-    public int getHandSize(){
+    /*
+    Return the size of the hand
+     */
+    int getHandSize() {
         return cards.size();
     }
 
     /*
     Return if the first card is an ace
      */
-    public boolean checkFirstAce(){return cards.get(0).getInGameValue() == 1;}
+    boolean checkFirstAce() {
+        return cards.get(0).getInGameValue() == 1;
+    }
 
+    /*
+    Return the background id for the card at the position
+     */
     public int getCardBackGround(int position) {
         return cards.get(position).getBackground();
     }
@@ -78,6 +108,7 @@ public class Hand implements Serializable, Iterable<Card>{
     public Iterator iterator() {
         return new HandIterator();
     }
+
     private class HandIterator implements Iterator<Card> {
         /**
          * The index of card in hand

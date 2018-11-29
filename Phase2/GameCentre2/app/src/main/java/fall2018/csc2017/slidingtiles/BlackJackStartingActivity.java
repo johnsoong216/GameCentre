@@ -173,7 +173,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
      * Switch to the BlackJackGameActivity view to play the game.
      */
     private void switchToGame() {
-        Intent tmp = new Intent(this, BlackJackGameActivity.class);
+        Intent tmp = new Intent(this, BlackJackComplexityActivity.class);
         loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
         startActivity(tmp);
     }

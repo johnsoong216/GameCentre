@@ -18,7 +18,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <Button
-        android:id="@+id/StartButton"
+        android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
-        android:layout_toStartOf="@+id/StartButton"
+        android:layout_toStartOf="@+id/LoginButton"
         android:text="Load Saved Game" />
 
     <Button
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
-        android:layout_toEndOf="@+id/StartButton"
+        android:layout_toEndOf="@+id/LoginButton"
         android:text="Save Game" />
 
 

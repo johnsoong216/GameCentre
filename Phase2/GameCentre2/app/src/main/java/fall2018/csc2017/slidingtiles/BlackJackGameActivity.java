@@ -25,14 +25,14 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView[] playerCards;
     private ImageView[] dealerCards;
     private String username;
-    private Loadsave loadsaveManager;
+    private Loadsave loadSaveManager;
     private Context context;
     private TextView chipsTotal;
+    private int difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadsaveManager = new Loadsave(context);
         setContentView(R.layout.activity_black_jack_game);
         playerCards = new ImageView[]{findViewById(R.id.playerCard1), findViewById(R.id.playerCard2)
                 , findViewById(R.id.playerCard3), findViewById(R.id.playerCard4), findViewById(R.id.playerCard5)};
@@ -41,22 +41,24 @@ public class BlackJackGameActivity extends AppCompatActivity {
         doubleButton = findViewById(R.id.btDouble);
         newRoundButton = findViewById(R.id.btNewRound);
         chipsTotal = findViewById(R.id.chipsTotal);
-//        betAmount = findViewById(R.id.betAmount);
-//        betAmount.setTransformationMethod(null);
         user = Session.getCurrentUser();
         username = user.getUsername();
         context = this;
-        loadsaveManager = new Loadsave(context);
-        blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack");
+        loadSaveManager = new Loadsave(context);
+        blackJackManager = (BlackJackManager) loadSaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack");
         hitButton = findViewById(R.id.btHit);
         standButton = findViewById(R.id.btStand);
         hintButton = findViewById(R.id.btHint);
+        difficulty = blackJackManager.getComplexity();
         setButtonOnOff(false);
         addHitButtonListener();
         addNewRoundButtonListener();
         addStandButtonListener();
         addDoubleButtonListener();
         addHintButtonListener();
+        if(difficulty != 1) {
+            hintButton.setEnabled(false);
+        }
     }
 
     protected void onResume() {
@@ -68,7 +70,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
 
     protected void onPause() {
         super.onPause();
-        loadsaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
+        loadSaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
     }
 
     /*
@@ -174,10 +176,14 @@ public class BlackJackGameActivity extends AppCompatActivity {
         }
         int chips = blackJackManager.getChips();
         int[] winDrawLoss = blackJackManager.getWinDrawLoss();
-        if (deck.remainingCard() < 26) {
+        if(difficulty == 3){
             deck = new Deck();
         }
-        blackJackManager = new BlackJackManager(new BlackJackGame(deck), chips, winDrawLoss);
+        else if (deck.remainingCard() < 26) {
+            deck = new Deck();
+        }
+        blackJackManager = new BlackJackManager(new BlackJackGame(deck,
+                blackJackManager.getBlackJackGame().getBet()), chips, winDrawLoss);
         chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
         setButtonOnOff(true);
     }
@@ -240,5 +246,12 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 standButton.setEnabled(true);
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent backToMain = new Intent(BlackJackGameActivity.this, BlackJackStartingActivity.class);
+        BlackJackGameActivity.this.startActivity(backToMain);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }

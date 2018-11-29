@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".SignUpSignInActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +19,7 @@
         <activity android:name=".GameActivity" />
         <activity android:name=".StartingActivity" />
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".SignUpSignInActivity" />
         <activity
             android:name=".ScoreActivity"
             android:label="@string/title_activity_global_score_board"
@@ -37,8 +38,9 @@
         <activity android:name=".FlipScoreBoardActivity" />
         <activity android:name=".BlackJackStartingActivity" />
         <activity android:name=".BlackJackGameActivity" />
-        <activity android:name=".FlipScoreActivity"></activity>
+        <activity android:name=".FlipScoreActivity" />
         <activity android:name=".ScoreBoardSelectionActivity" />
+        <activity android:name=".BlackJackComplexityActivity"></activity>
     </application>
 
 </manifest>

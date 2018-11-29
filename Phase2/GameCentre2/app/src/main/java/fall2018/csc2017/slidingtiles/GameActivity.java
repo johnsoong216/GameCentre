@@ -91,7 +91,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         loadsaveManager = new Loadsave(context);
         boardManager = (BoardManager) loadsaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
         createTileButtons(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_board_main);
 
 
         // Add View to activity
@@ -245,8 +245,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
-        Intent backtomain = new Intent(GameActivity.this, StartingActivity.class);
-        GameActivity.this.startActivity(backtomain);
+        Intent backToMain = new Intent(GameActivity.this, StartingActivity.class);
+        GameActivity.this.startActivity(backToMain);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }
