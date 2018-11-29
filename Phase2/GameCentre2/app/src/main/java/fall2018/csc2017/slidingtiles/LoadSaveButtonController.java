@@ -98,6 +98,19 @@ abstract class LoadSaveButtonController {
         });
     }
 
+    void resume(Button saveButton, Button resumeButton, Button loadButton){
+        gameManager = loadSaveManager.loadFromFile(saveFile, username, gameType);
+        if (gameManager == null) {
+            loadButton.setEnabled(false);
+            saveButton.setEnabled(false);
+            resumeButton.setEnabled(false);
+        } else {
+            loadButton.setEnabled(true);
+            saveButton.setEnabled(true);
+            resumeButton.setEnabled(true);
+        }
+    }
+
     abstract void addNewGameButtonListener(Button newGameButton);
 
     /**
