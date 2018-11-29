@@ -31,7 +31,6 @@ public class ComplexityActivity extends AppCompatActivity {
      * A BoardManager object.
      */
     private BoardManager boardManager = new BoardManager(4);
-    private FlipManager flipManager = new FlipManager(4);
 
     /**
      * The context of this activity.

@@ -90,8 +90,8 @@ public class FlipIt extends Observable implements Serializable, Iterable<Tile> {
 
         if (item1.getBackground() == R.drawable.back) {
 
-            item1.setBackground(R.drawable.login_background);
-        } else if (item1.getBackground() == R.drawable.login_background) {
+            item1.setBackground(R.drawable.flip_it);
+        } else if (item1.getBackground() == R.drawable.flip_it) {
 
             item1.setBackground(R.drawable.back);
         }

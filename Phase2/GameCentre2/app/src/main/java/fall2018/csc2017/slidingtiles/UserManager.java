@@ -26,7 +26,7 @@ class UserManager {
     }
 
     /**
-     * Checks if the user's information is correct to perform a login action.
+     * Checks if the user's information is correct to perform a login1 action.
      * @param username this user's username.
      * @param password this user's password.
      * @return whether or not a user can sign in.
