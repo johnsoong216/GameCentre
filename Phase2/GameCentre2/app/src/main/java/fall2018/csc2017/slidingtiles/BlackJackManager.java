@@ -40,7 +40,7 @@ public class BlackJackManager extends GameManager implements Serializable {
     Complexity
      */
 
-    private int complexity;
+    private double complexity;
 
 
     /*
@@ -189,14 +189,14 @@ User chooses to end Game
     /*
     return the complexity for the game
      */
-    public int getComplexity() {
+    public double getComplexity() {
         return complexity;
     }
 
     /*
     set the complexity for the game
      */
-    public void setComplexity(int complexity) {
+    public void setComplexity(double complexity) {
         this.complexity = complexity;
     }
     /*

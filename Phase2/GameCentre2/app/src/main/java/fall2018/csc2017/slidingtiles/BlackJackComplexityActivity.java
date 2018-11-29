@@ -91,7 +91,7 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
         easyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blackJackManager.setComplexity(1);
+                blackJackManager.setComplexity(0.8);
                 switchToGame();
             }
         });
@@ -101,7 +101,7 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
         normalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blackJackManager.setComplexity(2);
+                blackJackManager.setComplexity(1);
                 switchToGame();
             }
         });
@@ -111,7 +111,7 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
         hardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blackJackManager.setComplexity(3);
+                blackJackManager.setComplexity(1.2);
                 switchToGame();
             }
         });
