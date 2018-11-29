@@ -51,9 +51,9 @@
 
     <ImageView
         android:id="@+id/dealerCard4"
-        android:layout_width="0dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="63dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="11dp"
         app:layout_constraintEnd_toStartOf="@+id/dealerCard5"
         app:layout_constraintStart_toEndOf="@+id/dealerCard3"
@@ -138,8 +138,8 @@
 
     <ImageView
         android:id="@+id/playerCard4"
-        android:layout_width="0dp"
-        android:layout_height="90dp"
+        android:layout_width="66dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="11dp"
         android:layout_marginBottom="212dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -175,8 +175,8 @@
 
     <ImageView
         android:id="@+id/playerCard1"
-        android:layout_width="0dp"
-        android:layout_height="94dp"
+        android:layout_width="63dp"
+        android:layout_height="80dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="212dp"
@@ -207,6 +207,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="43dp"
         android:layout_marginBottom="344dp"
+        android:background="@color/colorWhite"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -220,6 +221,7 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="50dp"
+        android:background="@color/colorWhite"
         android:text="Hint"
         app:layout_constraintBottom_toTopOf="@+id/playerCard4"
         app:layout_constraintEnd_toEndOf="parent"

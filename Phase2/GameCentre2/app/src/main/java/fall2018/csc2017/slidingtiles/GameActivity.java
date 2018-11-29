@@ -91,7 +91,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         loadsaveManager = new Loadsave(context);
         boardManager = (BoardManager) loadsaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
         createTileButtons(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_board_main);
 
 
         // Add View to activity
