@@ -48,7 +48,7 @@ public class BoardManager extends GameManager{
      *
      * @return the number of steps the user has made.
      */
-    int getStepcounter() {
+    int getStepCounter() {
         return stepcounter;
     }
 
@@ -57,7 +57,7 @@ public class BoardManager extends GameManager{
      *
      * @param stepcounter number of steps taken.
      */
-    void setStepcounter(int stepcounter) {
+    void setStepCounter(int stepcounter) {
         this.stepcounter = stepcounter;
     }
 

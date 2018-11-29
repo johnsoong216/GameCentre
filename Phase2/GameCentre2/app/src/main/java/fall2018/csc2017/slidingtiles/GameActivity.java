@@ -143,8 +143,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
                                 timer = boardManager.getTimer();
                                 timer++;
                                 boardManager.setTimer(timer);
-                                stepcounter = boardManager.getStepcounter();
-                                boardManager.setStepcounter(stepcounter);
+                                stepcounter = boardManager.getStepCounter();
+                                boardManager.setStepCounter(stepcounter);
                                 scoreStepTimer.setText("Timer: " + String.valueOf(timer) + "s" + "  " + "Steps: " + stepcounter);
                                 currentScore.setText("Current Score: " + String.valueOf(boardManager.getScore()));
                             }
