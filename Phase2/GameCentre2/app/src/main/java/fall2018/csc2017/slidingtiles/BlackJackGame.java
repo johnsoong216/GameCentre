@@ -31,7 +31,7 @@ public class BlackJackGame implements Serializable {
         this.deck = deck;
         this.playerHand = new Hand();
         this.dealerHand = new Hand();
-        this.bet = 200;
+        this.bet = bet;
         startingHand();
     }
 
@@ -44,10 +44,10 @@ public class BlackJackGame implements Serializable {
     }
 
     private void startingHand() {
-        dealerHand.drawcard(deck);
-        dealerHand.drawcard(deck);
-        playerHand.drawcard(deck);
-        playerHand.drawcard(deck);
+        dealerHand.drawCard(deck);
+        dealerHand.drawCard(deck);
+        playerHand.drawCard(deck);
+        playerHand.drawCard(deck);
         if (playerHand.checkBlackJack() &&
                 !dealerHand.checkBlackJack()) {
             inGameBet(1.5);
@@ -89,14 +89,14 @@ public class BlackJackGame implements Serializable {
     Draw a card for dealer
      */
     public void dealerDrawCard() {
-        dealerHand.drawcard(this.deck);
+        dealerHand.drawCard(this.deck);
     }
 
     /*
     Draw a card for dealer
      */
     public void playerDrawCard() {
-        playerHand.drawcard(this.deck);
+        playerHand.drawCard(this.deck);
     }
 
     /*

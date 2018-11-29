@@ -21,6 +21,11 @@ public class Deck implements Serializable, Iterable<Card> {
     private Stack<Card> cardStack;
 
     /*
+    a card stack that is not shuffled
+     */
+    private Stack<Card> notShuffledCardStack = new Stack<Card>();
+
+    /*
     create a new deck
      */
     private Stack copiedStack;
@@ -35,13 +40,15 @@ public class Deck implements Serializable, Iterable<Card> {
     private Stack<Card> newDeck() {
         List<Card> cards = new ArrayList<>();
         Stack<Card> allCards = new Stack<>();
-        for (int value = 1; value != 14; value++) {
-            for (int suit = 0; suit != 4; suit++) {
+        for (int suit = 0; suit != 4; suit++){
+            for (int value = 1; value != 14; value++) {
                 Card card = new Card(suit, value);
                 cards.add(card);
             }
         }
-
+        for (int i = 0; i != 52; i++) {
+            notShuffledCardStack.push(cards.get(i));
+        }
         Collections.shuffle(cards);
         for (int i = 0; i != 52; i++) {
             allCards.push(cards.get(i));
@@ -61,6 +68,13 @@ public class Deck implements Serializable, Iterable<Card> {
      */
     int remainingCard() {
         return cardStack.size();
+    }
+
+    /*
+    Set the deck to 52 cards not shuffled state for unit test
+     */
+    void setNotShuffled() {
+        cardStack = notShuffledCardStack;
     }
 
     @NonNull
