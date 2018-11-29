@@ -22,6 +22,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private Button standButton;
     private Button newRoundButton;
     private Button hintButton;
+    private Button insuranceButton;
     private ImageView[] playerCards;
     private ImageView[] dealerCards;
     private String username;
@@ -40,6 +41,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 , findViewById(R.id.dealerCard3), findViewById(R.id.dealerCard4), findViewById(R.id.dealerCard5)};
         doubleButton = findViewById(R.id.btDouble);
         newRoundButton = findViewById(R.id.btNewRound);
+        insuranceButton = findViewById(R.id.btInsurance);
         chipsTotal = findViewById(R.id.chipsTotal);
         user = Session.getCurrentUser();
         username = user.getUsername();
@@ -50,18 +52,18 @@ public class BlackJackGameActivity extends AppCompatActivity {
         standButton = findViewById(R.id.btStand);
         hintButton = findViewById(R.id.btHint);
         difficulty = blackJackManager.getComplexity();
+
         setButtonOnOff(false);
         addHitButtonListener();
         addNewRoundButtonListener();
         addStandButtonListener();
         addDoubleButtonListener();
         addHintButtonListener();
+        addInsuranceButtonListener();
         if(difficulty != 0.8) {
             hintButton.setEnabled(false);
         }
-        if (!blackJackManager.checkDouble()){
-            doubleButton.setEnabled(false);
-        }
+
     }
 
     protected void onResume() {
@@ -102,9 +104,9 @@ public class BlackJackGameActivity extends AppCompatActivity {
                                              Hand playerHand = blackJackManager.getBlackJackGame().getPlayerHand();
                                              Hand dealerHand = blackJackManager.getBlackJackGame().getDealerHand();
                                              int index = playerHand.getHandSize() - 1;
+                                             Toast.makeText(context, "Your Point is" + playerHand.getPoints(), Toast.LENGTH_SHORT).show();
                                              playerCards[index].setImageResource(playerHand.getCardBackGround(index));
                                              if (blackJackManager.isOver()) {
-                                                 blackJackManager.settleChips();
                                                  dealerCards[1].setImageResource(dealerHand.getCardBackGround(1));
                                                  setButtonOnOff(true);
                                              }
@@ -124,7 +126,6 @@ public class BlackJackGameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 blackJackManager.stand();
                 int index = 0;
-                Log.d("TAG", "DealerHandSizeStand" + blackJackManager.getBlackJackGame().getDealerHand().getHandSize());
                 for (Card card : blackJackManager.getBlackJackGame().getDealerHand()) {
                     dealerCards[index].setImageResource(card.getBackground());
                     index++;
@@ -144,7 +145,6 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 blackJackManager.douBle();
                 playerCards[2].setImageResource(blackJackManager.getBlackJackGame().getPlayerHand().getCardBackGround(2));
                 blackJackManager.stand();
-                Log.d("TAG", "DealerHandSizeDouble" + blackJackManager.getBlackJackGame().getDealerHand().getHandSize());
                 int index = 0;
                 for (Card card : blackJackManager.getBlackJackGame().getDealerHand()) {
                     dealerCards[index].setImageResource(card.getBackground());
@@ -173,23 +173,30 @@ public class BlackJackGameActivity extends AppCompatActivity {
      * @param deck
      */
     private void startNewRound(Deck deck) {
+        int oldChips = blackJackManager.getChips();
+
         blackJackManager.settleChips();
+
         if (blackJackManager.isGameOver()){
             Intent toSummary = new Intent(this,BlackJackSummaryActivity.class);
             startActivity(toSummary);
         }
+
         int chips = blackJackManager.getChips();
-        int[] winDrawLoss = blackJackManager.getWinDrawLoss();
+
+//        int[] winDrawLoss = blackJackManager.getWinDrawLoss();
+
+        Toast.makeText(context, "Your Net Gain for Last Round is: $ " + (chips - oldChips), Toast.LENGTH_SHORT).show();
+
         if(difficulty == 1.2){
             deck = new Deck();
         }
         else if (deck.remainingCard() < 26) {
             deck = new Deck();
         }
-        blackJackManager = new BlackJackManager(new BlackJackGame(deck,
-                blackJackManager.getBlackJackGame().getBet()), chips, winDrawLoss);
+
+        blackJackManager.newGame(deck);
         chipsTotal.setText(MessageFormat.format("Total Chips:{0}", blackJackManager.getChips()));
-        setButtonOnOff(true);
     }
 
     /**
@@ -221,7 +228,6 @@ public class BlackJackGameActivity extends AppCompatActivity {
             }
         }
 
-
         if (blackJackManager.isOver()) {
             setButtonOnOff(true);
         }
@@ -236,6 +242,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
             hitButton.setEnabled(false);
             doubleButton.setEnabled(false);
             standButton.setEnabled(false);
+            insuranceButton.setEnabled(false);
         } else {
             if (blackJackManager.getBlackJackGame().getPlayerHand().checkBlackJack()) {
                 newRoundButton.setEnabled(true);
@@ -245,11 +252,34 @@ public class BlackJackGameActivity extends AppCompatActivity {
                 if (blackJackManager.checkDouble()) {
                     doubleButton.setEnabled(true);
                 }
+                else {
+                    doubleButton.setEnabled(false);
+                }
+                if (blackJackManager.getBlackJackGame().getDealerHand().checkFirstAce()){
+                    insuranceButton.setEnabled(true);
+                }
+                else {
+                    insuranceButton.setEnabled(false);
+                }
                 newRoundButton.setEnabled(false);
                 hitButton.setEnabled(true);
                 standButton.setEnabled(true);
             }
         }
+    }
+
+
+    /**
+     * Create an Insurance Button
+     */
+    private void addInsuranceButtonListener() {
+        insuranceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                blackJackManager.insurance();
+                insuranceButton.setEnabled(false);
+            }
+        });
     }
     @Override
     public void onBackPressed() {

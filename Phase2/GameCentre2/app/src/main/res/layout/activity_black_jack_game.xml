@@ -197,10 +197,10 @@
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="344dp"
+        android:text="TextView"
         android:textColor="@color/colorWhite"
         android:textSize="22dp"
         android:textStyle="bold"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -217,5 +217,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/deck"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btInsurance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="7dp"
+        android:text="Buy Insurance"
+        app:layout_constraintStart_toStartOf="@+id/chipsTotal"
+        app:layout_constraintTop_toTopOf="@+id/deck" />
 
 </android.support.constraint.ConstraintLayout>

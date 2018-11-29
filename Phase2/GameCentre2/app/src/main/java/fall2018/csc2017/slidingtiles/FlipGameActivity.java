@@ -189,9 +189,9 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         }
         if (flipManager.puzzleSolved()) {
             user.setScore(flipManager.getScore());
-            Intent scoreboard = new Intent(FlipGameActivity.this, ScoreActivity.class);
-            scoreboard.putExtra("game", "flip_it");
-            FlipGameActivity.this.startActivity(scoreboard);
+            Intent toScore = new Intent(FlipGameActivity.this, ScoreActivity.class);
+            toScore.putExtra("game", "flip_it");
+            FlipGameActivity.this.startActivity(toScore);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
 
