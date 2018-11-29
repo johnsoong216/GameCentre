@@ -23,8 +23,7 @@ class BlackJackLoadSaveButtonController extends LoadSaveButtonController {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int[] winDrawLoss = {0,0,0};
-                gameManager = new BlackJackManager(new BlackJackGame(), 1000, winDrawLoss);
+                gameManager = new BlackJackManager(new BlackJackGame());
                 switchToGame();
             }
         });
