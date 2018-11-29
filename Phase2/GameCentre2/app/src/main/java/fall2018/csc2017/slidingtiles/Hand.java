@@ -99,7 +99,7 @@ public class Hand implements Serializable, Iterable<Card> {
     /*
     Return the background id for the card at the position
      */
-    int getCardBackGround(int position) {
+    public int getCardBackGround(int position) {
         return cards.get(position).getBackground();
     }
 

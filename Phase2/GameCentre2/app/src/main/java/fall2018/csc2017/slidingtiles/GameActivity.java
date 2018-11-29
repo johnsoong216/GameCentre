@@ -245,8 +245,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
-        Intent backtomain = new Intent(GameActivity.this, StartingActivity.class);
-        GameActivity.this.startActivity(backtomain);
+        Intent backToMain = new Intent(GameActivity.this, StartingActivity.class);
+        GameActivity.this.startActivity(backToMain);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

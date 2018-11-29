@@ -247,4 +247,11 @@ public class BlackJackGameActivity extends AppCompatActivity {
             }
         }
     }
+    @Override
+    public void onBackPressed() {
+        Intent backToMain = new Intent(BlackJackGameActivity.this, BlackJackStartingActivity.class);
+        BlackJackGameActivity.this.startActivity(backToMain);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+    }
 }

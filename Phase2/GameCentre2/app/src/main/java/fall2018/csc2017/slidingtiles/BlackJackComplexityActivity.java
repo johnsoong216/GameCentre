@@ -55,9 +55,8 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
      */
     private void chooseBet() {
         SeekBar seekBar = findViewById(R.id.sbDifficulty);
-
-        seekBar.setProgress(100);
-        seekBar.incrementProgressBy(100);
+        seekBar.setMin(100);
+        seekBar.setProgress(150);
         seekBar.setMax(300);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
