@@ -59,6 +59,9 @@ public class BlackJackGameActivity extends AppCompatActivity {
         if(difficulty != 0.8) {
             hintButton.setEnabled(false);
         }
+        if (!blackJackManager.checkDouble()){
+            doubleButton.setEnabled(false);
+        }
     }
 
     protected void onResume() {
@@ -112,8 +115,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
         );
     }
 
-    /*
-    Create a stand button
+    /**
+     * Create a stand button
      */
     private void addStandButtonListener() {
         standButton.setOnClickListener(new View.OnClickListener() {
@@ -131,8 +134,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    Create a double button
+    /**
+     * Create a double button
      */
     private void addDoubleButtonListener() {
         doubleButton.setOnClickListener(new View.OnClickListener() {
@@ -152,8 +155,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    Create a hint button for the user to see hint for the game
+    /**
+     * Create a hint button for the user to see hint for the game
      */
     private void addHintButtonListener() {
         hintButton.setOnClickListener(new View.OnClickListener() {
@@ -165,8 +168,9 @@ public class BlackJackGameActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    Start a new round of game
+    /**
+     * Start a new round of game
+     * @param deck
      */
     private void startNewRound(Deck deck) {
         blackJackManager.settleChips();
@@ -188,9 +192,9 @@ public class BlackJackGameActivity extends AppCompatActivity {
         setButtonOnOff(true);
     }
 
-    /*
-    Set the player & dealer's hand image with information in the game and enabling or disabling
-    buttons depends on situation
+    /**
+     * Set the player & dealer's hand image with information in the game and enabling or disabling
+     *     buttons depends on situation
      */
     private void setHandImage(Hand playerHand, Hand dealerHand) {
         int playerViewIndex = 0;
@@ -223,8 +227,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    enabling or disabling button depend on if the game is over or not
+    /**
+     * enabling or disabling button depend on if the game is over or not
      */
     private void setButtonOnOff(boolean over) {
         if (over) {

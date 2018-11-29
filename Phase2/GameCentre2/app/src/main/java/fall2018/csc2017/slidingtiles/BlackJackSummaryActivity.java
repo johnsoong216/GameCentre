@@ -26,11 +26,11 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_black_jack_summary);
         context = this;
         loadsaveManager = new Loadsave(context);
+        user = Session.getCurrentUser();
         blackJackManager =  (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack");
         gameOutcome = findViewById(R.id.gameOutcome);
         earnings = findViewById(R.id.earnings);
         checkScore = findViewById(R.id.checkScore);
-        user = Session.getCurrentUser();
         gameOutcome.setText(String.format("WIN: %d\nDRAW: %d\nLOSS: %d", blackJackManager.getWinDrawLoss()[0], blackJackManager.getWinDrawLoss()[1], blackJackManager.getWinDrawLoss()[2]));
         earnings.setText(String.format("Total Earnings: $%d", blackJackManager.getChips() - 100));
         checkScoreListener();
