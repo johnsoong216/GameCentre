@@ -35,7 +35,7 @@ public class BoardMovementControllerTest {
     @Test
     public void testSetBoardmanager() {
         setUp();
-        mController.setBoardManager(boardManager);
-        assertEquals(boardManager, mController.getBoardManager());
+        mController.setManager(boardManager);
+        assertEquals(boardManager, mController.getManager());
     }
 }

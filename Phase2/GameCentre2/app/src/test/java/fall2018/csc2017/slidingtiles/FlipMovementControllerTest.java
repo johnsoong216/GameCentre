@@ -37,8 +37,8 @@ public class FlipMovementControllerTest {
     @Test
     public void testSetBoardmanager() {
         setUp();
-        mController.setFlipManager(flipManager);
-        assertEquals(flipManager, mController.getFlipManager());
+        mController.setManager(flipManager);
+        assertEquals(flipManager, mController.getManager());
     }
 
     

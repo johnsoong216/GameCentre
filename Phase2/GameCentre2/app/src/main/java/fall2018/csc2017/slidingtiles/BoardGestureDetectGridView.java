@@ -16,7 +16,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.GridView;
 
-public class GestureDetectGridView extends GridView {
+public class BoardGestureDetectGridView extends GridView {
     public static final int SWIPE_MIN_DISTANCE = 100;
     //public static final int SWIPE_MAX_OFF_PATH = 100;
     //public static final int SWIPE_THRESHOLD_VELOCITY = 100;
@@ -26,24 +26,24 @@ public class GestureDetectGridView extends GridView {
     private float mTouchX;
     private float mTouchY;
 
-    public GestureDetectGridView(Context context) {
+    public BoardGestureDetectGridView(Context context) {
         super(context);
         init(context);
     }
 
-    public GestureDetectGridView(Context context, AttributeSet attrs) {
+    public BoardGestureDetectGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public GestureDetectGridView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BoardGestureDetectGridView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP) // API 21
-    public GestureDetectGridView(Context context, AttributeSet attrs, int defStyleAttr,
-                                 int defStyleRes) {
+    public BoardGestureDetectGridView(Context context, AttributeSet attrs, int defStyleAttr,
+                                      int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
@@ -54,7 +54,7 @@ public class GestureDetectGridView extends GridView {
 
             @Override
             public boolean onSingleTapConfirmed(MotionEvent event) {
-                int position = GestureDetectGridView.this.pointToPosition
+                int position = BoardGestureDetectGridView.this.pointToPosition
                         (Math.round(event.getX()), Math.round(event.getY()));
 
                 mController.processTapMovement(context, position);
@@ -102,7 +102,7 @@ public class GestureDetectGridView extends GridView {
     }
 
     public void setGameManager(GameManager gameManager) {
-        mController.setBoardManager((BoardManager)gameManager);
+        mController.setManager((BoardManager)gameManager);
     }
 
 

@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
     private int counter;
 
     // Grid View and calculated column height and width based on device size
-    private GestureDetectGridView gridView;
+    private BoardGestureDetectGridView gridView;
     private static int columnWidth, columnHeight;
 
     /**
