@@ -2,25 +2,28 @@ package fall2018.csc2017.slidingtiles;
 
 import java.io.Serializable;
 
+/**
+ * A class of poker cards, it can find the id, background id and the in game value of a card
+ */
 public class Card implements Serializable {
-    /*
-    the value of the card
-    Ace = 1
-    Jack = 11
-    Queen = 12
-    King = 13
+    /**
+     * the value of the card
+     * Ace = 1
+     * Jack = 11
+     * Queen = 12
+     * King = 13
      */
     private int value;
-    /*
-    suit of the card
+    /**
+     * suit of the card
      */
     private int suit;
-    /*
-    The background image the card corresponding to
-    0 spades
-    1 hearts
-    2 clubs
-    3 diamonds
+    /**
+     * The background image the card corresponding to
+     * 0 spades
+     * 1 hearts
+     * 2 clubs
+     * 3 diamonds
      */
     private int background;
 
@@ -193,22 +196,28 @@ public class Card implements Serializable {
         }
     }
 
-    /*
-    Actual Id: from A to K used for Background Images
+    /**
+     * Actual Id: from A to K used for Background Images
+     *
+     * @return actual id for the card
      */
     int getId() {
         return suit * 13 + value;
     }
 
-    /*
-    Geting the in game value of the card
+    /**
+     * Geting the in game value of the card
+     *
+     * @return in game value of the card
      */
     int getInGameValue() {
         return value > 10 ? 10 : value;
     }
 
-    /*
-    Getting the background id of the card
+
+    /**
+     * Getting the background id of the card
+     * @return background id
      */
     int getBackground() {
         return background;

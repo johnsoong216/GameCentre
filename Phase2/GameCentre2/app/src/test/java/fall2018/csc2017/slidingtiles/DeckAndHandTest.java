@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class DeckAndBlackJackTest {
+public class DeckAndHandTest {
     /*
     Create decks, cards, and BlackJackGame for test
      */
@@ -17,6 +17,16 @@ public class DeckAndBlackJackTest {
     Hand hand1;
     Hand hand2;
     Hand hand3;
+    /*
+    Deck 1 is shuffled deck with 52 cards
+    Deck 2 is not shuffled and the first card to be drawn is diamonds king
+    Deck 3 is not shuffled and 10 cards are drawn from the deck, the first card to be drawn is
+    diamond 3
+    Deck 4 is not shuffled and 12 cards are drawn from the deck, the first card to be drawn is
+    diamond ace
+    Card 1 is diamond king
+    Card 2 is diamond 3
+     */
     private void setUpDeck(){
         deck1 = new Deck();
         deck2 = new Deck();
@@ -49,6 +59,10 @@ public class DeckAndBlackJackTest {
         hand2.drawCard(deck2);
         hand3.drawCard(deck2);
     }
+
+    /*
+    Test whether pop cards work
+     */
     @Test
     public void testPopCard1() {
         setUpDeck();
@@ -61,6 +75,9 @@ public class DeckAndBlackJackTest {
         assertEquals(card2, deck3.popCard());
     }
 
+    /*
+    Test whether counting the remaining cards works
+     */
     @Test
     public void testRemainingCard1() {
         setUpDeck();
@@ -73,6 +90,9 @@ public class DeckAndBlackJackTest {
         assertEquals(42, deck3.remainingCard());
     }
 
+    /*
+    Test whether the deck iterator works
+     */
     @Test
     public void testDeckIterator() {
         int value = 52;
@@ -83,6 +103,9 @@ public class DeckAndBlackJackTest {
         }
     }
 
+    /*
+    Test whether the setting the deck to not shuffled deck works
+     */
     @Test
     public void testSetNotShuffled() {
         setUpDeck();
@@ -90,6 +113,9 @@ public class DeckAndBlackJackTest {
         assertEquals(new Card(3,13), deck1.popCard());
     }
 
+    /*
+    Test whether drawing cards from deck works
+     */
     @Test
     public void testDrawCard1AndGet1() {
         setUpHand();
@@ -101,19 +127,34 @@ public class DeckAndBlackJackTest {
         assertEquals(20, hand1.getPoints());
     }
 
+    /*
+    Test whether checking the size of hand works
+     */
     @Test
     public void testGetHandSize() {
         setUpHand();
         assertEquals(2, hand1.getHandSize());
     }
 
+    /*
+    Test whether checking the hand go busted works
+     */
     @Test
-    public void testGoBusted() {
+    public void testGoBusted1() {
         setUpHand();
         hand1.drawCard(deck2);
         assertEquals(true, hand1.goBusted());
     }
+    @Test
+    public void testGoBusted2() {
+        setUpHand();
+        assertEquals(false, hand2.goBusted());
+    }
 
+
+    /*
+    Test whether checking the hand is blackjack method works
+     */
     @Test
     public void testCheckBlackJack() {
         setUpHand();
@@ -121,6 +162,9 @@ public class DeckAndBlackJackTest {
         assertEquals(false, hand1.checkBlackJack());
     }
 
+    /*
+    Test whether checking the first card is first ace method works
+     */
     @Test
     public void testFirstAce(){
         setUpHand();
@@ -128,12 +172,18 @@ public class DeckAndBlackJackTest {
         assertEquals(false, hand1.checkFirstAce());
     }
 
+    /*
+    Test whether the getBackGround method gets the correct background of cards
+     */
     @Test
     public void testGetBackGround(){
         setUpHand();
         assertEquals(R.drawable.bj50, hand2.getCardBackGround(1));
     }
 
+    /*
+    Test whether checkDouble method works
+     */
     @Test
     public void testCheckDouble(){
         setUpHand();
@@ -141,6 +191,9 @@ public class DeckAndBlackJackTest {
         assertEquals(true, hand3.isAllowDouble());
     }
 
+    /*
+    Test whether the hand iterator works
+     */
     @Test
     public void testHandIterator(){
         setUpHand();

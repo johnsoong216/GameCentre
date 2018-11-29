@@ -40,6 +40,7 @@
         <activity android:name=".BlackJackGameActivity" />
         <activity android:name=".FlipScoreActivity" />
         <activity android:name=".ScoreBoardSelectionActivity" />
+        <activity android:name=".BlackJackSummaryActivity" />
         <activity android:name=".BlackJackComplexityActivity"></activity>
     </application>
 

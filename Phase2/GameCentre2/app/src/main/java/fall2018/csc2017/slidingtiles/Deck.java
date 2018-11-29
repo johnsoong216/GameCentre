@@ -15,18 +15,19 @@ A deck that contains cards and is iterable
 it can pop card from the deck and create a new deck with 52 shuffled card
  */
 public class Deck implements Serializable, Iterable<Card> {
-    /*
-    the stack of cards
+
+    /**
+     * the stack of cards
      */
     private Stack<Card> cardStack;
 
-    /*
-    a card stack that is not shuffled
+    /**
+     * a card stack that is not shuffled
      */
     private Stack<Card> notShuffledCardStack = new Stack<Card>();
 
-    /*
-    create a new deck
+    /**
+     * create a new deck
      */
     private Stack copiedStack;
 
@@ -34,13 +35,15 @@ public class Deck implements Serializable, Iterable<Card> {
         this.cardStack = newDeck();
     }
 
-    /*
-    Create a stack of cards with 52 shuffled cards
+    /**
+     * Create a stack of cards with 52 shuffled cards
+     *
+     * @return a stack of cards with 52 shuffled cards
      */
     private Stack<Card> newDeck() {
         List<Card> cards = new ArrayList<>();
         Stack<Card> allCards = new Stack<>();
-        for (int suit = 0; suit != 4; suit++){
+        for (int suit = 0; suit != 4; suit++) {
             for (int value = 1; value != 14; value++) {
                 Card card = new Card(suit, value);
                 cards.add(card);
@@ -56,22 +59,28 @@ public class Deck implements Serializable, Iterable<Card> {
         return allCards;
     }
 
-    /*
-    retrun the first card on the deck
+    /**
+     * return the first card on the deck
+     *
+     * @return the first card on the deck
      */
     Card popCard() {
         return cardStack.pop();
     }
 
-    /*
-    Return the number of cards remaining in the deck
+
+    /**
+     * Return the number of cards remaining in the deck
+     *
+     * @return the size of the deck
      */
     int remainingCard() {
         return cardStack.size();
     }
 
-    /*
-    Set the deck to 52 cards not shuffled state for unit test
+
+    /**
+     * Set the deck to 52 cards not shuffled state for unit test
      */
     void setNotShuffled() {
         cardStack = notShuffledCardStack;
