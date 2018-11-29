@@ -37,8 +37,9 @@
         <activity android:name=".FlipScoreBoardActivity" />
         <activity android:name=".BlackJackStartingActivity" />
         <activity android:name=".BlackJackGameActivity" />
-        <activity android:name=".FlipScoreActivity"></activity>
+        <activity android:name=".FlipScoreActivity" />
         <activity android:name=".ScoreBoardSelectionActivity" />
+        <activity android:name=".BlackJackComplexityActivity"></activity>
     </application>
 
 </manifest>
