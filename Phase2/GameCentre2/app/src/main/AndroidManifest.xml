@@ -35,10 +35,8 @@
         <activity android:name=".FlipGameActivity" />
         <activity android:name=".FlipStartingActivity" />
         <activity android:name=".FlipComplexityActivity" />
-        <activity android:name=".FlipScoreBoardActivity" />
         <activity android:name=".BlackJackStartingActivity" />
         <activity android:name=".BlackJackGameActivity" />
-        <activity android:name=".FlipScoreActivity" />
         <activity android:name=".ScoreBoardSelectionActivity" />
         <activity android:name=".BlackJackSummaryActivity" />
         <activity android:name=".LevelComplexityActivity" />

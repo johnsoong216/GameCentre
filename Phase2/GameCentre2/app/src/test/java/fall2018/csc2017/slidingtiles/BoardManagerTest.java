@@ -120,8 +120,8 @@ public class BoardManagerTest {
     @Test
     public void testStepCounter() {
         setUpCorrect();
-        boardManager.setStepcounter(10);
-        assertEquals(10, boardManager.getStepcounter());
+        boardManager.setStepCounter(10);
+        assertEquals(10, boardManager.getStepCounter());
     }
 
     @Test
@@ -135,7 +135,7 @@ public class BoardManagerTest {
     public void testScore() {
         setUp4();
         boardManager.setTimer(20);
-        boardManager.setStepcounter(10);
+        boardManager.setStepCounter(10);
         boardManager.setUndo(3);
         assertEquals(432, boardManager.getScore());
     }
@@ -144,7 +144,7 @@ public class BoardManagerTest {
     public void testScoreLessThan0() {
         setUp4();
         boardManager.setTimer(3000);
-        boardManager.setStepcounter(1000);
+        boardManager.setStepCounter(1000);
         boardManager.setUndo(30);
         assertEquals(0, boardManager.getScore());
     }

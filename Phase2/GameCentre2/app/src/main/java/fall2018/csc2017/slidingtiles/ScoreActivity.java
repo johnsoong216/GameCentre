@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -46,12 +47,14 @@ public class ScoreActivity extends AppCompatActivity {
         Context context = this;
         Loadsave loadsaveManager = new Loadsave(context);
         String gameType = getIntent().getStringExtra("game");
-        scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
+        Log.d("TAG", "Game is " + gameType);
 
+        scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
         if (scoreBoardManager == null) {
             scoreBoardManager = new ScoreBoardManager();
         }
         scoreBoardManager.addScore(user.getUsername(), user.getScore());
+        Log.d("TAG", "User Highest score"  + scoreBoardManager.maxUserScore(user.getUsername()));
 
         currentScore = findViewById(R.id.tvScorez);
         playerHighest = findViewById(R.id.tvHighest);

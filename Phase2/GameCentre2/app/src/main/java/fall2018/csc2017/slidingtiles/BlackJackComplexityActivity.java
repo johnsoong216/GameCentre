@@ -66,14 +66,14 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
      */
     private void chooseBet() {
         SeekBar seekBar = findViewById(R.id.sbDifficulty);
-        seekBar.setMin(100);
-        seekBar.setProgress(150);
-        seekBar.setMax(300);
+        seekBar.setMin(0);
+        seekBar.setMax(200);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                bet = progress;
-                blackJackManager.setBet(progress);
+                bet = 100 + progress;
+                blackJackManager.setInitialBet(bet);
+                blackJackManager.setBet();
             }
 
 
@@ -118,8 +118,9 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
     }
 
     private void switchToGame() {
-        Intent tmp = new Intent(this, BlackJackGameActivity.class);
         loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
+        Intent tmp = new Intent(this, BlackJackGameActivity.class);
+        tmp.putExtra("startBet", bet);
         startActivity(tmp);
     }
 }
