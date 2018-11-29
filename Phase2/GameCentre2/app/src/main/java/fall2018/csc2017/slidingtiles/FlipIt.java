@@ -43,10 +43,22 @@ public class FlipIt extends Observable implements Serializable, Iterable<Tile> {
     int getNUM_COLS() {
         return NUM_COLS;
     }
+
+    /**
+     * Get the total number of tiles.
+     *
+     * @return the total number of tiles of the flip board.
+     */
     int numTiles() {
         return getNUM_COLS() * getNUM_ROWS();
     }
 
+    /**
+     * Get the specific tile.
+     * @param row the row of the flip board.
+     * @param col the column of the flip board.
+     * @return the tile in a specific place.
+     */
     Tile getTile(int row, int col) {
         return tiles[row][col];
     }
@@ -85,6 +97,11 @@ public class FlipIt extends Observable implements Serializable, Iterable<Tile> {
         }
     }
 
+    /**
+     * Change the color of the tile of a specific tile.
+     * @param row the row of the flip board.
+     * @param col the column of the flip board.
+     */
     void changeColor(int row, int col) {
         Tile item1 = tiles[row][col];
 
@@ -99,15 +116,10 @@ public class FlipIt extends Observable implements Serializable, Iterable<Tile> {
         notifyObservers();
     }
 
-    @Override
-    public String toString() {
-        return "Board{" +
-                "tiles=" + Arrays.toString(tiles) +
-                '}';
-    }
-
     @NonNull
-
+    /**
+     * Iterator used for the flip class.
+     */
     public Iterator<Tile> iterator() {
         return new flipIterator();
     }

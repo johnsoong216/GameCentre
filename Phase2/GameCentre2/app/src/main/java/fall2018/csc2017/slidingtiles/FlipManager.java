@@ -12,7 +12,6 @@ public class FlipManager extends GameManager{
      */
     private FlipIt flip;
 
-
     FlipManager(FlipIt flip) {
         this.flip = flip;
     }
@@ -27,9 +26,11 @@ public class FlipManager extends GameManager{
      */
     private int complexity;
 
+    /**
+     * FlipManager constructor
+     */
     FlipManager() {
     }
-
 
     /**
      * A step counter for the number of steps a user made.
@@ -115,9 +116,10 @@ public class FlipManager extends GameManager{
     }
 
     /**
-     * Made a new shuffled board
+     * Made a new flip board
      *
      * @param complexity the complexity of the game.
+     * @param level the level of the game.
      */
     FlipManager(int complexity, int level) {
 
@@ -242,7 +244,10 @@ public class FlipManager extends GameManager{
 
     }
 
-
+    /**
+     *
+     * @return whether the game is solved.
+     */
     boolean puzzleSolved() {
         boolean solved = true;
         for (Tile tile : flip) {
@@ -253,6 +258,10 @@ public class FlipManager extends GameManager{
         return solved;
     }
 
+    /**
+     * Touch a tile, the surrounding four will change color as well
+     * @param position the position of the tile that is being touched.
+     */
     void touchColor(int position) {
 
         int upId = position - this.complexity;

@@ -104,9 +104,5 @@ abstract class LoadSaveButtonController {
     /**
      * Switch to the BlackJackGameActivity view to play the game.
      */
-    void switchToGame() {
-        Intent tmp = new Intent(context, BlackJackComplexityActivity.class);
-        loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
-        context.startActivity(tmp);
-    }
+    abstract void switchToGame();
 }
