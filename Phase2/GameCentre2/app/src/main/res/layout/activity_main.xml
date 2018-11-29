@@ -18,11 +18,31 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/start"
         android:src="@drawable/start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="520dp"
+        android:text="WELCOME TO THE NEW WORLD"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="20"
+        android:shadowDy="20"
+        android:shadowRadius="20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="@+id/gifImageView" />
 
 </android.support.constraint.ConstraintLayout>
