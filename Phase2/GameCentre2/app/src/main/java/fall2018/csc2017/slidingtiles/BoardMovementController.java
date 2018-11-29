@@ -14,6 +14,8 @@ public class BoardMovementController {
         this.boardManager = boardManager;
     }
 
+    public BoardManager getBoardManager() {return boardManager;}
+
     public void processTapMovement(Context context, int position) {
         if (boardManager.isValidTap(position)) {
             boardManager.touchMove(position);
