@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Toast;
-
+/*
+A complexity class that lets the user to choose the game level within each complexity.
+ */
 public class LevelComplexityActivity extends AppCompatActivity {
 
     private FlipManager flipManager = new FlipManager(5, 3);
@@ -17,8 +19,6 @@ public class LevelComplexityActivity extends AppCompatActivity {
     private Context context;
     private String username;
     private Loadsave loadsaveManager;
-    private int difficulty = 3;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,6 @@ public class LevelComplexityActivity extends AppCompatActivity {
         levelSeekBar.setProgress(0);
         levelSeekBar.incrementProgressBy(1);
         levelSeekBar.setMax(2);
-        Log.d("ABC", "difficulty" + difficulty);
         levelSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar levelSeekBar, int levelProgress, boolean levelFromUser) {
