@@ -61,10 +61,4 @@ public class CardTest {
         assertEquals(false ,card1 == card3);
         assertEquals(false, card2 == card3);
     }
-
-    @Test
-    public void equal2() {
-        setUpCards();
-        assertEquals(true ,card4 == card3);
-    }
 }
