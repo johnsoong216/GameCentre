@@ -60,12 +60,12 @@ public class BlackJackManager extends GameManager implements Serializable {
     /*
     Create a new blackjack game manager with chips the player currently has
      */
-    BlackJackManager(BlackJackGame blackJackGame, int chips, int[] winDrawLoss, double complexity, int initialBet) {
+    BlackJackManager(BlackJackGame blackJackGame) {
         this.blackJackGame = blackJackGame;
-        this.chips = chips;
-        this.winDrawLoss = winDrawLoss;
-        this.complexity = complexity;
-        this.initialBet = initialBet;
+        this.chips = 1000;
+        this.winDrawLoss = new int[3];
+//        this.complexity = complexity;
+//        this.initialBet = initialBet;
 //        blackJackGame.setBet(100);
     }
 

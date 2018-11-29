@@ -120,7 +120,6 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
     private void switchToGame() {
         loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
         Intent tmp = new Intent(this, BlackJackGameActivity.class);
-        tmp.putExtra("startBet", bet);
         startActivity(tmp);
     }
 }
