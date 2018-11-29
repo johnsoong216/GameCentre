@@ -3,7 +3,6 @@ package fall2018.csc2017.slidingtiles;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -25,7 +24,7 @@ public class FlipItTest {
         List<Tile> tiles3 = new ArrayList<>();
         for (int tileNum = 0; tileNum != 9; tileNum++) {
             Tile newtile = new Tile(1);
-            newtile.setBackground(R.drawable.login_background);
+            newtile.setBackground(R.drawable.flip_it);
             if (tileNum == 2 || tileNum == 4 || tileNum == 6) {
                 newtile.setBackground(R.drawable.back);
             }
@@ -40,7 +39,7 @@ public class FlipItTest {
         List<Tile> tiles4 = new ArrayList<>();
         for (int tileNum = 0; tileNum != 16; tileNum++) {
             Tile newtile = new Tile(1);
-            newtile.setBackground(R.drawable.login_background);
+            newtile.setBackground(R.drawable.flip_it);
             if (tileNum == 0 || tileNum == 2 || tileNum == 9 || tileNum == 14) {
                 newtile.setBackground(R.drawable.back);
             }
@@ -53,7 +52,7 @@ public class FlipItTest {
         List<Tile> tiles5 = new ArrayList<>();
         for (int tileNum = 0; tileNum != 25; tileNum++) {
             Tile newtile = new Tile(1);
-            newtile.setBackground(R.drawable.login_background);
+            newtile.setBackground(R.drawable.flip_it);
             if (tileNum == 0 || tileNum == 2 || tileNum == 4 || tileNum == 12 || tileNum == 15 || tileNum == 18 || tileNum == 19) {
                 newtile.setBackground(R.drawable.back);
             }
@@ -147,7 +146,7 @@ public class FlipItTest {
     public void testClickFirst4() {
         setUpCorrect();
         clickFirstTile4();
-        assertEquals(R.drawable.login_background, flipManager4.getFlip().getTile(0, 0).getBackground());
+        assertEquals(R.drawable.flip_it, flipManager4.getFlip().getTile(0, 0).getBackground());
         assertEquals(R.drawable.back, flipManager4.getFlip().getTile(0, 1).getBackground());
         assertEquals(R.drawable.back, flipManager4.getFlip().getTile(1, 0).getBackground());
     }
@@ -166,7 +165,7 @@ public class FlipItTest {
     public void testClickFirst5() {
         setUpCorrect();
         clickFirstTile5();
-        assertEquals(R.drawable.login_background, flipManager5.getFlip().getTile(0, 0).getBackground());
+        assertEquals(R.drawable.flip_it, flipManager5.getFlip().getTile(0, 0).getBackground());
         assertEquals(R.drawable.back, flipManager5.getFlip().getTile(0, 1).getBackground());
         assertEquals(R.drawable.back, flipManager5.getFlip().getTile(1, 0).getBackground());
     }

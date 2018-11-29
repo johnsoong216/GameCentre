@@ -18,12 +18,12 @@
         android:gravity="center"
         android:text="Welcome To Flip It \n A Puzzle Game where you must flip the tiles until they are all white"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintBottom_toTopOf="@+id/StartButton"
+        app:layout_constraintBottom_toTopOf="@+id/LoginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/StartButton"
+        android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
@@ -44,10 +44,10 @@
         android:layout_below="@+id/GameText"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="212dp"
-        android:layout_toStartOf="@+id/StartButton"
+        android:layout_toStartOf="@+id/LoginButton"
         android:text="Load Saved Game"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/StartButton"
+        app:layout_constraintEnd_toStartOf="@+id/LoginButton"
         app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -59,11 +59,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="164dp"
-        android:layout_toEndOf="@+id/StartButton"
+        android:layout_toEndOf="@+id/LoginButton"
         android:text="Save Game"
         app:layout_constraintBottom_toTopOf="@+id/scoreBoardButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/StartButton" />
+        app:layout_constraintStart_toEndOf="@+id/LoginButton" />
 
 
     <Button
@@ -95,7 +95,7 @@
         android:id="@+id/scoreBoardButton"
         android:layout_width="141dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/StartButton"
+        android:layout_alignStart="@+id/LoginButton"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
