@@ -9,61 +9,68 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ScoreBoardManagerTest {
     private ScoreBoardManager scoreBoardManager = new ScoreBoardManager();
     private HashMap<Integer, List<String>> scoreToUserBoard = scoreBoardManager.getScoreToUserBoard();
     private HashMap<String, List<Integer>> userToScoreBoard = scoreBoardManager.getUserToScoreBoard();
 
+    private void setUpCorrect() {
+        scoreBoardManager.addScore("Carol", 10);
+        scoreBoardManager.addScore("Carol", 11);
+        scoreBoardManager.addScore("Carol", 12);
+
+        scoreBoardManager.addScore("Helen", 6);
+        scoreBoardManager.addScore("Eric", 5);
+        scoreBoardManager.addScore("Julia", 7);
+        scoreBoardManager.addScore("Cici", 7);
+
+
+    }
+
+
     @Test
     public void testAddNewScore() {
-        scoreBoardManager.addScore("Carol", 5);
-        scoreBoardManager.addScore("Helen", 6);
-        assertEquals("[Carol]", scoreToUserBoard.get(5).toString());
+        setUpCorrect();
+        assertEquals("[Eric]", scoreToUserBoard.get(5).toString());
         assertEquals("[Helen]", scoreToUserBoard.get(6).toString());
     }
+
     @Test
-    public void testAddNewUser(){
-        scoreBoardManager.addScore("Carol", 5);
-        scoreBoardManager.addScore("Helen", 5);
-        assertEquals("[Carol, Helen]", scoreToUserBoard.get(5).toString());
+    public void testAddNewUser() {
+        setUpCorrect();
+        assertEquals("[Eric]", scoreToUserBoard.get(5).toString());
 
     }
+
     @Test
     public void testAddExistingScore() {
-        scoreBoardManager.addScore("Eric", 5);
-        scoreBoardManager.addScore("David", 5);
+        setUpCorrect();
         ArrayList<String> list = new ArrayList<String>();
         list.add("Eric");
-        list.add("David");
-        assertEquals(list,scoreToUserBoard.get(5));
-    }
-    @Test
-    public void testAddExistingUser(){
-        scoreBoardManager.addScore("Eric", 5);
-        scoreBoardManager.addScore("David", 7);
-        assertEquals("[5]",userToScoreBoard.get("Eric").toString());
-        assertEquals("[7]",userToScoreBoard.get("David").toString());
-    }
-    @Test
-    public void testMaxUserScore(){
-        scoreBoardManager.addScore("Carol", 5);
-        scoreBoardManager.addScore("Helen", 6);
-        scoreBoardManager.addScore("Carol", 7);
-        assertEquals(7,scoreBoardManager.maxUserScore("Carol"));
+        assertEquals(list, scoreToUserBoard.get(5));
     }
 
     @Test
-    public void testMaxGameScores(){
-        scoreBoardManager.addScore("Carol", 5);
-        scoreBoardManager.addScore("Carol", 6);
-        scoreBoardManager.addScore("Carol", 7);
-        scoreBoardManager.addScore("Helen", 8);
-        scoreBoardManager.addScore("Tiffany", 9);
-        scoreBoardManager.addScore("Cici", 10);
+    public void testAddExistingUser() {
+        setUpCorrect();
+        assertEquals("[5]", userToScoreBoard.get("Eric").toString());
+        assertEquals("[7]", userToScoreBoard.get("Julia").toString());
+    }
+
+    @Test
+    public void testMaxUserScore() {
+        setUpCorrect();
+        assertEquals(12, scoreBoardManager.maxUserScore("Carol"));
+    }
+
+    @Test
+    public void testMaxGameScores() {
+        setUpCorrect();
         List<Pair<String, Integer>> b = new ArrayList<Pair<String, Integer>>();
-        b.add(new Pair<>("Cici", 10));
-        b.add(new Pair<>("Tiffany", 9));
-        assertEquals(b,scoreBoardManager.maxGameScores(2));
+        b.add(new Pair<>("Julia", 7));//[("julia", 7)]
+        assertEquals(b.get(0).first, scoreBoardManager.maxGameScores(1).get(0).first);
+        assertEquals(b.get(0).second, scoreBoardManager.maxGameScores(1).get(0).second);
     }
 }
