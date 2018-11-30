@@ -1,7 +1,6 @@
 # GameCentre
-A sliding tiles puzzle game using numbers and images. It features a basic login application where new 
-users are required to register before playing. The puzzle game comes with 3x3, 4x4, 5x5 game modes that 
-users can choose to play!
+The Game Centre features three games: BlackJack, Sliding Tiles and FlipIt.It features a user
+ registration process, a password change process.
 
 ----
 ## Installation and Setup
