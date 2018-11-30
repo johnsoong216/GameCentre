@@ -33,7 +33,7 @@ class BlackJackLoadSaveButtonController extends LoadSaveButtonController {
     void switchToGame() {
         {
             Intent tmp = new Intent(context, BlackJackGameActivity.class);
-            LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
             context.startActivity(tmp);
         }
     }
@@ -42,7 +42,7 @@ class BlackJackLoadSaveButtonController extends LoadSaveButtonController {
     void switchToComplexity() {
         {
             Intent tmp = new Intent(context, BlackJackComplexityActivity.class);
-            LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
             context.startActivity(tmp);
         }
     }

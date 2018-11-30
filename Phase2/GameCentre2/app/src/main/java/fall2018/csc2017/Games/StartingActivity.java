@@ -43,7 +43,7 @@ public class StartingActivity extends AppCompatActivity {
     private Button saveButton;
     private Button startButton;
 //    private Button signOutButton;
-//    private LoadSave LoadSaveManager;
+//    private LoadSave loadSaveManager;
     private SlidingTilesLoadSaveButtonController controller;
 
     @Override
@@ -52,7 +52,7 @@ public class StartingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_starting_);
         context = this;
         controller = new SlidingTilesLoadSaveButtonController(context, TEMP_SAVE_FILE);
-//        LoadSaveManager = new LoadSave(context);
+//        loadSaveManager = new LoadSave(context);
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
@@ -105,8 +105,8 @@ public class StartingActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //
-//                boardManager = (BoardManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
-//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+//                boardManager = (BoardManager) loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
+//                loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
 //
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //                switchToGame();
@@ -124,7 +124,7 @@ public class StartingActivity extends AppCompatActivity {
 //        resumeButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
+//                loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
 //
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //                switchToGame();
@@ -140,7 +140,7 @@ public class StartingActivity extends AppCompatActivity {
 //        saveButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+//                loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //            }
 //        });
@@ -167,7 +167,7 @@ public class StartingActivity extends AppCompatActivity {
 //     */
 //    private void switchToGame() {
 //        Intent tmp = new Intent(this, GameActivity.class);
-//        LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+//        loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
 //        startActivity(tmp);
 //        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 //    }
