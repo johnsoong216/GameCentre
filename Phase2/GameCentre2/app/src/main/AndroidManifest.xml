@@ -32,10 +32,6 @@
         <activity android:name="fall2018.csc2017.Games.SlidingTileImageActivity" />
         <activity android:name="fall2018.csc2017.Games.ScoreBoardActivity" />
         <activity android:name="fall2018.csc2017.Games.ChooseGameActivity" />
-        <activity android:name="fall2018.csc2017.Games.ferrisWheelImageGameActivity" />
-        <activity android:name="fall2018.csc2017.Games.ferrisWheelImageStartingActivity" />
-        <activity android:name="fall2018.csc2017.Games.FerrisWheelImageComplexityActivity" />
-        <activity android:name="fall2018.csc2017.Games.FlipStartingActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackStartingActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackGameActivity" />
         <activity android:name="fall2018.csc2017.Games.ScoreBoardSelectionActivity" />
@@ -43,7 +39,7 @@
         <activity android:name="fall2018.csc2017.Games.FlipGameActivity" />
         <activity android:name="fall2018.csc2017.Games.FlipComplexityActivity" />
         <activity android:name="fall2018.csc2017.Games.FlipItLevelComplexityActivity" />
-        <activity android:name="fall2018.csc2017.Games.ferrisWheelImageItLevelComplexityActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipStartingActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackComplexityActivity"></activity>
     </application>
 
