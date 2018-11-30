@@ -180,7 +180,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
      */
     @Override
     public void onBackPressed() {
-        Intent backToMain = new Intent(FlipGameActivity.this, SlidingTileStartingActivity.class);
+        Intent backToMain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
         startActivity(backToMain);
     }
     /*

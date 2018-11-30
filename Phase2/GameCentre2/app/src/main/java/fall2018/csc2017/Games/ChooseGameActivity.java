@@ -77,7 +77,8 @@ public class ChooseGameActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent backToMain = new Intent(ChooseGameActivity.this, SignUpSignInActivity.class);
+        startActivity(backToMain);
         user.logout();
     }
 }
