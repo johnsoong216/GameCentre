@@ -70,6 +70,7 @@ public class FlipComplexityActivity extends AppCompatActivity {
         seekBar.setProgress(0);
         seekBar.incrementProgressBy(1);
         seekBar.setMax(2);
+        difficulty = 4;
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
