@@ -25,13 +25,13 @@ public class MovementController {
                     Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }
         }
         else if(gameManager instanceof FlipManager) {
-            ((FlipManager)gameManager).touchMove(position);
+            (gameManager).touchMove(position);
             if (gameManager.isGameOver()) {
-                Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
             }
         }
     }
