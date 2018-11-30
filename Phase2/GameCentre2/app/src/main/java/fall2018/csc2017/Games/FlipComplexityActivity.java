@@ -23,7 +23,7 @@ public class FlipComplexityActivity extends AppCompatActivity {
     private ImageButton numbersBtn;
     private EditText numUndo;
     /**
-     * A BoardManager object.
+     * A SlidingTileBoardManager object.
      */
     private FlipManager flipManager = new FlipManager(5, 3);
 
@@ -97,7 +97,7 @@ public class FlipComplexityActivity extends AppCompatActivity {
             public void onClick(View v) {
                 flipManager.setUndo(chooseUndo());
                 loadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
-                Intent startGame = new Intent(FlipComplexityActivity.this, LevelComplexityActivity.class);
+                Intent startGame = new Intent(FlipComplexityActivity.this, FlipItLevelComplexityActivity.class);
                 startGame.putExtra("difficulty", difficulty);
                 startGame.putExtra("undo", chooseUndo());
                 startActivity(startGame);

@@ -9,7 +9,7 @@ import android.widget.Button;
 /**
  * The initial activity for the sliding puzzle tile game.
  */
-public class StartingActivity extends AppCompatActivity {
+public class SlidingTileStartingActivity extends AppCompatActivity {
 
     /**
      * The main save file.
@@ -19,7 +19,7 @@ public class StartingActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+    private SlidingTileBoardManager boardManager;
 
     /**
      * The user's username.
@@ -77,8 +77,8 @@ public class StartingActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                user.logout();
-//                Intent logout = new Intent(StartingActivity.this, SignUpSignInActivity.class);
-//                StartingActivity.this.startActivity(logout);
+//                Intent logout = new Intent(SlidingTileStartingActivity.this, SignUpSignInActivity.class);
+//                SlidingTileStartingActivity.this.startActivity(logout);
 //                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 //
 //            }
@@ -105,10 +105,10 @@ public class StartingActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //
-//                boardManager = (BoardManager) loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
+//                boardManager = (SlidingTileBoardManager) loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
 //                loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
 //
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
 //                switchToGame();
 //                resumeButton.setEnabled(true);
 //            }
@@ -126,7 +126,7 @@ public class StartingActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
 //
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
 //                switchToGame();
 //            }
 //        });
@@ -141,7 +141,7 @@ public class StartingActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
 //            }
 //        });
 //    }
@@ -163,10 +163,10 @@ public class StartingActivity extends AppCompatActivity {
 
 
 //    /**
-//     * Switch to the GameActivity view to play the game.
+//     * Switch to the SlidingTileGameActivity view to play the game.
 //     */
 //    private void switchToGame() {
-//        Intent tmp = new Intent(this, GameActivity.class);
+//        Intent tmp = new Intent(this, SlidingTileGameActivity.class);
 //        loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
 //        startActivity(tmp);
 //        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -176,7 +176,7 @@ public class StartingActivity extends AppCompatActivity {
 //     * Switch to the Complexity view to choose game complexity.
 //     */
 //    private void switchToComplexity() {
-//        Intent complexity = new Intent(this, ComplexityActivity.class);
+//        Intent complexity = new Intent(this, SlidingTileComplexityActivity.class);
 //        complexity.putExtra("game", "sliding");
 //        startActivity(complexity);
 //        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
