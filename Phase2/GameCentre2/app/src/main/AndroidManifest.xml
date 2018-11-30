@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fall2018.csc2017.slidingtiles">
+    package="fall2018.csc2017.Games">
 
     <application
         android:allowBackup="true"
@@ -9,38 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name="fall2018.csc2017.Games.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity" />
-        <activity android:name=".StartingActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignUpSignInActivity" />
+        <activity android:name="fall2018.csc2017.Games.GameActivity" />
+        <activity android:name="fall2018.csc2017.Games.StartingActivity" />
+        <activity android:name="fall2018.csc2017.Games.SignUpActivity" />
+        <activity android:name="fall2018.csc2017.Games.SignUpSignInActivity" />
         <activity
-            android:name=".ScoreActivity"
+            android:name="fall2018.csc2017.Games.ScoreActivity"
             android:label="@string/title_activity_global_score_board"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".ComplexityActivity"
+            android:name="fall2018.csc2017.Games.ComplexityActivity"
             android:label="@string/title_activity_complexity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".PasswordChangeActivity" />
-        <activity android:name=".ImageTilesActivity" />
-        <activity android:name=".ScoreBoardActivity" />
-        <activity android:name=".ChooseGameActivity" />
-        <activity android:name=".FlipGameActivity" />
-        <activity android:name=".FlipStartingActivity" />
-        <activity android:name=".FlipComplexityActivity" />
-        <activity android:name=".BlackJackStartingActivity" />
-        <activity android:name=".BlackJackGameActivity" />
-        <activity android:name=".ScoreBoardSelectionActivity" />
-        <activity android:name=".BlackJackSummaryActivity" />
-        <activity android:name=".LevelComplexityActivity" />
-        <activity android:name=".BlackJackComplexityActivity"></activity>
+        <activity android:name="fall2018.csc2017.Games.PasswordChangeActivity" />
+        <activity android:name="fall2018.csc2017.Games.ImageTilesActivity" />
+        <activity android:name="fall2018.csc2017.Games.ScoreBoardActivity" />
+        <activity android:name="fall2018.csc2017.Games.ChooseGameActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipGameActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipStartingActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipComplexityActivity" />
+        <activity android:name="fall2018.csc2017.Games.BlackJackStartingActivity" />
+        <activity android:name="fall2018.csc2017.Games.BlackJackGameActivity" />
+        <activity android:name="fall2018.csc2017.Games.ScoreBoardSelectionActivity" />
+        <activity android:name="fall2018.csc2017.Games.BlackJackSummaryActivity" />
+        <activity android:name="fall2018.csc2017.Games.LevelComplexityActivity" />
+        <activity android:name="fall2018.csc2017.Games.BlackJackComplexityActivity"></activity>
     </application>
 
 </manifest>
