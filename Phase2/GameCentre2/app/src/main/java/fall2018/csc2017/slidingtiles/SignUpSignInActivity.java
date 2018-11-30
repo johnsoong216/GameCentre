@@ -12,100 +12,56 @@ import android.widget.Toast;
 
 public class SignUpSignInActivity extends AppCompatActivity {
 
-    /**
-     * EditText for user's information.
-     */
-    private EditText username;
-    private EditText password;
-    /**
-     * SignIn Button.
-     */
-    private Button SignInButton;
-    /**
-     * A UserManager object.
-     */
-    private UserManager manager;
-    /**
-     * A Session object that holds user's information.
-     */
-    private Session user;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_sign_in);
 
-        manager = new UserManager(this);
-        username = findViewById(R.id.etUsername);
-        password = findViewById(R.id.etPassword);
-        SignInButton = findViewById(R.id.btSignIn);
-        final TextView registerLink = findViewById(R.id.tvSignUp);
-        final TextView changepasswordLink = findViewById(R.id.Changepassword);
 
-        addregisterLinkListener(registerLink);
-        changepasswordLinkListener(changepasswordLink);
-        addSignInButtonListener();
+         UserManager manager = new UserManager(this);
+         EditText username = findViewById(R.id.etUsername);
+         EditText password = findViewById(R.id.etPassword);
+         Button signInButton = findViewById(R.id.btSignIn);
+        TextView registerLink = findViewById(R.id.tvSignUp);
+        TextView changePasswordLink = findViewById(R.id.Changepassword);
+
+        SignUpSignInController controller = new SignUpSignInController(this, manager);
+        controller.addRegisterLinkListener(registerLink);
+        controller.changePasswordLinkListener(changePasswordLink);
+        controller.addSignInButtonListener(signInButton, username, password);
     }
 
-    /**
-     * Link to the activity that allows user to change their password.
-     *
-     * @param changepasswordLink Textview link.
-     */
-    private void changepasswordLinkListener(TextView changepasswordLink) {
-        changepasswordLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cpIntent = new Intent(SignUpSignInActivity.this, PasswordChangeActivity.class);
-                SignUpSignInActivity.this.startActivity(cpIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-    }
-
-    /**
-     * A registration link.
-     *
-     * @param registerLink Textview link.
-     */
-    private void addregisterLinkListener(TextView registerLink) {
-        registerLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signupIntent = new Intent(SignUpSignInActivity.this, SignUpActivity.class);
-                SignUpSignInActivity.this.startActivity(signupIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-            }
-        });
-    }
-
-    /**
-     * A user performing a login1 action.
-     */
-    private void addSignInButtonListener() {
-        SignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String mUser = username.getText().toString();
-                String mPassword = password.getText().toString();
-                boolean isSuccess = manager.checkLoginValidate(mUser, mPassword);
-                user = Session.getCurrentUser();
-                user.setUsername(mUser);
-                user.setPassword(mPassword);
-                if (isSuccess && !mUser.equals("admin")) {
-                    Toast.makeText(SignUpSignInActivity.this, "Successfully Logged In!", Toast.LENGTH_SHORT).show();
-                    Intent success = new Intent(SignUpSignInActivity.this, ChooseGameActivity.class);
-                    SignUpSignInActivity.this.startActivity(success);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUpSignInActivity.this);
-                    builder.setMessage("Login failed").setNegativeButton("Retry", null)
-                            .create().show();
-                    user.logout();
-                }
-            }
-        });
-    }
+//    /**
+//     * Link to the activity that allows user to change their password.
+//     *
+//     * @param changepasswordLink Textview link.
+//     */
+//    private void changepasswordLinkListener(TextView changepasswordLink) {
+//        changepasswordLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent cpIntent = new Intent(SignUpSignInActivity.this, PasswordChangeActivity.class);
+//                SignUpSignInActivity.this.startActivity(cpIntent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//            }
+//        });
+//    }
+//
+//    /**
+//     * A registration link.
+//     *
+//     * @param registerLink Textview link.
+//     */
+//    private void addregisterLinkListener(TextView registerLink) {
+//        registerLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent signupIntent = new Intent(SignUpSignInActivity.this, SignUpActivity.class);
+//                SignUpSignInActivity.this.startActivity(signupIntent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//
+//            }
+//        });
+//    }
 }
 
