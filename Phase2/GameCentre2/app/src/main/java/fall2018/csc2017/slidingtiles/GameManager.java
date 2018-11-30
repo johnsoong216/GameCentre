@@ -44,9 +44,9 @@ abstract class GameManager extends Observable implements Serializable {
     void touchMove(int position) {
     }
 
-    int getScore() {return 1;}
+    abstract int getScore();
 
-    boolean puzzleSolved() {return true;}
+    abstract boolean isGameOver();
 
     void undo() {};
 

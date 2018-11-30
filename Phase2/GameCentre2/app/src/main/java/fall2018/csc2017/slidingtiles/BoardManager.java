@@ -1,10 +1,8 @@
 package fall2018.csc2017.slidingtiles;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
 
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
@@ -47,7 +45,7 @@ public class BoardManager extends GameManager{
         if (result < 0) {
             result = 0;
         }
-        return puzzleSolved() ? (int) (result + Math.pow(complexity, 2) * 20) : result;
+        return isGameOver() ? (int) (result + Math.pow(complexity, 2) * 20) : result;
     }
 
     /**
@@ -145,8 +143,7 @@ public class BoardManager extends GameManager{
      *
      * @return whether the tiles are in row-major order
      */
-    @Override
-    boolean puzzleSolved() {
+    boolean isGameOver() {
         boolean solved = true;
         int num = 1;
         for (Tile tile : board) {
@@ -201,7 +198,7 @@ public class BoardManager extends GameManager{
         stepCounter++;
         movements.push(position);
         movements.push(blankposition);
-        movements.poplasttwo(defaultUndo);
+        movements.popLastTwo(defaultUndo);
         board.swapTiles(row, col, blankposition / board.getNUM_COLS(), blankposition % board.getNUM_ROWS());
 
         // tiles is the blank tile, swap by calling Board's swap method.
