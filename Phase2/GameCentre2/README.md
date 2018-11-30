@@ -1,6 +1,9 @@
 # GameCentre
 The Game Centre features three games: BlackJack, Sliding Tiles and FlipIt.It features a user
  registration process, a password change process.
+ After the user logging in, the user is redirected to a game selection page where he/she selects
+ the desired game to play. There is also a scoreboard available that features three separate
+ scoreboards one for each game.
 
 ----
 ## Installation and Setup
