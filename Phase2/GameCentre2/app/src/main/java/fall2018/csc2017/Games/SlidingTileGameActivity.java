@@ -86,17 +86,21 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         scoreStepTimer = findViewById(R.id.ScoreBoard);
         currentScore = findViewById(R.id.currentScore);
         undoButton = findViewById(R.id.btUndo);
-        controller.createTileButtons(context);
-        controller.addUndoButtonListener(undoButton);
-        controller.setUndo(undoButton);
         gridView = findViewById(R.id.grid);
+
+
+        controller.setUndo(undoButton);
+        controller.createTileButtons(context);
+
         boardManager.getBoard().addObserver(this);
         setGridView();
         runTimer();
+        addUndoButtonListener();
     }
-
+    /*
+    * Set the Grid View by creating tile Buttons
+     */
     private void setGridView() {
-        // Add View to activity
         gridView.setNumColumns(boardManager.getBoard().getNUM_COLS());
         gridView.setGameManager(boardManager);
         tileButtons = controller.getTileButtons();
@@ -152,12 +156,33 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         };
         t.start();
     }
-
-    public void display(){
-        tileButtons = controller.getTileButtons();
+    @Override
+    protected void onResume(){
+        super.onResume();
         controller.setUndo(undoButton);
-        controller.addUndoButtonListener(undoButton);
-        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));}
+//        controller.addUndoButtonListener(undoButton);
+    }
+
+    /*
+    *undo Control
+     */
+    void addUndoButtonListener() {
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boardManager.undo();}
+            });
+    }
+
+    /*
+    * Display the current View
+     */
+    public void display() {
+        tileButtons = controller.getTileButtons();
+        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
+        controller.setUndo(undoButton);
+//        controller.addUndoButtonListener(undoButton);
+    }
     /**
      * Dispatch onPause() to fragments.
      */

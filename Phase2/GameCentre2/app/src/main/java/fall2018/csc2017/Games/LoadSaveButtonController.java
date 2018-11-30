@@ -62,7 +62,7 @@ abstract class LoadSaveButtonController {
             @Override
             public void onClick(View v) {
                 gameManager = loadSaveManager.loadFromFile(saveFile, username, gameType);
-                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
             }
         });
@@ -77,7 +77,7 @@ abstract class LoadSaveButtonController {
             @Override
             public void onClick(View v) {
                 loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
-                Toast.makeText(context, "Saved SlidingTileGame", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Saved Game", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -91,7 +91,7 @@ abstract class LoadSaveButtonController {
             @Override
             public void onClick(View v) {
                 gameManager = loadSaveManager.loadFromFile(saveFile, username, gameType);
-                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
             }
         });
