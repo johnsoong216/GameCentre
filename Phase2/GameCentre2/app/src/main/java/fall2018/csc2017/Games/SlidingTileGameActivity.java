@@ -17,12 +17,12 @@ import java.util.Observer;
 /**
  * The game activity.
  */
-public class GameActivity extends AppCompatActivity implements Observer {
+public class SlidingTileGameActivity extends AppCompatActivity implements Observer {
 
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+    private SlidingTileBoardManager boardManager;
 
     /**
      * The buttons to display.
@@ -85,7 +85,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadSaveManager = new LoadSave(context);
-        boardManager = (BoardManager) loadSaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
+        boardManager = (SlidingTileBoardManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
         createTileButtons(this);
         setContentView(R.layout.activity_board_main);
 
@@ -161,7 +161,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
      */
     private void createTileButtons(Context context) {
 
-        Board board = boardManager.getBoard();
+        SlidingTileBoard board = boardManager.getBoard();
         tileButtons = new ArrayList<>();
         for (int row = 0; row != boardManager.getBoard().getNUM_ROWS(); row++) {
             for (int col = 0; col != boardManager.getBoard().getNUM_COLS(); col++) {
@@ -176,7 +176,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
      * Update the backgrounds on the buttons to match the tiles.
      */
     private void updateTileButtons() {
-        Board board = boardManager.getBoard();
+        SlidingTileBoard board = boardManager.getBoard();
         int nextPos = 0;
 
         for (Button b : tileButtons) {
@@ -187,12 +187,12 @@ public class GameActivity extends AppCompatActivity implements Observer {
         }
         if (boardManager.isGameOver()) {
             user.setScore(boardManager.getScore());
-            loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
-            Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);
+            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
+            Intent scoreboard = new Intent(SlidingTileGameActivity.this, ScoreActivity.class);
             scoreboard.putExtra("game", "sliding_tiles");
-            GameActivity.this.startActivity(scoreboard);
+            SlidingTileGameActivity.this.startActivity(scoreboard);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
-            loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
     }
 
 
@@ -216,7 +216,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+        loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
     }
 
     @Override
@@ -229,8 +229,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void onBackPressed() {
-        Intent backToMain = new Intent(GameActivity.this, StartingActivity.class);
-        GameActivity.this.startActivity(backToMain);
+        Intent backToMain = new Intent(SlidingTileGameActivity.this, SlidingTileStartingActivity.class);
+        SlidingTileGameActivity.this.startActivity(backToMain);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

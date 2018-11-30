@@ -103,7 +103,7 @@ public class SlidingTileGame extends Observable implements Serializable, Iterabl
 
     @Override
     public String toString() {
-        return "Board{" +
+        return "SlidingTileBoard{" +
                 "tiles=" + Arrays.toString(tiles) +
                 '}';
     }

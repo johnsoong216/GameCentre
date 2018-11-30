@@ -85,7 +85,7 @@ public class BlackJackManager extends GameManager implements Serializable {
     }
 
     /**
-     * User chooses to end Game
+     * User chooses to end SlidingTileGame
      */
     public void endGame() {
         userEndGame = true;

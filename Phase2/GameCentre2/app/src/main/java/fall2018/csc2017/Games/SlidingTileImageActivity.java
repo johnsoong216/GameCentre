@@ -10,12 +10,12 @@ import android.widget.ImageView;
 /**
  * this the image tile activity
  */
-public class ImageTilesActivity extends AppCompatActivity {
+public class SlidingTileImageActivity extends AppCompatActivity {
 
     /**
-     * A BoardManager object.
+     * A SlidingTileBoardManager object.
      */
-    private BoardManager boardManager;
+    private SlidingTileBoardManager boardManager;
 
     /**
      * Number of undo a user wants to make.
@@ -54,10 +54,10 @@ public class ImageTilesActivity extends AppCompatActivity {
         ferris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new BoardManager(4, "fw");
+                boardManager = new SlidingTileBoardManager(4, "fw");
                 boardManager.setUndo(numUndo);
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-                Intent startgame = new Intent(ImageTilesActivity.this, GameActivity.class);
+                loadsaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+                Intent startgame = new Intent(SlidingTileImageActivity.this, SlidingTileGameActivity.class);
                 startActivity(startgame);
             }
         });
@@ -71,10 +71,10 @@ public class ImageTilesActivity extends AppCompatActivity {
         dog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boardManager = new BoardManager(3, "dog");
+                boardManager = new SlidingTileBoardManager(3, "dog");
                 boardManager.setUndo(numUndo);
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-                Intent startgame = new Intent(ImageTilesActivity.this, GameActivity.class);
+                loadsaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+                Intent startgame = new Intent(SlidingTileImageActivity.this, SlidingTileGameActivity.class);
                 startActivity(startgame);
             }
         });

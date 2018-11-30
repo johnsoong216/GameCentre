@@ -47,7 +47,7 @@ public class ScoreActivity extends AppCompatActivity {
         Context context = this;
         LoadSave loadSaveManager = new LoadSave(context);
         String gameType = getIntent().getStringExtra("game");
-        Log.d("TAG", "Game is " + gameType);
+        Log.d("TAG", "SlidingTileGame is " + gameType);
 
         scoreBoardManager = (ScoreBoardManager) loadSaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
         if (scoreBoardManager == null) {

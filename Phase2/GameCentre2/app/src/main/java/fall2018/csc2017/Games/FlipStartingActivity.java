@@ -85,7 +85,7 @@ public class FlipStartingActivity extends AppCompatActivity {
 
 
     /**
-     * Switch to the GameActivity view to play the game.
+     * Switch to the SlidingTileGameActivity view to play the game.
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, FlipGameActivity.class);
