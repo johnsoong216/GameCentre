@@ -13,7 +13,7 @@ A complexity class that lets the user to choose the game level within each compl
  */
 public class FlipItLevelComplexityActivity extends AppCompatActivity {
 
-    private FlipManager flipManager = new FlipManager(5, 3);
+    private FlipManager flipManager = new FlipManager(4, 2);
     private ImageButton levelNumbersBtn;
     private int level;
     private Context context;
@@ -41,7 +41,7 @@ public class FlipItLevelComplexityActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar levelSeekBar, int levelProgress, boolean levelFromUser) {
                 level = levelProgress + 1;
-                int difficulty = getIntent().getIntExtra("difficulty", 0);
+                int difficulty = getIntent().getIntExtra("difficulty", 4);
                 flipManager = new FlipManager(difficulty, level);
                 flipManager.getFlip().setNUM_ROWS(difficulty);
                 flipManager.getFlip().setNUM_COLS(difficulty);
