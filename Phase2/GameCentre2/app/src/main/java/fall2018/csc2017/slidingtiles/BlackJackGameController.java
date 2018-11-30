@@ -2,38 +2,67 @@ package fall2018.csc2017.slidingtiles;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.MessageFormat;
-import java.util.ArrayList;
 
 /**
- * Controller for blackjack game
+ * Controller for blackjack game, can creates button listeners for user's hit, double, stand and
+ * hint actions, can res started new rounds and settling chips
  */
 public class BlackJackGameController {
-
+    /**
+     * The current game manager in use
+     */
     private BlackJackManager blackJackManager;
+    /**
+     * The current user playing
+     */
     private Session user;
+    /**
+     * an array of image view for player cards
+     */
     private ImageView[] playerCards;
+    /**
+     * an array of image view for dealer cards
+     */
     private ImageView[] dealerCards;
+    /**
+     * buttons of the game
+     */
     private Button hitButton;
     private Button doubleButton;
     private Button standButton;
     private Button newRoundButton;
     private Button hintButton;
     private Button insuranceButton;
+    /**
+     * username of the current user
+     */
     private String username;
+    /**
+     * load save manager for loading and saving
+     */
     private Loadsave loadSaveManager;
     private Context context;
+    /**
+     * chips total text view
+     */
     private TextView chipsTotal;
+    /**
+     * difficulty level of the game
+     */
     private double difficulty;
+    /**
+     * the current game type
+     */
     private final String gameType = "black_jack";
+    /**
+     * file for saving and loading black jack game manager
+     */
     private final String saveFile = "save_game.ser";
 
 
