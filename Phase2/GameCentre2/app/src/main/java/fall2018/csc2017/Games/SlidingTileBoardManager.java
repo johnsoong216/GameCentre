@@ -225,7 +225,6 @@ public class SlidingTileBoardManager extends GameManager{
     /**
      * Undo one step the user has made.
      */
-    @Override
     void undo() {
         if (!movements.isEmpty()) {
             stepCounter++;
