@@ -25,7 +25,7 @@ abstract class GameManager extends Observable implements Serializable {
         this.stepCounter = stepCounter;
     }
 
-    private int timer = 0;
+    int timer = 0;
 
     void setTimer(int timer) {
         this.timer = timer;
@@ -44,15 +44,11 @@ abstract class GameManager extends Observable implements Serializable {
     void touchMove(int position) {
     }
 
-    int getScore() {
-        return 1;
-    }
+    int getScore() {return 1;}
 
-    boolean puzzleSolved() {
-        return true;
-    }
+    boolean puzzleSolved() {return true;}
 
-    void undo() {}
+    void undo() {};
 
     void setUndo(int moves) {
         defaultUndo = moves * 2;

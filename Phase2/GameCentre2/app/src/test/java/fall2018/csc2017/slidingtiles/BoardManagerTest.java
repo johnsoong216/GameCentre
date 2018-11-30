@@ -153,9 +153,9 @@ public class BoardManagerTest {
     @Test
     public void testScoreLessThan0() {
         setUp4();
-        boardManager.setTimer(3000);
-        boardManager.setStepCounter(1000);
-        boardManager.setUndo(30);
+        boardManager.setTimer(30);
+        boardManager.setStepCounter(10000);
+        boardManager.setUndo(200);
         assertEquals(0, boardManager.getScore());
     }
     /**

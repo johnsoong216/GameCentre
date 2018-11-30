@@ -97,7 +97,7 @@ public class Stack<Integer> implements Iterable<Integer>, Serializable {
 
     Stack poplastfive(int size) {
         if (this.size() > size) {
-            Stack<Integer> temp = new Stack();
+            Stack<Integer> temp = new Stack<>();
             while (!this.isEmpty()) {
                 temp.push(this.pop());
             }
