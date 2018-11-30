@@ -20,19 +20,6 @@ public class BoardManagerTest {
         return tiles;
     }
 
-    private List<Tile> makeTilesSwapped() {
-        List<Tile> tiles = new ArrayList<>();
-        final int numTiles = 13;
-        for (int tileNum = 0; tileNum != numTiles; tileNum++) {
-            tiles.add(new Tile(tileNum + 1, tileNum));
-        }
-        tiles.add(new Tile(14));
-        tiles.add(new Tile(13));
-        tiles.add(new Tile(15));
-
-        return tiles;
-    }
-
     private List<Tile> makeTilesNotInOrder() {
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = 11;
@@ -59,8 +46,8 @@ public class BoardManagerTest {
         boardManager = new BoardManager(board);
     }
 
-    private void setUp4() {
-        boardManager = new BoardManager(4);
+    private void setUp3() {
+        boardManager = new BoardManager(3);
     }
 
     /**
@@ -68,7 +55,7 @@ public class BoardManagerTest {
      */
     @Test
     public void testInversion() {
-        setUp4();
+        setUp3();
         List<Tile> tiles = makeTilesNotInOrder();
         assertEquals(6, boardManager.getInv(tiles));
     }
@@ -77,7 +64,7 @@ public class BoardManagerTest {
      */
     @Test
     public void testBlank() {
-        setUp4();
+        setUp3();
         List<Tile> tiles = makeTilesNotInOrder();
         assertEquals(11, boardManager.getBlank(tiles));
     }
@@ -104,10 +91,10 @@ public class BoardManagerTest {
      */
     @Test
     public void testScore() {
-        setUp4();
+        setUp3();
         boardManager.setTimer(20);
         boardManager.setStepCounter(10);
         boardManager.setUndo(3);
-        assertEquals(432, boardManager.getScore());
+        assertEquals(373, boardManager.getScore());
     }
 }
