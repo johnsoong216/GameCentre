@@ -15,6 +15,11 @@ it loads correctly.
 
 ----
 ## A tour of the code
+
+* ** Deck:** This class creates a deck of 52 cards.
+
+* ** Card:** This class contains a card with suit, value and ingame value.
+
 * **Class BlackJackGameController:**  It updates the the backgrounds on the buttons to match the tiles.
 Once the game is over, it saves the score and user into the score board.
 
