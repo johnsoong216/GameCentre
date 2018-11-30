@@ -12,6 +12,7 @@ public class FlipManager extends GameManager{
 
     FlipManager(FlipIt flip) {
         this.flip = flip;
+        movements = new Stack<>();
     }
 
     /**
@@ -45,7 +46,7 @@ public class FlipManager extends GameManager{
      * @param level the level of the game.
      */
     FlipManager(int complexity, int level) {
-
+        movements = new Stack<>();
         List<Tile> tiles = new ArrayList<>();
         if (complexity == 3) {
             if(level == 1){
@@ -252,6 +253,7 @@ public class FlipManager extends GameManager{
      *
      * @param moves the move taken.
      */
+    @Override
     void setUndo(int moves) {
         defaultUndo = moves * 5;
     }
