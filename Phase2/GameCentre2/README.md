@@ -6,7 +6,7 @@ users can choose to play!
 ----
 ## Installation and Setup
 1. Install Android Studio
-2. Get the Phase 1 URL for our group project from MarkUs. 
+2. Get the Phase 1 URL for our group project from MarkUs and clone it in Android studio.
 3. Create an Android Virtual Device within Android Studio. Select a Pixel2 smartphone as the device to 
 emulate, specifiying the device OS as Android 8.1 API 27. Create and launch the virtual device and ensure 
 it loads correctly.
