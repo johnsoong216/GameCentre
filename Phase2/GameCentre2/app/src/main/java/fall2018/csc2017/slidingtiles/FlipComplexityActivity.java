@@ -37,13 +37,13 @@ public class FlipComplexityActivity extends AppCompatActivity {
      */
     private String username;
 
-    private LoadSave LoadSaveManager;
+    private LoadSave loadSaveManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flip_complexity);
         context = this;
-        LoadSaveManager = new LoadSave(context);
+        loadSaveManager = new LoadSave(context);
         username = Session.getCurrentUser().getUsername();
         numbersBtn = this.findViewById(R.id.NumbersBtn);
         numUndo = this.findViewById(R.id.numUndo);
@@ -95,7 +95,7 @@ public class FlipComplexityActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flipManager.setUndo(chooseUndo());
-                LoadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
+                loadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
                 Intent startGame = new Intent(FlipComplexityActivity.this, LevelComplexityActivity.class);
                 startGame.putExtra("difficulty", difficulty);
                 startGame.putExtra("undo", chooseUndo());

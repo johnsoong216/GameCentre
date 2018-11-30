@@ -66,7 +66,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
      */
     private Context context = this;
 
-    private LoadSave LoadSaveManager;
+    private LoadSave loadSaveManager;
 
     /**
      * Set up the background image for each button based on the master list
@@ -84,8 +84,8 @@ public class GameActivity extends AppCompatActivity implements Observer {
         user = Session.getCurrentUser();
         username = user.getUsername();
         context = this;
-        LoadSaveManager = new LoadSave(context);
-        boardManager = (BoardManager) LoadSaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
+        loadSaveManager = new LoadSave(context);
+        boardManager = (BoardManager) loadSaveManager.loadFromFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
         createTileButtons(this);
         setContentView(R.layout.activity_board_main);
 
@@ -187,12 +187,12 @@ public class GameActivity extends AppCompatActivity implements Observer {
         }
         if (boardManager.puzzleSolved()) {
             user.setScore(boardManager.getScore());
-            LoadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
+            loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
             Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);
             scoreboard.putExtra("game", "sliding_tiles");
             GameActivity.this.startActivity(scoreboard);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
-            LoadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+            loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
     }
 
 
@@ -216,7 +216,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        LoadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+        loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
     }
 
     @Override

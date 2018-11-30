@@ -23,7 +23,7 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+                loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
                 switchToGame();
             }
         });
@@ -32,7 +32,7 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
     void switchToGame() {
         {
             Intent tmp = new Intent(context, FlipGameActivity.class);
-            LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
             context.startActivity(tmp);
         }
     }
@@ -41,7 +41,7 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
     void switchToComplexity() {
         {
             Intent tmp = new Intent(context, FlipComplexityActivity.class);
-            LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
             context.startActivity(tmp);
         }
     }

@@ -68,7 +68,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
      */
     private Context context = this;
 
-    private LoadSave LoadSaveManager;
+    private LoadSave loadSaveManager;
 
     /**
      * Set up the background image for each button based on the master list
@@ -86,8 +86,8 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         user = Session.getCurrentUser();
         username = user.getUsername();
         context = this;
-        LoadSaveManager = new LoadSave(context);
-        flipManager = (FlipManager) LoadSaveManager.loadFromFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
+        loadSaveManager = new LoadSave(context);
+        flipManager = (FlipManager) loadSaveManager.loadFromFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
         createTileButtons(this);
         setContentView(R.layout.activity_flip_game);
 
@@ -193,7 +193,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
             toScore.putExtra("game", "flip_it");
             FlipGameActivity.this.startActivity(toScore);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
-            LoadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
+            loadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
 
     }
 
@@ -228,7 +228,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onPause() {
         super.onPause();
-        LoadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
+        loadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
     }
 
     @Override

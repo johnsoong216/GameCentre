@@ -32,13 +32,13 @@ public class ImageTilesActivity extends AppCompatActivity {
      */
     private String username;
 
-    private Loadsave loadsaveManager;
+    private LoadSave loadSaveManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_tiles);
         context = this;
-        loadsaveManager = new Loadsave(context);
+        loadSaveManager = new LoadSave(context);
         Intent imageintent = getIntent();
         numUndo = imageintent.getIntExtra("numUndo", 3);
         username = Session.getCurrentUser().getUsername();
@@ -56,7 +56,7 @@ public class ImageTilesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boardManager = new BoardManager(4, "fw");
                 boardManager.setUndo(numUndo);
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+                loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Intent startgame = new Intent(ImageTilesActivity.this, GameActivity.class);
                 startActivity(startgame);
             }
@@ -73,7 +73,7 @@ public class ImageTilesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boardManager = new BoardManager(3, "dog");
                 boardManager.setUndo(numUndo);
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+                loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Intent startgame = new Intent(ImageTilesActivity.this, GameActivity.class);
                 startActivity(startgame);
             }

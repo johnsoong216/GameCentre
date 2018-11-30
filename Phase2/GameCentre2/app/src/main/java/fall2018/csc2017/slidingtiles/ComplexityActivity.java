@@ -42,13 +42,13 @@ public class ComplexityActivity extends AppCompatActivity {
      */
     private String username;
 
-    private LoadSave LoadSaveManager;
+    private LoadSave loadSaveManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complexity);
         context = this;
-        LoadSaveManager = new LoadSave(context);
+        loadSaveManager = new LoadSave(context);
         username = Session.getCurrentUser().getUsername();
         numbersBtn = this.findViewById(R.id.NumbersBtn);
         numUndo = this.findViewById(R.id.numUndo);
@@ -116,7 +116,7 @@ public class ComplexityActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 boardManager.setUndo(chooseUndo());
-                LoadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+                loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
                 Intent startGame = new Intent(ComplexityActivity.this, GameActivity.class);
                 startActivity(startGame);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
