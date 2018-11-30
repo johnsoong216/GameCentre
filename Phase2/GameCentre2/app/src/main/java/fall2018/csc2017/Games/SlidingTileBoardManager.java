@@ -76,14 +76,14 @@ public class SlidingTileBoardManager extends GameManager{
         int index = tiles.size() - getBlank(tiles) - 1;
         if(complexity % 2 == 1) {
             if(inv % 2 != 0) {
-                swap1514(tiles);
+                swapOdd(tiles);
             }
         } else {
             if((index / complexity) % 2 == 1 && inv % 2 != 1) {
-                swap1514(tiles);
+                swapOdd(tiles);
             }
             if((index / complexity) % 2 == 0 && inv % 2 != 0){
-                swap1514(tiles);
+                swapOdd(tiles);
             }
         }
         this.board = new SlidingTileBoard(tiles, complexity);
@@ -94,19 +94,23 @@ public class SlidingTileBoardManager extends GameManager{
      *
      * @param tiles the tiles that needs to have 15 and 14 swapped
      */
-    private void swap1514(List<Tile> tiles) {
+
+
+    private void swapOdd(List<Tile> tiles) {
         int index1 = 0;
         int index2 = 0;
         for(int i = 0; i < tiles.size(); i ++) {
-            if(tiles.get(i).getId() == 15) {
+            if(tiles.get(i).getId() == tiles.size() - 1 ) {
                 index1 = i;
             }
-            else if(tiles.get(i).getId() == 14) {
+            else if(tiles.get(i).getId() == tiles.size() -2) {
                 index2 = i;
             }
         }
         Collections.swap(tiles, index1, index2);
     }
+
+
 
     /**
      * Manage a shuffled image board.
