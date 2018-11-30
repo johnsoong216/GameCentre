@@ -11,6 +11,8 @@ import java.util.Observable;
  */
 abstract class GameManager extends Observable implements Serializable {
 
+
+
     Stack<Integer> movements = new Stack<>();
 
     int complexity;
@@ -41,8 +43,8 @@ abstract class GameManager extends Observable implements Serializable {
         return movements;
     }
 
-    void touchMove(int position) {
-    }
+    void touchMove(int position){
+    };
 
     abstract int getScore();
 

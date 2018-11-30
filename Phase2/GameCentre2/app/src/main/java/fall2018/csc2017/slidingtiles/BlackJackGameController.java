@@ -29,7 +29,7 @@ public class BlackJackGameController {
     private Button hintButton;
     private Button insuranceButton;
     private String username;
-    private Loadsave loadSaveManager;
+    private LoadSave loadSaveManager;
     private Context context;
     private TextView chipsTotal;
     private double difficulty;
@@ -42,7 +42,7 @@ public class BlackJackGameController {
         this.context =context;
         this.user = Session.getCurrentUser();
         this.username = user.getUsername();
-        this.loadSaveManager = new Loadsave(context);
+        this.loadSaveManager = new LoadSave(context);
         blackJackManager = (BlackJackManager) loadSaveManager.loadFromFile(saveFile, username ,gameType);
         this.playerCards = playerCards;
         this.dealerCards = dealerCards;

@@ -68,7 +68,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
      */
     private Context context = this;
 
-    private Loadsave loadsaveManager;
+    private LoadSave loadsaveManager;
 
     /**
      * Set up the background image for each button based on the master list
@@ -86,7 +86,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         user = Session.getCurrentUser();
         username = user.getUsername();
         context = this;
-        loadsaveManager = new Loadsave(context);
+        loadsaveManager = new LoadSave(context);
         flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.
                 TEMP_SAVE_FILE, username, "flip_it");
         createTileButtons(this);

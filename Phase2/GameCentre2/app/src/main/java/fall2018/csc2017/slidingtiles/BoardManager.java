@@ -22,9 +22,6 @@ public class BoardManager extends GameManager{
         this.board = board;
     }
 
-    BoardManager() {
-    }
-
     /**
      * Return the current board.
      */

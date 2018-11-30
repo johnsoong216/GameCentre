@@ -1,14 +1,39 @@
 package fall2018.csc2017.slidingtiles;
 
 import android.content.Context;
+import android.widget.Toast;
 
-abstract class MovementController {
+public class MovementController {
     GameManager gameManager;
 
-    abstract void setManager(GameManager manager);
+    MovementController(){
+    }
 
-    abstract GameManager getManager();
+    public void setManager(GameManager manager) {
+        this.gameManager = manager;
+    };
 
-    abstract void processTapMovement(Context context, int position);
+    public GameManager getManager() {
+        return gameManager;
+    };
+
+    public void processTapMovement(Context context, int position){
+        if(gameManager instanceof BoardManager) {
+            if (((BoardManager)gameManager).isValidTap(position)) {
+                (gameManager).touchMove(position);
+                if (gameManager.isGameOver()) {
+                    Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(gameManager instanceof FlipManager) {
+            ((FlipManager)gameManager).touchColor(position);
+            if (((FlipManager)gameManager).isGameOver()) {
+                Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
 }

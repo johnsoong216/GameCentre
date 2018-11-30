@@ -32,13 +32,13 @@ public class ImageTilesActivity extends AppCompatActivity {
      */
     private String username;
 
-    private Loadsave loadsaveManager;
+    private LoadSave loadsaveManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_tiles);
         context = this;
-        loadsaveManager = new Loadsave(context);
+        loadsaveManager = new LoadSave(context);
         Intent imageintent = getIntent();
         numUndo = imageintent.getIntExtra("numUndo", 3);
         username = Session.getCurrentUser().getUsername();

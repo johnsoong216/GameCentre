@@ -21,7 +21,7 @@ public class BoardGestureDetectGridView extends GridView {
     //public static final int SWIPE_MAX_OFF_PATH = 100;
     //public static final int SWIPE_THRESHOLD_VELOCITY = 100;
     private GestureDetector gDetector;
-    private BoardMovementController mController;
+    private MovementController mController;
     private boolean mFlingConfirmed = false;
     private float mTouchX;
     private float mTouchY;
@@ -49,7 +49,7 @@ public class BoardGestureDetectGridView extends GridView {
     }
 
     private void init(final Context context) {
-        mController = new BoardMovementController();
+        mController = new MovementController();
         gDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
 
             @Override
@@ -102,7 +102,7 @@ public class BoardGestureDetectGridView extends GridView {
     }
 
     public void setGameManager(GameManager gameManager) {
-        mController.setManager((BoardManager)gameManager);
+        mController.setManager(gameManager);
     }
 
 

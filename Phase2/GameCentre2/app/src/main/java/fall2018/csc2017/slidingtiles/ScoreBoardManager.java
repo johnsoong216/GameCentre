@@ -102,4 +102,13 @@ class ScoreBoardManager extends GameManager implements Serializable {
     }
 
 
+    @Override
+    int getScore() {
+        return 0;
+    }
+
+    @Override
+    boolean isGameOver() {
+        return false;
+    }
 }

@@ -24,7 +24,7 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
             @Override
             public void onClick(View v) {
                 LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
-                switchToGame();
+                switchToComplexity();
             }
         });
     }
