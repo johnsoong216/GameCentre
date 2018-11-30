@@ -156,6 +156,7 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
     public void display(){
         tileButtons = controller.getTileButtons();
         controller.setUndo(undoButton);
+        controller.addUndoButtonListener(undoButton);
         gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));}
     /**
      * Dispatch onPause() to fragments.
