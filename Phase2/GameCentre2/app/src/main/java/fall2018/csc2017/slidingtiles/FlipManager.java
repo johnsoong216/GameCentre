@@ -17,71 +17,10 @@ public class FlipManager extends GameManager{
     }
 
     /**
-     * Stack that holds previous user moves.
-     */
-    private Stack<Integer> movements = new Stack<>();
-
-    /**
-     * The game level.
-     */
-    private int complexity;
-
-    /**
      * FlipManager constructor
      */
     FlipManager() {
     }
-
-    /**
-     * A step counter for the number of steps a user made.
-     */
-    private int stepcounter = 0;
-
-    /**
-     * Return the number of steps the user has made.
-     *
-     * @return the number of steps the user has made.
-     */
-    int getStepCounter() {
-        return stepcounter;
-    }
-
-    /**
-     * Set the number of steps the user has made.
-     *
-     * @param stepcounter number of steps taken.
-     */
-    void setStepCounter(int stepcounter) {
-        this.stepcounter = stepcounter;
-    }
-
-    /**
-     * Timer of the game.
-     */
-    private int timer = 0;
-
-    /**
-     * Set the timer of the game.
-     *
-     * @param timer timer of the game.
-     */
-    void setTimer(int timer) {
-        this.timer = timer;
-    }
-
-    /**
-     * Get the timer of the game.
-     *
-     * @return the timer of the game.
-     */
-    int getTimer() {
-        return timer;
-    }
-
-    /**
-     * Default undo allows the user to undo 3 steps.
-     */
-    private int default_undo;
 
     /**
      * Return the current board.
@@ -95,24 +34,16 @@ public class FlipManager extends GameManager{
      *
      * @return the score of the game.
      */
+    @Override
     int getScore() {
-        int result = (int) Math.round(1000 + 7.5 * Math.pow(stepcounter, 1 / complexity) -
-                150 * Math.log(timer + 1) * Math.pow(complexity, -2) * Math.pow(default_undo + 1, 0.5)
-                        * Math.pow(stepcounter + 1, 1 / complexity));
+        int result = (int) Math.round(1000 + 7.5 * Math.pow(stepCounter, 1 / complexity) -
+                150 * Math.log(timer + 1) * Math.pow(complexity, -2) * Math.pow(defaultUndo + 1, 0.5)
+                        * Math.pow(stepCounter + 1, 1 / complexity));
 
         if (result < 0) {
             result = 0;
         }
         return puzzleSolved() ? (int) (result + Math.pow(complexity, 2) * 20) : result;
-    }
-
-    /**
-     * Return a stack containing the moves a user has made.
-     *
-     * @return a stack containing the moves a user has made.
-     */
-    Stack getMovements() {
-        return movements;
     }
 
     /**
@@ -248,6 +179,7 @@ public class FlipManager extends GameManager{
      *
      * @return whether the game is solved.
      */
+    @Override
     boolean puzzleSolved() {
         boolean solved = true;
         for (Tile tile : flip) {
@@ -269,13 +201,13 @@ public class FlipManager extends GameManager{
         int leftId = position - 1;
         int rightId = position + 1;
 
-        stepcounter++;
+        stepCounter++;
         movements.push(position);
         movements.push(upId);
         movements.push(downId);
         movements.push(leftId);
         movements.push(rightId);
-        movements.poplastfive(default_undo);
+        movements.poplastfive(defaultUndo);
 
         flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
 
@@ -296,10 +228,11 @@ public class FlipManager extends GameManager{
     /**
      * Undo one step the user has made.
      */
+    @Override
     void undo() {
 
         if (!movements.isEmpty()) {
-            stepcounter++;
+            stepCounter++;
 
             int rightId = movements.pop();
             int leftId = movements.pop();
@@ -329,7 +262,7 @@ public class FlipManager extends GameManager{
      * @param moves the move taken.
      */
     void setUndo(int moves) {
-        default_undo = moves * 5;
+        defaultUndo = moves * 5;
     }
 
 
