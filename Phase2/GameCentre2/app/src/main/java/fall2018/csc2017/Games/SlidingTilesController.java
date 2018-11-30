@@ -51,22 +51,7 @@ public class SlidingTilesController {
         loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
     }
 
-    /**
-     * Create the buttons for displaying the tiles.
-     *
-     * @param context the context
-     */
-    void createTileButtons(Context context, ArrayList<Button> tileButtons) {
 
-        SlidingTileBoard board = boardManager.getBoard();
-        for (int row = 0; row != boardManager.getBoard().getNUM_ROWS(); row++) {
-            for (int col = 0; col != boardManager.getBoard().getNUM_COLS(); col++) {
-                Button tmp = new Button(context);
-                tmp.setBackgroundResource(board.getTile(row, col).getBackground());
-                tileButtons.add(tmp);
-            }
-        }
-    }
 
     /**
      * Activate the undo button

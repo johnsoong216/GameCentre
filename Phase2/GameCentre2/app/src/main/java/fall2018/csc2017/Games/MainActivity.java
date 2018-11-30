@@ -1,3 +1,4 @@
+//excluded from tests because it's a (model / view) class
 package fall2018.csc2017.Games;
 
 

@@ -1,3 +1,4 @@
+//excluded from tests because it's a (model / view) class
 package fall2018.csc2017.Games;
 
 import android.annotation.SuppressLint;
@@ -94,7 +95,7 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         currentScore = findViewById(R.id.currentScore);
 
         controller = new SlidingTilesController(context);
-        controller.createTileButtons(context, tileButtons);
+        createTileButtons(this);
 
         // Add View to activity
         gridView = findViewById(R.id.grid);
@@ -119,7 +120,7 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
 
                     }
                 });
-
+        undoButton = findViewById(R.id.btUndo);
         controller.addUndoButtonListener(undoButton);
         runTimer();
     }
@@ -153,61 +154,61 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         t.start();
     }
 
-//    /**
-//     * Create the buttons for displaying the tiles.
-//     *
-//     * @param context the context
-//     */
-//    private void createTileButtons(Context context) {
-//
-//        SlidingTileBoard board = boardManager.getBoard();
-//        tileButtons = new ArrayList<>();
-//        for (int row = 0; row != boardManager.getBoard().getNUM_ROWS(); row++) {
-//            for (int col = 0; col != boardManager.getBoard().getNUM_COLS(); col++) {
-//                Button tmp = new Button(context);
-//                tmp.setBackgroundResource(board.getTile(row, col).getBackground());
-//                this.tileButtons.add(tmp);
-//            }
-//        }
-//    }
+    /**
+     * Create the buttons for displaying the tiles.
+     *
+     * @param context the context
+     */
+    private void createTileButtons(Context context) {
 
-//    /**
-//     * Update the backgrounds on the buttons to match the tiles.
-//     */
-//    private void updateTileButtons() {
-//        SlidingTileBoard board = boardManager.getBoard();
-//        int nextPos = 0;
-//
-//        for (Button b : tileButtons) {
-//            int row = nextPos / boardManager.getBoard().getNUM_ROWS();
-//            int col = nextPos % boardManager.getBoard().getNUM_COLS();
-//            b.setBackgroundResource(board.getTile(row, col).getBackground());
-//            nextPos++;
-//        }
-//        if (boardManager.isGameOver()) {
-//            user.setScore(boardManager.getScore());
-//            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
-//            Intent scoreboard = new Intent(SlidingTileGameActivity.this, ScoreActivity.class);
-//            scoreboard.putExtra("game", "sliding_tiles");
-//            SlidingTileGameActivity.this.startActivity(scoreboard);
-//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
-//            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-//    }
+        SlidingTileBoard board = boardManager.getBoard();
+        tileButtons = new ArrayList<>();
+        for (int row = 0; row != boardManager.getBoard().getNUM_ROWS(); row++) {
+            for (int col = 0; col != boardManager.getBoard().getNUM_COLS(); col++) {
+                Button tmp = new Button(context);
+                tmp.setBackgroundResource(board.getTile(row, col).getBackground());
+                this.tileButtons.add(tmp);
+            }
+        }
+    }
 
-//
-//    /**
-//     * Activate the undo button
-//     */
-//    private void addUndoButtonListener() {
-//        undoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (!boardManager.getMovements().isEmpty()) {
-//                    boardManager.undo();
-//                }
-//            }
-//        });
-//    }
+    /**
+     * Update the backgrounds on the buttons to match the tiles.
+     */
+    private void updateTileButtons() {
+        SlidingTileBoard board = boardManager.getBoard();
+        int nextPos = 0;
+
+        for (Button b : tileButtons) {
+            int row = nextPos / boardManager.getBoard().getNUM_ROWS();
+            int col = nextPos % boardManager.getBoard().getNUM_COLS();
+            b.setBackgroundResource(board.getTile(row, col).getBackground());
+            nextPos++;
+        }
+        if (boardManager.isGameOver()) {
+            user.setScore(boardManager.getScore());
+            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
+            Intent scoreboard = new Intent(SlidingTileGameActivity.this, ScoreActivity.class);
+            scoreboard.putExtra("game", "sliding_tiles");
+            SlidingTileGameActivity.this.startActivity(scoreboard);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
+            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+    }
+
+
+    /**
+     * Activate the undo button
+     */
+    private void addUndoButtonListener() {
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!boardManager.getMovements().isEmpty()) {
+                    boardManager.undo();
+                }
+            }
+        });
+    }
 
     /**
      * Dispatch onPause() to fragments.
