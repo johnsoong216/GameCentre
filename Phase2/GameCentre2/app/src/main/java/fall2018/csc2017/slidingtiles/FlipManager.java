@@ -1,8 +1,6 @@
 package fall2018.csc2017.slidingtiles;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FlipManager extends GameManager{
@@ -43,7 +41,7 @@ public class FlipManager extends GameManager{
         if (result < 0) {
             result = 0;
         }
-        return puzzleSolved() ? (int) (result + Math.pow(complexity, 2) * 20) : result;
+        return isGameOver() ? (int) (result + Math.pow(complexity, 2) * 20) : result;
     }
 
     /**
@@ -179,8 +177,7 @@ public class FlipManager extends GameManager{
      *
      * @return whether the game is solved.
      */
-    @Override
-    boolean puzzleSolved() {
+    boolean isGameOver() {
         boolean solved = true;
         for (Tile tile : flip) {
             if (tile.getBackground() != R.drawable.back) {
@@ -207,7 +204,7 @@ public class FlipManager extends GameManager{
         movements.push(downId);
         movements.push(leftId);
         movements.push(rightId);
-        movements.poplastfive(defaultUndo);
+        movements.popLastFive(defaultUndo);
 
         flip.changeColor(position / flip.getNUM_ROWS(), position % flip.getNUM_COLS());
 
