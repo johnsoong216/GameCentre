@@ -85,8 +85,8 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadSaveManager = new LoadSave(context);
-        flipManager = (FlipManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
-        setContentView(R.layout.activity_board_main);
+        flipManager = (FlipManager) loadSaveManager.loadFromFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
+        setContentView(R.layout.activity_flip_game);
         controller = new FlipItGameController(context);
         scoreStepTimer = findViewById(R.id.ScoreBoard);
         currentScore = findViewById(R.id.currentScore);
