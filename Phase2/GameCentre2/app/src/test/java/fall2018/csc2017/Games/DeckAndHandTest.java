@@ -18,11 +18,11 @@ public class DeckAndHandTest {
     Hand hand2;
     Hand hand3;
     /*
-    Deck 1 is shuffled deck with 52 cards
+    Deck 1 is shuffled deck1 with 52 cards
     Deck 2 is not shuffled and the first card to be drawn is diamonds king
-    Deck 3 is not shuffled and 10 cards are drawn from the deck, the first card to be drawn is
+    Deck 3 is not shuffled and 10 cards are drawn from the deck1, the first card to be drawn is
     diamond 3
-    Deck 4 is not shuffled and 12 cards are drawn from the deck, the first card to be drawn is
+    Deck 4 is not shuffled and 12 cards are drawn from the deck1, the first card to be drawn is
     diamond ace
     Card 1 is diamond king
     Card 2 is diamond 3
@@ -93,7 +93,7 @@ public class DeckAndHandTest {
     }
 
     /*
-    Test whether the deck iterator works
+    Test whether the deck1 iterator works
      */
     @Test
     public void testDeckIterator() {
@@ -106,7 +106,7 @@ public class DeckAndHandTest {
     }
 
     /*
-    Test whether the setting the deck to not shuffled deck works
+    Test whether the setting the deck1 to not shuffled deck1 works
      */
     @Test
     public void testSetNotShuffled() {
@@ -116,7 +116,7 @@ public class DeckAndHandTest {
     }
 
     /*
-    Test whether drawing cards from deck works
+    Test whether drawing cards from deck1 works
      */
     @Test
     public void testDrawCard1AndGet1() {
@@ -124,7 +124,7 @@ public class DeckAndHandTest {
         assertEquals(21, hand2.getPoints());
     }
     /*
-   Test whether drawing cards from deck works
+   Test whether drawing cards from deck1 works
     */
     @Test
     public void testDrawCard1AndGet2() {

@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class BlackJackGameTest {
 
     /*
-    Create deck and blackjack game for test
+    Create deck1 and blackjack game for test
      */
     Deck deck1;
     Deck deck2;
