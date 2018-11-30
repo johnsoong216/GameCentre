@@ -18,14 +18,8 @@ public class BlackJackStartingActivity extends AppCompatActivity {
     public static final String TEMP_SAVE_FILE = "save_game.ser";
 
     /**
-     * The blackjack game manager.
+     * buttons to be setup
      */
-    private BlackJackManager blackJackManager;
-
-    private String username;
-
-    private Session user;
-
     private Button loadButton;
 
     private Button saveButton;
@@ -34,8 +28,9 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 
     private Button newGameButton;
 
-    private LoadSave LoadSaveManager;
-
+    /**
+     * the controller for loading and saving actions
+     */
     private BlackJackLoadSaveButtonController controller;
 
     private Context context;
@@ -45,7 +40,6 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_black_jack_starting);
         context = this;
         controller = new BlackJackLoadSaveButtonController(context, TEMP_SAVE_FILE);
-        LoadSaveManager = new LoadSave(context);
         loadButton = findViewById(R.id.btBJLoad);
         resumeButton = findViewById(R.id.btBJResume);
         saveButton = findViewById(R.id.btBJSave);
@@ -57,94 +51,6 @@ public class BlackJackStartingActivity extends AppCompatActivity {
     }
 
     /**
-     * Performs a signout action.
-     */
-//    private void addSignOutButtonListener() {
-//        signOutButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                user.logout();
-//                Intent logout = new Intent(BlackJackStartingActivity.this, SignUpSignInActivity.class);
-//                BlackJackStartingActivity.this.startActivity(logout);
-//            }
-//        });
-////    }
-//
-//    /**
-//     * Activate the start button.
-//     */
-//    private void addStartButtonListener() {
-//        newGameButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int[] winDrawLoss = {0,0,0};
-//                blackJackManager = new BlackJackManager(new BlackJackGame(), 1000, winDrawLoss);
-//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
-//                switchToGame();
-//            }
-//        });
-//    }
-//
-//    /**
-//     * Activate the load button.
-//     */
-//    private void addLoadButtonListener() {
-//        loadButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                blackJackManager = (BlackJackManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-//                switchToGame();
-//                resumeButton.setEnabled(true);
-//            }
-//        });
-//    }
-//
-////
-////    private void addScoreBoardListener() {
-////        scoreBoardButton.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                switchToScoreBoard();
-////            }
-////        });
-////    }
-//
-//    /**
-//     * Activate the resume button
-//     */
-//    private void addResumeButtonListener() {
-//        resumeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                blackJackManager = (BlackJackManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-//                switchToGame();
-//            }
-//        });
-//    }
-//
-//
-//    /**
-//     * Activate the save button.
-//     */
-//    private void addSaveButtonListener() {
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
-//                Toast.makeText(context, "Saved Game", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
-    @Override
-    public void onBackPressed() {
-        Intent backToLogin = new Intent(this, ChooseGameActivity.class);
-        startActivity(backToLogin);
-    }
-
-    /**
      * Read the temporary board from disk.
      */
     @Override
@@ -152,21 +58,5 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         super.onResume();
         controller.resume(saveButton, resumeButton, loadButton);
     }
-
-
-//    /**
-//     * Switch to the BlackJackGameActivity view to play the game.
-//     */
-//    private void switchToGame() {
-//        Intent tmp = new Intent(this, BlackJackComplexityActivity.class);
-//        LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
-//        startActivity(tmp);
-//    }
-
-//
-//    private void switchToScoreBoard() {
-//        Intent complexity = new Intent(this, ScoreBoardActivity.class);
-//        startActivity(complexity);
-//    }
 
 }

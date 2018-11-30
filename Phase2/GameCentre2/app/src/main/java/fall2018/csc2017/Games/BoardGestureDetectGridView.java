@@ -16,6 +16,10 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.GridView;
 
+/**
+ * This a starter code provided by the course instructor, no unit test will be done on this class
+ * and no javadoc will be provided
+ */
 public class BoardGestureDetectGridView extends GridView {
     public static final int SWIPE_MIN_DISTANCE = 100;
     //public static final int SWIPE_MAX_OFF_PATH = 100;

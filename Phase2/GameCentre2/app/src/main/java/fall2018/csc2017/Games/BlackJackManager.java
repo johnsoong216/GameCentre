@@ -11,15 +11,15 @@ import java.io.Serializable;
 public class BlackJackManager extends GameManager implements Serializable {
 
     /*
-    The current game being managed
+     *The current game being managed
      */
     private BlackJackGame blackJackGame;
-    /*
-    Number of the chips the play has
+    /**
+     * Number of the chips the play has
      */
     private int chips;
-    /*
-    check for player buying insurance
+    /**
+     * check for player buying insurance
      */
     private boolean insurance;
     /*
@@ -27,19 +27,19 @@ public class BlackJackManager extends GameManager implements Serializable {
     */
     private boolean userEndGame;
 
-    /*
-    Number of wins, draws, losses
+    /**
+     * Number of wins, draws, losses
      */
     private int[] winDrawLoss;
 
-    /*
-    Complexity
+    /**
+     * Complexity
      */
 
     private double complexity;
 
-    /*
-    Initial Bet
+    /**
+     * Initial Bet
      */
 
 
@@ -57,8 +57,8 @@ public class BlackJackManager extends GameManager implements Serializable {
     }
 
 
-    /*
-    Create a new blackjack game manager with chips the player currently has
+    /**
+     * Create a new blackjack game manager with chips the player currently has
      */
     BlackJackManager(BlackJackGame blackJackGame) {
         this.blackJackGame = blackJackGame;
@@ -69,12 +69,12 @@ public class BlackJackManager extends GameManager implements Serializable {
 //        blackJackGame.setBet(100);
     }
 
-    void newGame(Deck deck){
+    void newGame(Deck deck) {
         this.blackJackGame = new BlackJackGame(deck, initialBet);
     }
 
-    /*
-    Draw an additional card
+    /**
+     * Draw an additional card
      */
     void hit() {
         if (!isOver() && blackJackGame.getPlayerHand().getHandSize() < 5) {
@@ -83,9 +83,9 @@ public class BlackJackManager extends GameManager implements Serializable {
         }
     }
 
-    /*
-User chooses to end Game
- */
+    /**
+     * User chooses to end Game
+     */
     public void endGame() {
         userEndGame = true;
     }
@@ -93,21 +93,21 @@ User chooses to end Game
     public void insurance() {
         Hand dealer = blackJackGame.getDealerHand();
         if (dealer.getHandSize() == 2 && dealer.checkFirstAce()) {
-            chips -= initialBet/2;
+            chips -= initialBet / 2;
         }
         insurance = true;
     }
 
-    /*
-    check the condition for double
+    /**
+     * check the condition for double
      */
     boolean checkDouble() {
         return !isOver() && blackJackGame.getPlayerHand().isAllowDouble();
     }
 
-    /*
-    When the card's value sum up to 9, 10 or 11 The player is allowed to increase the initial
-    bet by up to 100% in exchange for committing to stand after receiving exactly one more card.
+    /**
+     * When the card's value sum up to 9, 10 or 11 The player is allowed to increase the initial
+     * bet by up to 100% in exchange for committing to stand after receiving exactly one more card.
      */
     void douBle() {
         if (checkDouble()) {
@@ -117,12 +117,18 @@ User chooses to end Game
         }
     }
 
+    /**
+     * return the number of chips for the current player
+     *
+     * @return chips
+     */
     int getChips() {
         return chips;
     }
-    /*
-    Player chooses not to draw any more cards
-    Add a button listener in the Activity Page
+
+    /**
+     * Player chooses not to draw any more cards
+     * Add a button listener in the Activity Page
      */
     void stand() {
         while (blackJackGame.getDealerHand().getPoints() < 17 && blackJackGame.getDealerHand().getHandSize() < 5) {
@@ -131,41 +137,43 @@ User chooses to end Game
         endGame();
     }
 
-    /*
-    Settle the Amount of Chips if the player buys the insurance the player will reduce its bet on
-    the game by one half
-    */
+    /**
+     * Settle the Amount of Chips if the player buys the insurance the player will reduce its bet on
+     * the game by one half
+     */
     void settleChips() {
-        if (insurance && blackJackGame.getDealerHand().checkBlackJack()){
+        if (insurance && blackJackGame.getDealerHand().checkBlackJack()) {
             winDrawLoss[2]++;
-        }
-        else if (blackJackGame.getPlayerPoint() < blackJackGame.getDealerPoint()) {
+        } else if (blackJackGame.getPlayerPoint() < blackJackGame.getDealerPoint()) {
             chips -= blackJackGame.getBet();
             winDrawLoss[2]++;
         } else if (blackJackGame.getPlayerPoint() > blackJackGame.getDealerPoint()) {
             chips += blackJackGame.getBet();
             winDrawLoss[0]++;
-        }
-        else {
+        } else {
             winDrawLoss[1]++;
         }
 
-        if (chips <= 0){
+        if (chips <= 0) {
             chips = 0;
         }
         userEndGame = false;
         insurance = false;
     }
 
-    /*
-    return the current game being managed
+    /**
+     * @return the current game being managed
      */
     BlackJackGame getBlackJackGame() {
         return blackJackGame;
     }
 
-    /*
-    Return whether the round is over
+    /**
+     * check if the game is over
+     * if player/dealer go busted or player gets a blackjack or the user choose to end game
+     * the round is over
+     *
+     * @Return whether the round is over
      */
     boolean isOver() {
         Hand dealerHand = blackJackGame.getDealerHand();
@@ -174,15 +182,15 @@ User chooses to end Game
                 userEndGame);
     }
 
-    /*
-    Return whether the game is over
+    /**
+     * @Return whether the game is over
      */
-
-    boolean isGameOver(){
+    boolean isGameOver() {
         return (winDrawLoss[0] + winDrawLoss[1] + winDrawLoss[2] == 10 || chips == 0);
     }
-    /*
-    return probability for player to not being busted after the new hit
+
+    /**
+     * @return probability for player to not being busted after the new hit
      */
 
     double getProbability() {
@@ -198,22 +206,24 @@ User chooses to end Game
         }
         return ((double) numCardBusted / (double) remainingCard) * 100.0;
     }
-    /*
-    return the complexity for the game
+
+    /**
+     * @return the complexity for the game
      */
     public double getComplexity() {
         return complexity;
     }
 
-    /*
-    set the complexity for the game
+    /**
+     * set the complexity for the game
      */
     public void setComplexity(double complexity) {
         this.complexity = complexity;
     }
-    /*
-    Getter for Win Draw Loss
-    */
+
+    /**
+     * Getter for Win Draw Loss
+     */
     public int[] getWinDrawLoss() {
         return winDrawLoss;
     }

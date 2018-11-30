@@ -1,6 +1,6 @@
 package fall2018.csc2017.Games;
-/*
-An activity that allow user to choose difficulties and bets for the game
+/**
+ *An activity that allow user to choose difficulties and bets for the game
  */
 
 import android.content.Context;
@@ -15,9 +15,14 @@ import android.widget.Toast;
 import static fall2018.csc2017.Games.BlackJackStartingActivity.TEMP_SAVE_FILE;
 
 public class BlackJackComplexityActivity extends AppCompatActivity {
-
+    /**
+     * The bet for each round
+     */
     int bet;
     private Context context;
+    /**
+     * The load save manager for loading and saving purposes
+     */
     private LoadSave LoadSaveManager;
     /*
     current user and his username

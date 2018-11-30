@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * An activity that display user's statistic for the game, including number of rounds wined/lost
+ */
 public class BlackJackSummaryActivity extends AppCompatActivity {
 
     private Button checkScore;
@@ -34,6 +37,11 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
         calculateScore();
     }
 
+    /**
+     * calculate the score for the last game user just ended
+     * we put this class in a view class instead of a controller class because it only has a minor
+     * logic
+     */
     public void calculateScore(){
         double score = (blackJackManager.getChips() + 50 * blackJackManager.getWinDrawLoss()[0]) * blackJackManager.getComplexity();
         user.setScore((int) Math.round(score));
