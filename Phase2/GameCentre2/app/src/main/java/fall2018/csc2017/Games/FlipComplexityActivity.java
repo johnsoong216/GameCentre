@@ -1,6 +1,8 @@
 //excluded from tests because it's a (model / view) class
 package fall2018.csc2017.Games;
-
+/**
+ * A flip complexity activity that allows user to choose complexity of the game
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

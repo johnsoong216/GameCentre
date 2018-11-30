@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Observable;
 
+/**
+ * A flip it game that contains tiles of image
+ */
 public class FlipIt extends Observable implements Serializable, Iterable<Tile> {
     private int NUM_ROWS;
 

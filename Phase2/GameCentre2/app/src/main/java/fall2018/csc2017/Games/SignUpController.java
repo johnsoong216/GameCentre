@@ -1,5 +1,9 @@
 
 package fall2018.csc2017.Games;
+/**
+ * A controller that controls the sign up activity including going to an other activity
+ * and setting up buttons
+ */
 
 import android.content.Context;
 import android.content.Intent;

@@ -16,7 +16,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * The game activity.
+ * The game activity for sliding tile game
  */
 public class SlidingTileGameActivity extends AppCompatActivity implements Observer {
 
@@ -67,10 +67,6 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
      * Set up the background image for each button based on the master list
      * of positions, and then call the adapter to set the view.
      */
-    // Display
-//    public void display() {
-//
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

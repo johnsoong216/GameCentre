@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * A password changing controller that preform the function of changing and updating new password
+ * after user make changed
+ */
 public class PasswordChangeController {
 
     /**
@@ -25,7 +29,13 @@ public class PasswordChangeController {
         this.manager = manager;
     }
 
-
+    /**
+     * Create the change password button
+     * @param confirmButton
+     * @param oldPassword
+     * @param newPassword
+     * @param username
+     */
     void changePasswordButton(Button confirmButton, final EditText oldPassword, final EditText newPassword,
                                       final EditText username) {
         confirmButton.setOnClickListener(new View.OnClickListener() {

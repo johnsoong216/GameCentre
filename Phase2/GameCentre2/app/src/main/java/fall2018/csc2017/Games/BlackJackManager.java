@@ -41,8 +41,6 @@ public class BlackJackManager extends GameManager implements Serializable {
     /**
      * Initial Bet
      */
-
-
     private int initialBet;
 
 
@@ -194,7 +192,6 @@ public class BlackJackManager extends GameManager implements Serializable {
     /**
      * @return probability for player to not being busted after the new hit
      */
-
     double getProbability() {
         Deck deck = blackJackGame.getDeck();
         int remainingCard = deck.remainingCard();

@@ -42,8 +42,6 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
      * we put this class in a view class instead of a controller class because it only has a minor
      * logic
      */
-
-
     public void checkScoreListener() {
         checkScore.setOnClickListener(new View.OnClickListener() {
             @Override

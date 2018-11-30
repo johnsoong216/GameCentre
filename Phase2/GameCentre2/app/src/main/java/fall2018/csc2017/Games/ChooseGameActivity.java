@@ -1,5 +1,9 @@
 //excluded from tests because it's a (model / view) class
 package fall2018.csc2017.Games;
+/**
+ * A choose game activity that display and set up buttons for user's
+ * choice of game
+ */
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +17,6 @@ public class ChooseGameActivity extends AppCompatActivity {
     private Button blackJackButton;
     private Button scoreBoardButton;
     private Session user;
-//    final ViewGroup transitionsContainer = (ViewGroup) findViewById(R.id.transitions_container);
-//    final TextView text = (TextView) transitionsContainer.findViewById(R.id.text);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,10 @@ public class ChooseGameActivity extends AppCompatActivity {
         addBlackJackListener();
         addScoreBoardListener();
     }
+
+    /**
+     * A slidingtile game button listener that goes to the sliding tiles game after clicking
+     */
     private void addSlidingListener() {
         st.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +46,9 @@ public class ChooseGameActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     * A blackjack game button listener that goes to the black jack game after clicking
+     */
     private void addBlackJackListener() {
         blackJackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +60,9 @@ public class ChooseGameActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     * A flip it game button listener that goes to the flip it game after clicking
+     */
     private void addFlipListener() {
         fi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +75,9 @@ public class ChooseGameActivity extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * A scoreboard button listener that goes to the scoreboard after clicking
+     */
     private void addScoreBoardListener() {
         scoreBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
