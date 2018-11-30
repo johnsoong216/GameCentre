@@ -133,4 +133,10 @@ public class BlackJackGameTest {
         blackJackGame3.inGameBet(1.5);
         assertEquals(450, blackJackGame3.getBet());
     }
+
+    @Test
+    public void testGetDeck() {
+        setUpBlackJackGame();
+        assertEquals(deck1.remainingCard(), blackJackGame1.getDeck().remainingCard());
+    }
 }
