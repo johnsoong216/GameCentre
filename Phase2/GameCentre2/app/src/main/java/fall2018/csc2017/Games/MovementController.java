@@ -20,7 +20,7 @@ public class MovementController {
     public void processTapMovement(Context context, int position){
         if(gameManager instanceof BoardManager) {
             if (((BoardManager)gameManager).isValidTap(position)) {
-                (gameManager).touchMove(position);
+                gameManager.touchMove(position);
                 if (gameManager.isGameOver()) {
                     Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
                 }
@@ -30,7 +30,7 @@ public class MovementController {
         }
         else if(gameManager instanceof FlipManager) {
             ((FlipManager)gameManager).touchColor(position);
-            if (((FlipManager)gameManager).isGameOver()) {
+            if (gameManager.isGameOver()) {
                 Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }
         }
