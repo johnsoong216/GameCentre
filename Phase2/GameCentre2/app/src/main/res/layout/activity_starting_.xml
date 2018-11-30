@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_color_blue"
-    tools:context="fall2018.csc2017.slidingtiles.StartingActivity">
+    tools:context="fall2018.csc2017.Games.SlidingTileStartingActivity">
 
     <TextView
         android:id="@+id/GameText"
@@ -61,16 +61,5 @@
         android:layout_marginBottom="119dp"
         android:background="@drawable/buttonshape3"
         android:text="Resume" />
-
-    <Button
-        android:id="@+id/SignOutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="33dp"
-        android:background="@drawable/buttonshape3"
-        android:text="Sign Out" />
 
 </RelativeLayout>
