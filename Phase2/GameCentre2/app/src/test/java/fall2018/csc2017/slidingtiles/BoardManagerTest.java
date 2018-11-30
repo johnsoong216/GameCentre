@@ -148,17 +148,6 @@ public class BoardManagerTest {
         assertEquals(432, boardManager.getScore());
     }
     /**
-     * test whether the score return 0
-     */
-    @Test
-    public void testScoreLessThan0() {
-        setUp4();
-        boardManager.setTimer(30);
-        boardManager.setStepCounter(10000);
-        boardManager.setUndo(200);
-        assertEquals(0, boardManager.getScore());
-    }
-    /**
      * test whether the movements return correctly
      */
     @Test

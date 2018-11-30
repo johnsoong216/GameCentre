@@ -118,6 +118,7 @@ public class BlackJackGameTest {
         assertEquals(150, blackJackGame1.getBet());
     }
 
+    @Test
     public void getBet2() {
         setUpBlackJackGame();
         assertEquals(150, blackJackGame2.getBet());
@@ -129,7 +130,7 @@ public class BlackJackGameTest {
     @Test
     public void inGameBet() {
         setUpBlackJackGame();
-        blackJackGame4.inGameBet(1.5);
-        assertEquals(150, blackJackGame4.getBet());
+        blackJackGame3.inGameBet(1.5);
+        assertEquals(450, blackJackGame3.getBet());
     }
 }
