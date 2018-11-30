@@ -7,25 +7,25 @@ import java.util.List;
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
-public class BoardManager extends GameManager{
+public class SlidingTileBoardManager extends GameManager{
     /**
      * The board being managed.
      */
-    private Board board;
+    private SlidingTileBoard board;
 
     /**
      * Manage a board that has been pre-populated.
      *
      * @param board the board
      */
-    BoardManager(Board board) {
+    SlidingTileBoardManager(SlidingTileBoard board) {
         this.board = board;
     }
 
     /**
      * Return the current board.
      */
-    Board getBoard() {
+    SlidingTileBoard getBoard() {
         return board;
     }
 
@@ -50,7 +50,7 @@ public class BoardManager extends GameManager{
      *
      * @param complexity the complexity of the game.
      */
-    BoardManager(int complexity) {
+    SlidingTileBoardManager(int complexity) {
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = complexity * complexity;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
@@ -76,7 +76,7 @@ public class BoardManager extends GameManager{
                 swap1514(tiles);
             }
         }
-        this.board = new Board(tiles, complexity);
+        this.board = new SlidingTileBoard(tiles, complexity);
     }
 
     /**
@@ -104,7 +104,7 @@ public class BoardManager extends GameManager{
      * @param complexity the complexity of the game.
      * @param image      the image being arranged.
      */
-    BoardManager(int complexity, String image) {
+    SlidingTileBoardManager(int complexity, String image) {
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = complexity * complexity;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
@@ -112,7 +112,7 @@ public class BoardManager extends GameManager{
         }
         this.complexity = complexity;
         Collections.shuffle(tiles);
-        this.board = new Board(tiles, complexity);
+        this.board = new SlidingTileBoard(tiles, complexity);
     }
 
     /**
@@ -216,7 +216,7 @@ public class BoardManager extends GameManager{
         movements.popLastTwo(defaultUndo);
         board.swapTiles(row, col, blankposition / board.getNUM_COLS(), blankposition % board.getNUM_ROWS());
 
-        // tiles is the blank tile, swap by calling Board's swap method.
+        // tiles is the blank tile, swap by calling SlidingTileBoard's swap method.
     }
 
     /**

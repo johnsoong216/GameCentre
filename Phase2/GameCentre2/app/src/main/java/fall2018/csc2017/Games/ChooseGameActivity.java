@@ -30,7 +30,7 @@ public class ChooseGameActivity extends AppCompatActivity {
         st.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toStarting = new Intent(ChooseGameActivity.this, StartingActivity.class);
+                Intent toStarting = new Intent(ChooseGameActivity.this, SlidingTileStartingActivity.class);
                 toStarting.putExtra("game", "sliding");
                 startActivity(toStarting);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

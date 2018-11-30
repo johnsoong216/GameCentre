@@ -40,7 +40,7 @@ public class FlipStartingActivity extends AppCompatActivity {
     private Button saveButton;
     private Button startButton;
     private Button scoreBoardButton;
-    private LoadSave LoadSaveManager;
+    private LoadSave loadSaveManager;
     private FlipItLoadSaveButtonController controller;
 
 
@@ -52,7 +52,7 @@ public class FlipStartingActivity extends AppCompatActivity {
         controller = new FlipItLoadSaveButtonController(context, TEMP_SAVE_FILE);
         user = Session.getCurrentUser();
         username = user.getUsername();
-        LoadSaveManager = new LoadSave(context);
+        loadSaveManager = new LoadSave(context);
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
@@ -71,7 +71,7 @@ public class FlipStartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        flipManager = (FlipManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
+        flipManager = (FlipManager) loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
         if (flipManager == null) {
             loadButton.setEnabled(false);
             saveButton.setEnabled(false);
@@ -85,11 +85,11 @@ public class FlipStartingActivity extends AppCompatActivity {
 
 
     /**
-     * Switch to the GameActivity view to play the game.
+     * Switch to the SlidingTileGameActivity view to play the game.
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, FlipGameActivity.class);
-        LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
+        loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
         startActivity(tmp);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 

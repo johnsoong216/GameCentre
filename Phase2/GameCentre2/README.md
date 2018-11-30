@@ -156,7 +156,27 @@ password and new password typed in. The change is only made after the confirm bu
  * **Class ScoreActivity:** It shows up the highest three score of this game, and the highest
  three score of this game with the given user, and the current score.
 
- * **Class ScoreBoardActivity:**
+ * **Class ScoreBoardActivity:** It display the score of top players and allow to return to
+  the main page.
+
+  * **Class ScoreBoardManager:** It contains two hashmaps, one hashmap contains all the scores
+   and the corresponding users of the game, another hashmap contains all the scores and
+   the corresponding users of the game.
+
+ * **Class Session:** It identifies the current user and access the password and score of the user
+ before log out.
+
+  * **Class SignUpActivity:** It let the user sign up the username and password, create the
+  user manager and set up controller and set up the register button. Then add the password,
+  username to the controller.
+
+   * **Class SignUpController:** It checks whether user signed up successfully, and give the
+   corresponding message.
+
+   * **Class SignUpSignInActivity:** It create a sign up sign in controller, add listener to
+   register, changing password and sign in button.
+
+    * **Class SignUpSignInController:** 
 
 
 ----
