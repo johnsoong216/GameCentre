@@ -43,7 +43,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 
     private Button newGameButton;
 
-    private Loadsave loadsaveManager;
+    private LoadSave LoadSaveManager;
 
     private BlackJackLoadSaveButtonController controller;
 
@@ -54,7 +54,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_black_jack_starting);
         context = this;
         controller = new BlackJackLoadSaveButtonController(context, TEMP_SAVE_FILE);
-        loadsaveManager = new Loadsave(context);
+        LoadSaveManager = new LoadSave(context);
         loadButton = findViewById(R.id.btBJLoad);
         resumeButton = findViewById(R.id.btBJResume);
         saveButton = findViewById(R.id.btBJSave);
@@ -88,7 +88,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 //            public void onClick(View v) {
 //                int[] winDrawLoss = {0,0,0};
 //                blackJackManager = new BlackJackManager(new BlackJackGame(), 1000, winDrawLoss);
-//                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
+//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
 //                switchToGame();
 //            }
 //        });
@@ -101,7 +101,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 //        loadButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
+//                blackJackManager = (BlackJackManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //                switchToGame();
 //                resumeButton.setEnabled(true);
@@ -126,7 +126,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 //        resumeButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                blackJackManager = (BlackJackManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
+//                blackJackManager = (BlackJackManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //                switchToGame();
 //            }
@@ -141,7 +141,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 //        saveButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
+//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
 //                Toast.makeText(context, "Saved Game", Toast.LENGTH_SHORT).show();
 //            }
 //        });
@@ -169,7 +169,7 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 //     */
 //    private void switchToGame() {
 //        Intent tmp = new Intent(this, BlackJackComplexityActivity.class);
-//        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
+//        LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
 //        startActivity(tmp);
 //    }
 

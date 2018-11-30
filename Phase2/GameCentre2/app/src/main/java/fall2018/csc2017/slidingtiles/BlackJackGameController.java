@@ -29,7 +29,7 @@ public class BlackJackGameController {
     private Button hintButton;
     private Button insuranceButton;
     private String username;
-    private Loadsave loadSaveManager;
+    private LoadSave LoadSaveManager;
     private Context context;
     private TextView chipsTotal;
     private double difficulty;
@@ -42,8 +42,8 @@ public class BlackJackGameController {
         this.context =context;
         this.user = Session.getCurrentUser();
         this.username = user.getUsername();
-        this.loadSaveManager = new Loadsave(context);
-        blackJackManager = (BlackJackManager) loadSaveManager.loadFromFile(saveFile, username ,gameType);
+        this.LoadSaveManager = new LoadSave(context);
+        blackJackManager = (BlackJackManager) LoadSaveManager.loadFromFile(saveFile, username ,gameType);
         this.playerCards = playerCards;
         this.dealerCards = dealerCards;
         this.difficulty = blackJackManager.getComplexity();
@@ -281,6 +281,6 @@ public class BlackJackGameController {
      * save game
      */
     void saveGame(){
-        loadSaveManager.saveToFile(saveFile, username, gameType, blackJackManager);
+        LoadSaveManager.saveToFile(saveFile, username, gameType, blackJackManager);
     }
 }

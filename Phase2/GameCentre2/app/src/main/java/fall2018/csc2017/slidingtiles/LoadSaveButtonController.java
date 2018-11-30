@@ -39,19 +39,19 @@ abstract class LoadSaveButtonController {
     GameManager gameManager;
 
     /**
-     * current loadSaveManager for loading and saving files
+     * current LoadSaveManager for loading and saving files
      */
-    Loadsave loadSaveManager;
+    LoadSave LoadSaveManager;
     /**
      * Create a LoadSaveButtonController
      * @param context
      */
     LoadSaveButtonController(Context context, String saveFile){
-        this.context =context;
+        this.context = context;
         this.user = Session.getCurrentUser();
         this.username = user.getUsername();
         this.saveFile = saveFile;
-        this.loadSaveManager = new Loadsave(context);
+        this.LoadSaveManager = new LoadSave(context);
     }
 
     /**
@@ -62,7 +62,7 @@ abstract class LoadSaveButtonController {
         loadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameManager = loadSaveManager.loadFromFile(saveFile, username, gameType);
+                gameManager = LoadSaveManager.loadFromFile(saveFile, username, gameType);
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
             }
@@ -77,7 +77,7 @@ abstract class LoadSaveButtonController {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+                LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
                 Toast.makeText(context, "Saved Game", Toast.LENGTH_SHORT).show();
             }
         });
@@ -91,7 +91,7 @@ abstract class LoadSaveButtonController {
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameManager = loadSaveManager.loadFromFile(saveFile, username, gameType);
+                gameManager = LoadSaveManager.loadFromFile(saveFile, username, gameType);
                 Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
                 switchToGame();
             }
@@ -99,7 +99,7 @@ abstract class LoadSaveButtonController {
     }
 
     void resume(Button saveButton, Button resumeButton, Button loadButton){
-        gameManager = loadSaveManager.loadFromFile(saveFile, username, gameType);
+        gameManager = LoadSaveManager.loadFromFile(saveFile, username, gameType);
         if (gameManager == null) {
             loadButton.setEnabled(false);
             saveButton.setEnabled(false);

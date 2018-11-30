@@ -46,15 +46,19 @@ public class BlackJackManager extends GameManager implements Serializable {
     Initial Bet
      */
 
-    public int getInitialBet() {
-        return initialBet;
+
+    private int initialBet;
+
+
+    public int getScore() {
+        return chips;
     }
 
     public void setInitialBet(int initialBet) {
         this.initialBet = initialBet;
-    }
+        blackJackGame.bet = initialBet;
 
-    private int initialBet;
+    }
 
 
     /*
@@ -197,12 +201,6 @@ User chooses to end Game
             }
         }
         return ((double) numCardBusted / (double) remainingCard) * 100.0;
-    }
-    /*
-    set the new bet for the game
-     */
-    public void setBet() {
-        blackJackGame.bet = initialBet;
     }
     /*
     return the complexity for the game

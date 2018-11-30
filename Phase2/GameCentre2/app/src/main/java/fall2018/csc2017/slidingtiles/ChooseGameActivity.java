@@ -50,8 +50,6 @@ public class ChooseGameActivity extends AppCompatActivity {
     }
     private void addFlipListener() {
         fi.setOnClickListener(new View.OnClickListener() {
-            boolean visible;
-
             @Override
             public void onClick(View v) {
 

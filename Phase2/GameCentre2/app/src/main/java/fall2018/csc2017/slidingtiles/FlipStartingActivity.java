@@ -43,7 +43,7 @@ public class FlipStartingActivity extends AppCompatActivity {
     private Button startButton;
     private Button signOutButton;
     private Button scoreBoardButton;
-    private Loadsave loadsaveManager;
+    private LoadSave LoadSaveManager;
     private FlipItLoadSaveButtonController controller;
 
 
@@ -55,7 +55,7 @@ public class FlipStartingActivity extends AppCompatActivity {
         controller = new FlipItLoadSaveButtonController(context, TEMP_SAVE_FILE);
         user = Session.getCurrentUser();
         username = user.getUsername();
-        loadsaveManager = new Loadsave(context);
+        LoadSaveManager = new LoadSave(context);
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
@@ -105,8 +105,8 @@ public class FlipStartingActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //
-//                flipManager = (FlipManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
-//                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
+//                flipManager = (FlipManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
+//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
 //
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //                switchToGame();
@@ -132,7 +132,7 @@ public class FlipStartingActivity extends AppCompatActivity {
 //        resumeButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
+//                LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
 //
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //                switchToGame();
@@ -148,7 +148,7 @@ public class FlipStartingActivity extends AppCompatActivity {
 //        saveButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
+//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
 //                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
 //            }
 //        });
@@ -166,7 +166,7 @@ public class FlipStartingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        flipManager = (FlipManager) loadsaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
+        flipManager = (FlipManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
         if (flipManager == null) {
             loadButton.setEnabled(false);
             saveButton.setEnabled(false);
@@ -184,7 +184,7 @@ public class FlipStartingActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, FlipGameActivity.class);
-        loadsaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
+        LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
         startActivity(tmp);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 

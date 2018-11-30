@@ -27,7 +27,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     private ImageView[] playerCards;
     private ImageView[] dealerCards;
 //    private String username;
-//    private Loadsave loadSaveManager;
+//    private LoadSave LoadSaveManager;
     private Context context;
     private TextView chipsTotal;
 //    private double difficulty;
@@ -49,8 +49,8 @@ public class BlackJackGameActivity extends AppCompatActivity {
         chipsTotal = findViewById(R.id.chipsTotal);
 //        user = Session.getCurrentUser();
 //        username = user.getUsername();
-//        loadSaveManager = new Loadsave(context);
-//        blackJackManager = (BlackJackManager) loadSaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack");
+//        LoadSaveManager = new LoadSave(context);
+//        blackJackManager = (BlackJackManager) LoadSaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack");
 //        hitButton = findViewById(R.id.btHit);
 //        standButton = findViewById(R.id.btStand);
 //        hintButton = findViewById(R.id.btHint);
@@ -81,7 +81,7 @@ public class BlackJackGameActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         controller.saveGame();
-//        loadSaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
+//        LoadSaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
     }
 
 //    /*
