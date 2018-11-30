@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class SlidingTilesController implements Observer {
+public class FlipItGameController implements Observer {
 
 
     /*
@@ -19,9 +19,9 @@ public class SlidingTilesController implements Observer {
     private LoadSave loadSaveManager;
 
     /*
-    The sliding tiles game's board Manager
+    The Flip game's board Manager
      */
-    private SlidingTileBoardManager boardManager;
+    private FlipManager flipManager;
 
     /*
     Returns the current active user
@@ -45,13 +45,13 @@ public class SlidingTilesController implements Observer {
     private ArrayList<Button> tileButtons;
 
 
-    SlidingTilesController(Context context){
+    FlipItGameController(Context context){
         this.context = context;
         this.loadSaveManager = new LoadSave(context);
         this.user = Session.getCurrentUser();
         this.username = user.getUsername();
-        this.boardManager = (SlidingTileBoardManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
-        boardManager.getBoard().addObserver(this);
+        this.flipManager = (FlipManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
+        flipManager.getFlip().addObserver(this);
     }
 
 
@@ -61,20 +61,19 @@ public class SlidingTilesController implements Observer {
      * Update the backgrounds on the buttons to match the tiles.
      */
     ArrayList<Button> updateTileButtons(ArrayList<Button> tileButtons) {
-        this.boardManager = (SlidingTileBoardManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
-        SlidingTileBoard board = boardManager.getBoard();
+        this.flipManager = (FlipManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
+        FlipIt flip = flipManager.getFlip();
         int nextPos = 0;
 
         for (Button b : tileButtons) {
-            int row = nextPos / boardManager.getBoard().getNUM_ROWS();
-            int col = nextPos % boardManager.getBoard().getNUM_COLS();
-            Log.d("TAG", "Which Tile" + board.getTile(row, col).getId());
-            b.setBackgroundResource(board.getTile(row, col).getBackground());
+            int row = nextPos / flipManager.getFlip().getNUM_ROWS();
+            int col = nextPos % flipManager.getFlip().getNUM_COLS();
+            b.setBackgroundResource(flip.getTile(row, col).getBackground());
             nextPos++;
         }
-        if (boardManager.isGameOver()) {
-            user.setScore(boardManager.getScore());
-            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
+        if (flipManager.isGameOver()) {
+            user.setScore(flipManager.getScore());
+            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it", null);
             Intent scoreboard = new Intent(context, ScoreActivity.class);
             scoreboard.putExtra("game", "sliding_tiles");
             context.startActivity(scoreboard);}
@@ -87,12 +86,12 @@ public class SlidingTilesController implements Observer {
      * @param context the context
      */
     void createTileButtons(Context context) {
-        SlidingTileBoard board = boardManager.getBoard();
+        FlipIt flip = flipManager.getFlip();
         tileButtons = new ArrayList<>();
-        for (int row = 0; row != boardManager.getBoard().getNUM_ROWS(); row++) {
-            for (int col = 0; col != boardManager.getBoard().getNUM_COLS(); col++) {
+        for (int row = 0; row != flipManager.getFlip().getNUM_ROWS(); row++) {
+            for (int col = 0; col != flipManager.getFlip().getNUM_COLS(); col++) {
                 Button tmp = new Button(context);
-                tmp.setBackgroundResource(board.getTile(row, col).getBackground());
+                tmp.setBackgroundResource(flip.getTile(row, col).getBackground());
                 tileButtons.add(tmp);
             }
         }
@@ -106,8 +105,8 @@ public class SlidingTilesController implements Observer {
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!boardManager.getMovements().isEmpty()) {
-                    boardManager.undo();
+                if (!flipManager.getMovements().isEmpty()) {
+                    flipManager.undo();
                 }
             }
         });
@@ -117,7 +116,7 @@ public class SlidingTilesController implements Observer {
      * @param undoButton the UndoButton in SlidingTileGameActivity
      */
     void setUndo(Button undoButton){
-        if (boardManager.getMovements().isEmpty()){
+        if (flipManager.getMovements().isEmpty()){
             undoButton.setEnabled(false);
         }
         else {

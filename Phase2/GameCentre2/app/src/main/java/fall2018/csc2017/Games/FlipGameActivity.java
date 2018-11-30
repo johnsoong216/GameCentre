@@ -18,7 +18,7 @@ import java.util.Observer;
 public class FlipGameActivity extends AppCompatActivity implements Observer {
 
     /**
-     * The board manager.
+     * The Flip manager.
      */
     private FlipManager flipManager;
 
@@ -28,10 +28,6 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     private ArrayList<Button> tileButtons;
     private Button undoButton;
 
-    /**
-     * Autosaves the game for every five moves taken.
-     */
-    private int counter;
 
     // Grid View and calculated column height and width based on device size
     private FlipGestureDetectGridView gridView;
@@ -69,17 +65,18 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
      */
     private Context context = this;
 
+
+    /*
+    *The manager that loads and saves the file
+     */
     private LoadSave loadSaveManager;
 
-    /**
-     * Set up the background image for each button based on the master list
-     * of positions, and then call the adapter to set the view.
-     */
-    // Display
-    public void display() {
-        updateTileButtons();
-        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
-    }
+    /*
+    The controller that operates the Activity
+    **/
+    private FlipItGameController controller;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,17 +85,27 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadSaveManager = new LoadSave(context);
-        flipManager = (FlipManager) loadSaveManager.loadFromFile(FlipStartingActivity.
-                TEMP_SAVE_FILE, username, "flip_it");
-        createTileButtons(this);
-        setContentView(R.layout.activity_flip_game);
+        flipManager = (FlipManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
+        setContentView(R.layout.activity_board_main);
+        controller = new FlipItGameController(context);
+        scoreStepTimer = findViewById(R.id.ScoreBoard);
+        currentScore = findViewById(R.id.currentScore);
+        undoButton = findViewById(R.id.btUndo);
+        controller.createTileButtons(context);
+        controller.addUndoButtonListener(undoButton);
+        controller.setUndo(undoButton);
+        gridView = findViewById(R.id.grid);
+        flipManager.getFlip().addObserver(this);
+        setGridView();
+        runTimer();
+    }
 
-
+    private void setGridView() {
         // Add View to activity
-        gridView = findViewById(R.id.flipGrid);
         gridView.setNumColumns(flipManager.getFlip().getNUM_COLS());
         gridView.setGameManager(flipManager);
-        flipManager.getFlip().addObserver(this);
+        tileButtons = controller.getTileButtons();
+
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -114,15 +121,8 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
 
                         display();
 
-
                     }
                 });
-        undoButton = findViewById(R.id.btUndo);
-        undoButton.setEnabled(false);
-        addUndoButtonListener();
-        scoreStepTimer = findViewById(R.id.ScoreBoard);
-        currentScore = findViewById(R.id.currentScore);
-        runTimer();
     }
 
     /**
@@ -159,93 +159,37 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
     }
 
     /**
-     * Create the buttons for displaying the tiles.
-     *
-     * @param context the context
+     * Set up the background image for each button based on the master list
+     * of positions, and then call the adapter to set the view.
      */
-    private void createTileButtons(Context context) {
-        String j = getIntent().getStringExtra("game");
-        FlipIt flip = flipManager.getFlip();
-        tileButtons = new ArrayList<>();
-        for (int row = 0; row != flipManager.getFlip().getNUM_ROWS(); row++) {
-            for (int col = 0; col != flipManager.getFlip().getNUM_COLS(); col++) {
-                Button tmp = new Button(context);
-                tmp.setBackgroundResource(flip.getTile(row, col).getBackground());
-                this.tileButtons.add(tmp);
-            }
-        }
-    }
-
-    /**
-     * Update the backgrounds on the buttons to match the tiles.
-     */
-    private void updateTileButtons() {
-        FlipIt flip = flipManager.getFlip();
-        int nextPos = 0;
-
-        for (Button b : tileButtons) {
-            int row = nextPos / flipManager.getFlip().getNUM_ROWS();
-            int col = nextPos % flipManager.getFlip().getNUM_COLS();
-            b.setBackgroundResource(flip.getTile(row, col).getBackground());
-            nextPos++;
-        }
-        if (flipManager.isGameOver()) {
-            user.setScore(flipManager.getScore());
-            Intent toScore = new Intent(FlipGameActivity.this, ScoreActivity.class);
-            toScore.putExtra("game", "flip_it");
-            FlipGameActivity.this.startActivity(toScore);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
-            loadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
-
-    }
-
-    /**
-     * Autosaves the game for every five steps a user makes.
-     *
-     * @return true if the five steps have been taken.
-     */
-    public boolean autosave() {
-        counter++;
-        return (counter % 5 == 0);
-    }
-
-
-    /**
-     * Activate the undo button
-     */
-    private void addUndoButtonListener() {
-        undoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!flipManager.getMovements().isEmpty()) {
-                    flipManager.undo();
-                }
-            }
-        });
-    }
-
+    public void display(){
+        tileButtons = controller.getTileButtons();
+        controller.setUndo(undoButton);
+        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));}
     /**
      * Dispatch onPause() to fragments.
      */
     @Override
     protected void onPause() {
         super.onPause();
-        loadSaveManager.saveToFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
+        loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        if (!flipManager.getMovements().isEmpty()) {
-            undoButton.setEnabled(true);
-        } else undoButton.setEnabled(false);
-        display();
-    }
-
+    /*
+    Override the android's back button
+     */
     @Override
     public void onBackPressed() {
-        Intent backToMain = new Intent(FlipGameActivity.this, FlipStartingActivity.class);
-        FlipGameActivity.this.startActivity(backToMain);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-
+        Intent backToMain = new Intent(FlipGameActivity.this, SlidingTileStartingActivity.class);
+        startActivity(backToMain);
+    }
+    /*
+    Override the update Observer memthod
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", flipManager);
+        tileButtons = controller.updateTileButtons(tileButtons);
+        display();
     }
 }
