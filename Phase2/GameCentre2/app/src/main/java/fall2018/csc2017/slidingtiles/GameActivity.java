@@ -128,7 +128,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
         Thread t = new Thread() {
             @Override
             public void run() {
-                while (!boardManager.puzzleSolved()) {
+                while (!boardManager.isGameOver()) {
                     try {
                         Thread.sleep(1000);
 
@@ -185,7 +185,7 @@ public class GameActivity extends AppCompatActivity implements Observer {
             b.setBackgroundResource(board.getTile(row, col).getBackground());
             nextPos++;
         }
-        if (boardManager.puzzleSolved()) {
+        if (boardManager.isGameOver()) {
             user.setScore(boardManager.getScore());
             loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
             Intent scoreboard = new Intent(GameActivity.this, ScoreActivity.class);

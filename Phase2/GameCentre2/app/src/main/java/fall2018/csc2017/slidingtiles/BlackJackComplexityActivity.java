@@ -73,7 +73,6 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 bet = 100 + progress;
                 blackJackManager.setInitialBet(bet);
-                blackJackManager.setBet();
             }
 
 

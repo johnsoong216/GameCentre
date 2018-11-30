@@ -87,7 +87,8 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         username = user.getUsername();
         context = this;
         loadsaveManager = new Loadsave(context);
-        flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
+        flipManager = (FlipManager) loadsaveManager.loadFromFile(FlipStartingActivity.
+                TEMP_SAVE_FILE, username, "flip_it");
         createTileButtons(this);
         setContentView(R.layout.activity_flip_game);
 
@@ -130,7 +131,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         Thread t = new Thread() {
             @Override
             public void run() {
-                while (!flipManager.puzzleSolved()) {
+                while (!flipManager.isGameOver()) {
                     try {
                         Thread.sleep(1000);
 
@@ -187,7 +188,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
             b.setBackgroundResource(flip.getTile(row, col).getBackground());
             nextPos++;
         }
-        if (flipManager.puzzleSolved()) {
+        if (flipManager.isGameOver()) {
             user.setScore(flipManager.getScore());
             Intent toScore = new Intent(FlipGameActivity.this, ScoreActivity.class);
             toScore.putExtra("game", "flip_it");

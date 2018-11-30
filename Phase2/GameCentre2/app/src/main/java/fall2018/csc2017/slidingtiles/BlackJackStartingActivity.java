@@ -146,13 +146,12 @@ public class BlackJackStartingActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        user.logout();
-//        Intent backToLogin = new Intent(this, ChooseGameActivity.class);
-//        startActivity(backToLogin);
-//    }
+
+    @Override
+    public void onBackPressed() {
+        Intent backToLogin = new Intent(this, ChooseGameActivity.class);
+        startActivity(backToLogin);
+    }
 
     /**
      * Read the temporary board from disk.
