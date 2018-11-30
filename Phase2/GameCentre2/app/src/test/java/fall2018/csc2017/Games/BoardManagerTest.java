@@ -9,13 +9,26 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class BoardManagerTest {
-    BoardManager boardManager = new BoardManager();
+    BoardManager boardManager;
     private List<Tile> makeTiles() {
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = 16;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
             tiles.add(new Tile(tileNum + 1, tileNum));
         }
+
+        return tiles;
+    }
+
+    private List<Tile> makeTilesSwapped() {
+        List<Tile> tiles = new ArrayList<>();
+        final int numTiles = 13;
+        for (int tileNum = 0; tileNum != numTiles; tileNum++) {
+            tiles.add(new Tile(tileNum + 1, tileNum));
+        }
+        tiles.add(new Tile(14));
+        tiles.add(new Tile(13));
+        tiles.add(new Tile(15));
 
         return tiles;
     }
@@ -39,7 +52,7 @@ public class BoardManagerTest {
     /**
      * Make a solved Board.
      */
-    private void setUpCorrect() {
+    private void setUp() {
         List<Tile> tiles = makeTiles();
         Collections.shuffle(tiles);
         Board board = new Board(tiles, 4);
@@ -54,7 +67,8 @@ public class BoardManagerTest {
      * Test whether isValidHelp works.
      */
     @Test
-    public void testIInversion() {
+    public void testInversion() {
+        setUp4();
         List<Tile> tiles = makeTilesNotInOrder();
         assertEquals(6, boardManager.getInv(tiles));
     }
@@ -63,6 +77,7 @@ public class BoardManagerTest {
      */
     @Test
     public void testBlank() {
+        setUp4();
         List<Tile> tiles = makeTilesNotInOrder();
         assertEquals(11, boardManager.getBlank(tiles));
     }
@@ -71,7 +86,7 @@ public class BoardManagerTest {
      */
     @Test
     public void testStepCounter() {
-        setUpCorrect();
+        setUp();
         boardManager.setStepCounter(10);
         assertEquals(10, boardManager.getStepCounter());
     }
@@ -80,7 +95,7 @@ public class BoardManagerTest {
      */
     @Test
     public void testTimer() {
-        setUpCorrect();
+        setUp();
         boardManager.setTimer(20);
         assertEquals(20, boardManager.getTimer());
     }
@@ -94,13 +109,5 @@ public class BoardManagerTest {
         boardManager.setStepCounter(10);
         boardManager.setUndo(3);
         assertEquals(432, boardManager.getScore());
-    }
-    /**
-     * test whether the movements return correctly
-     */
-    @Test
-    public void testMovement() {
-        setUp4();
-        assertEquals(0, boardManager.getMovements().size());
     }
 }
