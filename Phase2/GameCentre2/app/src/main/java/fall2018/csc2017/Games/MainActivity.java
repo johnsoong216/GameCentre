@@ -11,14 +11,12 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Context context;
     private Button loginButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context = this;
-        loginButton = findViewById(R.id.LoginButton);
+        loginButton = findViewById(R.id.startButton);
         addStartButtonListener();
     }
 
