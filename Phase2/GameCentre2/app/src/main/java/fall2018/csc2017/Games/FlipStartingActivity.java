@@ -40,7 +40,6 @@ public class FlipStartingActivity extends AppCompatActivity {
     private Button resumeButton;
     private Button saveButton;
     private Button startButton;
-    private Button scoreBoardButton;
     private LoadSave loadSaveManager;
     private FlipItLoadSaveButtonController controller;
 
@@ -58,7 +57,6 @@ public class FlipStartingActivity extends AppCompatActivity {
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
         startButton = findViewById(R.id.StartButton);
-        scoreBoardButton = findViewById(R.id.scoreBoardButton);
         controller.addLoadButtonListener(loadButton);
         controller.addResumeButtonListener(resumeButton);
         controller.addSaveButtonListener(saveButton);
@@ -83,41 +81,6 @@ public class FlipStartingActivity extends AppCompatActivity {
             resumeButton.setEnabled(true);
         }
     }
-
-
-    /**
-     * Switch to the SlidingTileGameActivity view to play the game.
-     */
-    private void switchToGame() {
-        Intent tmp = new Intent(this, FlipGameActivity.class);
-        loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
-        startActivity(tmp);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-    }
-
-    /**
-     * Switch to the Complexity view to choose game complexity.
-     */
-    private void switchToComplexity() {
-        Intent complexity = new Intent(this, FlipComplexityActivity.class);
-        complexity.putExtra("game", "flip");
-        startActivity(complexity);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-    }
-
-
-    /**
-     * Switch the current activity to black jack game activity
-     */
-    private void switchToScoreBoard() {
-        Intent complexity = new Intent(this, ScoreBoardActivity.class);
-        startActivity(complexity);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-    }
-
     @Override
     public void onBackPressed() {
         Intent backToLogin = new Intent(this, ChooseGameActivity.class);
