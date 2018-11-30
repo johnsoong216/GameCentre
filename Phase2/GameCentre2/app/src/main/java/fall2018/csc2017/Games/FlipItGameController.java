@@ -50,7 +50,7 @@ public class FlipItGameController implements Observer {
         this.loadSaveManager = new LoadSave(context);
         this.user = Session.getCurrentUser();
         this.username = user.getUsername();
-        this.flipManager = (FlipManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
+        this.flipManager = (FlipManager) loadSaveManager.loadFromFile(FlipStartingActivity.TEMP_SAVE_FILE, username, "flip_it");
         flipManager.getFlip().addObserver(this);
     }
 
