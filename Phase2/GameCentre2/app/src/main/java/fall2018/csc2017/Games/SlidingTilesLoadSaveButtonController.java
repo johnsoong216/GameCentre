@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * The loading/saving controller for sliding tile game
+ */
 public class SlidingTilesLoadSaveButtonController extends LoadSaveButtonController {
 
     SlidingTilesLoadSaveButtonController(Context context, String saveFile){

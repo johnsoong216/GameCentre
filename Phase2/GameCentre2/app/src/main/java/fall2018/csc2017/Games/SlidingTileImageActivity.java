@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
- * this the image tile activity
+ * this the image tile activity that display and allow user to choose different image
  */
 public class SlidingTileImageActivity extends AppCompatActivity {
 

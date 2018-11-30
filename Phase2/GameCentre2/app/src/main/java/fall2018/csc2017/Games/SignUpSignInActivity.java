@@ -1,5 +1,8 @@
 //excluded from tests because it's a (model / view) class
 package fall2018.csc2017.Games;
+/**
+ * A activity that preforms sign up/sign in functions
+ */
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,38 +30,5 @@ public class SignUpSignInActivity extends AppCompatActivity {
         controller.changePasswordLinkListener(changePasswordLink);
         controller.addSignInButtonListener(signInButton, username, password);
     }
-
-//    /**
-//     * Link to the activity that allows user to change their password.
-//     *
-//     * @param changepasswordLink Textview link.
-//     */
-//    private void changepasswordLinkListener(TextView changepasswordLink) {
-//        changepasswordLink.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent cpIntent = new Intent(SignUpSignInActivity.this, PasswordChangeActivity.class);
-//                SignUpSignInActivity.this.startActivity(cpIntent);
-//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//            }
-//        });
-//    }
-//
-//    /**
-//     * A registration link.
-//     *
-//     * @param registerLink Textview link.
-//     */
-//    private void addregisterLinkListener(TextView registerLink) {
-//        registerLink.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent signupIntent = new Intent(SignUpSignInActivity.this, SignUpActivity.class);
-//                SignUpSignInActivity.this.startActivity(signupIntent);
-//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//
-//            }
-//        });
-//    }
 }
 

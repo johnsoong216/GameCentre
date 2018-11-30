@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * The complexity activity.
+ * The complexity activity that allows user to choose complexity of the game
  */
 public class SlidingTileComplexityActivity extends AppCompatActivity {
 

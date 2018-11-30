@@ -1,6 +1,10 @@
 //excluded from tests because it's a (model / view) class
 package fall2018.csc2017.Games;
 
+/**
+ * The flip it game activity that display the in game view
+ */
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;

@@ -3,6 +3,10 @@ package fall2018.csc2017.Games;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A flip it game manager that manage the flip it game including change picture with touching a tiles
+ * and getting score for the game and also has undo function
+ */
 public class FlipManager extends GameManager{
 
     /**

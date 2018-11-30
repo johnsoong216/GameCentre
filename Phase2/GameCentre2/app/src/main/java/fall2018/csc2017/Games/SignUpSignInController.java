@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * A controller that controls the sign up and sign in activity in cluding going to an other activity
+ * and setting up buttons
+ */
 
 public class SignUpSignInController {
 

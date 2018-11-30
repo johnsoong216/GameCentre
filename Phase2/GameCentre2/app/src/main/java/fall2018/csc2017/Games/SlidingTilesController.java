@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * The controller for sliding tile game that responds to user's action
+ */
 public class SlidingTilesController implements Observer {
 
 
@@ -68,7 +71,6 @@ public class SlidingTilesController implements Observer {
         for (Button b : tileButtons) {
             int row = nextPos / boardManager.getBoard().getNUM_ROWS();
             int col = nextPos % boardManager.getBoard().getNUM_COLS();
-            Log.d("TAG", "Which Tile" + board.getTile(row, col).getId());
             b.setBackgroundResource(board.getTile(row, col).getBackground());
             nextPos++;
         }

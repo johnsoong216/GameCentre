@@ -21,7 +21,7 @@ public class SlidingTileBoardManager extends GameManager{
      */
     SlidingTileBoardManager(SlidingTileBoard board) {
         this.board = board;
-        movements = new Stack<>();
+        this.movements = new Stack<>();
     }
 
     /**
@@ -239,7 +239,7 @@ public class SlidingTileBoardManager extends GameManager{
      */
     void undo() {
         if (!movements.isEmpty()) {
-            stepCounter++;
+            stepCounter--;
             int blank = movements.pop();
             int position = movements.pop();
             board.swapTiles(position / board.getNUM_ROWS(), position % board.getNUM_COLS(), blank / board.getNUM_ROWS(), blank % board.getNUM_COLS());

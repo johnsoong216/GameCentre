@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * A flip it game controller that reacts to action of user
+ */
 public class FlipItGameController implements Observer {
 
 
