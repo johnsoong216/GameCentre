@@ -66,21 +66,26 @@ public class BoardManager extends GameManager{
         int index = tiles.size() - getBlank(tiles) - 1;
         if(complexity % 2 == 1) {
             if(inv % 2 != 0) {
-                swap_15_14(tiles);
+                swap1514(tiles);
             }
         } else {
             if((index / complexity) % 2 == 1 && inv % 2 != 1) {
-                swap_15_14(tiles);
+                swap1514(tiles);
             }
 
             while((index / complexity) % 2 == 0 && inv % 2 != 0){
-                swap_15_14(tiles);
+                swap1514(tiles);
             }
         }
         this.board = new Board(tiles, complexity);
     }
 
-    private void swap_15_14(List<Tile> tiles) {
+    /**
+     * Algorithm that makes sure the board is always solvable
+     *
+     * @param tiles the tiles that needs to have 15 and 14 swapped
+     */
+    private void swap1514(List<Tile> tiles) {
         int index1 = 0;
         int index2 = 0;
         for(int i = 0; i < tiles.size(); i ++) {
@@ -111,6 +116,14 @@ public class BoardManager extends GameManager{
         this.board = new Board(tiles, complexity);
     }
 
+    /**
+     * Get the number of inversions in a list of tiles
+     * Inversion for a tile is number of tiles after the current tile that has a smaller value
+     * We are getting the number of inversions for all tiles in the list
+     *
+     * @param tiles the list of tiles for which we are getting the inversions.
+     * @return number of inversions in the list
+     */
     int getInv(List<Tile> tiles) {
         int inv = 0;
         for(int i = 0; i < tiles.size()-1; i ++) {
@@ -125,6 +138,12 @@ public class BoardManager extends GameManager{
         return inv;
     }
 
+    /**
+     * Get the position of the blank tile
+     *
+     * @param tiles the list of tiles for which we are getting the blank tile position
+     * @return position of the blank tile
+     */
     int getBlank(List<Tile> tiles) {
         int index = 0;
         for(int i = 0; i < tiles.size(); i ++) {
