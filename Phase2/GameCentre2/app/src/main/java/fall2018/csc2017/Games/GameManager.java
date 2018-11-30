@@ -32,7 +32,7 @@ abstract class GameManager extends Observable implements Serializable {
         return timer;
     }
 
-    int defaultUndo;
+    int defaultUndo = 3;
 
     Stack getMovements() {
         return movements;

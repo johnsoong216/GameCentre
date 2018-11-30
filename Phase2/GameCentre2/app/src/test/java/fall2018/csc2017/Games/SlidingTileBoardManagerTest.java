@@ -46,10 +46,26 @@ public class SlidingTileBoardManagerTest {
         boardManager = new SlidingTileBoardManager(board);
     }
 
+    /**
+     * set up a board manager with complexity 3
+     */
     private void setUp3() {
         boardManager = new SlidingTileBoardManager(3);
     }
 
+    /**
+     * set up a boardManager with picture ferries wheel
+     */
+    private void setUpPicBoardManager() {
+        boardManager = new SlidingTileBoardManager(4, "fw");
+    }
+
+    /**
+     * set up a boardManager with picture dog
+     */
+    private void setUpDogBoardManager() {
+        boardManager = new SlidingTileBoardManager(3, "dog");
+    }
     /**
      * Test whether isValidHelp works.
      */
@@ -73,16 +89,16 @@ public class SlidingTileBoardManagerTest {
      */
     @Test
     public void testStepCounter() {
-        setUp();
+        setUpDogBoardManager();
         boardManager.setStepCounter(10);
         assertEquals(10, boardManager.getStepCounter());
     }
     /**
-     * test whether the timer counts correctly
+     * test whether the timer setting and getting correctly
      */
     @Test
     public void testTimer() {
-        setUp();
+        setUpPicBoardManager();
         boardManager.setTimer(20);
         assertEquals(20, boardManager.getTimer());
     }
@@ -96,5 +112,19 @@ public class SlidingTileBoardManagerTest {
         boardManager.setStepCounter(10);
         boardManager.setUndo(3);
         assertEquals(373, boardManager.getScore());
+    }
+
+    /**
+     * Test the touch move method and undo method
+     */
+    @Test
+    public void testUndoAndTouchMove(){
+        List<Tile> tiles = makeTilesNotInOrder();
+        boardManager = new SlidingTileBoardManager(new SlidingTileBoard(tiles, 4));
+        assertEquals(true, boardManager.isValidTap(15));
+        boardManager.touchMove(15);
+        assertEquals(false, boardManager.isValidTap(15));
+        boardManager.undo();
+        assertEquals(true, boardManager.isValidTap(15));
     }
 }
