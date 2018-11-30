@@ -52,7 +52,7 @@ public class FlipManager extends GameManager{
             if(level == 1){
                 for (int tileNum = 0; tileNum != 9; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.ferrisWheelImage);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 2 || tileNum == 4 || tileNum == 6) {
                         newtile.setBackground(R.drawable.back);
                     }
@@ -64,7 +64,7 @@ public class FlipManager extends GameManager{
             else if (level == 2){
                 for (int tileNum = 0; tileNum != 9; tileNum++) {
                     Tile newtile = new Tile(1);
-                    newtile.setBackground(R.drawable.ferrisWheelImage);
+                    newtile.setBackground(R.drawable.flip_it);
                     if (tileNum == 1 || tileNum == 2 || tileNum == 6 || tileNum == 8) {
                         newtile.setBackground(R.drawable.back);
                     }
