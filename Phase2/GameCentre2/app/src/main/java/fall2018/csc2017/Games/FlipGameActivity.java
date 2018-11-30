@@ -97,6 +97,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         flipManager.getFlip().addObserver(this);
         setGridView();
         runTimer();
+        addUndoButtonListener();
     }
 
     private void setGridView() {
@@ -157,6 +158,8 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         t.start();
     }
 
+
+
     /**
      * Set up the background image for each button based on the master list
      * of positions, and then call the adapter to set the view.
@@ -168,7 +171,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
 
 
     /*
-     *undo Control
+     *Undo Control
      */
     void addUndoButtonListener() {
         undoButton.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +181,16 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         });
     }
 
+
+    /**
+     * Override Onresume
+     */
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        controller.setUndo(undoButton);
+    }
     /**
      * Dispatch onPause() to fragments.
      */
@@ -200,7 +213,7 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-        loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", flipManager);
+        loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
         tileButtons = controller.updateTileButtons(tileButtons);
         display();
     }

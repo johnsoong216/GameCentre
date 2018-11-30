@@ -2,7 +2,6 @@
 package fall2018.csc2017.Games;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loginButton = findViewById(R.id.startButton);
+        loginButton = findViewById(R.id.StartButton);
         addStartButtonListener();
     }
 

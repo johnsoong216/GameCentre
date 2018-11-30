@@ -31,7 +31,7 @@ public class MovementController {
         else if(gameManager instanceof FlipManager) {
             (gameManager).touchMove(position);
             if (gameManager.isGameOver()) {
-                Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }
         }
     }

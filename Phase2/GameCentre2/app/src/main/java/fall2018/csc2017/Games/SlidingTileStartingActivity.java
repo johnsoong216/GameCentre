@@ -55,7 +55,7 @@ public class SlidingTileStartingActivity extends AppCompatActivity {
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
-        startButton = findViewById(R.id.startButton);
+        startButton = findViewById(R.id.StartButton);
 
         controller.addNewGameButtonListener(startButton);
         controller.addLoadButtonListener(loadButton);
