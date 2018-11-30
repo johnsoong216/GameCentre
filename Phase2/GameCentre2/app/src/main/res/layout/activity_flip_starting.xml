@@ -61,13 +61,12 @@
         android:layout_below="@+id/GameText"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="164dp"
-        android:background="@drawable/buttonshape3"
         android:layout_toEndOf="@+id/LoginButton"
+        android:background="@drawable/buttonshape3"
         android:text="Save Game"
-        app:layout_constraintBottom_toTopOf="@+id/scoreBoardButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/LoginButton" />
+        app:layout_constraintStart_toEndOf="@+id/LoginButton"
+        tools:layout_editor_absoluteY="299dp" />
 
 
     <Button
@@ -80,19 +79,6 @@
         android:layout_marginEnd="140dp"
         android:layout_marginBottom="132dp"
         android:text="Resume"
-        android:background="@drawable/buttonshape3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/scoreBoardButton"
-        android:layout_width="141dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/LoginButton"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Scoreboard"
         android:background="@drawable/buttonshape3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
