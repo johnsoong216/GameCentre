@@ -45,11 +45,11 @@ public class ScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score);
         Session user = Session.getCurrentUser();
         Context context = this;
-        Loadsave loadsaveManager = new Loadsave(context);
+        LoadSave LoadSaveManager = new LoadSave(context);
         String gameType = getIntent().getStringExtra("game");
         Log.d("TAG", "Game is " + gameType);
 
-        scoreBoardManager = (ScoreBoardManager) loadsaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
+        scoreBoardManager = (ScoreBoardManager) LoadSaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
         if (scoreBoardManager == null) {
             scoreBoardManager = new ScoreBoardManager();
         }
@@ -69,7 +69,7 @@ public class ScoreActivity extends AppCompatActivity {
         setdisplay(user);
         addReturnButtonListener();
 
-        loadsaveManager.saveToFile(SCORE_SAVE_FILENAME, "admin", gameType, scoreBoardManager);
+        LoadSaveManager.saveToFile(SCORE_SAVE_FILENAME, "admin", gameType, scoreBoardManager);
     }
 
     /**

@@ -18,14 +18,14 @@ public class LevelComplexityActivity extends AppCompatActivity {
     private int level;
     private Context context;
     private String username;
-    private Loadsave loadsaveManager;
+    private LoadSave LoadSaveManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_complexity);
         context = this;
-        loadsaveManager = new Loadsave(context);
+        LoadSaveManager = new LoadSave(context);
         username = Session.getCurrentUser().getUsername();
         levelNumbersBtn = this.findViewById(R.id.levelNumbersBtn);
         chooseGameLevel();
@@ -64,7 +64,7 @@ public class LevelComplexityActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int undo = getIntent().getIntExtra("undo", 0);
                 flipManager.setUndo(undo);
-                loadsaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
+                LoadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
                 Intent startGame = new Intent(LevelComplexityActivity.this, FlipGameActivity.class);
                 startActivity(startGame);
             }

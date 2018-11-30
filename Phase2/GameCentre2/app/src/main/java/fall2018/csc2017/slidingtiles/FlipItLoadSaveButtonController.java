@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Subclass of loadSaveButtonController to setup blackjack game's load save buttons
+ * Subclass of LoadSaveButtonController to setup blackjack game's load save buttons
  */
 class FlipItLoadSaveButtonController extends LoadSaveButtonController {
     /**
-     * create a loadSaveButton controller
+     * create a LoadSaveButton controller
      * @param context
      * @param saveFile
      */
@@ -23,7 +23,7 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+                LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
                 switchToGame();
             }
         });
@@ -32,7 +32,7 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
     void switchToGame() {
         {
             Intent tmp = new Intent(context, FlipGameActivity.class);
-            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
             context.startActivity(tmp);
         }
     }
@@ -41,7 +41,7 @@ class FlipItLoadSaveButtonController extends LoadSaveButtonController {
     void switchToComplexity() {
         {
             Intent tmp = new Intent(context, FlipComplexityActivity.class);
-            loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+            LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
             context.startActivity(tmp);
         }
     }

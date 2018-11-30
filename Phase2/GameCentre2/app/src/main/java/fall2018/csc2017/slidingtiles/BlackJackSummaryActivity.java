@@ -14,7 +14,7 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
 
     private Button checkScore;
     private Session user;
-    private Loadsave loadsaveManager;
+    private LoadSave LoadSaveManager;
     private BlackJackManager blackJackManager;
 
     @SuppressLint("DefaultLocale")
@@ -23,9 +23,9 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_black_jack_summary);
         Context context = this;
-        loadsaveManager = new Loadsave(context);
+        LoadSaveManager = new LoadSave(context);
         user = Session.getCurrentUser();
-        blackJackManager =  (BlackJackManager) loadsaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack");
+        blackJackManager =  (BlackJackManager) LoadSaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack");
         TextView gameOutcome = findViewById(R.id.gameOutcome);
         TextView earnings = findViewById(R.id.earnings);
         checkScore = findViewById(R.id.checkScore);
@@ -45,7 +45,7 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
         checkScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadsaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack", null);
+                LoadSaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack", null);
                 Intent checkScore = new Intent(BlackJackSummaryActivity.this, ScoreActivity.class);
                 checkScore.putExtra("game", "black_jack");
                 startActivity(checkScore);

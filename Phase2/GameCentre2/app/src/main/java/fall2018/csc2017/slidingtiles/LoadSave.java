@@ -15,11 +15,11 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * Loading/Saving class. An utility class for serialization
  */
-class Loadsave {
+class LoadSave {
 
     private Context context;
 
-    public Loadsave(Context context) {
+    public LoadSave(Context context) {
         this.context = context;
     }
     /**
