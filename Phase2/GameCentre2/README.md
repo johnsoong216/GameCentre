@@ -16,7 +16,7 @@ it loads correctly.
 * **Class Board:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
  and these are used to populate the 2D array. This class is also Observable, which means that other classes 
  can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called. 
- The call to notifyAll ends up letting the GameActivity know that the user interface needs to be updated.
+ The call to notifyAll ends up letting the GameActivity know that the user interface needs to be dogImageted.
  
 * **Class BoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking 
 whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and 

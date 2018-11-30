@@ -16,7 +16,7 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
 
     private Button checkScore;
     private Session user;
-    private LoadSave LoadSaveManager;
+    private LoadSave loadSaveManager;
     private BlackJackManager blackJackManager;
 
     @SuppressLint("DefaultLocale")
@@ -25,16 +25,15 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_black_jack_summary);
         Context context = this;
-        LoadSaveManager = new LoadSave(context);
+        loadSaveManager = new LoadSave(context);
         user = Session.getCurrentUser();
-        blackJackManager =  (BlackJackManager) LoadSaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack");
+        blackJackManager =  (BlackJackManager) loadSaveManager.loadFromFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack");
         TextView gameOutcome = findViewById(R.id.gameOutcome);
         TextView earnings = findViewById(R.id.earnings);
         checkScore = findViewById(R.id.checkScore);
         gameOutcome.setText(String.format("WIN: %d\nDRAW: %d\nLOSS: %d", blackJackManager.getWinDrawLoss()[0], blackJackManager.getWinDrawLoss()[1], blackJackManager.getWinDrawLoss()[2]));
         earnings.setText(String.format("Total Earnings: $%d", blackJackManager.getChips() - 1000));
         checkScoreListener();
-        calculateScore();
     }
 
     /**
@@ -42,17 +41,14 @@ public class BlackJackSummaryActivity extends AppCompatActivity {
      * we put this class in a view class instead of a controller class because it only has a minor
      * logic
      */
-    public void calculateScore(){
-        double score = (blackJackManager.getChips() + 50 * blackJackManager.getWinDrawLoss()[0]) * blackJackManager.getComplexity();
-        user.setScore((int) Math.round(score));
-    }
 
 
     public void checkScoreListener() {
         checkScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadSaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack", null);
+                user.setScore(blackJackManager.getScore());
+                loadSaveManager.saveToFile(BlackJackStartingActivity.TEMP_SAVE_FILE, user.getUsername(), "black_jack", null);
                 Intent checkScore = new Intent(BlackJackSummaryActivity.this, ScoreActivity.class);
                 checkScore.putExtra("game", "black_jack");
                 startActivity(checkScore);

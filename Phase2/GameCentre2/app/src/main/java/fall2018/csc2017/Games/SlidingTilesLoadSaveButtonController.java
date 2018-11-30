@@ -16,7 +16,7 @@ public class SlidingTilesLoadSaveButtonController extends LoadSaveButtonControll
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+                loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
                 switchToComplexity();
             }
         });
@@ -25,7 +25,7 @@ public class SlidingTilesLoadSaveButtonController extends LoadSaveButtonControll
     @Override
     void switchToGame() {
         Intent tmp = new Intent(context, GameActivity.class);
-        LoadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
+        loadSaveManager.saveToFile(saveFile, username, gameType, gameManager);
         context.startActivity(tmp);
     }
     @Override

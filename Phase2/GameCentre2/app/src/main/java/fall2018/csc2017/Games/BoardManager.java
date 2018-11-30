@@ -72,8 +72,7 @@ public class BoardManager extends GameManager{
             if((index / complexity) % 2 == 1 && inv % 2 != 1) {
                 swap1514(tiles);
             }
-
-            while((index / complexity) % 2 == 0 && inv % 2 != 0){
+            if((index / complexity) % 2 == 0 && inv % 2 != 0){
                 swap1514(tiles);
             }
         }

@@ -28,7 +28,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
     public static final String SCORE_SAVE_FILENAME = "save_score.ser";
 
 
-    public LoadSave LoadSaveManager;
+    public LoadSave loadSaveManager;
     public String gameType;
     public String gameName;
     public TextView gameNameDisplay;
@@ -45,7 +45,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_board);
         Context context = this;
-        LoadSaveManager = new LoadSave(context);
+        loadSaveManager = new LoadSave(context);
         score_board = findViewById(R.id.score_board);
         gameNameDisplay= findViewById(R.id.gameType);
         addReturnButtonListener();
@@ -56,7 +56,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
         gameType = getIntent().getStringExtra("game");
         gameName = getIntent().getStringExtra("gameName");
         gameNameDisplay.setText(gameName);
-        scoreBoardManager = (ScoreBoardManager) LoadSaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
+        scoreBoardManager = (ScoreBoardManager) loadSaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
         if (scoreBoardManager == null) {
             scoreBoardManager = new ScoreBoardManager();
         }
