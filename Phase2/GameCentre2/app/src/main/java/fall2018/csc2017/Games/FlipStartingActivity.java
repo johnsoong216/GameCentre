@@ -117,4 +117,10 @@ public class FlipStartingActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent backToLogin = new Intent(this, ChooseGameActivity.class);
+        startActivity(backToLogin);
+    }
 }
