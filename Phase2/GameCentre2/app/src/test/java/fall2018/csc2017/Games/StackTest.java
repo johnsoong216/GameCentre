@@ -1,4 +1,4 @@
-package fall2018.csc2017.slidingtiles;
+package fall2018.csc2017.Games;
 
 import org.junit.Test;
 
@@ -38,7 +38,7 @@ public class StackTest {
         for(int i = 2; i < 10; i ++) {
             temp.push(i);
         }
-        Stack<Integer> temp1 = stack.poplasttwo(7);
+        Stack<Integer> temp1 = stack.popLastTwo(7);
         assertEquals(temp.size(), temp1.size());
         for(int i = 0; i < 8; i ++) {
             assertEquals(temp.pop(), temp1.pop());
@@ -52,7 +52,7 @@ public class StackTest {
         for(int i = 5; i < 15; i ++) {
             temp.push(i);
         }
-        Stack<Integer> temp1 = stack.poplastfive(7);
+        Stack<Integer> temp1 = stack.popLastFive(7);
         assertEquals(temp.size(), temp1.size());
         for(int i = 0; i < 10; i ++) {
             assertEquals(temp.pop(), temp1.pop());

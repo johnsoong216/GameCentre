@@ -1,4 +1,4 @@
-package fall2018.csc2017.slidingtiles;
+package fall2018.csc2017.Games;
 
 import android.content.Context;
 
@@ -9,16 +9,16 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class BoardMovementControllerTest {
+public class FlipMovementControllerTest {
     /**
-     * crease board movement controller for testing
+     * the flip movement controller for testing
      */
-    BoardMovementController mController = new BoardMovementController();
-    BoardManager boardManager;
+    FlipMovementController mController = new FlipMovementController();
+    FlipManager flipManager;
     List<Tile> tiles;
-    Context context = new GameActivity();
+    private Context context;
     /**
-     * make a list of tiles for testing
+     * creating a list of tiles
      */
     private List<Tile> makeTiles() {
         List<Tile> tiles = new ArrayList<>();
@@ -31,20 +31,24 @@ public class BoardMovementControllerTest {
         return tiles;
     }
     /**
-     * set up the board and board manager
+     * set up the flip and flip manager
      */
     private void setUp() {
         tiles = makeTiles();
-        Board board = new Board(tiles, 4);
-        boardManager = new BoardManager(board);
+        FlipIt flip = new FlipIt(tiles, 4);
+        flipManager = new FlipManager(flip);
+        flipManager.isGameOver();
     }
     /**
-     * test whether the boardmanager is set correctly
+     * test whether set the board manager correctly
      */
     @Test
     public void testSetBoardmanager() {
         setUp();
-        mController.setManager(boardManager);
-        assertEquals(boardManager, mController.getManager());
+        mController.setManager(flipManager);
+        assertEquals(flipManager, mController.getManager());
     }
+
+    
+
 }

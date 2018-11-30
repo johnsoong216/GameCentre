@@ -1,4 +1,4 @@
-package fall2018.csc2017.slidingtiles;
+package fall2018.csc2017.Games;
 
 import org.junit.Test;
 
@@ -101,9 +101,9 @@ public class BoardAndTileTest {
     @Test
     public void testIsSolved4() {
         setUpCorrect();
-        assertEquals(true, boardManager4.puzzleSolved());
+        assertEquals(true, boardManager4.isGameOver());
         swapFirstTwoTiles4();
-        assertEquals(false, boardManager4.puzzleSolved());
+        assertEquals(false, boardManager4.isGameOver());
     }
     /**
      * Test whether swapping two tiles makes a solved board unsolved.
@@ -111,9 +111,9 @@ public class BoardAndTileTest {
     @Test
     public void testIsSolved3() {
         setUpCorrect();
-        assertEquals(true, boardManager3.puzzleSolved());
+        assertEquals(true, boardManager3.isGameOver());
         swapFirstTwoTiles3();
-        assertEquals(false, boardManager3.puzzleSolved());
+        assertEquals(false, boardManager3.isGameOver());
     }
     /**
      * Test whether swapping two tiles makes a solved board unsolved.
@@ -121,9 +121,9 @@ public class BoardAndTileTest {
     @Test
     public void testIsSolved5() {
         setUpCorrect();
-        assertEquals(true, boardManager5.puzzleSolved());
+        assertEquals(true, boardManager5.isGameOver());
         swapFirstTwoTiles5();
-        assertEquals(false, boardManager5.puzzleSolved());
+        assertEquals(false, boardManager5.isGameOver());
     }
 
     /**
