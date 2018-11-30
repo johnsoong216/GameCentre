@@ -72,6 +72,37 @@ save a current game state, resume a game, as well as signing out. The game state
 time a user makes five steps. Clicking on "load saved game" will load the game state right after a user has
 completed five steps but just before their next five. Resuming a game however, will bring user right back to
 where they left off.
+/////////////////////////////////////////////////////////////////////////////////
+* **Game FlipIt:** This is a board game which the player need to achieve a plain white board with a
+set of designed board with blue tiles in place. The user can choose the complexity which
+corresponds to the 3*3, 4*4, 5*5 boards. They can also switch the level complexity in each board
+length. The moves, time are recorded in order to calculate the score. Detailed information are
+explained in the following classes.
+
+* **Class FlipComplexityActiviy:** This activity class keeps track of the complexity of the flipIt game.
+The activity contains the seekBar which is a feature we created to allow the users to choose the
+complexity they want. The activity only contains view, all the buttons are stored into the
+controller class.
+
+* **Class FlipGameActivity:** This is an activity class that contains the timer, the grid view and
+also creating and updating the board. The grid view gives an optimized view of the game for the user.
+Un undo button is also included to let the user undo during the game.
+
+* **Class FlipGestureDetectGridView:** This class decides the animation when the user touches the tiles.
+
+* **Class FlipIt:** This class contains the initial setting of the flipIt game. For example, it keeps
+track of changing the tile color at a specific row, column place. There is also an iterator implemented
+to iterate over the tiles.
+
+* **Class FlipItComplexityController:** The complexity controller class keeps track of all the buttons
+
+* **Class FlipItLoadSaveButtonController:**This class extends the LoadSaveButtonController and there
+are new game listener, switch to complexity, and switch to new game method. Since these do not
+belong to the view, we extracted it from the activity class.
+
+* **Class LevelComplexityActivity:** This activity is somehow similar to the FlipComplexityActivity.
+User can choose the level complexity within each of the complexity (3*3, 4*4, 5*5). There are 3 levels
+inside each complexity board.
 
 ----
 ## Running the code
@@ -88,4 +119,5 @@ We use Git for versioning. For the versions available, see the repository histor
 ## Acknowledgements
 Great Appreciation to the Princeton University and Onur Kagan
 https://introcs.cs.princeton.edu/java/43stack/Stack.java.html
-https://github.com/onurkagan/Singleton-Design-Pattern-Example/blob/master/app/src/main/java/com/onurkagan/singleton_design_pattern_example/UserSingletonModel.java
+https://github.com/onurkagan/Singleton-Design-Pattern-Example/blob/master/app/src/main/java/com/
+onurkagan/singleton_design_pattern_example/UserSingletonModel.java
