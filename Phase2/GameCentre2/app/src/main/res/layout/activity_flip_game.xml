@@ -7,9 +7,9 @@
     android:background="@drawable/flip_back"
     tools:context=".FlipGameActivity">
 
-    <fall2018.csc2017.slidingtiles.FlipGestureDetectGridView
+    <fall2018.csc2017.Games.FlipGestureDetectGridView
         android:id="@+id/flipGrid"
-        android:layout_width="363dp"
+        android:layout_width="366dp"
         android:layout_height="500dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/ScoreBoard"
@@ -21,23 +21,22 @@
 
     <TextView
         android:id="@+id/ScoreBoard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="126dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="520dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/currentScore"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/currentScore"
         android:layout_width="172dp"
         android:layout_height="22dp"
-        android:layout_marginBottom="562dp"
+        android:layout_marginTop="40dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btUndo"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ScoreBoard" />
 

@@ -21,6 +21,7 @@ public class SlidingTileBoardManager extends GameManager{
      */
     SlidingTileBoardManager(SlidingTileBoard board) {
         this.board = board;
+        movements = new Stack<>();
     }
 
     /**
@@ -59,6 +60,7 @@ public class SlidingTileBoardManager extends GameManager{
      * @param complexity the complexity of the game.
      */
     SlidingTileBoardManager(int complexity) {
+        movements = new Stack<>();
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = complexity * complexity;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
@@ -113,6 +115,7 @@ public class SlidingTileBoardManager extends GameManager{
      * @param image      the image being arranged.
      */
     SlidingTileBoardManager(int complexity, String image) {
+        movements = new Stack<>();
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = complexity * complexity;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
@@ -230,7 +233,6 @@ public class SlidingTileBoardManager extends GameManager{
     /**
      * Undo one step the user has made.
      */
-    @Override
     void undo() {
         if (!movements.isEmpty()) {
             stepCounter++;
