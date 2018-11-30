@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="fall2018.csc2017.Games.GameActivity" />
-        <activity android:name="fall2018.csc2017.Games.StartingActivity" />
+        <activity android:name="fall2018.csc2017.Games.SlidingTileGameActivity" />
+        <activity android:name="fall2018.csc2017.Games.SlidingTileStartingActivity" />
         <activity android:name="fall2018.csc2017.Games.SignUpActivity" />
         <activity android:name="fall2018.csc2017.Games.SignUpSignInActivity" />
         <activity
@@ -25,11 +25,11 @@
             android:label="@string/title_activity_global_score_board"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="fall2018.csc2017.Games.ComplexityActivity"
+            android:name="fall2018.csc2017.Games.SlidingTileComplexityActivity"
             android:label="@string/title_activity_complexity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="fall2018.csc2017.Games.PasswordChangeActivity" />
-        <activity android:name="fall2018.csc2017.Games.ImageTilesActivity" />
+        <activity android:name="fall2018.csc2017.Games.SlidingTileImageActivity" />
         <activity android:name="fall2018.csc2017.Games.ScoreBoardActivity" />
         <activity android:name="fall2018.csc2017.Games.ChooseGameActivity" />
         <activity android:name="fall2018.csc2017.Games.FlipGameActivity" />
@@ -39,7 +39,7 @@
         <activity android:name="fall2018.csc2017.Games.BlackJackGameActivity" />
         <activity android:name="fall2018.csc2017.Games.ScoreBoardSelectionActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackSummaryActivity" />
-        <activity android:name="fall2018.csc2017.Games.LevelComplexityActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipItLevelComplexityActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackComplexityActivity"></activity>
     </application>
 

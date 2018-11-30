@@ -1,18 +1,20 @@
+
 package fall2018.csc2017.Games;
 
 import android.support.annotation.NonNull;
+
+import java.util.NoSuchElementException;
+import java.util.Observable;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Observable;
 
-public class Game extends Observable implements Serializable, Iterable<Tile>{
-    /**
-     * The number of rows of the board.
-     */
+/**
+ * The sliding tiles board.
+ */
+public class SlidingTileBoard extends Observable implements Serializable, Iterable<Tile> {
     private int NUM_ROWS;
 
     /**
@@ -46,7 +48,13 @@ public class Game extends Observable implements Serializable, Iterable<Tile>{
     int getNUM_COLS() {
         return NUM_COLS;
     }
+    int numTiles() {
+        return getNUM_COLS() * getNUM_ROWS();
+    }
 
+    Tile getTile(int row, int col) {
+        return tiles[row][col];
+    }
     /**
      * Set the number of columns of the board.
      *
@@ -59,7 +67,8 @@ public class Game extends Observable implements Serializable, Iterable<Tile>{
     /**
      * The tiles on the board in row-major order.
      */
-    Tile[][] tiles;
+    private Tile[][] tiles;
+
 
     /**
      * Initialize a board of 2d array tiles.
@@ -67,7 +76,8 @@ public class Game extends Observable implements Serializable, Iterable<Tile>{
      * @param tile       a tile object.
      * @param complexity the complexity level of a game.
      */
-    Game(List<Tile> tile, int complexity) {
+    SlidingTileBoard(List<Tile> tile, int complexity) {
+
         Iterator<Tile> iter = tile.iterator();
 
         setNUM_COLS(complexity);
@@ -81,29 +91,25 @@ public class Game extends Observable implements Serializable, Iterable<Tile>{
     }
 
     /**
-     * Return the number of tiles on the board.
+     * Swap the tiles at (row1, col1) and (row2, col2)
      *
-     * @return the number of tiles on the board
+     * @param row1 the first tile row
+     * @param col1 the first tile col
+     * @param row2 the second tile row
+     * @param col2 the second tile col
      */
-    int numTiles() {
-        return getNUM_COLS() * getNUM_ROWS();
+    void swapTiles(int row1, int col1, int row2, int col2) {
+        Tile item1 = tiles[row1][col1];
+        Tile item2 = tiles[row2][col2];
+        tiles[row2][col2] = item1;
+        tiles[row1][col1] = item2;
+        setChanged();
+        notifyObservers();
     }
-
-    /**
-     * Return the tile at (row, col)
-     *
-     * @param row the tile row
-     * @param col the tile column
-     * @return the tile at (row, col)
-     */
-    Tile getTile(int row, int col) {
-        return tiles[row][col];
-    }
-
 
     @Override
     public String toString() {
-        return "Board{" +
+        return "SlidingTileBoard{" +
                 "tiles=" + Arrays.toString(tiles) +
                 '}';
     }

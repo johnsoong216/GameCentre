@@ -62,7 +62,7 @@ public class FlipItTest {
     }
 
     /**
-     * Make a solved Board.
+     * Make a solved SlidingTileBoard.
      */
     private void setUpCorrect() {
         List<Tile> tiles3 = makeTiles3();

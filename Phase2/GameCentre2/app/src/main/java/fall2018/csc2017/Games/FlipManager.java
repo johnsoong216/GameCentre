@@ -15,12 +15,6 @@ public class FlipManager extends GameManager{
     }
 
     /**
-     * FlipManager constructor
-     */
-    FlipManager() {
-    }
-
-    /**
      * Return the current board.
      */
     FlipIt getFlip() {
@@ -170,7 +164,6 @@ public class FlipManager extends GameManager{
                 this.flip = new FlipIt(tiles, complexity);
             }
         }
-
     }
 
     /**
@@ -191,7 +184,8 @@ public class FlipManager extends GameManager{
      * Touch a tile, the surrounding four will change color as well
      * @param position the position of the tile that is being touched.
      */
-    void touchColor(int position) {
+    @Override
+    void touchMove(int position) {
 
         int upId = position - this.complexity;
         int downId = position + this.complexity;

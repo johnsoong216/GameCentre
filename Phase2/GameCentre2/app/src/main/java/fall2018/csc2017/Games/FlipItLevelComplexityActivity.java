@@ -10,7 +10,7 @@ import android.widget.Toast;
 /*
 A complexity class that lets the user to choose the game level within each complexity.
  */
-public class LevelComplexityActivity extends AppCompatActivity {
+public class FlipItLevelComplexityActivity extends AppCompatActivity {
 
     private FlipManager flipManager = new FlipManager(5, 3);
     private ImageButton levelNumbersBtn;
@@ -52,7 +52,7 @@ public class LevelComplexityActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar levelSeekBar) {
-                Toast.makeText(LevelComplexityActivity.this, "level" + level + " Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FlipItLevelComplexityActivity.this, "level" + level + " Selected", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -63,8 +63,8 @@ public class LevelComplexityActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int undo = getIntent().getIntExtra("undo", 0);
                 flipManager.setUndo(undo);
-                loadSaveManager.saveToFile(StartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
-                Intent startGame = new Intent(LevelComplexityActivity.this, FlipGameActivity.class);
+                loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it", flipManager);
+                Intent startGame = new Intent(FlipItLevelComplexityActivity.this, FlipGameActivity.class);
                 startActivity(startGame);
             }
         });
