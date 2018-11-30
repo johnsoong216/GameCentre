@@ -16,6 +16,17 @@ it loads correctly.
 ----
 ## A tour of the code
 
+* ** CustomAdapter:** This is a class that helps to set the tiles in the grid view.
+
+* ** BoardGestureDetectGridView:** This is a class that detects user movements over the grid for the
+slidingtiles game.
+
+* ** FlipGestureDetectGridView:** This is a class that detects user movements over the grid for the FlipIt Game.
+/////////////////////////////////////////////////////////////////////
+
+* ** Hand:** This class contains the cards in the player/dealer's hand
+
+
 * ** Deck:** This class creates a deck of 52 cards.
 
 * ** Card:** This class contains a card with suit, value and ingame value.
@@ -35,6 +46,7 @@ to each button in the BlackJack Game
 * ** Class BlackJackGame:** It features one round of BlackJack
 
 * ** Class BlackJackManager:** This is the game manager of the BlackJack Games where it records rounds played,
+
 wins, losses, draws, chips and bets
 
 * ** Class BlackJackSummaryActivity:** This is an activity that displays the number of wins, draws, losses
@@ -42,16 +54,15 @@ as well as the earnings from one game of BlackJack
 
 * ** BlackJackComplexityActivity:** This is a complexity selection activity with rules displayed.
 /////////////////////////////////////////////////////////////////////////////////
-* **Class Board:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
- and these are used to populate the 2D array. This class is also Observable, which means that other classes 
- can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called. 
+* **Class SlidingTileBoard:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
+ and these are used to populate the 2D array. This class is also Observable, which means that other classes
+ can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called.
  The call to notifyAll ends up letting the GameActivity know that the user interface needs to be dogImageted.
 
- 
-* **Class BoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking 
-whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and 
-calculating the user's score using the number of moves and time taken.
 
+* **Class SlidingTileBoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking
+whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and
+calculating the user's score using the number of moves and time taken.
 
 * **Class SlidingTileComplexityActivity:** This screen allows a user to choose between the provided 3x3, 4x4, 5x5 game
 modes for the number tiles puzzle game as well as allowing the user to change the number of steps they wish 
