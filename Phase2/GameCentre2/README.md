@@ -96,13 +96,50 @@ to iterate over the tiles.
 
 * **Class FlipItComplexityController:** The complexity controller class keeps track of all the buttons
 
+
+* **Class FlipItLoadSaveButtonController:** This load the flip it game and save the flip it game.
+
+* **Class FlipManager:** Flip manager manipulates the flips, it create flips according to different
+complexity and level, figure out whether the game is over, the score the user get, change the color
+of corresponding tiles when one tile is flipped, and undo the movement.
+
+* **Class FlipStartingActivity:** This class could start, resume, load or save the flip it game.
+It could also switch the game view to play the game, or switch to choose the complexity, or switch
+to the blackjack game.
+
+
+
 * **Class FlipItLoadSaveButtonController:**This class extends the LoadSaveButtonController and there
 are new game listener, switch to complexity, and switch to new game method. Since these do not
 belong to the view, we extracted it from the activity class.
 
+
+* **Class Game:** This class records the number of columns and number of rows. It create the list
+ of tiles according to different complexity. It can figure out the number of total tiles, and return
+ the correct tiles according to the given position.
+
+
+* **Class GameActivity:** This class creates the frame of board, start to run the timer, create
+the button to display the tiles, and update the background, activate the undo buttons.
+
+* **Class GameManager:** This class manage the game, it contains the complexity, step counting,
+getting and setting step counter, getting and setting timer, getting movements made and score. It
+also record whether game is over and undo the step.
+
+
 * **Class LevelComplexityActivity:** This activity is somehow similar to the FlipComplexityActivity.
 User can choose the level complexity within each of the complexity (3*3, 4*4, 5*5). There are 3 levels
 inside each complexity board.
+
+
+* **Class LoadSave** This class is for loading and saving game manager to the file.
+
+* **Class LoadSaveButtonController:** This is an abstract class. It adds listeners to save, resume
+and load buttons. It offer the ability to add a new game, switch game and switch complexity.
+
+* **Class MainActivity:**
+
+* **Class MovementController:**
 
 ----
 ## Running the code
