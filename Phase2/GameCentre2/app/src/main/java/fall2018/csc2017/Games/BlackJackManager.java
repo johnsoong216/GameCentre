@@ -47,7 +47,8 @@ public class BlackJackManager extends GameManager implements Serializable {
 
 
     public int getScore() {
-        return chips;
+        double score = (chips + 50 * getWinDrawLoss()[0]) * complexity;
+        return (int) Math.round(score);
     }
 
     public void setInitialBet(int initialBet) {
