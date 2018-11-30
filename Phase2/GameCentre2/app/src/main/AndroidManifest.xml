@@ -34,12 +34,15 @@
         <activity android:name="fall2018.csc2017.Games.ChooseGameActivity" />
         <activity android:name="fall2018.csc2017.Games.ferrisWheelImageGameActivity" />
         <activity android:name="fall2018.csc2017.Games.ferrisWheelImageStartingActivity" />
-        <activity android:name="fall2018.csc2017.Games.ferrisWheelImageComplexityActivity" />
+        <activity android:name="fall2018.csc2017.Games.FerrisWheelImageComplexityActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipStartingActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackStartingActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackGameActivity" />
         <activity android:name="fall2018.csc2017.Games.ScoreBoardSelectionActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackSummaryActivity" />
         <activity android:name="fall2018.csc2017.Games.FlipGameActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipComplexityActivity" />
+        <activity android:name="fall2018.csc2017.Games.FlipItLevelComplexityActivity" />
         <activity android:name="fall2018.csc2017.Games.ferrisWheelImageItLevelComplexityActivity" />
         <activity android:name="fall2018.csc2017.Games.BlackJackComplexityActivity"></activity>
     </application>

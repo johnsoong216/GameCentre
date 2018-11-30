@@ -92,9 +92,8 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         currentScore = findViewById(R.id.currentScore);
         undoButton = findViewById(R.id.btUndo);
         controller.createTileButtons(context);
-        controller.addUndoButtonListener(undoButton);
         controller.setUndo(undoButton);
-        gridView = findViewById(R.id.grid);
+        gridView = findViewById(R.id.flipGrid);
         flipManager.getFlip().addObserver(this);
         setGridView();
         runTimer();
@@ -166,6 +165,19 @@ public class FlipGameActivity extends AppCompatActivity implements Observer {
         tileButtons = controller.getTileButtons();
         controller.setUndo(undoButton);
         gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));}
+
+
+    /*
+     *undo Control
+     */
+    void addUndoButtonListener() {
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flipManager.undo();}
+        });
+    }
+
     /**
      * Dispatch onPause() to fragments.
      */

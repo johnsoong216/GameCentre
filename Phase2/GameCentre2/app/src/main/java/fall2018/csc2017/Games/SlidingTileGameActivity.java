@@ -91,11 +91,11 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
 
         controller.setUndo(undoButton);
         controller.createTileButtons(context);
-        controller.addUndoButtonListener(undoButton);
 
         boardManager.getBoard().addObserver(this);
         setGridView();
         runTimer();
+        addUndoButtonListener();
     }
     /*
     * Set the Grid View by creating tile Buttons
@@ -160,18 +160,29 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
     protected void onResume(){
         super.onResume();
         controller.setUndo(undoButton);
-        controller.addUndoButtonListener(undoButton);
+//        controller.addUndoButtonListener(undoButton);
     }
 
+    /*
+    *undo Control
+     */
+    void addUndoButtonListener() {
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boardManager.undo();}
+            });
+    }
 
     /*
     * Display the current View
      */
-    public void display(){
+    public void display() {
         tileButtons = controller.getTileButtons();
+        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
         controller.setUndo(undoButton);
-        controller.addUndoButtonListener(undoButton);
-        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));}
+//        controller.addUndoButtonListener(undoButton);
+    }
     /**
      * Dispatch onPause() to fragments.
      */

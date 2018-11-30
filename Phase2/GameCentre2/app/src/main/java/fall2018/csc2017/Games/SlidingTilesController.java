@@ -99,20 +99,6 @@ public class SlidingTilesController implements Observer {
     }
 
     /**
-     * Activate the undo button
-     * @param undoButton the UndoButton in SlidingTileGameActivity
-     */
-    void addUndoButtonListener(Button undoButton) {
-        undoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!boardManager.getMovements().isEmpty()) {
-                    boardManager.undo();
-                }
-            }
-        });
-    }
-    /**
      * Set the undo button based on condition
      * @param undoButton the UndoButton in SlidingTileGameActivity
      */
