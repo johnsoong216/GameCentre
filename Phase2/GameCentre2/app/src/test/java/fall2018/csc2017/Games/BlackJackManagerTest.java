@@ -14,13 +14,6 @@ public class BlackJackManagerTest {
     }
 
     @Test
-    public void testInitialBet() {
-        setUpNotShuffled();
-        blackJackManager.setInitialBet(400);
-        assertEquals(400, blackJackManager.getInitialBet());
-    }
-
-    @Test
     public void testComplexity() {
         setUpNotShuffled();
         blackJackManager.setComplexity(0.8);
