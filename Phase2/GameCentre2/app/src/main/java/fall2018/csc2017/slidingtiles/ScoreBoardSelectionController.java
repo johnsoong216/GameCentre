@@ -16,11 +16,12 @@ public class ScoreBoardSelectionController {
 
 
     ScoreBoardSelectionController(Context context){
+        this.context = context;
     }
 
 
 
-    private void addFlipItScoreListener(Button flipItScoreButton) {
+    void addFlipItScoreListener(ImageButton flipItScoreButton) {
         flipItScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +33,7 @@ public class ScoreBoardSelectionController {
         });
     }
 
-    private void addBlackJackScoreListener(Button blackJackScoreButton) {
+    void addBlackJackScoreListener(ImageButton blackJackScoreButton) {
         blackJackScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +45,7 @@ public class ScoreBoardSelectionController {
         });
     }
 
-    private void addSlidingTilesScoreListener(Button slidingTilesScoreButton){
+    void addSlidingTilesScoreListener(ImageButton slidingTilesScoreButton){
         slidingTilesScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

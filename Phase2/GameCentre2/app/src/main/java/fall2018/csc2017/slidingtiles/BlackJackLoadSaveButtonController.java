@@ -24,7 +24,7 @@ class BlackJackLoadSaveButtonController extends LoadSaveButtonController {
             @Override
             public void onClick(View v) {
                 gameManager = new BlackJackManager(new BlackJackGame());
-                switchToGame();
+                switchToComplexity();
             }
         });
     }
