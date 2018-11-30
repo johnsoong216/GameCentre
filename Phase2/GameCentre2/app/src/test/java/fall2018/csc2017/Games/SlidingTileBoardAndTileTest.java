@@ -12,14 +12,14 @@ import static org.junit.Assert.*;
  *
  * @see < a href=" ">Testing documentation</ a>
  */
-public class BoardAndTileTest {
+public class SlidingTileBoardAndTileTest {
 
     /**
      * The board manager for testing.
      */
-    BoardManager boardManager3;
-    BoardManager boardManager4;
-    BoardManager boardManager5;
+    SlidingTileBoardManager boardManager3;
+    SlidingTileBoardManager boardManager4;
+    SlidingTileBoardManager boardManager5;
 
     List<Tile> tiles3;
     List<Tile> tiles4;
@@ -65,20 +65,20 @@ public class BoardAndTileTest {
         return tiles5;
     }
     /**
-     * Make a solved Board.
+     * Make a solved SlidingTileBoard.
      */
     private void setUpCorrect() {
         tiles3 = makeTiles3();
         tiles4 = makeTiles4();
         tiles5 = makeTiles5();
 
-        Board board5 = new Board(tiles5, 5);
-        Board board4 = new Board(tiles4, 4);
-        Board board3 = new Board(tiles3, 3);
+        SlidingTileBoard board5 = new SlidingTileBoard(tiles5, 5);
+        SlidingTileBoard board4 = new SlidingTileBoard(tiles4, 4);
+        SlidingTileBoard board3 = new SlidingTileBoard(tiles3, 3);
 
-        boardManager3 = new BoardManager(board3);
-        boardManager4 = new BoardManager(board4);
-        boardManager5 = new BoardManager(board5);
+        boardManager3 = new SlidingTileBoardManager(board3);
+        boardManager4 = new SlidingTileBoardManager(board4);
+        boardManager5 = new SlidingTileBoardManager(board5);
 
     }
 

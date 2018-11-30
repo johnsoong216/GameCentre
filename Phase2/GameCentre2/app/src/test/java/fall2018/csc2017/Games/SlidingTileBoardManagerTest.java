@@ -8,8 +8,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class BoardManagerTest {
-    BoardManager boardManager;
+public class SlidingTileBoardManagerTest {
+    SlidingTileBoardManager boardManager;
     private List<Tile> makeTiles() {
         List<Tile> tiles = new ArrayList<>();
         final int numTiles = 16;
@@ -37,17 +37,17 @@ public class BoardManagerTest {
     }
 
     /**
-     * Make a solved Board.
+     * Make a solved SlidingTileBoard.
      */
     private void setUp() {
         List<Tile> tiles = makeTiles();
         Collections.shuffle(tiles);
-        Board board = new Board(tiles, 4);
-        boardManager = new BoardManager(board);
+        SlidingTileBoard board = new SlidingTileBoard(tiles, 4);
+        boardManager = new SlidingTileBoardManager(board);
     }
 
     private void setUp3() {
-        boardManager = new BoardManager(3);
+        boardManager = new SlidingTileBoardManager(3);
     }
 
     /**
