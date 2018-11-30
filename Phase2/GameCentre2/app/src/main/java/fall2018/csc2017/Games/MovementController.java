@@ -25,7 +25,7 @@ public class MovementController {
                     Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Invalid Tap", Toast.LENGTH_SHORT).show();
             }
         }
         else if(gameManager instanceof FlipManager) {

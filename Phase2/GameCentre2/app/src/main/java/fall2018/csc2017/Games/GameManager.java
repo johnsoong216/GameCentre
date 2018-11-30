@@ -72,6 +72,9 @@ abstract class GameManager extends Observable implements Serializable {
         return movements;
     }
 
+    void touchMove(int position) {}
+
+
     /**
      * return the score for the game since different games have different scores calculations
      * it is abstract
