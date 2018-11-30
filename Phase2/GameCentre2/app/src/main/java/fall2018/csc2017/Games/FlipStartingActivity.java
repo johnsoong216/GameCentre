@@ -39,7 +39,6 @@ public class FlipStartingActivity extends AppCompatActivity {
     private Button resumeButton;
     private Button saveButton;
     private Button startButton;
-    private Button signOutButton;
     private Button scoreBoardButton;
     private LoadSave LoadSaveManager;
     private FlipItLoadSaveButtonController controller;
@@ -58,7 +57,6 @@ public class FlipStartingActivity extends AppCompatActivity {
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
         startButton = findViewById(R.id.StartButton);
-//        signOutButton = findViewById(R.id.SignOutButton);
         scoreBoardButton = findViewById(R.id.scoreBoardButton);
         controller.addLoadButtonListener(loadButton);
         controller.addResumeButtonListener(resumeButton);
@@ -66,97 +64,6 @@ public class FlipStartingActivity extends AppCompatActivity {
         controller.addNewGameButtonListener(startButton);
 
     }
-
-//    /**
-//     * Performs a signout action.
-//     */
-//    private void addSignOutButtonListener() {
-//        signOutButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                user.logout();
-//                Intent logout = new Intent(FlipStartingActivity.this, SignUpSignInActivity.class);
-//                FlipStartingActivity.this.startActivity(logout);
-//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//
-//            }
-//        });
-//    }
-//
-//    /**
-//     * Activate the start button.
-//     */
-//    private void addStartButtonListener() {
-//        startButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                switchToComplexity();
-//            }
-//        });
-//    }
-//
-//    /**
-//     * Activate the load button.
-//     */
-//    private void addLoadButtonListener() {
-//        loadButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                flipManager = (FlipManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
-//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
-//
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-//                switchToGame();
-//                resumeButton.setEnabled(true);
-//            }
-//        });
-//    }
-//
-//
-//    private void addScoreBoardListener() {
-//        scoreBoardButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                switchToScoreBoard();
-//            }
-//        });
-//    }
-//
-//    /**
-//     * Activate the resume button
-//     */
-//    private void addResumeButtonListener() {
-//        resumeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
-//
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-//                switchToGame();
-//            }
-//        });
-//    }
-//
-//
-//    /**
-//     * Activate the save button.
-//     */
-//    private void addSaveButtonListener() {
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "flip_it", flipManager);
-//                Toast.makeText(context, "Loaded Game", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        Intent backtologin = new Intent(this, ChooseGameActivity.class);
-//        startActivity(backtologin);
-//    }
 
     /**
      * Read the temporary board from disk.
