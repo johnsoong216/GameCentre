@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_color_blue"
     android:orientation="vertical"
-    tools:context=".ComplexityActivity">
+    tools:context=".SlidingTileComplexityActivity">
 
     <SeekBar
         android:id="@+id/seekBar"
