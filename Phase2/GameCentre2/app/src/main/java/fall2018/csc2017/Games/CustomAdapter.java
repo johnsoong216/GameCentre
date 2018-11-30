@@ -8,6 +8,10 @@ This Class is an overwrite of the Base Adapter class
 It is designed to aid setting the button sizes and positions in the GridView
  */
 
+/**
+ * This class is given as a starter code from course instructor therefore no unit test on this class
+ * and javadoc will not be provided
+ */
 
 import android.view.View;
 import android.view.ViewGroup;

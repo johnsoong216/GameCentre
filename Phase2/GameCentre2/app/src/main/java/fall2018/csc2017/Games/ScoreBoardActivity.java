@@ -69,7 +69,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
      */
     public StringBuilder displayScore(int num) {
         List<Pair<String, Integer>> listOfScore = scoreBoardManager.maxGameScores(num);
-        StringBuilder result = new StringBuilder("         " + "Username" + "            " + "Score" + "             " + "Rank" + '\n');
+        String spaces = "       ";
+        String stringToBuild = String.format("%1$s Username %1$s Score %1$s Rank" + '\n', spaces);
+        StringBuilder result = new StringBuilder(stringToBuild);
         if (listOfScore.size() != 0) {
             for (int i = 1; i <= listOfScore.size(); i++) {
                 Pair<String, Integer> user = listOfScore.get(i - 1);

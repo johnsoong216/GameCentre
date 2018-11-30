@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 /**
- * A UserManager class.
+ * A UserManager class.that help store user's information for registration and signin actions
  */
 class UserManager {
 

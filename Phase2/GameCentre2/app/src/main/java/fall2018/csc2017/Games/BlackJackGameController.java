@@ -33,7 +33,14 @@ public class BlackJackGameController {
     private final String gameType = "black_jack";
     private final String saveFile = "save_game.ser";
 
-
+    /**
+     * Create a black jack game controller to control the black jack game
+     * @param context
+     * @param buttonList an array of buttons
+     * @param playerCards an array of image view for player hand
+     * @param dealerCards an array of image view for dealer hand
+     * @param chipsTotal text view for chips total
+     */
     BlackJackGameController(Context context, Button[] buttonList,
                             ImageView[] playerCards, ImageView[] dealerCards, TextView chipsTotal){
         this.context =context;
@@ -47,8 +54,8 @@ public class BlackJackGameController {
         this.chipsTotal = chipsTotal;
         setButton(buttonList);
     }
-    /*
-    Create a new round button for black jack game that start a new round after clicking
+    /**
+     *Create a new round button for black jack game that start a new round after clicking
      */
     void addNewRoundButtonListener() {
         newRoundButton.setOnClickListener(new View.OnClickListener() {

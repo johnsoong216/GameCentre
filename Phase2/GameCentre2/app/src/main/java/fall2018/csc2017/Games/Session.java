@@ -5,10 +5,15 @@ import java.io.Serializable;
 ////https://github.com/onurkagan/Singleton-Design-Pattern-Example/blob/master/app/src/main/java/com/onurkagan/singleton_design_pattern_example/UserSingletonModel.java
 
 /**
- * A Session class that identifies current user
+ * A Session class that identifies current user, it can set/get user's name password and scores
  */
 public class Session implements Serializable {
 
+    /**
+     * It is a singleton that stores user's information
+     * It is set to be static to let classes to access the information of the current user
+     * before the user logout
+     */
     private static Session session;
     /**
      * The user's username.

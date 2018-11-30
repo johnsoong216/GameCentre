@@ -78,12 +78,12 @@ public class ScoreActivity extends AppCompatActivity {
      */
     private void arrangeScore(ScoreBoardManager sbm) {
         List<Pair<String, Integer>> listOfScore = sbm.maxGameScores(3);
-        setT(listOfScore, 1, userHighest, gameHighest);
+        setTextView(listOfScore, 1, userHighest, gameHighest);
         if (listOfScore.size() == 3) {
-            setT(listOfScore, 2, userSecondHighest, gameSecondHighest);
-            setT(listOfScore, 3, userThirdHighest, gameThirdHighest);
+            setTextView(listOfScore, 2, userSecondHighest, gameSecondHighest);
+            setTextView(listOfScore, 3, userThirdHighest, gameThirdHighest);
         } else if (listOfScore.size() == 2) {
-            setT(listOfScore, 2, userSecondHighest, gameSecondHighest);
+            setTextView(listOfScore, 2, userSecondHighest, gameSecondHighest);
         }
     }
 
@@ -119,7 +119,7 @@ public class ScoreActivity extends AppCompatActivity {
      * @param score TextView.
      */
     @SuppressLint("SetTextI18n")
-    private void setT(List<Pair<String, Integer>> l, int n, TextView user, TextView score) {
+    private void setTextView(List<Pair<String, Integer>> l, int n, TextView user, TextView score) {
         user.setText(l.get(n - 1).first);
         score.setText(Integer.toString(l.get(n - 1).second));
     }
