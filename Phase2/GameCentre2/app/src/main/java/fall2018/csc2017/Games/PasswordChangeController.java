@@ -37,16 +37,20 @@ public class PasswordChangeController {
                 String nPass = newPassword.getText().toString();
 
                 boolean userExists = manager.checkLoginValidate(user, oPass);
-                boolean success = manager.changePassword(user, oPass, nPass);
-
-                if (userExists && success) {
+                if (userExists) {
+                    boolean success = manager.changePassword(user, oPass, nPass);
+                    if (success){
                     Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show();
                     Intent backToMain = new Intent(context, SignUpSignInActivity.class);
-                    context.startActivity(backToMain);
-                } else {
+                    context.startActivity(backToMain);}
+                    else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setMessage("Please try again").setNegativeButton("Retry", null)
-                                .create().show(); }
+                                .create().show(); }}
+                else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Please try again").setNegativeButton("Retry", null)
+                            .create().show(); }
             }
         });
     }
