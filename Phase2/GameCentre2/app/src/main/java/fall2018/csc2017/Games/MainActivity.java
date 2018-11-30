@@ -2,7 +2,6 @@
 package fall2018.csc2017.Games;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,14 +10,12 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Context context;
     private Button loginButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context = this;
-        loginButton = findViewById(R.id.LoginButton);
+        loginButton = findViewById(R.id.StartButton);
         addStartButtonListener();
     }
 

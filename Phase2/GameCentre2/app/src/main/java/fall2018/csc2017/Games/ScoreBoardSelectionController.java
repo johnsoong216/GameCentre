@@ -49,7 +49,7 @@ public class ScoreBoardSelectionController {
             @Override
             public void onClick(View v) {
                 Intent toScoreBoard = new Intent(context, ScoreBoardActivity.class);
-                toScoreBoard.putExtra("game", "flip_it");
+                toScoreBoard.putExtra("game", "sliding_tiles");
                 toScoreBoard.putExtra("gameName", "Sliding Tiles");
                 context.startActivity(toScoreBoard);
             }

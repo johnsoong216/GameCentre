@@ -43,8 +43,7 @@ public class SlidingTileStartingActivity extends AppCompatActivity {
     private Button resumeButton;
     private Button saveButton;
     private Button startButton;
-//    private Button signOutButton;
-//    private LoadSave loadSaveManager;
+
     private SlidingTilesLoadSaveButtonController controller;
 
     @Override
@@ -53,11 +52,11 @@ public class SlidingTileStartingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_starting_);
         context = this;
         controller = new SlidingTilesLoadSaveButtonController(context, TEMP_SAVE_FILE);
-//        loadSaveManager = new LoadSave(context);
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
-        startButton = findViewById(R.id.LoginButton);
+        startButton = findViewById(R.id.StartButton);
+
         controller.addNewGameButtonListener(startButton);
         controller.addLoadButtonListener(loadButton);
         controller.addResumeButtonListener(resumeButton);
@@ -78,6 +77,7 @@ public class SlidingTileStartingActivity extends AppCompatActivity {
         super.onResume();
         controller.resume(saveButton, resumeButton, loadButton);
     }
+
 
 }
 

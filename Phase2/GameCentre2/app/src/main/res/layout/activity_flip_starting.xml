@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_color_blue"
-    tools:context=".FlipStartingActivity">
+    tools:context="fall2018.csc2017.Games.SlidingTileStartingActivity">
 
     <TextView
         android:id="@+id/GameText"
@@ -13,15 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="252dp"
-        android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="Welcome To Flip It \n A Puzzle Game where you must flip the tiles until they are all white"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Welcome To Sliding Tiles \n A Puzzle Game where you must arrange the numbers in the correct order"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <Button
         android:id="@+id/StartButton"
@@ -29,45 +23,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="40dp"
         android:background="@drawable/buttonshape3"
-        android:text="New Game"
-        app:layout_constraintBottom_toTopOf="@+id/ResumeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="New Game" />
 
     <Button
         android:id="@+id/LoadButton"
-        android:layout_width="125dp"
-        android:layout_height="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="212dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="25dp"
+        android:layout_toStartOf="@+id/StartButton"
         android:background="@drawable/buttonshape3"
-        android:layout_toStartOf="@+id/LoginButton"
-        android:text="Load Saved Game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/LoginButton"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Load Saved Game" />
 
     <Button
         android:id="@+id/SaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/GameText"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="28dp"
-        android:layout_toEndOf="@+id/LoginButton"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="-2dp"
+        android:layout_toEndOf="@+id/StartButton"
         android:background="@drawable/buttonshape3"
-        android:text="Save Game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/LoginButton"
-        app:layout_constraintTop_toBottomOf="@+id/GameText" />
+        android:text="Save Game" />
 
 
     <Button
@@ -77,11 +56,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="119dp"
         android:background="@drawable/buttonshape3"
-        android:text="Resume"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="Resume" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
