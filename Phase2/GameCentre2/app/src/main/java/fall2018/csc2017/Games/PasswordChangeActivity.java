@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- * Password activity.
+ * the view for password changing activity.
  */
 public class PasswordChangeActivity extends AppCompatActivity {
 
