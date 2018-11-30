@@ -185,7 +185,6 @@ public class FlipManager extends GameManager{
      * Touch a tile, the surrounding four will change color as well
      * @param position the position of the tile that is being touched.
      */
-    @Override
     void touchMove(int position) {
 
         int upId = position - this.complexity;
@@ -220,7 +219,6 @@ public class FlipManager extends GameManager{
     /**
      * Undo one step the user has made.
      */
-    @Override
     void undo() {
 
         if (!movements.isEmpty()) {
