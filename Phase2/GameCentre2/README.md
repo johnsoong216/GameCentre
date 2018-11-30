@@ -16,7 +16,7 @@ it loads correctly.
 * **Class Board:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
  and these are used to populate the 2D array. This class is also Observable, which means that other classes 
  can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called. 
- The call to notifyAll ends up letting the GameActivity know that the user interface needs to be updated.
+ The call to notifyAll ends up letting the GameActivity know that the user interface needs to be dogImageted.
  
 * **Class BoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking 
 whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and 
@@ -72,6 +72,74 @@ save a current game state, resume a game, as well as signing out. The game state
 time a user makes five steps. Clicking on "load saved game" will load the game state right after a user has
 completed five steps but just before their next five. Resuming a game however, will bring user right back to
 where they left off.
+/////////////////////////////////////////////////////////////////////////////////
+* **Game FlipIt:** This is a board game which the player need to achieve a plain white board with a
+set of designed board with blue tiles in place. The user can choose the complexity which
+corresponds to the 3*3, 4*4, 5*5 boards. They can also switch the level complexity in each board
+length. The moves, time are recorded in order to calculate the score. Detailed information are
+explained in the following classes.
+
+* **Class FlipComplexityActiviy:** This activity class keeps track of the complexity of the flipIt game.
+The activity contains the seekBar which is a feature we created to allow the users to choose the
+complexity they want. The activity only contains view, all the buttons are stored into the
+controller class.
+
+* **Class FlipGameActivity:** This is an activity class that contains the timer, the grid view and
+also creating and updating the board. The grid view gives an optimized view of the game for the user.
+Un undo button is also included to let the user undo during the game.
+
+* **Class FlipGestureDetectGridView:** This class decides the animation when the user touches the tiles.
+
+* **Class FlipIt:** This class contains the initial setting of the flipIt game. For example, it keeps
+track of changing the tile color at a specific row, column place. There is also an iterator implemented
+to iterate over the tiles.
+
+* **Class FlipItComplexityController:** The complexity controller class keeps track of all the buttons
+
+
+* **Class FlipItLoadSaveButtonController:** This load the flip it game and save the flip it game.
+
+* **Class FlipManager:** Flip manager manipulates the flips, it create flips according to different
+complexity and level, figure out whether the game is over, the score the user get, change the color
+of corresponding tiles when one tile is flipped, and undo the movement.
+
+* **Class FlipStartingActivity:** This class could start, resume, load or save the flip it game.
+It could also switch the game view to play the game, or switch to choose the complexity, or switch
+to the blackjack game.
+
+
+
+* **Class FlipItLoadSaveButtonController:**This class extends the LoadSaveButtonController and there
+are new game listener, switch to complexity, and switch to new game method. Since these do not
+belong to the view, we extracted it from the activity class.
+
+
+* **Class Game:** This class records the number of columns and number of rows. It create the list
+ of tiles according to different complexity. It can figure out the number of total tiles, and return
+ the correct tiles according to the given position.
+
+
+* **Class GameActivity:** This class creates the frame of board, start to run the timer, create
+the button to display the tiles, and update the background, activate the undo buttons.
+
+* **Class GameManager:** This class manage the game, it contains the complexity, step counting,
+getting and setting step counter, getting and setting timer, getting movements made and score. It
+also record whether game is over and undo the step.
+
+
+* **Class LevelComplexityActivity:** This activity is somehow similar to the FlipComplexityActivity.
+User can choose the level complexity within each of the complexity (3*3, 4*4, 5*5). There are 3 levels
+inside each complexity board.
+
+
+* **Class LoadSave** This class is for loading and saving game manager to the file.
+
+* **Class LoadSaveButtonController:** This is an abstract class. It adds listeners to save, resume
+and load buttons. It offer the ability to add a new game, switch game and switch complexity.
+
+* **Class MainActivity:**
+
+* **Class MovementController:**
 
 ----
 ## Running the code
@@ -88,4 +156,5 @@ We use Git for versioning. For the versions available, see the repository histor
 ## Acknowledgements
 Great Appreciation to the Princeton University and Onur Kagan
 https://introcs.cs.princeton.edu/java/43stack/Stack.java.html
-https://github.com/onurkagan/Singleton-Design-Pattern-Example/blob/master/app/src/main/java/com/onurkagan/singleton_design_pattern_example/UserSingletonModel.java
+https://github.com/onurkagan/Singleton-Design-Pattern-Example/blob/master/app/src/main/java/com/
+onurkagan/singleton_design_pattern_example/UserSingletonModel.java
