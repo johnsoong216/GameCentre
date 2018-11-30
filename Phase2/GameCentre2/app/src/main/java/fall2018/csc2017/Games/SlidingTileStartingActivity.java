@@ -43,8 +43,7 @@ public class SlidingTileStartingActivity extends AppCompatActivity {
     private Button resumeButton;
     private Button saveButton;
     private Button startButton;
-//    private Button signOutButton;
-//    private LoadSave loadSaveManager;
+
     private SlidingTilesLoadSaveButtonController controller;
 
     @Override
@@ -53,99 +52,16 @@ public class SlidingTileStartingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_starting_);
         context = this;
         controller = new SlidingTilesLoadSaveButtonController(context, TEMP_SAVE_FILE);
-//        loadSaveManager = new LoadSave(context);
         loadButton = findViewById(R.id.LoadButton);
         resumeButton = findViewById(R.id.ResumeButton);
         saveButton = findViewById(R.id.SaveButton);
-        startButton = findViewById(R.id.LoginButton);
-//        signOutButton = findViewById(R.id.SignOutButton);
-//
-//        user = Session.getCurrentUser();
-//        username = user.getUsername();
+        startButton = findViewById(R.id.startButton);
 
         controller.addNewGameButtonListener(startButton);
         controller.addLoadButtonListener(loadButton);
         controller.addResumeButtonListener(resumeButton);
         controller.addSaveButtonListener(saveButton);
-//        addSignOutButtonListener();
     }
-
-//    /**
-//     * Performs a signout action.
-//     */
-//    private void addSignOutButtonListener() {
-//        signOutButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                user.logout();
-//                Intent logout = new Intent(SlidingTileStartingActivity.this, SignUpSignInActivity.class);
-//                SlidingTileStartingActivity.this.startActivity(logout);
-//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//
-//            }
-//        });
-//    }
-
-//    /**
-//     * Activate the start button.
-//     */
-//    private void addStartButtonListener() {
-//        startButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                switchToComplexity();
-//            }
-//        });
-//    }
-//
-//    /**
-//     * Activate the load button.
-//     */
-//    private void addLoadButtonListener() {
-//        loadButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                boardManager = (SlidingTileBoardManager) loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
-//                loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-//
-//                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
-//                switchToGame();
-//                resumeButton.setEnabled(true);
-//            }
-//        });
-//    }
-//
-//
-//
-//    /**
-//     * Activate the resume button
-//     */
-//    private void addResumeButtonListener() {
-//        resumeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "sliding_tiles");
-//
-//                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
-//                switchToGame();
-//            }
-//        });
-//    }
-//
-//
-//    /**
-//     * Activate the save button.
-//     */
-//    private void addSaveButtonListener() {
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-//                Toast.makeText(context, "Loaded SlidingTileGame", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
     @Override
     public void onBackPressed() {
@@ -162,26 +78,6 @@ public class SlidingTileStartingActivity extends AppCompatActivity {
         controller.resume(saveButton, resumeButton, loadButton);
     }
 
-
-//    /**
-//     * Switch to the SlidingTileGameActivity view to play the game.
-//     */
-//    private void switchToGame() {
-//        Intent tmp = new Intent(this, SlidingTileGameActivity.class);
-//        loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-//        startActivity(tmp);
-//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//    }
-//
-//    /**
-//     * Switch to the Complexity view to choose game complexity.
-//     */
-//    private void switchToComplexity() {
-//        Intent complexity = new Intent(this, SlidingTileComplexityActivity.class);
-//        complexity.putExtra("game", "sliding");
-//        startActivity(complexity);
-//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//    }
 
 }
 
