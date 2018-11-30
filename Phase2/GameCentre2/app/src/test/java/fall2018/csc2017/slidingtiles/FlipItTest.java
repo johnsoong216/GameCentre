@@ -218,6 +218,7 @@ public class FlipItTest {
 
     }
 
+
     /**
      * Test whether get movement pops the correct value
      */

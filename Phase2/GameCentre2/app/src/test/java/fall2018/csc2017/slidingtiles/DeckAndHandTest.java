@@ -83,7 +83,9 @@ public class DeckAndHandTest {
         setUpDeck();
         assertEquals(52, deck2.remainingCard());
     }
-
+    /*
+   Test whether counting the remaining cards works
+    */
     @Test
     public void testRemainingCard2() {
         setUpDeck();
@@ -121,6 +123,9 @@ public class DeckAndHandTest {
         setUpHand();
         assertEquals(21, hand2.getPoints());
     }
+    /*
+   Test whether drawing cards from deck works
+    */
     @Test
     public void testDrawCard1AndGet2() {
         setUpHand();
@@ -145,6 +150,9 @@ public class DeckAndHandTest {
         hand1.drawCard(deck2);
         assertEquals(true, hand1.goBusted());
     }
+    /*
+    Test whether checking the hand go busted works
+     */
     @Test
     public void testGoBusted2() {
         setUpHand();
