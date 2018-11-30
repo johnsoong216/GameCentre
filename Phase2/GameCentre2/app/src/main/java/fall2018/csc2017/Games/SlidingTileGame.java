@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Observable;
 
-public class Game extends Observable implements Serializable, Iterable<Tile>{
+public class SlidingTileGame extends Observable implements Serializable, Iterable<Tile>{
     /**
      * The number of rows of the board.
      */
@@ -67,7 +67,7 @@ public class Game extends Observable implements Serializable, Iterable<Tile>{
      * @param tile       a tile object.
      * @param complexity the complexity level of a game.
      */
-    Game(List<Tile> tile, int complexity) {
+    SlidingTileGame(List<Tile> tile, int complexity) {
         Iterator<Tile> iter = tile.iterator();
 
         setNUM_COLS(complexity);
