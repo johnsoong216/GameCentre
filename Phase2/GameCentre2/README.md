@@ -108,7 +108,6 @@ It could also switch the game view to play the game, or switch to choose the com
 to the blackjack game.
 
 
-
 * **Class FlipItLoadSaveButtonController:**This class extends the LoadSaveButtonController and there
 are new game listener, switch to complexity, and switch to new game method. Since these do not
 belong to the view, we extracted it from the activity class.
@@ -121,6 +120,7 @@ belong to the view, we extracted it from the activity class.
 
 * **Class GameActivity:** This class creates the frame of board, start to run the timer, create
 the button to display the tiles, and update the background, activate the undo buttons.
+
 
 * **Class GameManager:** This class manage the game, it contains the complexity, step counting,
 getting and setting step counter, getting and setting timer, getting movements made and score. It
@@ -153,30 +153,52 @@ password and new password typed in. The change is only made after the confirm bu
 * **Class PasswordChangeController:**  It check whether the typed username and password is valid
  and the new password is changed successful. Then, it shows the correct message to user.
 
- * **Class ScoreActivity:** It shows up the highest three score of this game, and the highest
+
+* **Class ScoreActivity:** It shows up the highest three score of this game, and the highest
  three score of this game with the given user, and the current score.
 
- * **Class ScoreBoardActivity:** It display the score of top players and allow to return to
+
+* **Class ScoreBoardActivity:** It display the score of top players and allow to return to
   the main page.
 
-  * **Class ScoreBoardManager:** It contains two hashmaps, one hashmap contains all the scores
+
+* **Class ScoreBoardManager:** It contains two hashmaps, one hashmap contains all the scores
    and the corresponding users of the game, another hashmap contains all the scores and
    the corresponding users of the game.
 
- * **Class Session:** It identifies the current user and access the password and score of the user
+
+* **Class Session:** It identifies the current user and access the password and score of the user
  before log out.
 
-  * **Class SignUpActivity:** It let the user sign up the username and password, create the
+
+* **Class SignUpActivity:** It let the user sign up the username and password, create the
   user manager and set up controller and set up the register button. Then add the password,
   username to the controller.
 
-   * **Class SignUpController:** It checks whether user signed up successfully, and give the
+
+* **Class SignUpController:** It checks whether user signed up successfully, and give the
    corresponding message.
 
-   * **Class SignUpSignInActivity:** It create a sign up sign in controller, add listener to
+
+* **Class SignUpSignInActivity:** It create a sign up sign in controller, add listener to
    register, changing password and sign in button.
 
-    * **Class SignUpSignInController:** 
+
+* **Class SignUpSignInController:** It checks whether the user login successfully.
+
+* **Class SlidingTilesComplexityController:**
+
+
+* **Class SlidingTilesController:**  It updates the the backgrounds on the buttons to match the tiles.
+   Once the game is over, it saves the score and user into the score board.
+
+* **Class SlidingTilesLoadSaveButtonController:** This is the controller for the game of sliding tiles.
+   It adds a listener to new game. It is able to switch to other game and switch to choose the
+   complexity.
+
+* **Class Stack:** It creates an emppty stack and figure out whether the size is empty or the size
+   of the stack.
+
 
 
 ----
