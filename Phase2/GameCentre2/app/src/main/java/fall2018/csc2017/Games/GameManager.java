@@ -8,9 +8,7 @@ import java.util.Observable;
  */
 abstract class GameManager extends Observable implements Serializable {
 
-
-
-    Stack<Integer> movements = new Stack<>();
+    Stack<Integer> movements;
 
     int complexity;
 
