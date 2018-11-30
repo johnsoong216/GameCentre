@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
@@ -42,16 +43,6 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
     private TextView currentScore;
 
     /**
-     * Timer of the game.
-     */
-    private int timer;
-
-    /**
-     * Step counter for the number of moves taken.
-     */
-    private int stepcounter;
-
-    /**
      * A session object that holds user information.
      */
     private Session user;
@@ -69,16 +60,17 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
     private LoadSave loadSaveManager;
 
     private SlidingTilesController controller;
+    private int timer;
+    private int stepcounter;
 
     /**
      * Set up the background image for each button based on the master list
      * of positions, and then call the adapter to set the view.
      */
     // Display
-    public void display() {
-        controller.updateTileButtons(tileButtons);
-        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
-    }
+//    public void display() {
+//
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,18 +81,26 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         loadSaveManager = new LoadSave(context);
         boardManager = (SlidingTileBoardManager) loadSaveManager.loadFromFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles");
         setContentView(R.layout.activity_board_main);
+        controller = new SlidingTilesController(context);
 
         scoreStepTimer = findViewById(R.id.ScoreBoard);
         currentScore = findViewById(R.id.currentScore);
-
-        controller = new SlidingTilesController(context);
-        controller.createTileButtons(context, tileButtons);
-
-        // Add View to activity
+        undoButton = findViewById(R.id.btUndo);
+        controller.createTileButtons(context);
+        controller.addUndoButtonListener(undoButton);
+        controller.setUndo(undoButton);
         gridView = findViewById(R.id.grid);
+        boardManager.getBoard().addObserver(this);
+        setGridView();
+        runTimer();
+    }
+
+    private void setGridView() {
+        // Add View to activity
         gridView.setNumColumns(boardManager.getBoard().getNUM_COLS());
         gridView.setGameManager(boardManager);
-        boardManager.getBoard().addObserver(this);
+        tileButtons = controller.getTileButtons();
+
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -116,12 +116,8 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
 
                         display();
 
-
                     }
                 });
-
-        controller.addUndoButtonListener(undoButton);
-        runTimer();
     }
 
     /**
@@ -139,7 +135,11 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void run() {
-                                controller.setScoreAndTimer(boardManager.getTimer(), boardManager.getStepCounter());
+                                timer = boardManager.getTimer();
+                                timer++;
+                                boardManager.setTimer(timer);
+                                stepcounter = boardManager.getStepCounter();
+                                boardManager.setStepCounter(stepcounter);
                                 scoreStepTimer.setText("Timer: " + String.valueOf(timer) + "s" + "  " + "Steps: " + stepcounter);
                                 currentScore.setText("Current Score: " + String.valueOf(boardManager.getScore()));
                             }
@@ -153,62 +153,10 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         t.start();
     }
 
-//    /**
-//     * Create the buttons for displaying the tiles.
-//     *
-//     * @param context the context
-//     */
-//    private void createTileButtons(Context context) {
-//
-//        SlidingTileBoard board = boardManager.getBoard();
-//        tileButtons = new ArrayList<>();
-//        for (int row = 0; row != boardManager.getBoard().getNUM_ROWS(); row++) {
-//            for (int col = 0; col != boardManager.getBoard().getNUM_COLS(); col++) {
-//                Button tmp = new Button(context);
-//                tmp.setBackgroundResource(board.getTile(row, col).getBackground());
-//                this.tileButtons.add(tmp);
-//            }
-//        }
-//    }
-
-//    /**
-//     * Update the backgrounds on the buttons to match the tiles.
-//     */
-//    private void updateTileButtons() {
-//        SlidingTileBoard board = boardManager.getBoard();
-//        int nextPos = 0;
-//
-//        for (Button b : tileButtons) {
-//            int row = nextPos / boardManager.getBoard().getNUM_ROWS();
-//            int col = nextPos % boardManager.getBoard().getNUM_COLS();
-//            b.setBackgroundResource(board.getTile(row, col).getBackground());
-//            nextPos++;
-//        }
-//        if (boardManager.isGameOver()) {
-//            user.setScore(boardManager.getScore());
-//            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", null);
-//            Intent scoreboard = new Intent(SlidingTileGameActivity.this, ScoreActivity.class);
-//            scoreboard.putExtra("game", "sliding_tiles");
-//            SlidingTileGameActivity.this.startActivity(scoreboard);
-//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); }
-//            loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
-//    }
-
-//
-//    /**
-//     * Activate the undo button
-//     */
-//    private void addUndoButtonListener() {
-//        undoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (!boardManager.getMovements().isEmpty()) {
-//                    boardManager.undo();
-//                }
-//            }
-//        });
-//    }
-
+    public void display(){
+        tileButtons = controller.getTileButtons();
+        controller.setUndo(undoButton);
+        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));}
     /**
      * Dispatch onPause() to fragments.
      */
@@ -218,14 +166,17 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        display();
-    }
 
     @Override
     public void onBackPressed() {
         Intent backToMain = new Intent(SlidingTileGameActivity.this, SlidingTileStartingActivity.class);
         SlidingTileGameActivity.this.startActivity(backToMain);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "sliding_tiles", boardManager);
+        tileButtons = controller.updateTileButtons(tileButtons);
+        display();
     }
 }

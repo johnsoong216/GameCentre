@@ -8,6 +8,7 @@ import java.util.List;
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
 public class SlidingTileBoardManager extends GameManager{
+
     /**
      * The board being managed.
      */
@@ -29,6 +30,13 @@ public class SlidingTileBoardManager extends GameManager{
         return board;
     }
 
+    /**
+     * Set the board
+     * @param board  the input board value
+     */
+    public void setBoard(SlidingTileBoard board) {
+        this.board = board;
+    }
     /**
      * Get the score of the game.
      *

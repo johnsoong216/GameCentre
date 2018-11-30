@@ -11,6 +11,7 @@ public class ChooseGameActivity extends AppCompatActivity {
     private Button fi;
     private Button blackJackButton;
     private Button scoreBoardButton;
+    private Session user;
 //    final ViewGroup transitionsContainer = (ViewGroup) findViewById(R.id.transitions_container);
 //    final TextView text = (TextView) transitionsContainer.findViewById(R.id.text);
     @Override
@@ -21,6 +22,7 @@ public class ChooseGameActivity extends AppCompatActivity {
         fi = findViewById(R.id.bt_flipit);
         blackJackButton = findViewById(R.id.btBlackJack);
         scoreBoardButton = findViewById(R.id.scoreBoardButton);
+        user = Session.getCurrentUser();
         addSlidingListener();
         addFlipListener();
         addBlackJackListener();
@@ -72,4 +74,9 @@ public class ChooseGameActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        user.logout();
+    }
 }

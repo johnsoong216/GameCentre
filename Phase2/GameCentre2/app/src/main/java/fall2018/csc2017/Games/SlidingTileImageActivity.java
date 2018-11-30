@@ -42,14 +42,14 @@ public class SlidingTileImageActivity extends AppCompatActivity {
         Intent imageintent = getIntent();
         numUndo = imageintent.getIntExtra("numUndo", 3);
         username = Session.getCurrentUser().getUsername();
-        ferrisWheelimage();
-        dogimage();
+        ferrisWheelImage();
+        dogImage();
     }
 
     /**
      * Starts a ferrisWheel image sliding tiles game.
      */
-    private void ferrisWheelimage() {
+    private void ferrisWheelImage() {
         ImageView ferris = findViewById(R.id.ITfw);
         ferris.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,7 @@ public class SlidingTileImageActivity extends AppCompatActivity {
     /**
      * Starts a dog image sliding tiles game.
      */
-    private void dogimage() {
+    private void dogImage() {
         ImageView dog = findViewById(R.id.ITdog);
         dog.setOnClickListener(new View.OnClickListener() {
             @Override
