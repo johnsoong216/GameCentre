@@ -86,17 +86,21 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         scoreStepTimer = findViewById(R.id.ScoreBoard);
         currentScore = findViewById(R.id.currentScore);
         undoButton = findViewById(R.id.btUndo);
+        gridView = findViewById(R.id.grid);
+
+
+        controller.setUndo(undoButton);
         controller.createTileButtons(context);
         controller.addUndoButtonListener(undoButton);
-        controller.setUndo(undoButton);
-        gridView = findViewById(R.id.grid);
+
         boardManager.getBoard().addObserver(this);
         setGridView();
         runTimer();
     }
-
+    /*
+    * Set the Grid View by creating tile Buttons
+     */
     private void setGridView() {
-        // Add View to activity
         gridView.setNumColumns(boardManager.getBoard().getNUM_COLS());
         gridView.setGameManager(boardManager);
         tileButtons = controller.getTileButtons();
@@ -152,7 +156,17 @@ public class SlidingTileGameActivity extends AppCompatActivity implements Observ
         };
         t.start();
     }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        controller.setUndo(undoButton);
+        controller.addUndoButtonListener(undoButton);
+    }
 
+
+    /*
+    * Display the current View
+     */
     public void display(){
         tileButtons = controller.getTileButtons();
         controller.setUndo(undoButton);
