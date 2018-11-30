@@ -81,4 +81,9 @@ public class FlipStartingActivity extends AppCompatActivity {
             resumeButton.setEnabled(true);
         }
     }
+    @Override
+    public void onBackPressed() {
+        Intent backToLogin = new Intent(this, ChooseGameActivity.class);
+        startActivity(backToLogin);
+    }
 }
