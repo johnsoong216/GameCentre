@@ -23,7 +23,7 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
     /**
      * The load save manager for loading and saving purposes
      */
-    private LoadSave LoadSaveManager;
+    private LoadSave loadSaveManager;
     /*
     current user and his username
      */
@@ -51,8 +51,8 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
         easyButton = findViewById(R.id.btEasyEasy);
         normalButton = findViewById(R.id.btNormal);
         hardButton = findViewById(R.id.btHard);
-        LoadSaveManager = new LoadSave(context);
-        blackJackManager = (BlackJackManager) LoadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
+        loadSaveManager = new LoadSave(context);
+        blackJackManager = (BlackJackManager) loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "black_jack");
         addEasyButtonListener();
         addHardButtonListener();
         addNormalButtonListener();
@@ -115,7 +115,7 @@ public class BlackJackComplexityActivity extends AppCompatActivity {
     }
 
     private void switchToGame() {
-        LoadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
+        loadSaveManager.saveToFile(TEMP_SAVE_FILE, username, "black_jack", blackJackManager);
         Intent tmp = new Intent(this, BlackJackGameActivity.class);
         startActivity(tmp);
     }
