@@ -114,8 +114,8 @@ belong to the view, we extracted it from the activity class.
 
 
 * **Class Game:** This class records the number of columns and number of rows. It create the list
- of tiles according to different complexity. It can figure out the number of total tiles, and return
- the correct tiles according to the given position.
+of tiles according to different complexity. It can figure out the number of total tiles, and return
+the correct tiles according to the given position.
 
 
 * **Class GameActivity:** This class creates the frame of board, start to run the timer, create
@@ -151,55 +151,66 @@ password and new password typed in. The change is only made after the confirm bu
 
 
 * **Class PasswordChangeController:**  It check whether the typed username and password is valid
- and the new password is changed successful. Then, it shows the correct message to user.
+and the new password is changed successful. Then, it shows the correct message to user.
 
 
 * **Class ScoreActivity:** It shows up the highest three score of this game, and the highest
- three score of this game with the given user, and the current score.
+three score of this game with the given user, and the current score.
 
 
 * **Class ScoreBoardActivity:** It display the score of top players and allow to return to
-  the main page.
+the main page.
 
 
 * **Class ScoreBoardManager:** It contains two hashmaps, one hashmap contains all the scores
-   and the corresponding users of the game, another hashmap contains all the scores and
-   the corresponding users of the game.
+and the corresponding users of the game, another hashmap contains all the scores and
+the corresponding users of the game.
 
 
 * **Class Session:** It identifies the current user and access the password and score of the user
- before log out.
+before log out.
 
 
 * **Class SignUpActivity:** It let the user sign up the username and password, create the
-  user manager and set up controller and set up the register button. Then add the password,
-  username to the controller.
+user manager and set up controller and set up the register button. Then add the password,
+username to the controller.
 
 
 * **Class SignUpController:** It checks whether user signed up successfully, and give the
-   corresponding message.
+corresponding message.
 
 
 * **Class SignUpSignInActivity:** It create a sign up sign in controller, add listener to
-   register, changing password and sign in button.
+register, changing password and sign in button.
 
 
 * **Class SignUpSignInController:** It checks whether the user login successfully.
 
-* **Class SlidingTilesComplexityController:**
-
 
 * **Class SlidingTilesController:**  It updates the the backgrounds on the buttons to match the tiles.
-   Once the game is over, it saves the score and user into the score board.
+Once the game is over, it saves the score and user into the score board.
 
 * **Class SlidingTilesLoadSaveButtonController:** This is the controller for the game of sliding tiles.
-   It adds a listener to new game. It is able to switch to other game and switch to choose the
-   complexity.
+It adds a listener to new game. It is able to switch to other game and switch to choose the
+complexity.
+
+
+* **Class SlidingTileStartingActivity:** It has start, load, save and resume botton and add controller
+to each button in the sliding tile game.
+
 
 * **Class Stack:** It creates an emppty stack and figure out whether the size is empty or the size
-   of the stack.
+of the stack. It can add the element, remove the last element from stack, removes the 2 integers
+at the bottom of the stack and return the stack, removes the 5 integers at the bottom of the s
+tack, and return the stack and returns a string representation of this stack.
+
+* **Class Tile** This is a class that keeps track of the id and the corresponding background id. It
+includes the sliding tiles images, flip tiles images, dog & ferris wheel images for sliding tiles
+as well.
 
 
+* **Class UserManager**  This class used shared preference to keep track of the username and password
+to check login validity, register the user, and change their password with a new password.
 
 ----
 ## Running the code
