@@ -16,7 +16,7 @@ it loads correctly.
 * **Class Board:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
  and these are used to populate the 2D array. This class is also Observable, which means that other classes 
  can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called. 
- The call to notifyAll ends up letting the GameActivity know that the user interface needs to be updated.
+ The call to notifyAll ends up letting the GameActivity know that the user interface needs to be dogImageted.
  
 * **Class BoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking 
 whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and 
@@ -134,12 +134,30 @@ inside each complexity board.
 
 * **Class LoadSave** This class is for loading and saving game manager to the file.
 
+
 * **Class LoadSaveButtonController:** This is an abstract class. It adds listeners to save, resume
 and load buttons. It offer the ability to add a new game, switch game and switch complexity.
 
-* **Class MainActivity:**
 
-* **Class MovementController:**
+* **Class MainActivity:** This create the context and add a listener to the login button and
+start the game.
+
+
+* **Class MovementController:** It checks whether the game is sliding tiles or flip it, and process
+the movement.
+
+* **Class PasswordChangeActivity:** It change the password according to the username, old
+password and new password typed in. The change is only made after the confirm button is clicked.
+
+
+* **Class PasswordChangeController:**  It check whether the typed username and password is valid
+ and the new password is changed successful. Then, it shows the correct message to user.
+
+ * **Class ScoreActivity:** It shows up the highest three score of this game, and the highest
+ three score of this game with the given user, and the current score.
+
+ * **Class ScoreBoardActivity:**
+
 
 ----
 ## Running the code
