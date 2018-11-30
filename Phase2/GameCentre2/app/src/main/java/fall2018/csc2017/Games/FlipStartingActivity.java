@@ -67,19 +67,14 @@ public class FlipStartingActivity extends AppCompatActivity {
     /**
      * Read the temporary board from disk.
      */
+
+    /**
+     * Read the temporary board from disk.
+     */
     @Override
     protected void onResume() {
         super.onResume();
-        flipManager = (FlipManager) loadSaveManager.loadFromFile(TEMP_SAVE_FILE, username, "flip_it");
-        if (flipManager == null) {
-            loadButton.setEnabled(false);
-            saveButton.setEnabled(false);
-            resumeButton.setEnabled(false);
-        } else {
-            loadButton.setEnabled(true);
-            saveButton.setEnabled(true);
-            resumeButton.setEnabled(true);
-        }
+        controller.resume(saveButton, resumeButton, loadButton);
     }
     @Override
     public void onBackPressed() {

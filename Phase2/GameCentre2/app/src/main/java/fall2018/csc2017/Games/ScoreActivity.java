@@ -23,10 +23,18 @@ public class ScoreActivity extends AppCompatActivity {
      * the file to store scoreboard
      */
     public static final String SCORE_SAVE_FILENAME = "save_score.ser";
+
+
+    /**
+     * the file to empty game progress
+     */
+    public static final String TEMP_SAVE_FILENAME = "save_game.ser";
     /**
      * the current scoreboard manager
      */
     private ScoreBoardManager scoreBoardManager;
+
+
     /**
      * textview that needed to be changed
      */
@@ -48,14 +56,13 @@ public class ScoreActivity extends AppCompatActivity {
         Context context = this;
         LoadSave loadSaveManager = new LoadSave(context);
         String gameType = getIntent().getStringExtra("game");
-        Log.d("TAG", "SlidingTileGame is " + gameType);
 
         scoreBoardManager = (ScoreBoardManager) loadSaveManager.loadFromFile(SCORE_SAVE_FILENAME, "admin", gameType);
         if (scoreBoardManager == null) {
             scoreBoardManager = new ScoreBoardManager();
         }
         scoreBoardManager.addScore(user.getUsername(), user.getScore());
-        Log.d("TAG", "User Highest score"  + scoreBoardManager.maxUserScore(user.getUsername()));
+
 
         currentScore = findViewById(R.id.tvScorez);
         playerHighest = findViewById(R.id.tvHighest);
@@ -71,6 +78,7 @@ public class ScoreActivity extends AppCompatActivity {
         addReturnButtonListener();
 
         loadSaveManager.saveToFile(SCORE_SAVE_FILENAME, "admin", gameType, scoreBoardManager);
+        loadSaveManager.saveToFile(TEMP_SAVE_FILENAME, user.getUsername(), gameType, null);
     }
 
     /**
