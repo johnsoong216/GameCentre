@@ -27,8 +27,8 @@ public class Card implements Serializable {
      */
     private int background;
 
-    /*
-    Creating a new card with background id, suit and value
+    /**
+     * Creating a new card with background id, suit and value
      */
     Card(int suit, int value) {
         this.suit = suit;
