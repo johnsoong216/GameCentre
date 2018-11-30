@@ -15,6 +15,28 @@ it loads correctly.
 
 ----
 ## A tour of the code
+* **Class BlackJackGameController:**  It updates the the backgrounds on the buttons to match the tiles.
+Once the game is over, it saves the score and user into the score board.
+
+
+* **Class BlackJackLoadSaveButtonController:** This is the controller for the game of sliding tiles.
+It adds a listener to new game. It is able to switch to other game and switch to choose the
+complexity.
+
+
+* **Class BlackJackStartingActivity:** It has start, load, save and resume botton and add controller
+to each button in the BlackJack Game
+
+* ** Class BlackJackGame:** It features one round of BlackJack
+
+* ** Class BlackJackManager:** This is the game manager of the BlackJack Games where it records rounds played,
+wins, losses, draws, chips and bets
+
+* ** Class BlackJackSummaryActivity:** This is an activity that displays the number of wins, draws, losses
+as well as the earnings from one game of BlackJack
+
+* ** BlackJackComplexityActivity:** This is a complexity selection activity with rules displayed.
+/////////////////////////////////////////////////////////////////////////////////
 * **Class Board:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
  and these are used to populate the 2D array. This class is also Observable, which means that other classes 
  can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called. 
