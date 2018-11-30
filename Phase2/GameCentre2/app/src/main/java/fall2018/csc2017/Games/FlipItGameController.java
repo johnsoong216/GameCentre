@@ -75,7 +75,7 @@ public class FlipItGameController implements Observer {
             user.setScore(flipManager.getScore());
             loadSaveManager.saveToFile(SlidingTileStartingActivity.TEMP_SAVE_FILE, username, "flip_it", null);
             Intent scoreboard = new Intent(context, ScoreActivity.class);
-            scoreboard.putExtra("game", "sliding_tiles");
+            scoreboard.putExtra("game", "flip_it");
             context.startActivity(scoreboard);}
         return tileButtons;
     }
