@@ -79,8 +79,12 @@ public class Stack<Integer> implements Iterable<Integer>, Serializable {
         return item;                   // return the saved item
     }
 
-
-    Stack poplasttwo(int size) {
+    /**
+     * Removes the 2 integers at the bottom of the stack, and return the stack
+     *
+     * @return the original stack but with its bottom 2 integers removed
+     */
+    Stack popLastTwo(int size) {
         if (this.size() > size) {
             Stack<Integer> temp = new Stack();
             while (!this.isEmpty()) {
@@ -95,7 +99,12 @@ public class Stack<Integer> implements Iterable<Integer>, Serializable {
         return this;
     }
 
-    Stack poplastfive(int size) {
+    /**
+     * Removes the 5 integers at the bottom of the stack, and return the stack
+     *
+     * @return the original stack but with its bottom 5 integers removed
+     */
+    Stack popLastFive(int size) {
         if (this.size() > size) {
             Stack<Integer> temp = new Stack<>();
             while (!this.isEmpty()) {
@@ -139,10 +148,6 @@ public class Stack<Integer> implements Iterable<Integer>, Serializable {
 
         public boolean hasNext() {
             return current != null;
-        }
-
-        public void remove() {
-            throw new UnsupportedOperationException();
         }
 
         public Integer next() {
