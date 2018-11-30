@@ -20,6 +20,22 @@ public class BoardManagerTest {
         return tiles;
     }
 
+    private List<Tile> makeTilesNotInOrder() {
+        List<Tile> tiles = new ArrayList<>();
+        final int numTiles = 11;
+        for (int tileNum = 0; tileNum != numTiles; tileNum++) {
+            tiles.add(new Tile(tileNum + 1, tileNum));
+        }
+        tiles.add(new Tile(15));
+        tiles.add(new Tile(14));
+        tiles.add(new Tile(13));
+        tiles.add(new Tile(12));
+        tiles.add(new Tile(11));
+
+
+        return tiles;
+    }
+
     /**
      * Make a solved Board.
      */
@@ -31,8 +47,6 @@ public class BoardManagerTest {
     }
 
     private void setUp4() {
-        List<Tile> tiles = makeTiles();
-        Collections.shuffle(tiles);
         boardManager = new BoardManager(4);
     }
 
@@ -41,81 +55,15 @@ public class BoardManagerTest {
      */
     @Test
     public void testIInversion() {
-        List<Tile> tiles = new ArrayList<>();
-        Tile newtile1 = new Tile(0);
-        Tile newtile2 = new Tile(1);
-        Tile newtile3 = new Tile(2);
-        Tile newtile4 = new Tile(3);
-        Tile newtile5 = new Tile(4);
-        Tile newtile6 = new Tile(5);
-        Tile newtile7 = new Tile(6);
-        Tile newtile8 = new Tile(7);
-        Tile newtile9 = new Tile(8);
-        Tile newtile10 = new Tile(9);
-        Tile newtile11 = new Tile(10);
-        Tile newtile12 = new Tile(11);
-        Tile newtile13 = new Tile(12);
-        Tile newtile14 = new Tile(13);
-        Tile newtile15 = new Tile(14);
-        Tile newtile16 = new Tile(15);
-        newtile16.setBackground(R.drawable.tile_25);
-        tiles.add(newtile5);
-        tiles.add(newtile7);
-        tiles.add(newtile9);
-        tiles.add(newtile1);
-        tiles.add(newtile3);
-        tiles.add(newtile12);
-        tiles.add(newtile4);
-        tiles.add(newtile6);
-        tiles.add(newtile15);
-        tiles.add(newtile8);
-        tiles.add(newtile2);
-        tiles.add(newtile16);
-        tiles.add(newtile10);
-        tiles.add(newtile14);
-        tiles.add(newtile11);
-        tiles.add(newtile13);
-        assertEquals(33, boardManager.getInv(tiles));
+        List<Tile> tiles = makeTilesNotInOrder();
+        assertEquals(6, boardManager.getInv(tiles));
     }
     /**
      *  test whether return the blank tile
      */
     @Test
     public void testBlank() {
-        List<Tile> tiles = new ArrayList<>();
-        Tile newtile1 = new Tile(0);
-        Tile newtile2 = new Tile(1);
-        Tile newtile3 = new Tile(2);
-        Tile newtile4 = new Tile(3);
-        Tile newtile5 = new Tile(4);
-        Tile newtile6 = new Tile(5);
-        Tile newtile7 = new Tile(6);
-        Tile newtile8 = new Tile(7);
-        Tile newtile9 = new Tile(8);
-        Tile newtile10 = new Tile(9);
-        Tile newtile11 = new Tile(10);
-        Tile newtile12 = new Tile(11);
-        Tile newtile13 = new Tile(12);
-        Tile newtile14 = new Tile(13);
-        Tile newtile15 = new Tile(14);
-        Tile newtile16 = new Tile(15);
-        newtile16.setBackground(R.drawable.tile_25);
-        tiles.add(newtile5);
-        tiles.add(newtile7);
-        tiles.add(newtile9);
-        tiles.add(newtile1);
-        tiles.add(newtile3);
-        tiles.add(newtile12);
-        tiles.add(newtile4);
-        tiles.add(newtile6);
-        tiles.add(newtile15);
-        tiles.add(newtile8);
-        tiles.add(newtile2);
-        tiles.add(newtile16);
-        tiles.add(newtile10);
-        tiles.add(newtile14);
-        tiles.add(newtile11);
-        tiles.add(newtile13);
+        List<Tile> tiles = makeTilesNotInOrder();
         assertEquals(11, boardManager.getBlank(tiles));
     }
     /**
