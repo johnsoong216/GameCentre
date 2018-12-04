@@ -129,39 +129,39 @@ where they left off.
 
 
 /////////////////////////////////////////////////////////////////////////////////
-* **Game ferrisWheelImageIt:** This is a board game which the player need to achieve a plain white board with a
+* **Game FlipIt:** This is a board game which the player need to achieve a plain white board with a
 set of designed board with blue tiles in place. The user can choose the complexity which
 corresponds to the 3*3, 4*4, 5*5 boards. They can also switch the level complexity in each board
 length. The moves, time are recorded in order to calculate the score. Detailed information are
 explained in the following classes.
 
 
-* **Class ferrisWheelImageComplexityActiviy:** This activity class keeps track of the complexity of the ferrisWheelImageIt game.
+* **Class FlipComplexityActiviy:** This activity class keeps track of the complexity of the ferrisWheelImageIt game.
 The activity contains the seekBar which is a feature we created to allow the users to choose the
 complexity they want. The activity only contains view, all the buttons are stored into the
 controller class.
 
 
-* **Class ferrisWheelImageGameActivity:** This is an activity class that contains the timer, the grid view and
+* **Class FlipGameActivity:** This is an activity class that contains the timer, the grid view and
 also creating and updating the board. The grid view gives an optimized view of the game for the user.
 Un undo button is also included to let the user undo during the game.
 
 
-* **Class ferrisWheelImageGestureDetectGridView:** This class decides the animation when the user touches the tiles.
+* **Class FlipGestureDetectGridView:** This class decides the animation when the user touches the tiles.
 
 
-* **Class ferrisWheelImageIt:** This class contains the initial setting of the ferrisWheelImageIt game. For example, it keeps
+* **Class FlipIt:** This class contains the initial setting of the FlipIt game. For example, it keeps
 track of changing the tile color at a specific row, column place. There is also an iterator implemented
 to iterate over the tiles.
 
 
-* **Class ferrisWheelImageItComplexityController:** The complexity controller class keeps track of all the buttons
+* **Class FlipItComplexityController:** The complexity controller class keeps track of all the buttons
 
 
-* **Class ferrisWheelImageItLoadSaveButtonController:** This load the ferrisWheelImage it game and save the ferrisWheelImage it game.
+* **Class FlipItLoadSaveButtonController:** This load the ferrisWheelImage it game and save the ferrisWheelImage it game.
 
 
-* **Class ferrisWheelImageManager:** Flip manager manipulates the flips, it create flips according to different
+* **Class FlipManager:** Flip manager manipulates the flips, it create flips according to different
 complexity and level, figure out whether the game is over, the score the user get, change the color
 of corresponding tiles when one tile is flipped, and undo the movement.
 
