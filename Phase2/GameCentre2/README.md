@@ -1,28 +1,68 @@
 # GameCentre
-A sliding tiles puzzle game using numbers and images. It features a basic login application where new 
-users are required to register before playing. The puzzle game comes with 3x3, 4x4, 5x5 game modes that 
-users can choose to play!
+The Game Centre features three games: BlackJack, Sliding Tiles and FlipIt.It features a user
+ registration process, a password change process.
+ After the user logging in, the user is redirected to a game selection page where he/she selects
+ the desired game to play. There is also a scoreboard available that features three separate
+ scoreboards one for each game.
 
 ----
 ## Installation and Setup
 1. Install Android Studio
-2. Get the Phase 1 URL for our group project from MarkUs. 
+2. Get the Phase 1 URL for our group project from MarkUs and clone it in Android studio.
 3. Create an Android Virtual Device within Android Studio. Select a Pixel2 smartphone as the device to 
 emulate, specifiying the device OS as Android 8.1 API 27. Create and launch the virtual device and ensure 
 it loads correctly.
 
 ----
 ## A tour of the code
-* **Class Board:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
- and these are used to populate the 2D array. This class is also Observable, which means that other classes 
- can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called. 
+
+* ** CustomAdapter:** This is a class that helps to set the tiles in the grid view.
+
+* ** BoardGestureDetectGridView:** This is a class that detects user movements over the grid for the
+slidingtiles game.
+
+* ** FlipGestureDetectGridView:** This is a class that detects user movements over the grid for the FlipIt Game.
+/////////////////////////////////////////////////////////////////////
+
+* ** Hand:** This class contains the cards in the player/dealer's hand
+
+
+* ** Deck:** This class creates a deck of 52 cards.
+
+* ** Card:** This class contains a card with suit, value and ingame value.
+
+* **Class BlackJackGameController:**  It updates the the backgrounds on the buttons to match the tiles.
+Once the game is over, it saves the score and user into the score board.
+
+
+* **Class BlackJackLoadSaveButtonController:** This is the controller for the game of sliding tiles.
+It adds a listener to new game. It is able to switch to other game and switch to choose the
+complexity.
+
+
+* **Class BlackJackStartingActivity:** It has start, load, save and resume botton and add controller
+to each button in the BlackJack Game
+
+* ** Class BlackJackGame:** It features one round of BlackJack
+
+* ** Class BlackJackManager:** This is the game manager of the BlackJack Games where it records rounds played,
+
+wins, losses, draws, chips and bets
+
+* ** Class BlackJackSummaryActivity:** This is an activity that displays the number of wins, draws, losses
+as well as the earnings from one game of BlackJack
+
+* ** BlackJackComplexityActivity:** This is a complexity selection activity with rules displayed.
+/////////////////////////////////////////////////////////////////////////////////
+* **Class SlidingTileBoard:** It keeps track of Tile objects in a 2D array. The constructor is given a 1D List of Tiles,
+ and these are used to populate the 2D array. This class is also Observable, which means that other classes
+ can sign up to be alerted when the contents change. This happens, as you'll see, when swapTiles is called.
  The call to notifyAll ends up letting the GameActivity know that the user interface needs to be dogImageted.
 
- 
-* **Class BoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking 
-whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and 
-calculating the user's score using the number of moves and time taken.
 
+* **Class SlidingTileBoardManager:** BoardManager manipulates the Board, figuring out whether a tap is legal, checking
+whether the puzzle has been solved, performing a move the user has made, undoing a previous move, and
+calculating the user's score using the number of moves and time taken.
 
 * **Class SlidingTileComplexityActivity:** This screen allows a user to choose between the provided 3x3, 4x4, 5x5 game
 modes for the number tiles puzzle game as well as allowing the user to change the number of steps they wish 
