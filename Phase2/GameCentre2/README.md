@@ -282,7 +282,7 @@ to check login validity, register the user, and change their password with a new
 ## Running the code
 1. Run -> run app
 2. Select Pixel 2 API 27 as your virtual device.
-3. Click Run and Follow the Instructions
+3. Click Run in the Emulator and Follow the Instructions Given in the App.
 
 ----
 ## Built With Android Studio
